@@ -7,6 +7,7 @@
         mode="horizontal"
         :ellipsis="false"
         class="logo-menu"
+
       >
         <el-sub-menu index="1">
           <template #title>服务</template>
@@ -14,7 +15,22 @@
           <el-menu-item index="1-2">零部件更换</el-menu-item>
           <el-menu-item index="1-3">检测服务</el-menu-item>
         </el-sub-menu>
+          <el-sub-menu index="2">
+          <template #title>服务</template>
+          <el-menu-item index="1-1">维修保养</el-menu-item>
+          <el-menu-item index="1-2">零部件更换</el-menu-item>
+          <el-menu-item index="1-3">检测服务</el-menu-item>
+        </el-sub-menu>
+        <el-sub-menu index="3">
+          <template #title>服务</template>
+          <el-menu-item index="1-1">维修保养</el-menu-item>
+          <el-menu-item index="1-2">零部件更换</el-menu-item>
+          <el-menu-item index="1-3">检测服务</el-menu-item>
+        </el-sub-menu>
       </el-menu>
+    </div>
+    <div class="logo-section right-section">
+      <div h70 w70 class="i-ant-design-align-center-outlined"></div>
     </div>
     <el-carousel
     ref="carouselRef"
@@ -32,6 +48,10 @@
       <el-carousel-item v-for="item in imageCount" :key="item">
         <img :src="`/images/carousel/carousel${item}.png`" alt="">
         <div class="overlay"></div>
+        <div class="title-container">
+          <h1 class="main-title hello-title">Hello</h1>
+          <h1 class="main-title world-title">World</h1>
+        </div>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -98,8 +118,9 @@ const resumeAutoplay = () => {
   z-index: 100;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
-  padding: 8px 20px;
+  padding: 8px 30px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -109,6 +130,11 @@ const resumeAutoplay = () => {
     0 8px 32px 0 rgba(31, 38, 135, 0.15),
     inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+}
+
+.logo-section.right-section {
+  left: auto;
+  right: 40px;
 }
 
 .logo-section:hover {
@@ -140,6 +166,7 @@ const resumeAutoplay = () => {
 .logo-menu {
   background: transparent !important;
   border: none !important;
+  margin-top: 17px;
 }
 
 :deep(.logo-menu .el-menu-item),
@@ -196,4 +223,32 @@ img {
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
 }
+.title-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.main-title {
+  font-size: 180px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hello-title {
+  color: #409EFF;
+  margin-bottom: 20px;
+}
+
+.world-title {
+  margin: 0;
+}
+
 </style>

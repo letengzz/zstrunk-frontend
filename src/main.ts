@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-
+// main.ts
+import 'virtual:uno.css'
 import App from './App.vue'
 import { useRouter } from '@/router'
 import { useStore } from './stores'
