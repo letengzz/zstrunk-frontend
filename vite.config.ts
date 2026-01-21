@@ -10,6 +10,8 @@ import Layouts from 'vite-plugin-vue-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import UnoCSS from 'unocss/vite'// 导入 UnoCSS 插件
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -37,24 +39,26 @@ export default defineConfig({
         /\.vue\?vue/, // .vue
         /\.md$/, // .md
       ],
-      resolvers: [],
+      resolvers: [ElementPlusResolver()],
       imports: ['vue', 'pinia', VueRouterAutoImports],
       dts: './types/auto-imports.d.ts',
       dirs: ['src/api/backend/**/*.ts', 'src/utils/**/*.ts'], // 自动导入项目中自定义的API和工具函数
       // eslint 报错解决：'ref' is not defined
-      eslintrc: {
+      // eslintrc: {
         // 默认 false, true 启用生成。生成一次就可以，避免每次工程启动都生成，一旦生成配置文件之后，最好把 enable 关掉，即改成 false。
-        enabled: true,
+        // enabled: true,
         // 否则这个文件每次会在重新加载的时候重新生成，这会导致 eslint 有时会找不到这个文件。当需要更新配置文件的时候，再重新打开
-        filepath: './.eslintrc-auto-import.json' // 默认就是 ./.eslintrc-auto-import.json
+        // filepath: './.eslintrc-auto-import.json' // 默认就是 ./.eslintrc-auto-import.json
         // globalsPropValue: true // 默认 true
-      },
+      // },
     }),
     Components({
       deep: true,
       directoryAsNamespace: false,
-      dts: './types/components.d.ts' // 生成组件类型声明文件的路径
-    })
+      dts: './types/components.d.ts', // 生成组件类型声明文件的路径
+      resolvers: [ElementPlusResolver()],
+    }),
+    UnoCSS()
   ],
   resolve: {
     alias: {
