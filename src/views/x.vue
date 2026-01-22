@@ -92,27 +92,74 @@
         </el-col>
       </el-row>
     </div>
-        <ContactFixed
+
+    <footer class="footer">
+      <div class="footer-content">
+        <el-row :gutter="40">
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-brand">
+              <img src="/public/images/logo.svg" alt="Logo" class="footer-logo">
+              <span class="footer-company-name">XXXX</span>
+              <p class="footer-desc">专业汽车服务，为您的爱车提供全方位保障</p>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-links">
+              <h4 class="footer-title">快速链接</h4>
+              <ul class="link-list">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">产品中心</a></li>
+                <li><a href="#">服务项目</a></li>
+                <li><a href="#">关于我们</a></li>
+              </ul>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-links">
+              <h4 class="footer-title">服务支持</h4>
+              <ul class="link-list">
+                <li><a href="#">维修保养</a></li>
+                <li><a href="#">零部件更换</a></li>
+                <li><a href="#">检测服务</a></li>
+                <li><a href="#">常见问题</a></li>
+              </ul>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-contact">
+              <h4 class="footer-title">联系我们</h4>
+              <div class="contact-row">
+                <div class="contact-icon i-ep-phone"></div>
+                <span>138-0013-8800</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon i-ep-message"></div>
+                <span>service@example.com</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon i-ep-location"></div>
+                <span>北京市朝阳区xxx路xxx号</span>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+        <div class="footer-bottom">
+          <p class="copyright">© 2024 XXXX 版权所有</p>
+          <div class="social-links">
+            <a href="#" class="social-link i-ant-design-wechat-outlined"></a>
+            <a href="#" class="social-link i-ant-design-alipay-outlined"></a>
+            <a href="#" class="social-link i-ant-design-weibo-outlined"></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <ContactFixed
       phone="138-0013-8800"
       email="service@example.com"
       whatsapp="+1 234-567-8900"
     />
-    <!-- <div class="floating-contact">
-      <div class="contact-item">
-        <div class="contact-icon i-ep-phone"></div>
-        <div class="contact-info">
-          <span class="contact-label">电话</span>
-          <span class="contact-value">400-123-4567</span>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon i-ep-message"></div>
-        <div class="contact-info">
-          <span class="contact-label">邮件</span>
-          <span class="contact-value">contact@example.com</span>
-        </div>
-      </div>
-    </div> -->
+
   </div>
 </template>
 
@@ -540,6 +587,192 @@ img {
   font-size: 24px;
   font-weight: 700;
   color: #409EFF;
+}
+
+.footer {
+  background: #1a1a2e;
+  padding: 60px 40px 30px;
+  border-top: 1px solid #2a3a5c;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  padding-right: 20px;
+}
+
+.footer-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.footer-company-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: #8892b0;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.footer-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #409EFF, transparent);
+  border-radius: 2px;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link-list li {
+  margin-bottom: 12px;
+}
+
+.link-list a {
+  color: #8892b0;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.link-list a::before {
+  content: '›';
+  margin-right: 8px;
+  color: #409EFF;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.link-list a:hover {
+  color: #409EFF;
+  transform: translateX(5px);
+}
+
+.link-list a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-contact {
+  padding-left: 10px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: #8892b0;
+  font-size: 14px;
+}
+
+.contact-icon {
+  font-size: 18px;
+  color: #409EFF;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(64, 158, 255, 0.1);
+  border-radius: 10px;
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid #2a3a5c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #8892b0;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(64, 158, 255, 0.1);
+  border-radius: 12px;
+  color: #8892b0;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: #409EFF;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(64, 158, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px 25px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 20px;
+  }
+
+  .footer-brand {
+    margin-bottom: 30px;
+    padding-right: 0;
+  }
+
+  .footer-contact {
+    padding-left: 0;
+  }
 }
 
 </style>
