@@ -1,37 +1,6 @@
 <template>
   <div class="carousel-container">
-    <div class="logo-section">
-      <img src="/public/images/logo.svg" alt="Logo" class="logo">
-      <span class="company-name">XXXX</span>
-      <el-menu
-        mode="horizontal"
-        :ellipsis="false"
-        class="logo-menu"
-
-      >
-        <el-sub-menu index="1">
-          <template #title>服务</template>
-          <el-menu-item index="1-1">维修保养</el-menu-item>
-          <el-menu-item index="1-2">零部件更换</el-menu-item>
-          <el-menu-item index="1-3">检测服务</el-menu-item>
-        </el-sub-menu>
-          <el-sub-menu index="2">
-          <template #title>服务</template>
-          <el-menu-item index="1-1">维修保养</el-menu-item>
-          <el-menu-item index="1-2">零部件更换</el-menu-item>
-          <el-menu-item index="1-3">检测服务</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="3">
-          <template #title>服务</template>
-          <el-menu-item index="1-1">维修保养</el-menu-item>
-          <el-menu-item index="1-2">零部件更换</el-menu-item>
-          <el-menu-item index="1-3">检测服务</el-menu-item>
-        </el-sub-menu>
-      </el-menu>
-    </div>
-    <div class="logo-section right-section">
-      <div h45 w45 class="i-ant-design-align-center-outlined"></div>
-    </div>
+    <TopBar class="floating-topbar" />
     <el-carousel
     ref="carouselRef"
        height="850px"
@@ -39,7 +8,7 @@
       arrow="never"
       :autoplay="true"
       :pause-on-hover="false"
-                  @mousedown="handleMouseDown"
+      @mousedown="handleMouseDown"
       @mousemove="handleMouseMove"
       @mouseup="handleMouseUp"
       @mouseleave="handleMouseUp"
@@ -260,6 +229,21 @@ const resumeAutoplay = () => {
 .carousel-container {
   position: relative;
   width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.floating-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
 }
 
 .logo-section {
@@ -384,6 +368,7 @@ img {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 10;
+  animation: slideUp 0.8s ease-out forwards;
 }
 
 .main-title {
@@ -394,15 +379,41 @@ img {
   letter-spacing: 2px;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(50px);
 }
 
 .hello-title {
   color: #409EFF;
   margin-bottom: 20px;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .world-title {
   margin: 0;
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .feature-boxes {

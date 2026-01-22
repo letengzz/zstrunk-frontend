@@ -56,7 +56,7 @@ const contacts = computed<Contact[]>(() => [
     type: 'whatsapp',
     label: 'WhatsApp',
     value: props.whatsapp,
-    iconClass: 'i-carbon-logo-whatsapp'
+    iconClass: 'i-ant-design-whats-app-outlined'
   }
 ])
 
@@ -91,6 +91,7 @@ const activeContact = ref('')
 .contact-item:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   width: 210px;
+   background: #409eff;
 }
 
 .contact-icon-wrapper {
@@ -131,7 +132,7 @@ const activeContact = ref('')
 
 .contact-type {
   font-size: 12px;
-  color: #909399;
+  color: #fff;
 }
 
 .contact-value {
