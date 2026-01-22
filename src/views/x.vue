@@ -30,7 +30,7 @@
       </el-menu>
     </div>
     <div class="logo-section right-section">
-      <div h70 w70 class="i-ant-design-align-center-outlined"></div>
+      <div h45 w45 class="i-ant-design-align-center-outlined"></div>
     </div>
     <el-carousel
     ref="carouselRef"
@@ -271,7 +271,7 @@ const resumeAutoplay = () => {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  padding: 8px 30px;
+  padding: 0px 30px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -317,7 +317,9 @@ const resumeAutoplay = () => {
 .logo-menu {
   background: transparent !important;
   border: none !important;
-  margin-top: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :deep(.logo-menu .el-menu-item),
