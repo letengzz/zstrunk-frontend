@@ -34,7 +34,7 @@
     </div>
     <el-carousel
     ref="carouselRef"
-       height="860px"
+       height="850px"
        indicator-position="none"
       arrow="never"
       :autoplay="true"
