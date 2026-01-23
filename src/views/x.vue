@@ -18,43 +18,42 @@
         <img :src="`/images/carousel/carousel${item}.png`" alt="">
         <div class="overlay"></div>
         <div class="title-container">
-          <h1 class="main-title hello-title">Hello</h1>
-          <h1 class="main-title world-title">World</h1>
+          <h1 class="main-title hello-title">Premium</h1>
+          <h1 class="main-title world-title">Tanker Trucks for Sale</h1>
         </div>
       </el-carousel-item>
     </el-carousel>
-    <div class="feature-boxes">
-      <div class="feature-box">
-        <div class="feature-icon i-ep-service"></div>
-        <h3 class="feature-title">维修保养</h3>
-        <p class="feature-desc">专业维修团队</p>
+    <div class="feature-boxes" ref="featureBoxesRef">
+      <div class="feature-box feature-bg-1" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.1s">
+        <h3 class="feature-title">Diverse vehicle models</h3>
+        <p class="feature-desc">Adapt to different transportation needs</p>
       </div>
-      <div class="feature-box">
-        <div class="feature-icon i-ep-setting"></div>
-        <h3 class="feature-title">零部件更换</h3>
-        <p class="feature-desc">原厂品质保障</p>
+      <div class="feature-box feature-bg-2" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.3s">
+        <h3 class="feature-title">Compliance and Security</h3>
+        <p class="feature-desc">Strict safety standards</p>
       </div>
-      <div class="feature-box">
-        <div class="feature-icon i-ep-search"></div>
-        <h3 class="feature-title">检测服务</h3>
-        <p class="feature-desc">全面专业检测</p>
+      <div class="feature-box feature-bg-3" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.5s">
+        <h3 class="feature-title">Proper and considerate service</h3>
+        <p class="feature-desc">Full life cycle service support</p>
       </div>
     </div>
     <div class="product-section">
-      <h2 class="section-title">热门产品</h2>
+      <h2 class="section-title">Popular Products</h2>
+      <p class="section-subtitle">We Promise To Find You The Right Equipment</p>
       <el-row :gutter="24" class="product-grid">
-        <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="product in products" :key="product.id">
-          <el-card class="product-card" :body-style="{ padding: '0px' }">
+        <el-col :xs="24" :sm="12" :md="8" :lg="8" v-for="product in products" :key="product.id">
+          <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }">
             <div class="product-image">
               <img :src="product.image" class="product-img" />
               <div class="product-tag">{{ product.tag }}</div>
             </div>
             <div class="product-content">
               <h3 class="product-name">{{ product.name }}</h3>
-              <p class="product-desc">{{ product.desc }}</p>
-              <div class="product-footer">
-                <span class="product-price">¥{{ product.price }}</span>
-                <el-button type="primary" size="small" round>查看详情</el-button>
+              <div class="product-info">
+                <p class="product-desc">{{ product.desc }}</p>
+                <div class="product-footer">
+                  <el-button type="primary" round>View More</el-button>
+                </div>
               </div>
             </div>
           </el-card>
@@ -68,35 +67,35 @@
           <el-col :xs="24" :sm="12" :md="6">
             <div class="footer-brand">
               <img src="/public/images/logo.svg" alt="Logo" class="footer-logo">
-              <span class="footer-company-name">XXXX</span>
-              <p class="footer-desc">专业汽车服务，为您的爱车提供全方位保障</p>
+              <span class="footer-company-name">ZHI SHUN</span>
+              <p class="footer-desc">Professional Services</p>
             </div>
           </el-col>
           <el-col :xs="24" :sm="12" :md="6">
             <div class="footer-links">
-              <h4 class="footer-title">快速链接</h4>
+              <h4 class="footer-title">Quick Links</h4>
               <ul class="link-list">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">产品中心</a></li>
-                <li><a href="#">服务项目</a></li>
-                <li><a href="#">关于我们</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About Us</a></li>
               </ul>
             </div>
           </el-col>
           <el-col :xs="24" :sm="12" :md="6">
             <div class="footer-links">
-              <h4 class="footer-title">服务支持</h4>
+              <h4 class="footer-title">Support</h4>
               <ul class="link-list">
-                <li><a href="#">维修保养</a></li>
-                <li><a href="#">零部件更换</a></li>
-                <li><a href="#">检测服务</a></li>
-                <li><a href="#">常见问题</a></li>
+                <li><a href="#">Maintenance</a></li>
+                <li><a href="#">Parts Replacement</a></li>
+                <li><a href="#">Inspection Services</a></li>
+                <li><a href="#">FAQs</a></li>
               </ul>
             </div>
           </el-col>
           <el-col :xs="24" :sm="12" :md="6">
             <div class="footer-contact">
-              <h4 class="footer-title">联系我们</h4>
+              <h4 class="footer-title">Contact Us</h4>
               <div class="contact-row">
                 <div class="contact-icon i-ep-phone"></div>
                 <span>138-0013-8800</span>
@@ -107,13 +106,13 @@
               </div>
               <div class="contact-row">
                 <div class="contact-icon i-ep-location"></div>
-                <span>北京市朝阳区xxx路xxx号</span>
+                <span>Beijing, China</span>
               </div>
             </div>
           </el-col>
         </el-row>
         <div class="footer-bottom">
-          <p class="copyright">© 2024 XXXX 版权所有</p>
+          <p class="copyright">© 2024 ZHI SHUN. All rights reserved.</p>
           <div class="social-links">
             <a href="#" class="social-link i-ant-design-wechat-outlined"></a>
             <a href="#" class="social-link i-ant-design-alipay-outlined"></a>
@@ -157,36 +156,76 @@ interface Product {
 const products = ref<Product[]>([
   {
     id: 1,
-    name: '高端机油滤清器',
-    desc: '高效过滤，保障发动机健康',
+    name: 'Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck',
+    desc: 'Efficient filtration for engine health',
     price: 299,
-    image: '/images/products/oil-filter.png',
-    tag: '热销'
+    image: '/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg',
+    tag: 'Hot'
   },
   {
     id: 2,
-    name: '刹车片套装',
-    desc: '陶瓷配方，制动性能卓越',
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
     price: 599,
-    image: '/images/products/brake-pad.png',
-    tag: '新品'
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
   },
-  {
+    {
     id: 3,
-    name: '空气滤清器',
-    desc: '高效过滤，清洁进气',
-    price: 149,
-    image: '/images/products/air-filter.png',
-    tag: ''
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
   },
-  {
+    {
     id: 4,
-    name: '火花塞套装',
-    desc: '铱金材质，点火更强劲',
-    price: 399,
-    image: '/images/products/spark-plug.png',
-    tag: '推荐'
-  }
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
+  },
+    {
+    id: 5,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
+  },
+    {
+    id: 6,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
+  },
+    {
+    id: 7,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
+  },
+    {
+    id: 8,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
+  },
+    {
+    id: 8,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New'
+  },
 ])
 
 let startX = 0
@@ -223,6 +262,26 @@ const resumeAutoplay = () => {
     carouselRef.value?.start()
   }, 100)
 }
+
+const featureBoxesRef = ref()
+const isFeatureBoxesVisible = ref(false)
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          isFeatureBoxesVisible.value = true
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+
+  if (featureBoxesRef.value) {
+    observer.observe(featureBoxesRef.value)
+  }
+})
 </script>
 
 <style scoped>
@@ -363,7 +422,7 @@ img {
 }
 .title-container {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -372,7 +431,7 @@ img {
 }
 
 .main-title {
-  font-size: 180px;
+  font-size: 170px;
   font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
@@ -391,6 +450,7 @@ img {
 
 .world-title {
   margin: 0;
+   font-size: 100px;
   animation: fadeInUp 0.8s ease-out 0.5s forwards;
 }
 
@@ -421,19 +481,64 @@ img {
   justify-content: center;
   gap: 30px;
   padding: 60px 40px;
-  background: #1a1a2e;
+  background: #000;
+  overflow: hidden;
 }
 
 .feature-box {
   flex: 1;
   max-width: 400px;
-  padding: 40px 30px;
+  padding: 60px 30px;
   background: #16213e;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.3s ease;
   border: 1px solid #2a3a5c;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.feature-box.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(22, 33, 62, 0.85);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.feature-box > * {
+  position: relative;
+  z-index: 2;
+}
+
+.feature-bg-1 {
+  background-image: url('/feature/feature1.png');
+}
+
+.feature-bg-2 {
+  background-image: url('/feature/feature2.png');
+}
+
+.feature-bg-3 {
+  background-image: url('/feature/feature3.png');
 }
 
 .feature-box:hover {
@@ -516,13 +621,21 @@ img {
 
 .product-section {
   padding: 60px 40px;
-  background: #1a1a2e;
+  background: #000;;
 }
 
 .section-title {
   font-size: 32px;
   font-weight: 700;
   color: #ffffff;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #8892b0;
   text-align: center;
   margin: 0 0 40px 0;
 }
@@ -539,6 +652,7 @@ img {
   overflow: hidden;
   transition: all 0.3s ease;
   margin-bottom: 20px;
+  height: 285px;
 }
 
 .product-card:hover {
@@ -549,9 +663,17 @@ img {
 
 .product-image {
   position: relative;
-  height: 200px;
+  width: 95%;
+  height: 170px;
+  margin: 16px auto 0;
+  padding: 3px;
   background: linear-gradient(135deg, #0f1626 0%, #1a2744 100%);
   overflow: hidden;
+}
+
+.product-layout {
+  display: block;
+  height: 100%;
 }
 
 .product-img {
@@ -573,37 +695,61 @@ img {
 }
 
 .product-content {
-  padding: 20px;
+  padding: 12px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .product-name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #ffffff;
   margin: 0 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .product-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: #8892b0;
-  margin: 0 0 16px 0;
+  margin: 0;
   line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  flex: 1;
 }
 
 .product-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
+.product-footer .el-button {
+  font-size: 14px;
+  padding: 8px 20px;
+}
+
 .product-price {
-  font-size: 24px;
-  font-weight: 700;
-  color: #409EFF;
+  display: none;
 }
 
 .footer {
-  background: #1a1a2e;
+  background: #000;
   padding: 60px 40px 30px;
   border-top: 1px solid #2a3a5c;
 }

@@ -42,13 +42,13 @@ const props = withDefaults(defineProps<{
 const contacts = computed<Contact[]>(() => [
   {
     type: 'phone',
-    label: '手机号',
+    label: 'Phone',
     value: props.phone,
     iconClass: 'i-ep-phone'
   },
   {
     type: 'email',
-    label: '邮箱',
+    label: 'Email',
     value: props.email,
     iconClass: 'i-ep-message'
   },
