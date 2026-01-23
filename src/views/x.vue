@@ -24,41 +24,61 @@
       </el-carousel-item>
     </el-carousel>
     <div class="feature-boxes" ref="featureBoxesRef">
-      <div class="feature-box feature-bg-1" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.1s">
-        <h3 class="feature-title">Diverse vehicle models</h3>
-        <p class="feature-desc">Adapt to different transportation needs</p>
-      </div>
-      <div class="feature-box feature-bg-2" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.3s">
-        <h3 class="feature-title">Compliance and Security</h3>
-        <p class="feature-desc">Strict safety standards</p>
-      </div>
-      <div class="feature-box feature-bg-3" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.5s">
-        <h3 class="feature-title">Proper and considerate service</h3>
-        <p class="feature-desc">Full life cycle service support</p>
+      <div class="feature-boxes-inner">
+        <div class="feature-box feature-bg-1" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.1s">
+          <h3 class="feature-title">Diverse vehicle models</h3>
+          <p class="feature-desc">Adapt to different transportation needs</p>
+        </div>
+        <div class="feature-box feature-bg-2" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.3s">
+          <h3 class="feature-title">Compliance and Security</h3>
+          <p class="feature-desc">Strict safety standards</p>
+        </div>
+        <div class="feature-box feature-bg-3" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.5s">
+          <h3 class="feature-title">Proper and considerate service</h3>
+          <p class="feature-desc">Full life cycle service support</p>
+        </div>
       </div>
     </div>
     <div class="product-section">
-      <h2 class="section-title">Popular Products</h2>
-      <p class="section-subtitle">We Promise To Find You The Right Equipment</p>
-      <el-row :gutter="24" class="product-grid">
-        <el-col :xs="24" :sm="12" :md="8" :lg="8" v-for="product in products" :key="product.id">
-          <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }">
-            <div class="product-image">
-              <img :src="product.image" class="product-img" />
-              <div class="product-tag">{{ product.tag }}</div>
-            </div>
-            <div class="product-content">
-              <h3 class="product-name">{{ product.name }}</h3>
-              <div class="product-info">
-                <p class="product-desc">{{ product.desc }}</p>
-                <div class="product-footer">
-                  <el-button type="primary" round>View More</el-button>
+      <div class="product-section-inner">
+        <h2 class="section-title">Popular Products</h2>
+        <p class="section-subtitle">We Promise To Find You The Right Equipment</p>
+        <div class="category-tabs">
+          <div
+            class="category-tab"
+            :class="{ active: currentCategory === 'tanker' }"
+            @click="setCategory('tanker')"
+          >
+            <span class="category-name">Tanker Trucks</span>
+          </div>
+          <div
+            class="category-tab"
+            :class="{ active: currentCategory === 'excavator' }"
+            @click="setCategory('excavator')"
+          >
+            <span class="category-name">Excavators</span>
+          </div>
+        </div>
+        <div class="product-grid">
+          <div class="product-col" v-for="product in currentProducts" :key="product.id">
+            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }">
+              <div class="product-image">
+                <img :src="product.image" class="product-img" />
+                <div class="product-tag">{{ product.tag }}</div>
+              </div>
+              <div class="product-content">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-info">
+                  <p class="product-desc">{{ product.desc }}</p>
+                  <div class="product-footer">
+                    <el-button type="primary" round>View More</el-button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
+            </el-card>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
@@ -84,12 +104,12 @@
           </el-col>
           <el-col :xs="24" :sm="12" :md="6">
             <div class="footer-links">
-              <h4 class="footer-title">Support</h4>
+              <h4 class="footer-title">TRUCK</h4>
               <ul class="link-list">
-                <li><a href="#">Maintenance</a></li>
-                <li><a href="#">Parts Replacement</a></li>
-                <li><a href="#">Inspection Services</a></li>
-                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Tractor Head Truck</a></li>
+                <li><a href="#">Dump Truck</a></li>
+                <li><a href="#">Concrete Mixer Truck</a></li>
+                <li><a href="#">Other Type Truck</a></li>
               </ul>
             </div>
           </el-col>
@@ -112,12 +132,7 @@
           </el-col>
         </el-row>
         <div class="footer-bottom">
-          <p class="copyright">© 2024 ZHI SHUN. All rights reserved.</p>
-          <div class="social-links">
-            <a href="#" class="social-link i-ant-design-wechat-outlined"></a>
-            <a href="#" class="social-link i-ant-design-alipay-outlined"></a>
-            <a href="#" class="social-link i-ant-design-weibo-outlined"></a>
-          </div>
+          <p class="copyright">© 2026 ZHI SHUN. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -151,16 +166,20 @@ interface Product {
   price: number
   image: string
   tag: string
+  category: 'tanker' | 'excavator'
 }
 
-const products = ref<Product[]>([
+const currentCategory = ref<'tanker' | 'excavator'>('tanker')
+
+const tankerProducts = ref<Product[]>([
   {
     id: 1,
     name: 'Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck',
     desc: 'Efficient filtration for engine health',
     price: 299,
     image: '/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg',
-    tag: 'Hot'
+    tag: 'Hot',
+    category: 'tanker'
   },
   {
     id: 2,
@@ -168,7 +187,8 @@ const products = ref<Product[]>([
     desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
     price: 599,
     image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
+    tag: 'New',
+    category: 'tanker'
   },
     {
     id: 3,
@@ -176,7 +196,8 @@ const products = ref<Product[]>([
     desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
     price: 599,
     image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
+    tag: 'New',
+    category: 'tanker'
   },
     {
     id: 4,
@@ -184,7 +205,8 @@ const products = ref<Product[]>([
     desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
     price: 599,
     image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
+    tag: 'New',
+    category: 'tanker'
   },
     {
     id: 5,
@@ -192,7 +214,8 @@ const products = ref<Product[]>([
     desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
     price: 599,
     image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
+    tag: 'New',
+    category: 'tanker'
   },
     {
     id: 6,
@@ -200,33 +223,75 @@ const products = ref<Product[]>([
     desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
     price: 599,
     image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
-  },
-    {
-    id: 7,
-    name: '45000 Liters Oil Tanker Trailer',
-    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
-    price: 599,
-    image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
-  },
-    {
-    id: 8,
-    name: '45000 Liters Oil Tanker Trailer',
-    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
-    price: 599,
-    image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
-  },
-    {
-    id: 8,
-    name: '45000 Liters Oil Tanker Trailer',
-    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
-    price: 599,
-    image: '/public/products/45000LitersOilTankerTrailer.jpg',
-    tag: 'New'
+    tag: 'New',
+    category: 'tanker'
   },
 ])
+
+const excavatorProducts = ref<Product[]>([
+  {
+    id: 101,
+    name: 'Hydraulic Excavator XG808',
+    desc: 'High performance excavator with advanced hydraulic system',
+    price: 899,
+    image: '/public/products/excavator-1.jpg',
+    tag: 'Hot',
+    category: 'excavator'
+  },
+  {
+    id: 102,
+    name: 'Mini Excavator XG815',
+    desc: 'Compact design for tight spaces and urban construction',
+    price: 699,
+    image: '/public/products/excavator-2.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 103,
+    name: 'Large Mining Excavator XG890',
+    desc: 'Heavy-duty excavator for mining operations',
+    price: 1299,
+    image: '/public/products/excavator-3.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 104,
+    name: 'Wheel Excavator XG820',
+    desc: 'Mobile excavator with excellent maneuverability',
+    price: 799,
+    image: '/public/products/excavator-4.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 105,
+    name: 'Long Reach Excavator XG825',
+    desc: 'Extended reach for deep excavation and demolition',
+    price: 999,
+    image: '/public/products/excavator-5.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 106,
+    name: 'Forestry Excavator XG830',
+    desc: 'Specialized excavator for forestry applications',
+    price: 1099,
+    image: '/public/products/excavator-6.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+])
+
+const currentProducts = computed(() => {
+  return currentCategory.value === 'tanker' ? tankerProducts.value : excavatorProducts.value
+})
+
+const setCategory = (category: 'tanker' | 'excavator') => {
+  currentCategory.value = category
+}
 
 let startX = 0
 let isDragging = false
@@ -478,17 +543,25 @@ img {
 
 .feature-boxes {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 60px 40px;
+  padding: 60px 0;
   background: #000;
   overflow: hidden;
+  justify-content: center;
+}
+
+.feature-boxes-inner {
+  display: flex;
+  gap: 40px;
+  max-width: 1800px;
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .feature-box {
   flex: 1;
-  max-width: 400px;
-  padding: 60px 30px;
+  max-width: none;
+  padding: 80px 70px;
   background: #16213e;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -498,18 +571,42 @@ img {
   background-size: cover;
   background-position: center;
   position: relative;
-  min-height: 150px;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(100px) scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .feature-box.animate-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+.feature-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(64, 158, 255, 0.25);
+  border-color: #409EFF;
+}
+
+@media (max-width: 992px) {
+  .feature-boxes {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature-box {
+    width: 100%;
+    padding: 40px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-box {
+    padding: 30px 20px;
+  }
 }
 
 .feature-box::before {
@@ -599,7 +696,7 @@ img {
 
 .contact-icon {
   font-size: 24px;
-  color: #409EFF;
+  color: #fff;
 }
 
 .contact-info {
@@ -620,8 +717,82 @@ img {
 }
 
 .product-section {
-  padding: 60px 40px;
-  background: #000;;
+  padding: 60px 0;
+  background: #000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-section-inner {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.category-tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: rgba(22, 33, 62, 0.8);
+  border: 2px solid #2a3a5c;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-tab:hover {
+  background: rgba(64, 158, 255, 0.15);
+  border-color: #409EFF;
+  transform: translateY(-3px);
+}
+
+.category-tab.active {
+  background: rgba(64, 158, 255, 0.2);
+  border-color: #409EFF;
+  box-shadow: 0 4px 20px rgba(64, 158, 255, 0.3);
+}
+
+.category-icon {
+  font-size: 28px;
+}
+
+.category-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .category-tabs {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .category-tab {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+
+  .category-icon {
+    font-size: 24px;
+  }
+
+  .category-name {
+    font-size: 16px;
+  }
 }
 
 .section-title {
@@ -643,6 +814,38 @@ img {
 .product-grid {
   max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.product-col {
+  width: calc(33.333% - 16px);
+}
+
+@media (max-width: 1200px) {
+  .product-col {
+    width: calc(33.333% - 16px);
+  }
+}
+
+@media (max-width: 992px) {
+  .product-col {
+    width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-col {
+    width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-col {
+    width: 100%;
+  }
 }
 
 .product-card {
@@ -651,7 +854,6 @@ img {
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s ease;
-  margin-bottom: 20px;
   height: 285px;
 }
 
@@ -859,13 +1061,13 @@ img {
 
 .contact-icon {
   font-size: 18px;
-  color: #409EFF;
+  color: #ffffff;
   width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(64, 158, 255, 0.1);
+  /* background: rgba(64, 158, 255, 0.1); */
   border-radius: 10px;
 }
 
