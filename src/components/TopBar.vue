@@ -2,7 +2,7 @@
   <div class="top-bar">
     <div class="left-box">
       <div class="logo">Logo</div>
-      <span class="title">ZHI SHUN Trunk</span>
+      <span class="title">ZHI SHUN</span>
     </div>
     <div class="right-box">
       <el-menu
@@ -11,23 +11,29 @@
         class="topbar-menu"
       >
         <el-sub-menu index="1">
-          <template #title>Products</template>
+          <template #title>Trunk</template>
           <el-menu-item index="1-1">Product List</el-menu-item>
           <el-menu-item index="1-2">New Arrivals</el-menu-item>
           <el-menu-item index="1-3">Hot Products</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="2">
-          <template #title>About Us</template>
-          <el-menu-item index="2-1">Company Profile</el-menu-item>
+          <template #title>Excavator</template>
+          <el-menu-item index="2-1">Maintenance</el-menu-item>
+          <el-menu-item index="2-2">Parts Replacement</el-menu-item>
+          <el-menu-item index="2-3">Inspection Services</el-menu-item>
+        </el-sub-menu>
+        <el-menu-item index="3-1">
+          About Us
+          <!-- <router-link to="/about" style="text-decoration: none; color: inherit;">Company Profile</router-link> -->
+        </el-menu-item>
+        <!-- <el-sub-menu index="3"> -->
+          <!-- <template #title>About Us</template> -->
+          <!-- <el-menu-item index="2-1">
+            <router-link to="/about" style="text-decoration: none; color: inherit;">Company Profile</router-link>
+          </el-menu-item>
           <el-menu-item index="2-2">Contact Us</el-menu-item>
-          <el-menu-item index="2-3">Join Us</el-menu-item>
-        </el-sub-menu>
-        <el-sub-menu index="3">
-          <template #title>Services</template>
-          <el-menu-item index="3-1">Maintenance</el-menu-item>
-          <el-menu-item index="3-2">Parts Replacement</el-menu-item>
-          <el-menu-item index="3-3">Inspection Services</el-menu-item>
-        </el-sub-menu>
+          <el-menu-item index="2-3">Join Us</el-menu-item> -->
+        <!-- </el-sub-menu> -->
       </el-menu>
     </div>
   </div>
