@@ -56,13 +56,20 @@ export default defineConfig({
       deep: true,
       directoryAsNamespace: false,
       dts: './types/components.d.ts', // 生成组件类型声明文件的路径
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
     }),
     UnoCSS()
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@/assets/scss/settings/element.scss' as *;`,
+      },
     },
   },
 })

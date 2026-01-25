@@ -1,3 +1,6 @@
+// 导入 Element Plus 样式
+@use 'element-plus/theme-chalk/src/index.scss' as *;
+
 // 导入变量文件
 @use './settings';
 @use './base';

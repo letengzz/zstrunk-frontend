@@ -7,6 +7,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   // routes
   routes: setupLayouts([...routes]),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
 })
 // 运行时更新路由，而无需重新加载页面
 if (import.meta.hot) {

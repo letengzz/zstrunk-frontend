@@ -32,8 +32,6 @@
               @change="handleSort"
             >
               <el-option label="Default" value="default" />
-              <el-option label="Price: Low to High" value="price-asc" />
-              <el-option label="Price: High to Low" value="price-desc" />
               <el-option label="Newest" value="newest" />
             </el-select>
           </div>
@@ -89,8 +87,7 @@
                 <div class="product-info">
                   <p class="product-desc">{{ product.desc }}</p>
                   <div class="product-footer">
-                    <div class="product-price">${{ product.price.toLocaleString() }}</div>
-                    <el-button type="primary" round>View More</el-button>
+                    <el-button type="primary" round @click="goToProduct(product.id, product.category)">View More</el-button>
                   </div>
                 </div>
               </div>
@@ -192,12 +189,14 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 interface Product {
   id: number;
   name: string;
   desc: string;
-  price: number;
   image: string;
   tag: string;
   category: 'tanker' | 'excavator' | 'trailer';
@@ -211,7 +210,6 @@ const products = ref<Product[]>([
     id: 1,
     name: 'Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck',
     desc: 'Efficient filtration for engine health. Designed for transporting different types of liquids.',
-    price: 299000,
     image: '/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg',
     tag: 'Hot',
     category: 'tanker',
@@ -221,7 +219,6 @@ const products = ref<Product[]>([
     id: 2,
     name: '45000 Liters Oil Tanker Trailer',
     desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
-    price: 599000,
     image: '/public/products/45000LitersOilTankerTrailer.jpg',
     tag: 'New',
     category: 'tanker',
@@ -231,7 +228,6 @@ const products = ref<Product[]>([
     id: 3,
     name: 'Two-axle 30,000L Stainless Steel Tanker Truck',
     desc: 'Stainless steel construction for corrosive liquids transportation.',
-    price: 249000,
     image: '/public/products/tanker-truck-5.jpg',
     tag: 'Hot',
     category: 'tanker',
@@ -241,7 +237,6 @@ const products = ref<Product[]>([
     id: 4,
     name: 'Four-axle 50,000L Chemical Tanker Truck',
     desc: 'Specialized for transporting hazardous chemicals with safety features.',
-    price: 699000,
     image: '/public/products/tanker-truck-6.jpg',
     tag: 'New',
     category: 'tanker',
@@ -251,7 +246,6 @@ const products = ref<Product[]>([
     id: 5,
     name: 'Three-axle 35,000L Fuel Tanker Truck',
     desc: 'Designed for efficient fuel transportation with advanced safety systems.',
-    price: 279000,
     image: '/public/products/tanker-truck-7.jpg',
     tag: 'Hot',
     category: 'tanker',
@@ -261,7 +255,6 @@ const products = ref<Product[]>([
     id: 6,
     name: 'Five-axle 60,000L Bulk Cement Tanker Truck',
     desc: 'Specialized for transporting bulk cement with high capacity.',
-    price: 799000,
     image: '/public/products/tanker-truck-8.jpg',
     tag: 'New',
     category: 'tanker',
@@ -273,7 +266,6 @@ const products = ref<Product[]>([
     id: 101,
     name: 'Hydraulic Excavator XG808',
     desc: 'High performance excavator with advanced hydraulic system.',
-    price: 899000,
     image: '/public/products/excavator-1.jpg',
     tag: 'Hot',
     category: 'excavator',
@@ -283,7 +275,6 @@ const products = ref<Product[]>([
     id: 102,
     name: 'Mini Excavator XG815',
     desc: 'Compact design for tight spaces and urban construction.',
-    price: 699000,
     image: '/public/products/excavator-2.jpg',
     tag: 'New',
     category: 'excavator',
@@ -293,7 +284,6 @@ const products = ref<Product[]>([
     id: 103,
     name: 'Large Mining Excavator XG890',
     desc: 'Heavy-duty excavator for mining operations.',
-    price: 1299000,
     image: '/public/products/excavator-3.jpg',
     tag: 'New',
     category: 'excavator',
@@ -303,7 +293,6 @@ const products = ref<Product[]>([
     id: 104,
     name: 'Wheel Excavator XG820',
     desc: 'Mobile excavator with excellent maneuverability.',
-    price: 799000,
     image: '/public/products/excavator-4.jpg',
     tag: 'Hot',
     category: 'excavator',
@@ -315,7 +304,6 @@ const products = ref<Product[]>([
     id: 201,
     name: '30,000L Fuel Tanker Trailer',
     desc: 'Lightweight design for efficient fuel transportation.',
-    price: 399000,
     image: '/public/products/trailer-1.jpg',
     tag: 'New',
     category: 'trailer',
@@ -325,7 +313,6 @@ const products = ref<Product[]>([
     id: 202,
     name: '40,000L Chemical Tanker Trailer',
     desc: 'Specialized for transporting hazardous chemicals with safety features.',
-    price: 499000,
     image: '/public/products/trailer-2.jpg',
     tag: 'Hot',
     category: 'trailer',
@@ -335,7 +322,6 @@ const products = ref<Product[]>([
     id: 203,
     name: 'Flatbed Trailer',
     desc: 'Versatile trailer for transporting various types of cargo.',
-    price: 199000,
     image: '/public/products/trailer-3.jpg',
     tag: 'New',
     category: 'trailer',
@@ -370,12 +356,6 @@ const filteredProducts = computed(() => {
 
   // 排序
   switch (sortBy.value) {
-    case 'price-asc':
-      result.sort((a, b) => a.price - b.price);
-      break;
-    case 'price-desc':
-      result.sort((a, b) => b.price - a.price);
-      break;
     case 'newest':
       result.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
       break;
@@ -427,6 +407,16 @@ const resetFilters = () => {
   searchQuery.value = '';
   sortBy.value = 'default';
   currentPage.value = 1;
+};
+
+const goToProduct = (id: number, category: 'tanker' | 'excavator' | 'trailer') => {
+  if (category === 'tanker') {
+    router.push(`/truck/${id}`)
+  } else if (category === 'excavator') {
+    router.push(`/excavator/${id}`)
+  } else if (category === 'trailer') {
+    router.push(`/truck/${id}`)
+  }
 };
 
 // 页面加载时的处理
@@ -1072,12 +1062,6 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
-}
-
-.product-price {
-  font-size: 18px;
-  font-weight: 700;
-  color: #409EFF;
 }
 
 .product-footer .el-button {

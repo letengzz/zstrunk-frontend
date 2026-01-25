@@ -6,7 +6,7 @@
       <div class="breadcrumb-inner">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item><a href="/">Home</a></el-breadcrumb-item>
-          <el-breadcrumb-item><a href="/products">Products</a></el-breadcrumb-item>
+          <el-breadcrumb-item><a href="/">Products</a></el-breadcrumb-item>
           <el-breadcrumb-item><a :href="`/products?category=${product.category}`">{{ product.category === 'tanker' ? 'Tanker Trucks' : 'Excavators' }}</a></el-breadcrumb-item>
           <el-breadcrumb-item>{{ product.name }}</el-breadcrumb-item>
         </el-breadcrumb>
@@ -35,7 +35,6 @@
         <div class="product-info-container">
           <div class="product-tag">{{ product.tag }}</div>
           <h1 class="product-title">{{ product.name }}</h1>
-          <div class="product-price">${{ product.price.toLocaleString() }}{{ product.priceUnit }}</div>
           <p class="product-description">{{ product.desc }}</p>
 
           <div class="product-specs" v-if="product.specs && product.specs.length > 0">

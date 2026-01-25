@@ -24,6 +24,17 @@ $wm-bg-color-base: #ffffff;
 
 // 默认主题 白天模式
 :root {
+  --el-menu-active-color: #FF0000;
+  --el-input-focus-border-color: #FF0000;
+  
+  --el-color-primary: #FF0000;
+  --el-color-primary-light-3: #ff3333;
+  --el-color-primary-light-5: #ff6666;
+  --el-color-primary-light-7: #ff9999;
+  --el-color-primary-light-8: #ffb3b3;
+  --el-color-primary-light-9: #ffcccc;
+  --el-color-primary-dark-2: #cc0000;
+  
   // 品牌/状态色及其色阶
   @each $type, $color in (primary, $wm-color-primary), (success, $wm-color-success),
     (danger, $wm-color-danger), (warning, $wm-color-warning), (info, $wm-color-info)

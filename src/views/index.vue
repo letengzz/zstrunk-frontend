@@ -155,7 +155,7 @@
         </div>
         <div class="product-grid">
           <div class="product-col" v-for="product in currentProducts" :key="product.id">
-            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }" @click="goToProduct(product.id)" :style="{ cursor: 'pointer' }">
+            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }"  :style="{ cursor: 'pointer' }">
               <div class="product-image">
                 <img :src="product.image" class="product-img" />
                 <div class="product-tag">{{ product.tag }}</div>
@@ -165,7 +165,7 @@
                 <div class="product-info">
                   <p class="product-desc">{{ product.desc }}</p>
                   <div class="product-footer">
-                    <el-button type="primary" round>View More</el-button>
+                    <el-button type="primary" round @click="goToProduct(product.id)">View More</el-button>
                   </div>
                 </div>
               </div>
@@ -232,7 +232,7 @@ import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
 import { useRouter } from 'vue-router'
-import { getProductsByCategory } from '@/data/products'
+import { getProductsByCategory, getProductById } from '@/data/products'
 
 const router = useRouter()
 
@@ -253,7 +253,14 @@ function setCategory(category: 'tanker' | 'excavator') {
 }
 
 function goToProduct(id: number) {
-  router.push(`/product/${id}`)
+  const product = getProductById(id)
+  if (product) {
+    if (product.category === 'tanker') {
+      router.push(`/truck/${id}`)
+    } else if (product.category === 'excavator') {
+      router.push(`/excavator/${id}`)
+    }
+  }
 }
 
 const contactDialogVisible = ref(false)
@@ -1239,31 +1246,120 @@ img {
 
 .contact-dialog .el-dialog {
   border-radius: 16px;
+  background: rgba(255, 0, 0, 0.03);
+  border: 2px solid rgba(255, 0, 0, 0.15);
 }
 
 .contact-dialog .el-dialog__header {
   text-align: center;
   padding-bottom: 0;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.1);
 }
 
 .contact-dialog .el-dialog__title {
   font-size: 24px;
   font-weight: 600;
-  color: #1a2a4a;
+  color: #FF0000;
+}
+
+.contact-dialog .el-dialog__headerbtn {
+  top: 12px;
+  right: 12px;
+}
+
+.contact-dialog .el-dialog__headerbtn .el-dialog__close {
+  color: #FF0000;
+  font-size: 20px;
+}
+
+.contact-dialog .el-dialog__headerbtn:hover .el-dialog__close {
+  color: #B22222;
+}
+
+.contact-dialog .el-dialog__body {
+  padding: 24px;
+}
+
+.contact-dialog .el-dialog__footer {
+  border-top: 1px solid rgba(255, 0, 0, 0.1);
+  padding: 16px 24px;
 }
 
 .contact-form .el-form-item__label {
   font-weight: 500;
-  color: #333333;
+  color: #FF0000;
 }
 
 .contact-form .el-input__wrapper,
 .contact-form .el-textarea__inner {
   border-radius: 8px;
+  background: #ffffff;
+  border: 2px solid rgba(255, 0, 0, 0.2);
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
-.contact-form .el-button {
+.contact-form .el-input__wrapper:hover,
+.contact-form .el-textarea__inner:hover {
+  border-color: rgba(255, 0, 0, 0.4);
+}
+
+.contact-form .el-input__wrapper.is-focus,
+.contact-form .el-textarea__inner:focus {
+  border-color: #FF0000;
+  background: #ffffff;
+}
+
+.contact-form .el-input__inner {
+  color: #1a2a4a;
+}
+
+.contact-form .el-input__inner::placeholder {
+  color: #8892b0;
+}
+
+.contact-form .el-textarea__inner {
+  color: #1a2a4a;
+  resize: none;
+}
+
+.contact-form .el-textarea__inner::placeholder {
+  color: #8892b0;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button) {
   padding: 12px 32px;
   border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button:not(.el-button--primary):not(.el-button--danger)) {
+  background: transparent !important;
+  border: 2px solid #FF0000 !important;
+  color: #FF0000 !important;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button:not(.el-button--primary):not(.el-button--danger):hover) {
+  background: rgba(255, 0, 0, 0.05) !important;
+  border-color: #FF0000 !important;
+  color: #FF0000 !important;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button--danger) {
+  background: #FF0000 !important;
+  border: 2px solid #FF0000 !important;
+  color: #ffffff !important;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button--danger:hover) {
+  background: #B22222 !important;
+  border-color: #B22222 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button:active) {
+  transform: translateY(0);
 }
 </style>
