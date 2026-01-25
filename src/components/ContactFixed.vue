@@ -80,7 +80,7 @@ const activeContact = ref('')
   align-items: center;
   height: 50px;
   border-radius: 12px;
-  background: #fff;
+  background: #FF4500;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -91,7 +91,7 @@ const activeContact = ref('')
 .contact-item:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   width: 210px;
-   background: #409eff;
+   background: #FF4500;
 }
 
 .contact-icon-wrapper {
@@ -101,7 +101,7 @@ const activeContact = ref('')
   width: 50px;
   height: 50px;
   flex-shrink: 0;
-  background: #409eff;
+  background: #FF4500;
   border-radius: 12px;
   transition: transform 0.3s ease;
 }

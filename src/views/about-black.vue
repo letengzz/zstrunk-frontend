@@ -130,7 +130,53 @@
       </div>
     </div>
 
-    <Footer />
+    <footer class="footer">
+      <div class="footer-content">
+        <el-row :gutter="40">
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-brand">
+              <img src="/public/images/logo.png" alt="Logo" class="footer-logo">
+              <span class="footer-company-name">ZHI SHUN</span>
+              <p class="footer-desc">Professional Services</p>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-links">
+              <h4 class="footer-title">Quick Links</h4>
+              <ul class="link-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-links">
+              <h4 class="footer-title">Products</h4>
+              <ul class="link-list">
+                <li><a href="/products?category=tanker">Tanker Trucks</a></li>
+                <li><a href="/products?category=excavator">Excavators</a></li>
+                <li><a href="/products">View All</a></li>
+              </ul>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-contact">
+              <h4 class="footer-title">Contact Us</h4>
+              <ul class="contact-list">
+                <li>Email: info@zhishun.com</li>
+                <li>Phone: +86 123 4567 8900</li>
+                <li>Address: China</li>
+              </ul>
+            </div>
+          </el-col>
+        </el-row>
+        <div class="footer-bottom">
+          <p class="copyright">&copy; 2024 ZHI SHUN. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
 
     <ContactFixed />
   </div>
@@ -138,31 +184,20 @@
 
 <script setup lang="ts">
 import TopBar from '@/components/TopBar.vue'
-import Footer from '@/components/Footer.vue'
 </script>
 
 <style scoped>
 .about-page {
   min-height: 100vh;
-  background: #F6F5ED;
+  background: #0a0a0a;
 }
 
-/* .floating-topbar {
+.floating-topbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-} */
-.floating-topbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
 }
 
 .hero-section {
@@ -180,7 +215,7 @@ import Footer from '@/components/Footer.vue'
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(26, 42, 74, 0.6) 0%, rgba(26, 42, 74, 0.4) 50%, rgba(139, 0, 0, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(22, 33, 62, 0.8) 100%);
 }
 
 .hero-content {
@@ -197,21 +232,17 @@ import Footer from '@/components/Footer.vue'
   margin: 0 0 20px 0;
   text-transform: uppercase;
   letter-spacing: 4px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
   font-size: 20px;
-  color: #ffffff;
+  color: #8892b0;
   margin: 0;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
 }
 
 .about-section {
   padding: 100px 40px;
-  background: #F6F5ED;
+  background: #0a0a0a;
 }
 
 .about-container {
@@ -226,7 +257,7 @@ import Footer from '@/components/Footer.vue'
 .section-title {
   font-size: 36px;
   font-weight: 700;
-  color: #1a2a4a;
+  color: #ffffff;
   text-align: left;
   margin: 0 0 24px 0;
 }
@@ -234,14 +265,14 @@ import Footer from '@/components/Footer.vue'
 .section-subtitle {
   font-size: 16px;
   font-weight: 400;
-  color: #4a5568;
+  color: #8892b0;
   text-align: center;
   margin: 0 0 40px 0;
 }
 
 .about-text {
   font-size: 16px;
-  color: #4a5568;
+  color: #8892b0;
   line-height: 1.8;
   margin: 0 0 20px 0;
 }
@@ -250,7 +281,6 @@ import Footer from '@/components/Footer.vue'
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .about-image img {
@@ -261,7 +291,7 @@ import Footer from '@/components/Footer.vue'
 
 .stats-section {
   padding: 80px 40px;
-  background: #ffffff;
+  background: linear-gradient(180deg, #0a0a0a 0%, #16213e 100%);
 }
 
 .stats-container {
@@ -274,32 +304,23 @@ import Footer from '@/components/Footer.vue'
 
 .stat-item {
   text-align: center;
-  padding: 30px;
-  background: #F6F5ED;
-  border-radius: 16px;
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.15);
 }
 
 .stat-number {
   font-size: 48px;
   font-weight: 700;
-  color: #FF0000;
+  color: #409EFF;
   margin-bottom: 10px;
 }
 
 .stat-label {
   font-size: 16px;
-  color: #4a5568;
+  color: #8892b0;
 }
 
 .features-section {
   padding: 100px 40px;
-  background: #F6F5ED;
+  background: #0a0a0a;
 }
 
 .features-container {
@@ -314,26 +335,25 @@ import Footer from '@/components/Footer.vue'
 }
 
 .feature-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #16213e;
+  border: 1px solid #2a3a5c;
   border-radius: 16px;
   padding: 30px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
-  border-color: #FF0000;
-  box-shadow: 0 12px 40px rgba(255, 0, 0, 0.15);
+  border-color: #409EFF;
+  box-shadow: 0 12px 40px rgba(64, 158, 255, 0.2);
 }
 
 .feature-icon {
   width: 60px;
   height: 60px;
   margin: 0 auto 20px;
-  color: #FF0000;
+  color: #409EFF;
 }
 
 .feature-icon svg {
@@ -344,20 +364,20 @@ import Footer from '@/components/Footer.vue'
 .feature-title {
   font-size: 20px;
   font-weight: 600;
-  color: #1a2a4a;
+  color: #ffffff;
   margin: 0 0 12px 0;
 }
 
 .feature-desc {
   font-size: 14px;
-  color: #4a5568;
+  color: #8892b0;
   line-height: 1.6;
   margin: 0;
 }
 
 .process-section {
   padding: 100px 40px;
-  background: #ffffff;
+  background: linear-gradient(180deg, #0a0a0a 0%, #16213e 100%);
 }
 
 .process-container {
@@ -375,36 +395,141 @@ import Footer from '@/components/Footer.vue'
 .process-step {
   position: relative;
   padding: 30px;
-  background: #F6F5ED;
-  border: 1px solid #e2e8f0;
+  background: #16213e;
+  border: 1px solid #2a3a5c;
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .process-step:hover {
   transform: translateY(-8px);
-  border-color: #FF0000;
-  box-shadow: 0 12px 40px rgba(255, 0, 0, 0.15);
+  border-color: #409EFF;
 }
 
 .step-number {
   font-size: 48px;
   font-weight: 700;
-  color: rgba(255, 0, 0, 0.2);
+  color: rgba(64, 158, 255, 0.2);
   margin-bottom: 20px;
 }
 
 .step-title {
   font-size: 18px;
   font-weight: 600;
-  color: #1a2a4a;
+  color: #ffffff;
   margin: 0 0 12px 0;
 }
 
 .step-desc {
   font-size: 14px;
-  color: #4a5568;
+  color: #8892b0;
   line-height: 1.6;
+  margin: 0;
+}
+
+.footer {
+  background: #000;
+  padding: 60px 40px 30px;
+  border-top: 1px solid #2a3a5c;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  padding-right: 20px;
+}
+
+.footer-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.footer-company-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: #8892b0;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.footer-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #409EFF;
+}
+
+.footer-links {
+  margin-bottom: 30px;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link-list li {
+  margin-bottom: 12px;
+}
+
+.link-list a {
+  color: #8892b0;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.link-list a:hover {
+  color: #409EFF;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  color: #8892b0;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #2a3a5c;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #8892b0;
   margin: 0;
 }
 

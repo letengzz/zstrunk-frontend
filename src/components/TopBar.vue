@@ -1,13 +1,16 @@
 <template>
   <div class="top-bar">
     <div class="left-box">
-      <div class="logo">Logo</div>
-      <span class="title">ZHI SHUN</span>
+      <div class="logo"><img w40 h40  src="/public/images/logo.png" alt="logo"></div>
+      <span class="title">
+         <router-link to="/" style="text-decoration: none; color: inherit;">ZHI SHUN</router-link>
+      </span>
     </div>
     <div class="right-box">
       <el-menu
         mode="horizontal"
         :ellipsis="false"
+        active-text-color="#FF4500"
         class="topbar-menu"
       >
         <el-sub-menu index="1">
@@ -23,8 +26,7 @@
           <el-menu-item index="2-3">Inspection Services</el-menu-item>
         </el-sub-menu>
         <el-menu-item index="3-1">
-          About Us
-          <!-- <router-link to="/about" style="text-decoration: none; color: inherit;">Company Profile</router-link> -->
+          <router-link to="/about" style="text-decoration: none; color: inherit;">About Us</router-link>
         </el-menu-item>
         <!-- <el-sub-menu index="3"> -->
           <!-- <template #title>About Us</template> -->

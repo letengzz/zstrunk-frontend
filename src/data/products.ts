@@ -1,0 +1,275 @@
+export interface Product {
+  id: number
+  name: string
+  desc: string
+  price: number
+  priceUnit: string
+  image: string
+  images?: string[]
+  tag: string
+  category: 'tanker' | 'excavator'
+  detailedDescription?: string
+  specs?: { label: string; value: string }[]
+  parameters?: { name: string; value: string }[]
+  features?: string[]
+}
+
+export const products: Product[] = [
+  {
+    id: 1,
+    name: 'Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck',
+    desc: 'Efficient filtration for engine health',
+    price: 299,
+    priceUnit: '000',
+    image: '/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg',
+    tag: 'Hot',
+    category: 'tanker',
+    detailedDescription: 'The Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck is a high-quality vehicle designed for the transportation of various liquids. It features a robust carbon steel construction that ensures durability and longevity, even under harsh operating conditions. The 4-compartment design allows for the transportation of different types of liquids simultaneously, maximizing efficiency and flexibility.',
+    specs: [
+      { label: 'Capacity', value: '40,000L' },
+      { label: 'Compartments', value: '4' },
+      { label: 'Material', value: 'Carbon Steel' },
+      { label: 'Axles', value: '3' }
+    ],
+    parameters: [
+      { name: 'Engine', value: 'Weichai WP10.375E53' },
+      { name: 'Horsepower', value: '375HP' },
+      { name: 'Transmission', value: 'Fast 12-speed' },
+      { name: 'Drive Type', value: '6×4' }
+    ],
+    features: [
+      '4-compartment design for transporting different liquids',
+      'Carbon steel construction for durability',
+      'Advanced safety features including anti-rollover protection',
+      'Easy maintenance with accessible components'
+    ]
+  },
+  {
+    id: 2,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    priceUnit: '000',
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New',
+    category: 'tanker',
+    detailedDescription: 'The 45000 Liters Oil Tanker Trailer is designed for efficient transportation of palm oil and other liquid cargo. The volume can be customized from 30,000 to 90,000 liters to meet different transportation needs.',
+    specs: [
+      { label: 'Capacity', value: '45,000L' },
+      { label: 'Material', value: 'Carbon Steel' },
+      { label: 'Type', value: 'Semi Trailer' }
+    ],
+    features: [
+      'Customizable volume',
+      'Corrosion resistant coating',
+      'Easy to clean and maintain',
+      'Compliant with international safety standards'
+    ]
+  },
+  {
+    id: 3,
+    name: 'Fuel Tanker Truck 35000L',
+    desc: 'High capacity fuel transport solution',
+    price: 450,
+    priceUnit: '000',
+    image: '/public/products/fuel-tanker-35000l.jpg',
+    tag: 'Hot',
+    category: 'tanker',
+    detailedDescription: 'The Fuel Tanker Truck 35000L is designed for safe and efficient fuel transportation. It features advanced safety systems and durable construction.',
+    specs: [
+      { label: 'Capacity', value: '35,000L' },
+      { label: 'Material', value: 'Aluminum Alloy' },
+      { label: 'Compartments', value: '3' }
+    ],
+    features: [
+      'Anti-static device',
+      'Emergency shut-off valve',
+      'Spill containment system',
+      'Level gauge indicator'
+    ]
+  },
+  {
+    id: 4,
+    name: 'Water Tanker Truck 20000L',
+    desc: 'Perfect for construction and agricultural water transport',
+    price: 280,
+    priceUnit: '000',
+    image: '/public/products/water-tanker-20000l.jpg',
+    tag: 'New',
+    category: 'tanker',
+    detailedDescription: 'The Water Tanker Truck 20000L is ideal for construction site water supply, dust suppression, and agricultural irrigation.',
+    specs: [
+      { label: 'Capacity', value: '20,000L' },
+      { label: 'Material', value: 'Carbon Steel' },
+      { label: 'Pump', value: 'Self-priming pump included' }
+    ],
+    features: [
+      'Quick discharge system',
+      'Corrosion resistant interior',
+      'Easy operation',
+      'Low maintenance cost'
+    ]
+  },
+  {
+    id: 5,
+    name: 'Chemical Tanker Truck 30000L',
+    desc: 'Specialized transport for chemical liquids',
+    price: 520,
+    priceUnit: '000',
+    image: '/public/products/chemical-tanker-30000l.jpg',
+    tag: 'Hot',
+    category: 'tanker',
+    detailedDescription: 'The Chemical Tanker Truck 30000L is designed for safe transportation of various chemical liquids with advanced safety features.',
+    specs: [
+      { label: 'Capacity', value: '30,000L' },
+      { label: 'Material', value: 'Stainless Steel 316L' },
+      { label: 'Lining', value: 'PE/PP' }
+    ],
+    features: [
+      'Double wall construction',
+      'Pressure relief device',
+      'Leak detection system',
+      'Chemical resistant lining'
+    ]
+  },
+  {
+    id: 101,
+    name: 'Hydraulic Excavator XG808',
+    desc: 'High performance excavator with advanced hydraulic system',
+    price: 899,
+    priceUnit: '000',
+    image: '/public/products/excavator-1.jpg',
+    tag: 'Hot',
+    category: 'excavator',
+    detailedDescription: 'The Hydraulic Excavator XG808 is a powerful and efficient machine designed for heavy-duty excavation work. It features an advanced hydraulic system for smooth operation and excellent fuel efficiency.',
+    specs: [
+      { label: 'Operating Weight', value: '80,000 kg' },
+      { label: 'Bucket Capacity', value: '4.5 m³' },
+      { label: 'Engine Power', value: '350 HP' }
+    ],
+    features: [
+      'Advanced hydraulic system',
+      'Fuel efficient engine',
+      'Comfortable cab with AC',
+      'Easy maintenance access'
+    ]
+  },
+  {
+    id: 102,
+    name: 'Mini Excavator XG815',
+    desc: 'Compact design for tight spaces and urban construction',
+    price: 699,
+    priceUnit: '000',
+    image: '/public/products/excavator-2.jpg',
+    tag: 'New',
+    category: 'excavator',
+    detailedDescription: 'The Mini Excavator XG815 is perfect for urban construction projects and tight spaces. Its compact design allows for easy transportation and maneuverability.',
+    specs: [
+      { label: 'Operating Weight', value: '15,000 kg' },
+      { label: 'Bucket Capacity', value: '0.6 m³' },
+      { label: 'Engine Power', value: '115 HP' }
+    ],
+    features: [
+      'Zero tail swing',
+      'Adjustable undercarriage',
+      'Rubber tracks for minimal ground damage',
+      'Foldable boom for easy transport'
+    ]
+  },
+  {
+    id: 103,
+    name: 'Large Mining Excavator XG890',
+    desc: 'Heavy-duty excavator for mining operations',
+    price: 1299,
+    priceUnit: '000',
+    image: '/public/products/excavator-3.jpg',
+    tag: 'New',
+    category: 'excavator',
+    detailedDescription: 'The Large Mining Excavator XG890 is designed for the most demanding mining operations, offering exceptional power and reliability.',
+    specs: [
+      { label: 'Operating Weight', value: '900,000 kg' },
+      { label: 'Bucket Capacity', value: '52 m³' },
+      { label: 'Engine Power', value: '4,500 HP' }
+    ],
+    features: [
+      'Ultra-class mining excavator',
+      'High efficiency bucket design',
+      'Advanced monitoring system',
+      'Extended service intervals'
+    ]
+  },
+  {
+    id: 104,
+    name: 'Wheel Excavator XG820',
+    desc: 'Mobile excavator with excellent maneuverability',
+    price: 799,
+    priceUnit: '000',
+    image: '/public/products/excavator-4.jpg',
+    tag: 'New',
+    category: 'excavator',
+    detailedDescription: 'The Wheel Excavator XG820 combines the power of an excavator with the mobility of a wheel loader, making it perfect for applications that require frequent relocation.',
+    specs: [
+      { label: 'Operating Weight', value: '22,000 kg' },
+      { label: 'Bucket Capacity', value: '1.2 m³' },
+      { label: 'Engine Power', value: '180 HP' }
+    ],
+    features: [
+      'Wheel-mounted for easy movement',
+      'Four-wheel steering',
+      'High travel speed',
+      'Quick coupler compatibility'
+    ]
+  },
+  {
+    id: 105,
+    name: 'Long Reach Excavator XG825',
+    desc: 'Extended reach for deep excavation and demolition',
+    price: 999,
+    priceUnit: '000',
+    image: '/public/products/excavator-5.jpg',
+    tag: 'New',
+    category: 'excavator',
+    detailedDescription: 'The Long Reach Excavator XG825 is designed for deep excavation, river dredging, and demolition work that requires extended reach.',
+    specs: [
+      { label: 'Max Reach', value: '18 meters' },
+      { label: 'Dig Depth', value: '14 meters' },
+      { label: 'Engine Power', value: '250 HP' }
+    ],
+    features: [
+      'Extended boom and arm',
+      'Heavy-duty structure',
+      'Hydraulic thumb included',
+      'Reinforced bucket'
+    ]
+  },
+  {
+    id: 106,
+    name: 'Forestry Excavator XG830',
+    desc: 'Specialized excavator for forestry applications',
+    price: 1099,
+    priceUnit: '000',
+    image: '/public/products/excavator-6.jpg',
+    tag: 'New',
+    category: 'excavator',
+    detailedDescription: 'The Forestry Excavator XG830 is specifically designed for forestry applications, featuring protective structures and specialized attachments.',
+    specs: [
+      { label: 'Operating Weight', value: '35,000 kg' },
+      { label: 'Grapple Capacity', value: '1.5 m³' },
+      { label: 'Engine Power', value: '280 HP' }
+    ],
+    features: [
+      'FOPS/ROPS cab protection',
+      'Timber grapple included',
+      'High ground clearance',
+      'Slope operation capability'
+    ]
+  }
+]
+
+export function getProductById(id: number): Product | undefined {
+  return products.find(p => p.id === id)
+}
+
+export function getProductsByCategory(category: 'tanker' | 'excavator'): Product[] {
+  return products.filter(p => p.category === category)
+}

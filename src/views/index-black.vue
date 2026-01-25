@@ -30,10 +30,6 @@
       </el-carousel-item>
     </el-carousel>
     <div class="feature-boxes" ref="featureBoxesRef">
-      <div class="feature-section-header">
-        <h2 class="section-title">Our Advantages</h2>
-        <p class="section-subtitle">Why Leading Companies Choose Our Solutions</p>
-      </div>
       <div class="feature-boxes-inner">
         <div class="feature-box feature-bg-1" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.1s">
           <h3 class="feature-title">Diverse vehicle models</h3>
@@ -49,93 +45,9 @@
         </div>
       </div>
     </div>
-
-    <div class="features-section">
-      <div class="features-container">
-        <h2 class="section-title">Why Choose Us</h2>
-        <p class="section-subtitle">What sets us apart from the competition</p>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Quality First</h3>
-            <p class="feature-desc">Officially certified by China’s MIIT, guaranteeing industry-leading quality control</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Safety Certified</h3>
-            <p class="feature-desc">All products meet international safety standards and certifications</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">On-Time Delivery</h3>
-            <p class="feature-desc">Efficient logistics network ensuring timely delivery worldwide</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">24/7 Support</h3>
-            <p class="feature-desc">Dedicated customer service team available around the clock</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="why-choose-section">
-        <div class="why-choose-container">
-          <div class="why-choose-left">
-            <h2 class="section-title">ABOUT US</h2>
-            <p class="why-intro">We also provide customized services for customers. According to different transportation needs, we can customize the cargo size, carrying capacity, tank body materials, loading and unloading equipment, etc. of tank semi-trailers to ensure that customers can obtain the most suitable solutions for their businesses.</p>
-            <div class="why-stats">
-              <div class="stat-item">
-                <div class="stat-number">5,000+</div>
-                <div class="stat-label">Annual Sales</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">25%+</div>
-                <div class="stat-label">Growth Rate</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">80+</div>
-                <div class="stat-label">Countries & Regions</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Years Experience</div>
-              </div>
-            </div>
-          </div>
-          <div class="why-choose-right">
-            <div class="video-container">
-              <video autoplay muted loop playsinline class="promo-video">
-                <source src="/videos/promo.mp4" type="video/mp4">
-              </video>
-              <!-- <div class="video-overlay">
-                <div class="play-button">▶</div>
-              </div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-inner">
-          <h2 class="section-title">Popular Products</h2>
+    <div class="product-section">
+      <div class="product-section-inner">
+        <h2 class="section-title">Popular Products</h2>
         <p class="section-subtitle">We Promise To Find You The Right Equipment</p>
         <div class="category-tabs">
           <div
@@ -155,7 +67,7 @@
         </div>
         <div class="product-grid">
           <div class="product-col" v-for="product in currentProducts" :key="product.id">
-            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }" @click="goToProduct(product.id)" :style="{ cursor: 'pointer' }">
+            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }">
               <div class="product-image">
                 <img :src="product.image" class="product-img" />
                 <div class="product-tag">{{ product.tag }}</div>
@@ -175,19 +87,61 @@
       </div>
     </div>
 
-    <div class="cta-section">
-      <div class="cta-content">
-        <h2 class="cta-title">IF YOU HAVE ANY ENQUIRY ABOUT QUOTATION OR COOPERATION, PLEASE FEEL FREE TO EMAIL US</h2>
-        <el-button type="primary" round class="cta-button" @click="openContactDialog">Contact Us</el-button>
+    <footer class="footer">
+      <div class="footer-content">
+        <el-row :gutter="40">
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-brand">
+              <img src="/public/images/logo.png" alt="Logo" class="footer-logo">
+              <span class="footer-company-name">ZHI SHUN</span>
+              <p class="footer-desc">Professional Services</p>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-links">
+              <h4 class="footer-title">Quick Links</h4>
+              <ul class="link-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About Us</a></li>
+              </ul>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-links">
+              <h4 class="footer-title">TRUCK</h4>
+              <ul class="link-list">
+                <li><a href="#">Tractor Head Truck</a></li>
+                <li><a href="#">Dump Truck</a></li>
+                <li><a href="#">Concrete Mixer Truck</a></li>
+                <li><a href="#">Other Type Truck</a></li>
+              </ul>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="6">
+            <div class="footer-contact">
+              <h4 class="footer-title">Contact Us</h4>
+              <div class="contact-row">
+                <div class="contact-icon i-ep-phone"></div>
+                <span>138-0013-8800</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon i-ep-message"></div>
+                <span>service@example.com</span>
+              </div>
+              <div class="contact-row">
+                <div class="contact-icon i-ep-location"></div>
+                <span>Beijing, China</span>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+        <div class="footer-bottom">
+          <p class="copyright">© 2026 ZHI SHUN. All rights reserved.</p>
+        </div>
       </div>
-    </div>
-
-    <Footer
-      phone="138-0013-8800"
-      email="service@example.com"
-      whatsapp="+1 234-567-8900"
-      address="Beijing, China"
-    />
+    </footer>
 
     <ContactFixed
       phone="138-0013-8800"
@@ -195,87 +149,154 @@
       whatsapp="+1 234-567-8900"
     />
 
-    <el-dialog v-model="contactDialogVisible" title="Contact Us" width="500px" :close-on-click-modal="false" class="contact-dialog">
-      <el-form :model="contactForm" label-position="top" class="contact-form">
-        <el-form-item label="Name" required>
-          <el-input v-model="contactForm.name" placeholder="Your name" />
-        </el-form-item>
-        <el-form-item label="Email" required>
-          <el-input v-model="contactForm.email" placeholder="Your email" />
-        </el-form-item>
-        <el-form-item label="Phone">
-          <el-input v-model="contactForm.phone" placeholder="Your phone number" />
-        </el-form-item>
-        <el-form-item label="Message" required>
-          <el-input v-model="contactForm.message" type="textarea" :rows="4" placeholder="Your message" />
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <el-button @click="contactDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="submitContactForm">Submit</el-button>
-      </template>
-    </el-dialog>
-
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+const imageCount = ref(0);
+
 const loadCarouselImages = async () => {
   const modules = import.meta.glob('/public/images/carousel/*.{png,jpg,jpeg,gif,svg,webp}');
   const files = await Promise.all(Object.keys(modules));
-  return files.length;
+  imageCount.value = files.length;
 };
-</script>
 
-<script setup lang="ts">
-import TopBar from '@/components/TopBar.vue'
-import Footer from '@/components/Footer.vue'
-import ContactFixed from '@/components/ContactFixed.vue'
-import { useRouter } from 'vue-router'
-import { getProductsByCategory } from '@/data/products'
-
-const router = useRouter()
-
-const imageCount = ref(0);
-
-onMounted(async () => {
-  imageCount.value = await loadCarouselImages();
+onMounted(() => {
+  loadCarouselImages();
 });
+
+interface Product {
+  id: number
+  name: string
+  desc: string
+  price: number
+  image: string
+  tag: string
+  category: 'tanker' | 'excavator'
+}
 
 const currentCategory = ref<'tanker' | 'excavator'>('tanker')
 
+const tankerProducts = ref<Product[]>([
+  {
+    id: 1,
+    name: 'Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck',
+    desc: 'Efficient filtration for engine health',
+    price: 299,
+    image: '/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg',
+    tag: 'Hot',
+    category: 'tanker'
+  },
+  {
+    id: 2,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New',
+    category: 'tanker'
+  },
+    {
+    id: 3,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New',
+    category: 'tanker'
+  },
+    {
+    id: 4,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New',
+    category: 'tanker'
+  },
+    {
+    id: 5,
+    name: '45000 Liters Oil Tanker Trailer',
+    desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+    price: 599,
+    image: '/public/products/45000LitersOilTankerTrailer.jpg',
+    tag: 'New',
+    category: 'tanker'
+  },
+  //   {
+  //   id: 6,
+  //   name: '45000 Liters Oil Tanker Trailer',
+  //   desc: 'The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.',
+  //   price: 599,
+  //   image: '/public/products/45000LitersOilTankerTrailer.jpg',
+  //   tag: 'New',
+  //   category: 'tanker'
+  // },
+])
+
+const excavatorProducts = ref<Product[]>([
+  {
+    id: 101,
+    name: 'Hydraulic Excavator XG808',
+    desc: 'High performance excavator with advanced hydraulic system',
+    price: 899,
+    image: '/public/products/excavator-1.jpg',
+    tag: 'Hot',
+    category: 'excavator'
+  },
+  {
+    id: 102,
+    name: 'Mini Excavator XG815',
+    desc: 'Compact design for tight spaces and urban construction',
+    price: 699,
+    image: '/public/products/excavator-2.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 103,
+    name: 'Large Mining Excavator XG890',
+    desc: 'Heavy-duty excavator for mining operations',
+    price: 1299,
+    image: '/public/products/excavator-3.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 104,
+    name: 'Wheel Excavator XG820',
+    desc: 'Mobile excavator with excellent maneuverability',
+    price: 799,
+    image: '/public/products/excavator-4.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 105,
+    name: 'Long Reach Excavator XG825',
+    desc: 'Extended reach for deep excavation and demolition',
+    price: 999,
+    image: '/public/products/excavator-5.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+  {
+    id: 106,
+    name: 'Forestry Excavator XG830',
+    desc: 'Specialized excavator for forestry applications',
+    price: 1099,
+    image: '/public/products/excavator-6.jpg',
+    tag: 'New',
+    category: 'excavator'
+  },
+])
+
 const currentProducts = computed(() => {
-  return getProductsByCategory(currentCategory.value)
+  return currentCategory.value === 'tanker' ? tankerProducts.value : excavatorProducts.value
 })
 
-function setCategory(category: 'tanker' | 'excavator') {
+const setCategory = (category: 'tanker' | 'excavator') => {
   currentCategory.value = category
-}
-
-function goToProduct(id: number) {
-  router.push(`/product/${id}`)
-}
-
-const contactDialogVisible = ref(false)
-
-const contactForm = reactive({
-  name: '',
-  email: '',
-  phone: '',
-  message: ''
-})
-
-function openContactDialog() {
-  contactDialogVisible.value = true
-}
-
-function submitContactForm() {
-  if (!contactForm.name || !contactForm.email || !contactForm.message) {
-    return
-  }
-  console.log('Form submitted:', contactForm)
-  contactDialogVisible.value = false
-  Object.assign(contactForm, { name: '', email: '', phone: '', message: '' })
 }
 
 let startX = 0
@@ -350,17 +371,11 @@ onMounted(() => {
   left: 0;
   right: 0;
   z-index: 100;
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
 }
-/* .floating-topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-} */
+
 .logo-section {
   position: absolute;
   top: 30px;
@@ -474,7 +489,7 @@ img {
   right: 0;
   bottom: 0;
   height: 100%;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
 }
 .title-container {
   position: absolute;
@@ -499,13 +514,12 @@ img {
 }
 
 .hello-title {
-  color: #8B0000;
+  color: #409EFF;
   margin-bottom: 20px;
   animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .world-title {
-  /* color: #FF0000; */
   margin: 0;
    font-size: 100px;
   animation: fadeInUp 0.8s ease-out 0.5s forwards;
@@ -535,22 +549,10 @@ img {
 
 .feature-boxes {
   display: flex;
-  flex-direction: column;
   padding: 60px 0;
-  background: #F6F5ED;
+  background: #000;
   overflow: hidden;
-  align-items: center;
-}
-
-.feature-section-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.feature-section-header .section-subtitle {
-  font-size: 16px;
-  color: #666666;
-  margin: 10px 0 0 0;
+  justify-content: center;
 }
 
 .feature-boxes-inner {
@@ -566,12 +568,12 @@ img {
   flex: 1;
   max-width: none;
   padding: 80px 70px;
-  background: linear-gradient(145deg, #ffffff 0%, #f8f7f2 100%);
+  background: #16213e;
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid #e8e4dd;
+  border: 1px solid #2a3a5c;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -591,8 +593,8 @@ img {
 
 .feature-box:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(52, 152, 219, 0.12);
-  border-color: #FF0000;
+  box-shadow: 0 15px 40px rgba(64, 158, 255, 0.25);
+  border-color: #409EFF;
 }
 
 @media (max-width: 992px) {
@@ -620,7 +622,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(22, 33, 62, 0.85);
   border-radius: 20px;
   z-index: 1;
 }
@@ -644,31 +646,28 @@ img {
 
 .feature-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(52, 152, 219, 0.12);
+  box-shadow: 0 8px 30px rgba(64, 158, 255, 0.15);
+  border-color: #409EFF;
 }
 
 .feature-icon {
   font-size: 48px;
-  color: #FF0000;
+  color: #409EFF;
   margin-bottom: 20px;
-  filter: drop-shadow(0 2px 4px rgba(52, 152, 219, 0.3));
 }
 
 .feature-title {
   font-size: 22px;
-  font-weight: 700;
-  color: #1a2a4a;
+  font-weight: 600;
+  color: #ffffff;
   margin: 0 0 12px 0;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .feature-desc {
   font-size: 15px;
-  color: #4a5568;
+  color: #8892b0;
   margin: 0;
-  line-height: 1.7;
-  font-weight: 400;
+  line-height: 1.6;
 }
 
 .floating-contact {
@@ -725,7 +724,7 @@ img {
 
 .product-section {
   padding: 60px 0;
-  background: #fff;
+  background: #000;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -750,33 +749,32 @@ img {
   align-items: center;
   gap: 12px;
   padding: 16px 32px;
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
+  background: rgba(22, 33, 62, 0.8);
+  border: 2px solid #2a3a5c;
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .category-tab:hover {
-  background: #FF0000;
-  border-color: #8B0000;
+  background: rgba(64, 158, 255, 0.15);
+  border-color: #409EFF;
   transform: translateY(-3px);
 }
 
 .category-tab.active {
-  background: #FF0000;
-  border-color: #8B0000;
+  background: rgba(64, 158, 255, 0.2);
+  border-color: #409EFF;
   box-shadow: 0 4px 20px rgba(64, 158, 255, 0.3);
+}
+
+.category-icon {
+  font-size: 28px;
 }
 
 .category-name {
   font-size: 18px;
   font-weight: 600;
-  color: #1a2a4a;
-}
-
-.category-tab:hover .category-name,
-.category-tab.active .category-name {
   color: #ffffff;
 }
 
@@ -806,7 +804,7 @@ img {
 .section-title {
   font-size: 32px;
   font-weight: 700;
-  color: #1a2a4a;
+  color: #ffffff;
   text-align: center;
   margin: 0 0 10px 0;
 }
@@ -814,7 +812,7 @@ img {
 .section-subtitle {
   font-size: 16px;
   font-weight: 400;
-  color: #4a5568;
+  color: #8892b0;
   text-align: center;
   margin: 0 0 40px 0;
 }
@@ -857,19 +855,18 @@ img {
 }
 
 .product-card {
-  background: #ffffff;
-  border: 1px solid #e0ddd5;
+  background: #16213e;
+  border: 1px solid #2a3a5c;
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s ease;
   height: 285px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(52, 152, 219, 0.15);
-  border-color: #FF0000;
+  box-shadow: 0 12px 40px rgba(64, 158, 255, 0.2);
+  border-color: #409EFF;
 }
 
 .product-image {
@@ -878,9 +875,8 @@ img {
   height: 170px;
   margin: 16px auto 0;
   padding: 3px;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef4 100%);
+  background: linear-gradient(135deg, #0f1626 0%, #1a2744 100%);
   overflow: hidden;
-  border-radius: 12px;
 }
 
 .product-layout {
@@ -899,7 +895,7 @@ img {
   top: 12px;
   left: 12px;
   padding: 4px 12px;
-  background: #FF0000;
+  background: #409EFF;
   color: #ffffff;
   font-size: 12px;
   font-weight: 500;
@@ -918,7 +914,7 @@ img {
 .product-name {
   font-size: 16px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #ffffff;
   margin: 0 0 8px 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -934,7 +930,7 @@ img {
 
 .product-desc {
   font-size: 13px;
-  color: #7a8a9a;
+  color: #8892b0;
   margin: 0;
   line-height: 1.5;
   overflow: hidden;
@@ -952,318 +948,198 @@ img {
 }
 
 .product-footer .el-button {
-  font-size: 13px;
-  padding: 8px 18px;
-  border-radius: 20px;
-  background: #FF0000;
-  border: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.product-footer .el-button:hover {
-  background: #B22222;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.35);
+  font-size: 14px;
+  padding: 8px 20px;
 }
 
 .product-price {
   display: none;
 }
 
-.features-section {
-  padding: 100px 40px;
-  background: #F6F5ED;
+.footer {
+  background: #000;
+  padding: 60px 40px 30px;
+  border-top: 1px solid #2a3a5c;
 }
 
-.features-container {
+.footer-content {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-}
-
-@media (max-width: 1200px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.feature-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 30px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  border-color: #FF0000;
-  box-shadow: 0 12px 40px rgba(255, 0, 0, 0.15);
-}
-
-.feature-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 20px;
-  color: #FF0000;
-}
-
-.feature-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.feature-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1a2a4a;
-  margin: 0 0 12px 0;
-}
-
-.feature-desc {
-  font-size: 14px;
-  color: #4a5568;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.why-choose-section {
-  background: linear-gradient(180deg, #ffffff 0%, #F6F5ED 100%);
-  padding: 80px 20px;
-}
-
-.why-choose-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-@media (max-width: 992px) {
-  .why-choose-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
-
-.why-choose-left {
+.footer-brand {
   padding-right: 20px;
 }
 
-@media (max-width: 992px) {
-  .why-choose-left {
-    padding-right: 0;
-    order: 2;
-  }
-  .why-choose-right {
-    order: 1;
-  }
+.footer-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 15px;
 }
 
-.why-intro {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #555555;
-  margin: 30px 0;
-}
-
-.why-stats {
-  display: flex;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-@media (max-width: 992px) {
-  .why-stats {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .why-stats {
-    flex-direction: row;
-    gap: 16px;
-  }
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 42px;
+.footer-company-name {
+  font-size: 24px;
   font-weight: 700;
-  color: #FF0000;
-  line-height: 1.2;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 15px;
 }
 
-.stat-label {
+.footer-desc {
   font-size: 14px;
-  color: #666666;
-  margin-top: 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.why-choose-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-.promo-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #1a2a4a;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.video-container:hover .video-overlay {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.play-button {
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  color: #FF0000;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.video-container:hover .play-button {
-  transform: scale(1.1);
-  background: #ffffff;
-}
-
-.cta-section {
-  background: #F6F5ED;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.cta-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.cta-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1a2a4a;
+  color: #8892b0;
   margin: 0;
-  line-height: 1.4;
-  flex: 1;
-  min-width: 300px;
-  text-align: left;
+  line-height: 1.7;
 }
 
-@media (max-width: 768px) {
-  .cta-title {
-    font-size: 16px;
-    text-align: center;
-    min-width: 100%;
-  }
-  .cta-content {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-.cta-button {
-  font-size: 16px;
-  padding: 12px 36px;
-  background: #FF0000;
-  border: none;
+.footer-title {
+  font-size: 18px;
   font-weight: 600;
-  white-space: nowrap;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #409EFF, transparent);
+  border-radius: 2px;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link-list li {
+  margin-bottom: 12px;
+}
+
+.link-list a {
+  color: #8892b0;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.link-list a::before {
+  content: '›';
+  margin-right: 8px;
+  color: #409EFF;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.link-list a:hover {
+  color: #409EFF;
+  transform: translateX(5px);
+}
+
+.link-list a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-contact {
+  padding-left: 10px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: #8892b0;
+  font-size: 14px;
+}
+
+.contact-icon {
+  font-size: 18px;
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: rgba(64, 158, 255, 0.1); */
+  border-radius: 10px;
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid #2a3a5c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #8892b0;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(64, 158, 255, 0.1);
+  border-radius: 12px;
+  color: #8892b0;
+  font-size: 20px;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.cta-button:hover {
-  background: #B22222;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.35);
+.social-link:hover {
+  background: #409EFF;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(64, 158, 255, 0.4);
 }
 
-.contact-dialog .el-dialog {
-  border-radius: 16px;
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px 25px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 20px;
+  }
+
+  .footer-brand {
+    margin-bottom: 30px;
+    padding-right: 0;
+  }
+
+  .footer-contact {
+    padding-left: 0;
+  }
 }
 
-.contact-dialog .el-dialog__header {
-  text-align: center;
-  padding-bottom: 0;
-}
-
-.contact-dialog .el-dialog__title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1a2a4a;
-}
-
-.contact-form .el-form-item__label {
-  font-weight: 500;
-  color: #333333;
-}
-
-.contact-form .el-input__wrapper,
-.contact-form .el-textarea__inner {
-  border-radius: 8px;
-}
-
-.contact-form .el-button {
-  padding: 12px 32px;
-  border-radius: 8px;
-}
 </style>
