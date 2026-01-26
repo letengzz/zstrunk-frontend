@@ -100,7 +100,7 @@
         <div class="why-choose-container">
           <div class="why-choose-left">
             <h2 class="section-title">ABOUT US</h2>
-            <p class="why-intro">We also provide customized services for customers. According to different transportation needs, we can customize the cargo size, carrying capacity, tank body materials, loading and unloading equipment, etc. of tank semi-trailers to ensure that customers can obtain the most suitable solutions for their businesses.</p>
+            <p class="about-subtitle">Trusted Manufacturer of High-Quality Flatbed, Fuel Tanker, and Specialized Trailers for Global Markets</p>
             <div class="why-stats">
               <div class="stat-item">
                 <div class="stat-number">5,000+</div>
@@ -119,8 +119,50 @@
                 <div class="stat-label">Years Experience</div>
               </div>
             </div>
+            <div class="extra-stats">
+              <div class="stat-bar-item">
+                <div class="stat-bar-card">
+                  <div class="stat-bar-fill-vertical">
+                    <div class="stat-bar-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                      </svg>
+                    </div>
+                    <div class="stat-bar-number">5,000㎡</div>
+                  </div>
+                  <div class="stat-bar-label">Exhibition Hall</div>
+                </div>
+              </div>
+              <div class="stat-bar-item">
+                <div class="stat-bar-card">
+                  <div class="stat-bar-fill-vertical">
+                    <div class="stat-bar-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/>
+                      </svg>
+                    </div>
+                    <div class="stat-bar-number">25,000㎡</div>
+                  </div>
+                  <div class="stat-bar-label">Total Area Of The Production Plant</div>
+                </div>
+              </div>
+              <div class="stat-bar-item">
+                <div class="stat-bar-card">
+                  <div class="stat-bar-fill-vertical">
+                    <div class="stat-bar-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                      </svg>
+                    </div>
+                    <div class="stat-bar-number">1,000+</div>
+                  </div>
+                  <div class="stat-bar-label">Total Employees</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="why-choose-right">
+            <p class="why-intro">We also provide customized services for customers. According to different transportation needs, we can customize the cargo size, carrying capacity, tank body materials, loading and unloading equipment, etc. of tank semi-trailers to ensure that customers can obtain the most suitable solutions for their businesses.</p>
             <div class="video-container">
               <video autoplay muted loop playsinline class="promo-video">
                 <source src="/videos/promo.mp4" type="video/mp4">
@@ -171,6 +213,36 @@
               </div>
             </el-card>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="solution-section">
+      <div class="solution-container">
+        <h2 class="section-title">Solutions</h2>
+        <p class="section-subtitle">Professional Trailer Solutions for Your Business</p>
+        <div class="solution-content" v-if="currentSolution">
+          <div class="solution-card-wrapper">
+            <div class="solution-card">
+              <div class="solution-header">
+                <!-- <h3 class="solution-title">{{ currentSolution.title }}</h3>
+                <p class="solution-desc">{{ currentSolution.desc }}</p> -->
+              </div>
+              <div class="solution-buttons">
+                <button class="solution-nav-btn prev" @click="prevSolution" :disabled="currentSolutionIndex === 0">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                  </svg>
+                </button>
+                <button class="solution-nav-btn next" @click="nextSolution" :disabled="currentSolutionIndex === solutions.length - 1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <img :src="currentSolution.image" :alt="currentSolution.title" class="solution-image" />
         </div>
       </div>
     </div>
@@ -283,6 +355,53 @@ function submitContactForm() {
   console.log('Form submitted:', contactForm)
   contactDialogVisible.value = false
   Object.assign(contactForm, { name: '', email: '', phone: '', message: '' })
+}
+
+interface Solution {
+  title: string
+  desc: string
+  image: string
+}
+
+const solutions: Solution[] = [
+  {
+    title: 'Car Carrier Semi Trailer',
+    desc: 'Multi-layer car transport trailer designed for efficient and safe vehicle logistics',
+    image: '/images/solutions/solution-car-carrier.jpg'
+  },
+  {
+    title: 'Oil Tanker Semi-Trailer',
+    desc: 'Aluminum alloy tank trailers for safe and efficient petroleum product transportation',
+    image: '/images/solutions/solution-oil-tanker.jpg'
+  },
+  {
+    title: 'Flatbed Semi Trailer',
+    desc: 'Heavy-duty flatbed trailers for construction machinery and large cargo transport',
+    image: '/images/solutions/solution-flatbed.jpg'
+  },
+  {
+    title: 'Dump Trailer',
+    desc: 'Hydraulic dump trailers for mining and construction material handling',
+    image: '/images/solutions/solution-dump.jpg'
+  }
+]
+
+const currentSolutionIndex = ref(0)
+
+const currentSolution = computed<Solution>(() => {
+  return solutions[currentSolutionIndex.value] ?? solutions[0]
+})
+
+function prevSolution() {
+  if (currentSolutionIndex.value > 0) {
+    currentSolutionIndex.value--
+  }
+}
+
+function nextSolution() {
+  if (currentSolutionIndex.value < solutions.length - 1) {
+    currentSolutionIndex.value++
+  }
 }
 
 let startX = 0
@@ -765,7 +884,7 @@ img {
 }
 
 .category-tab:hover {
-  background: #FF0000;
+  /**background: #e54343;*/
   border-color: #8B0000;
   transform: translateY(-3px);
 }
@@ -782,11 +901,13 @@ img {
   color: #1a2a4a;
 }
 
-.category-tab:hover .category-name,
+
 .category-tab.active .category-name {
   color: #ffffff;
 }
-
+.category-tab:hover  .category-name{
+  color: #000;
+}
 @media (max-width: 768px) {
   .category-tabs {
     flex-direction: column;
@@ -1050,7 +1171,7 @@ img {
 
 .why-choose-section {
   background: linear-gradient(180deg, #ffffff 0%, #F6F5ED 100%);
-  padding: 80px 20px;
+  padding: 100px 20px;
 }
 
 .why-choose-container {
@@ -1059,7 +1180,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media (max-width: 992px) {
@@ -1081,6 +1202,14 @@ img {
   .why-choose-right {
     order: 1;
   }
+}
+
+.about-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1a2a4a;
+  line-height: 1.6;
+  margin: 10px 0 25px 0;
 }
 
 .why-intro {
@@ -1111,6 +1240,142 @@ img {
   }
 }
 
+.extra-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.extra-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.extra-stat-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: #1a2a4a;
+}
+
+.extra-stat-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.extra-stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.extra-stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #FF0000;
+  line-height: 1.2;
+}
+
+.extra-stat-label {
+  font-size: 13px;
+  color: #666666;
+  margin-top: 4px;
+}
+
+.extra-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.stat-bar-item {
+  width: 100%;
+}
+
+.stat-bar-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.stat-bar-fill-vertical {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.stat-bar-icon {
+  width: 36px;
+  height: 36px;
+  color: #ffffff;
+}
+
+.stat-bar-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.stat-bar-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.stat-bar-label {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .extra-stats {
+    gap: 12px;
+  }
+
+  .stat-bar-card {
+    padding: 14px 16px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .stat-bar-fill-vertical {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-bar-number {
+    font-size: 22px;
+  }
+
+  .stat-bar-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .extra-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .extra-stat-item {
+    justify-content: center;
+  }
+}
+
 .stat-item {
   text-align: center;
 }
@@ -1130,16 +1395,31 @@ img {
   letter-spacing: 1px;
 }
 
+@media (max-width: 992px) {
+  .why-choose-left {
+    padding-right: 0;
+    order: 2;
+  }
+  .why-choose-right {
+    order: 1;
+  }
+}
+
 .why-choose-right {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.why-choose-right .why-intro {
+  margin: 0 0 20px 0;
 }
 
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 560px;
+  max-width: 670px;
   aspect-ratio: 16 / 9;
   border-radius: 20px;
   overflow: hidden;
@@ -1187,6 +1467,212 @@ img {
 .video-container:hover .play-button {
   transform: scale(1.1);
   background: #ffffff;
+}
+
+.solution-section {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #F6F5ED 0%, #ffffff 100%);
+}
+
+.solution-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.solution-content {
+  position: relative;
+  margin-top: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.solution-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .solution-image {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .solution-image {
+    height: 400px;
+  }
+}
+
+.solution-card-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 480px;
+  z-index: 1;
+}
+
+.solution-card {
+  background: rgba(38, 37, 33, 0.7);
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: solutionCardIn 0.5s ease-out;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@keyframes solutionCardIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.solution-header {
+  margin-bottom: 30px;
+}
+
+.solution-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+}
+
+.solution-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.solution-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.solution-nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.solution-nav-btn:hover:not(:disabled) {
+  background: #ffffff;
+  color: rgba(38, 37, 33, 0.7);
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.solution-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.solution-nav-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+@media (max-width: 992px) {
+  .solution-card-wrapper {
+    right: 0;
+    max-width: 400px;
+  }
+
+  .solution-image {
+    height: 400px;
+  }
+
+  .solution-card {
+    padding: 30px;
+  }
+
+  .solution-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .solution-card-wrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    max-width: 100%;
+    margin: -60px 20px 0;
+  }
+
+  .solution-content {
+    margin-top: 40px;
+  }
+
+  .solution-image {
+    height: 350px;
+  }
+
+  .solution-card {
+    padding: 30px 24px;
+    border-radius: 16px;
+  }
+
+  .solution-title {
+    font-size: 22px;
+  }
+
+  .solution-desc {
+    font-size: 14px;
+  }
+
+  .solution-nav-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .solution-nav-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .solution-section {
+    padding: 60px 16px;
+  }
+
+  .solution-card {
+    padding: 24px 20px;
+  }
+
+  .solution-title {
+    font-size: 20px;
+  }
+
+  .solution-header {
+    margin-bottom: 20px;
+  }
+
+  .solution-buttons {
+    gap: 12px;
+  }
 }
 
 .cta-section {
