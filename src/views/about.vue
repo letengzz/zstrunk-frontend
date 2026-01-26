@@ -47,52 +47,6 @@
       </div>
     </div>
 
-    <div class="features-section">
-      <div class="features-container">
-        <h2 class="section-title">Why Choose Us</h2>
-        <p class="section-subtitle">What sets us apart from the competition</p>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Quality First</h3>
-            <p class="feature-desc">ISO certified manufacturing process ensuring top-notch quality in every product</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Safety Certified</h3>
-            <p class="feature-desc">All products meet international safety standards and certifications</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">On-Time Delivery</h3>
-            <p class="feature-desc">Efficient logistics network ensuring timely delivery worldwide</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">24/7 Support</h3>
-            <p class="feature-desc">Dedicated customer service team available around the clock</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="process-section">
       <div class="process-container">
         <h2 class="section-title">Our Process</h2>
@@ -130,6 +84,76 @@
       </div>
     </div>
 
+    <div class="historical-section">
+      <div class="historical-container">
+        <h2 class="section-title">Historical Steps</h2>
+        <p class="section-subtitle">Without epic story,from small to large,step by step to win the trust of our customers is what we have been doing.</p>
+        <div class="historical-content">
+          <div class="historical-display">
+            <div class="display-left">
+              <div class="display-year">{{ currentHistorical?.year }}</div>
+              <div class="display-desc">{{ currentHistorical?.desc }}</div>
+            </div>
+            <div class="display-right">
+              <img :src="currentHistorical?.image" alt="Historical moment" class="display-image" />
+            </div>
+          </div>
+          <div class="historical-timeline">
+            <div
+              v-for="(item, index) in historicalData"
+              :key="item.year"
+              class="timeline-dot"
+              :class="{ active: currentHistoricalIndex === index }"
+              @click="currentHistoricalIndex = index"
+            >
+              <div class="dot"></div>
+              <div class="dot-year">{{ item.year }}</div>
+            </div>
+            <div class="timeline-line">
+              <div class="timeline-progress" :style="{ width: `${(currentHistoricalIndex / (historicalData.length - 1)) * 100}%` }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brands-section">
+      <div class="brands-container">
+        <h2 class="section-title">Involved Brands</h2>
+        <p class="section-subtitle">Proud to collaborate with industry-leading partners worldwide</p>
+        <div class="brands-slider">
+           <div class="brands-track track-1">
+             <div v-for="brand in firstRowBrands" :key="brand.name" class="brand-item">
+               <div class="brand-logo">
+                 <img :src="brand.logo" :alt="brand.name" />
+               </div>
+               <div class="brand-name">{{ brand.name }}</div>
+             </div>
+             <div v-for="brand in firstRowBrands" :key="brand.name + '-dup'" class="brand-item">
+               <div class="brand-logo">
+                 <img :src="brand.logo" :alt="brand.name" />
+               </div>
+               <div class="brand-name">{{ brand.name }}</div>
+             </div>
+           </div>
+           <div class="brands-track track-2">
+             <div v-for="brand in secondRowBrands" :key="brand.name" class="brand-item">
+               <div class="brand-logo">
+                 <img :src="brand.logo" :alt="brand.name" />
+               </div>
+               <div class="brand-name">{{ brand.name }}</div>
+             </div>
+             <div v-for="brand in secondRowBrands" :key="brand.name + '-dup'" class="brand-item">
+               <div class="brand-logo">
+                 <img :src="brand.logo" :alt="brand.name" />
+               </div>
+               <div class="brand-name">{{ brand.name }}</div>
+             </div>
+           </div>
+         </div>
+      </div>
+    </div>
+
     <Footer />
 
     <ContactFixed />
@@ -137,8 +161,77 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
+import ContactFixed from '@/components/ContactFixed.vue'
+
+const currentHistoricalIndex = ref(0)
+
+const currentHistorical = computed(() => {
+  return historicalData[currentHistoricalIndex.value]
+})
+
+const historicalData = [
+  {
+    year: '2005',
+    title: 'Company Founded',
+    desc: 'Started with a vision to revolutionize the trailer manufacturing industry',
+    image: '/images/about/2005.jpg'
+  },
+  {
+    year: '2010',
+    title: 'First Overseas Expansion',
+    desc: 'Opened our first international office and began exporting to Southeast Asia',
+    image: '/images/about/2010.jpg'
+  },
+  {
+    year: '2015',
+    title: 'Production Capacity Milestone',
+    desc: 'Expanded to 25,000㎡ production facility, tripling our output capacity',
+    image: '/images/about/2015.jpg'
+  },
+  {
+    year: '2020',
+    title: 'Global Recognition',
+    desc: 'Achieved ISO certification and expanded to 80+ countries worldwide',
+    image: '/images/about/2020.jpg'
+  },
+  {
+    year: '2025',
+    title: 'Industry Leader',
+    desc: 'Now serving 5,000+ annual customers with 1,000+ dedicated employees',
+    image: '/images/about/2025.jpg'
+  },
+  {
+    year: 'Future',
+    title: 'Building Tomorrow',
+    desc: 'Looking ahead, we remain committed to innovation, quality, and customer satisfaction. Our goal is to continue expanding our global presence while maintaining the highest standards of manufacturing excellence.',
+    image: '/images/about/future.jpg'
+  }
+]
+
+const brands = [
+  { name: 'SCHMITZ', logo: '/images/brands/schmitz.png' },
+  { name: 'KRONE', logo: '/images/brands/krone.png' },
+  { name: 'WABASH', logo: '/images/brands/wabash.png' },
+  { name: 'HYUNDAI', logo: '/images/brands/hyundai.png' },
+  { name: 'VOLVO', logo: '/images/brands/volvo.png' },
+  { name: 'DAF', logo: '/images/brands/daf.png' },
+  { name: 'SCANIA', logo: '/images/brands/scania.png' },
+  { name: 'MERCEDES', logo: '/images/brands/mercedes.png' },
+  { name: 'MAN', logo: '/images/brands/man.png' },
+  { name: 'IVECO', logo: '/images/brands/iveco.png' },
+  { name: 'RENAULT', logo: '/images/brands/renault.png' },
+  { name: 'ISUZU', logo: '/images/brands/isuzu.png' },
+  { name: 'HINO', logo: '/images/brands/hino.png' },
+  { name: 'MITSUBISHI', logo: '/images/brands/mitsubishi.png' },
+  { name: 'FREIGHTLINER', logo: '/images/brands/freightliner.png' },
+  { name: 'KENWORTH', logo: '/images/brands/kenworth.png' }
+]
+
+const firstRowBrands = computed(() => brands.slice(0, 8))
+const secondRowBrands = computed(() => brands.slice(8))
 </script>
 
 <style scoped>
@@ -167,8 +260,8 @@ import Footer from '@/components/Footer.vue'
 
 .hero-section {
   position: relative;
-  height: 500px;
-  background: url('/public/images/about-hero.jpg') center/cover no-repeat;
+  height: 400px;
+  background: url('/public/images/about/image.png') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -448,7 +541,322 @@ import Footer from '@/components/Footer.vue'
   }
 }
 
-@media (max-width: 480px) {
+.historical-section {
+  background: url('/images/about/history.png') no-repeat center top;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%), url('/images/about/history.png') center center no-repeat; */
+  background-size: cover;
+  padding: 100px 40px;
+}
+
+.historical-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.historical-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.historical-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.display-left {
+  text-align: left;
+}
+
+.display-year {
+  font-size: 80px;
+  font-weight: 800;
+  color: #1a2a4a;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.display-desc {
+  font-size: 16px;
+  color: #4a5568;
+  line-height: 1.8;
+  margin: 0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.display-desc::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: #FF0000;
+  border-radius: 50%;
+}
+
+.display-right {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.display-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.historical-timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  padding: 50px 60px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.timeline-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  transition: all 0.3s ease;
+}
+
+.timeline-dot:hover {
+  background: transparent;
+}
+
+.timeline-dot.active {
+  background: transparent;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #e0ddd5;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-dot.active .dot {
+  background: #FF0000;
+  border: 2px solid #FF0000;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+}
+
+.timeline-dot:hover .dot {
+  border-color: #FF0000;
+}
+
+.dot-year {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+  transition: all 0.3s ease;
+  margin-top: 70px;
+}
+
+.timeline-dot.active .dot-year {
+  color: #FF0000;
+  font-weight: 700;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  height: 3px;
+  background: #e0ddd5;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  border-radius: 2px;
+}
+
+.timeline-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #FF0000 0%, #FF0000 100%);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.brands-section {
+  padding: 100px 60px;
+  background: #fff;
+}
+
+.brands-container {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.brands-slider {
+  margin-top: 60px;
+  position: relative;
+}
+
+.brands-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+}
+
+.track-1 {
+  animation: scrollLeft 30s linear infinite;
+}
+
+.track-2 {
+  animation: scrollRight 30s linear infinite;
+  margin-top: 30px;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brands-slider:hover .brands-track {
+  animation-play-state: paused;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.brand-item:hover {
+  border-color: #FF0000;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.brand-logo {
+  width: 120px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.brand-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.brand-item:hover .brand-logo img {
+  filter: grayscale(0%);
+}
+
+.brand-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .historical-section {
+    padding: 60px 20px;
+  }
+
+  .historical-display {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .display-year {
+    font-size: 56px;
+  }
+
+  .display-title {
+    font-size: 22px;
+  }
+
+  .display-desc {
+    font-size: 14px;
+  }
+
+  .historical-timeline {
+    flex-wrap: wrap;
+    padding: 30px 20px;
+    gap: 12px;
+  }
+
+  .timeline-dot {
+    padding: 10px 16px;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .dot-year {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .timeline-dot {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .timeline-dot .dot-year {
+    margin-top: 0;
+  }
+
+  .timeline-line {
+    display: none;
+  }
+
   .about-section,
   .features-section,
   .process-section,
@@ -458,6 +866,35 @@ import Footer from '@/components/Footer.vue'
 
   .hero-section {
     height: 400px;
+  }
+
+  .brands-section {
+    padding: 60px 20px;
+  }
+
+  .brands-slider {
+    margin-top: 40px;
+  }
+
+  .brands-track {
+    gap: 20px;
+  }
+
+  .track-2 {
+    margin-top: 20px;
+  }
+
+  .brand-item {
+    padding: 15px 20px;
+  }
+
+  .brand-logo {
+    width: 80px;
+    height: 40px;
+  }
+
+  .brand-name {
+    font-size: 12px;
   }
 }
 </style>

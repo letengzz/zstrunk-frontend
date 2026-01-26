@@ -29,23 +29,120 @@
         </div>
       </el-carousel-item>
     </el-carousel>
-    <div class="feature-boxes" ref="featureBoxesRef">
-      <div class="feature-section-header">
-        <h2 class="section-title">Our Advantages</h2>
-        <p class="section-subtitle">Why Leading Companies Choose Our Solutions</p>
+    <div class="why-choose-section" ref="whyChooseRef">
+        <div class="why-choose-container">
+          <div class="why-choose-left">
+            <h2 class="section-title">ABOUT US</h2>
+            <p class="about-subtitle">Trusted Manufacturer of High-Quality Flatbed, Fuel Tanker, and Specialized Trailers for Global Markets</p>
+            <div class="why-stats">
+              <div class="stat-item">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Annual Sales</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">25%+</div>
+                <div class="stat-label">Growth Rate</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">80+</div>
+                <div class="stat-label">Countries & Regions</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+            </div>
+            <div class="extra-stats">
+              <div class="stat-simple-item">
+                <div class="stat-simple-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                  </svg>
+                </div>
+                <div class="stat-simple-content">
+                  <div class="stat-simple-number">{{ animatedStats.exhibitionHall }}㎡</div>
+                  <div class="stat-simple-label">Exhibition Hall</div>
+                  <div class="stat-simple-line"></div>
+                </div>
+              </div>
+              <div class="stat-simple-item">
+                <div class="stat-simple-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/>
+                  </svg>
+                </div>
+                <div class="stat-simple-content">
+                  <div class="stat-simple-number">{{ animatedStats.productionArea }}㎡</div>
+                  <div class="stat-simple-label">Total Area Of The Production Plant</div>
+                  <div class="stat-simple-line"></div>
+                </div>
+              </div>
+              <div class="stat-simple-item">
+                <div class="stat-simple-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                  </svg>
+                </div>
+                <div class="stat-simple-content">
+                  <div class="stat-simple-number">{{ animatedStats.employees }}</div>
+                  <div class="stat-simple-label">Total Employees</div>
+                  <div class="stat-simple-line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="why-choose-right">
+            <p class="why-intro">We also provide customized services for customers. According to different transportation needs, we can customize the cargo size, carrying capacity, tank body materials, loading and unloading equipment, etc. of tank semi-trailers to ensure that customers can obtain the most suitable solutions for their businesses.</p>
+            <router-link to="/about" class="why-intro-button">Learn More</router-link>
+            <div class="video-container">
+              <video autoplay muted loop playsinline class="promo-video">
+                <source src="/videos/promo.mp4" type="video/mp4">
+              </video>
+              <!-- <div class="video-overlay">
+                <div class="play-button">▶</div>
+              </div> -->
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="feature-boxes-inner">
-        <div class="feature-box feature-bg-1" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.1s">
-          <h3 class="feature-title">Diverse vehicle models</h3>
-          <p class="feature-desc">Adapt to different transportation needs</p>
+          <div class="product-section">
+        <div class="product-section-inner">
+          <h2 class="section-title">Popular Products</h2>
+        <p class="section-subtitle">We Promise To Find You The Right Equipment</p>
+        <div class="category-tabs">
+          <div
+            class="category-tab"
+            :class="{ active: currentCategory === 'tanker' }"
+            @click="setCategory('tanker')"
+          >
+            <span class="category-name">Tanker Trucks</span>
+          </div>
+          <div
+            class="category-tab"
+            :class="{ active: currentCategory === 'excavator' }"
+            @click="setCategory('excavator')"
+          >
+            <span class="category-name">Excavators</span>
+          </div>
         </div>
-        <div class="feature-box feature-bg-2" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.3s">
-          <h3 class="feature-title">Compliance and Security</h3>
-          <p class="feature-desc">Strict safety standards</p>
-        </div>
-        <div class="feature-box feature-bg-3" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.5s">
-          <h3 class="feature-title">Proper and considerate service</h3>
-          <p class="feature-desc">Full life cycle service support</p>
+        <div class="product-grid">
+          <div class="product-col" v-for="product in currentProducts" :key="product.id">
+            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }"  :style="{ cursor: 'pointer' }">
+              <div class="product-image">
+                <img :src="product.image" class="product-img" />
+                <div class="product-tag">{{ product.tag }}</div>
+              </div>
+              <div class="product-content">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-info">
+                  <p class="product-desc">{{ product.desc }}</p>
+                  <div class="product-footer">
+                    <el-button type="primary" round @click="goToProduct(product.id)">View More</el-button>
+                  </div>
+                </div>
+              </div>
+            </el-card>
+          </div>
         </div>
       </div>
     </div>
@@ -95,127 +192,28 @@
         </div>
       </div>
     </div>
-
-    <div class="why-choose-section">
-        <div class="why-choose-container">
-          <div class="why-choose-left">
-            <h2 class="section-title">ABOUT US</h2>
-            <p class="about-subtitle">Trusted Manufacturer of High-Quality Flatbed, Fuel Tanker, and Specialized Trailers for Global Markets</p>
-            <div class="why-stats">
-              <div class="stat-item">
-                <div class="stat-number">5,000+</div>
-                <div class="stat-label">Annual Sales</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">25%+</div>
-                <div class="stat-label">Growth Rate</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">80+</div>
-                <div class="stat-label">Countries & Regions</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Years Experience</div>
-              </div>
-            </div>
-            <div class="extra-stats">
-              <div class="stat-bar-item">
-                <div class="stat-bar-card">
-                  <div class="stat-bar-fill-vertical">
-                    <div class="stat-bar-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
-                      </svg>
-                    </div>
-                    <div class="stat-bar-number">5,000㎡</div>
-                  </div>
-                  <div class="stat-bar-label">Exhibition Hall</div>
-                </div>
-              </div>
-              <div class="stat-bar-item">
-                <div class="stat-bar-card">
-                  <div class="stat-bar-fill-vertical">
-                    <div class="stat-bar-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/>
-                      </svg>
-                    </div>
-                    <div class="stat-bar-number">25,000㎡</div>
-                  </div>
-                  <div class="stat-bar-label">Total Area Of The Production Plant</div>
-                </div>
-              </div>
-              <div class="stat-bar-item">
-                <div class="stat-bar-card">
-                  <div class="stat-bar-fill-vertical">
-                    <div class="stat-bar-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                      </svg>
-                    </div>
-                    <div class="stat-bar-number">1,000+</div>
-                  </div>
-                  <div class="stat-bar-label">Total Employees</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="why-choose-right">
-            <p class="why-intro">We also provide customized services for customers. According to different transportation needs, we can customize the cargo size, carrying capacity, tank body materials, loading and unloading equipment, etc. of tank semi-trailers to ensure that customers can obtain the most suitable solutions for their businesses.</p>
-            <div class="video-container">
-              <video autoplay muted loop playsinline class="promo-video">
-                <source src="/videos/promo.mp4" type="video/mp4">
-              </video>
-              <!-- <div class="video-overlay">
-                <div class="play-button">▶</div>
-              </div> -->
-            </div>
-          </div>
-        </div>
+    <div class="feature-boxes" ref="featureBoxesRef">
+      <div class="feature-section-header">
+        <h2 class="section-title">Our Advantages</h2>
+        <p class="section-subtitle">Why Leading Companies Choose Our Solutions</p>
       </div>
-
-      <div class="product-section">
-        <div class="product-section-inner">
-          <h2 class="section-title">Popular Products</h2>
-        <p class="section-subtitle">We Promise To Find You The Right Equipment</p>
-        <div class="category-tabs">
-          <div
-            class="category-tab"
-            :class="{ active: currentCategory === 'tanker' }"
-            @click="setCategory('tanker')"
-          >
-            <span class="category-name">Tanker Trucks</span>
-          </div>
-          <div
-            class="category-tab"
-            :class="{ active: currentCategory === 'excavator' }"
-            @click="setCategory('excavator')"
-          >
-            <span class="category-name">Excavators</span>
-          </div>
+      <div class="feature-boxes-inner">
+        <div class="feature-box feature-bg-1" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.1s">
+          <h3 class="feature-title">Diverse vehicle models</h3>
+          <p class="feature-desc">Adapt to different transportation needs</p>
         </div>
-        <div class="product-grid">
-          <div class="product-col" v-for="product in currentProducts" :key="product.id">
-            <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }"  :style="{ cursor: 'pointer' }">
-              <div class="product-image">
-                <img :src="product.image" class="product-img" />
-                <div class="product-tag">{{ product.tag }}</div>
-              </div>
-              <div class="product-content">
-                <h3 class="product-name">{{ product.name }}</h3>
-                <div class="product-info">
-                  <p class="product-desc">{{ product.desc }}</p>
-                  <div class="product-footer">
-                    <el-button type="primary" round @click="goToProduct(product.id)">View More</el-button>
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </div>
+        <div class="feature-box feature-bg-2" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.3s">
+          <h3 class="feature-title">Compliance and Security</h3>
+          <p class="feature-desc">Strict safety standards</p>
+        </div>
+        <div class="feature-box feature-bg-3" :class="{ 'animate-in': isFeatureBoxesVisible }" style="animation-delay: 0.5s">
+          <h3 class="feature-title">Proper and considerate service</h3>
+          <p class="feature-desc">Full life cycle service support</p>
         </div>
       </div>
     </div>
+
+
 
     <div class="solution-section">
       <div class="solution-container">
@@ -225,8 +223,8 @@
           <div class="solution-card-wrapper">
             <div class="solution-card">
               <div class="solution-header">
-                <!-- <h3 class="solution-title">{{ currentSolution.title }}</h3>
-                <p class="solution-desc">{{ currentSolution.desc }}</p> -->
+                <h3 class="solution-title">{{ currentSolution.title }}</h3>
+                <p class="solution-desc">{{ currentSolution.desc }}</p>
               </div>
               <div class="solution-buttons">
                 <button class="solution-nav-btn prev" @click="prevSolution" :disabled="currentSolutionIndex === 0">
@@ -389,7 +387,7 @@ const solutions: Solution[] = [
 const currentSolutionIndex = ref(0)
 
 const currentSolution = computed<Solution>(() => {
-  return solutions[currentSolutionIndex.value] ?? solutions[0]
+  return solutions[currentSolutionIndex.value]!
 })
 
 function prevSolution() {
@@ -442,6 +440,61 @@ const resumeAutoplay = () => {
 const featureBoxesRef = ref()
 const isFeatureBoxesVisible = ref(false)
 
+const whyChooseRef = ref()
+const isWhyChooseVisible = ref(false)
+
+const animatedStats = reactive<{
+  exhibitionHall: string | number
+  productionArea: string | number
+  employees: string | number
+}>({
+  exhibitionHall: 0,
+  productionArea: 0,
+  employees: 0
+})
+
+const targetStats = {
+  exhibitionHall: 5000,
+  productionArea: 25000,
+  employees: 1000
+}
+
+function animateNumber(start: number, end: number, duration: number, callback: (value: number) => void) {
+  const startTime = performance.now()
+
+  function update(currentTime: number) {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+
+    const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+    const current = Math.floor(start + (end - start) * easeOutQuart)
+
+    callback(current)
+
+    if (progress < 1) {
+      requestAnimationFrame(update)
+    }
+  }
+
+  requestAnimationFrame(update)
+}
+
+function startNumberAnimation() {
+  const duration = 4000
+
+  animateNumber(0, targetStats.exhibitionHall, duration, (value) => {
+    animatedStats.exhibitionHall = value.toLocaleString()
+  })
+
+  animateNumber(0, targetStats.productionArea, duration, (value) => {
+    animatedStats.productionArea = value.toLocaleString()
+  })
+
+  animateNumber(0, targetStats.employees, duration, (value) => {
+    animatedStats.employees = value.toLocaleString()
+  })
+}
+
 onMounted(() => {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -456,6 +509,22 @@ onMounted(() => {
 
   if (featureBoxesRef.value) {
     observer.observe(featureBoxesRef.value)
+  }
+
+  const whyChooseObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !isWhyChooseVisible.value) {
+          isWhyChooseVisible.value = true
+          startNumberAnimation()
+        }
+      })
+    },
+    { threshold: 0.6 }
+  )
+
+  if (whyChooseRef.value) {
+    whyChooseObserver.observe(whyChooseRef.value)
   }
 })
 </script>
@@ -1170,7 +1239,8 @@ img {
 }
 
 .why-choose-section {
-  background: linear-gradient(180deg, #ffffff 0%, #F6F5ED 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 245, 237, 0.95) 100%), url('/images/about/image.png') center center no-repeat;
+  background-size: cover;
   padding: 100px 20px;
 }
 
@@ -1219,6 +1289,25 @@ img {
   margin: 30px 0;
 }
 
+.why-intro-button {
+  display: inline-block;
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #FF0000;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin:20px 0;
+}
+
+.why-intro-button:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
 .why-stats {
   display: flex;
   gap: 20px;
@@ -1242,47 +1331,65 @@ img {
 
 .extra-stats {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid #e8e8e8;
 }
 
-.extra-stat-item {
+.stat-simple-item {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 12px;
 }
 
-.extra-stat-icon {
-  width: 44px;
-  height: 44px;
+.stat-simple-icon {
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
   color: #1a2a4a;
 }
 
-.extra-stat-icon svg {
+.stat-simple-icon svg {
   width: 100%;
   height: 100%;
 }
 
-.extra-stat-content {
+.stat-simple-content {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
-.extra-stat-number {
-  font-size: 28px;
+.stat-simple-number {
+  font-size: 32px;
   font-weight: 700;
   color: #FF0000;
   line-height: 1.2;
 }
 
-.extra-stat-label {
-  font-size: 13px;
+.stat-simple-label {
+  font-size: 15px;
   color: #666666;
-  margin-top: 4px;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.stat-simple-line-wrapper {
+  width: 100%;
+  height: 3px;
+  margin-top: 10px;
+  background: #e8e8e8;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-simple-line {
+  width: 50%;
+  height: 100%;
+  background: #FF0000;
 }
 
 .extra-stats {
