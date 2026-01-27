@@ -22,44 +22,58 @@
             <div class="product-row">
               <div class="product-column">
                 <div class="product-category-title">Liquid and Power Transport Trailers</div>
-                <div class="product-item">Aluminium Fuel Tanker</div>
-                <div class="product-item">Carbon Steel Fuel Tank Trailer</div>
-                <div class="product-item">Bulk Cement Trailer</div>
-                <div class="product-item">Asphalt Tank Trailers</div>
-                <div class="product-item">Gas Tanker Trailer</div>
-                <div class="product-item">Stainless Steel Tanker Trailer</div>
-                <div class="product-item">Chemical Tank Trailer</div>
-                <div class="product-item">Storage Tank</div>
+                <router-link to="/products?category=AluminiumFuelTanker" class="product-item">Aluminium Fuel Tanker</router-link>
+                <router-link to="/products?category=CarbonSteelFuelTank Trailer" class="product-item">Carbon Steel Fuel Tank Trailer</router-link>
+                <router-link to="/products?category=BulkCementTrailer" class="product-item">Bulk Cement Trailer</router-link>
+                <router-link to="/products?category=AsphaltTankTrailers" class="product-item">Asphalt Tank Trailers</router-link>
+                <router-link to="/products?category=GasTankerTrailer" class="product-item">Gas Tanker Trailer</router-link>
+                <router-link to="/products?category=StainlessSteelTanker Trailer" class="product-item">Stainless Steel Tanker Trailer</router-link>
+                <router-link to="/products?category=ChemicalTankTrailer" class="product-item">Chemical Tank Trailer</router-link>
+                <router-link to="/products?category=StorageTank" class="product-item">Storage Tank</router-link>
               </div>
               <div class="product-column">
                 <div class="product-category-title">Container Semi Trailer</div>
-                <div class="product-item">Skeletal Trailer</div>
-                <div class="product-item">Flatbed Trailer</div>
+                <router-link to="/products?category=SkeletalTrailer" class="product-item">Skeletal Trailer</router-link>
+                <router-link to="/products?category=FlatbedTrailer" class="product-item">Flatbed Trailer</router-link>
               </div>
               <div class="product-column">
                 <div class="product-category-title">Semi Trailer</div>
-                <div class="product-item">Container Semi Trailer</div>
-                <div class="product-item">Sinotruk Howo</div>
-                <div class="product-item">HOWO Tractor Truck</div>
-                <div class="product-item">HOWO Dump Truck</div>
-                <div class="product-item">HOWO Tanker Truck</div>
+                <router-link to="/products?category=LowbedSemiTrailer" class="product-item">Lowbed Semi Trailer</router-link>
+                <router-link to="/products?category=TipperSemiTrailer" class="product-item">Tipper Semi Trailer</router-link>
+                <router-link to="/products?category=FenceCargoTrailer" class="product-item">Fence Cargo Trailer</router-link>
+                <router-link to="/products?category=SideWallTipper" class="product-item">Side Wall Tipper</router-link>
+                <router-link to="/products?category=SideCurtainTrailer" class="product-item">Side Curtain Trailer</router-link>
+                <router-link to="/products?category=CarCarrierTailer" class="product-item">Car Carrier Tailer</router-link>
+                <router-link to="/products?category=BoxSemiTrailer" class="product-item">Box Semi Trailer</router-link>
+                <router-link to="/products?category=FullDrawbarTrailer" class="product-item">Full Drawbar Trailer</router-link>
+                <router-link to="/products?category=RemovableGooseneckTrailer" class="product-item">Removable Gooseneck Trailer</router-link>
               </div>
             </div>
             <div class="product-row">
               <div class="product-column">
                 <div class="product-category-title">Shacman Trucks</div>
-                <div class="product-item">Shacman Dump Truck</div>
-                <div class="product-item">Shacman Tractor Truck</div>
-                <div class="product-item">Shacman Tanker Trucks</div>
+                <router-link to="/products?category=ShacmanDumpTruck" class="product-item">Shacman Dump Truck</router-link>
+                <router-link to="/products?category=ShacmanTractorTruck" class="product-item">Shacman Tractor Truck</router-link>
+                <router-link to="/products?category=ShacmanTankerTrucks" class="product-item">Shacman Tanker Trucks</router-link>
               </div>
               <div class="product-column">
                 <div class="product-category-title">Accessories</div>
-                <div class="product-item">Trailer Accessories</div>
-                <div class="product-item">Engine</div>
+                <router-link to="/products?category=TrailerAccessories" class="product-item">Trailer Accessories</router-link>
+                <router-link to="/products?category=Engine" class="product-item">Engine</router-link>
+              </div>
+                 <div class="product-column">
+                <div class="product-category-title">Sinotruck Howo</div>
+                <router-link to="/products?category=HOWOTractorTruck" class="product-item">HOWO Tractor Truck</router-link>
+                <router-link to="/products?category=HOWODumpTruck" class="product-item">HOWO Dump Truck</router-link>
+                <router-link to="/products?category=HOWOTankerTruck" class="product-item">HOWO Tanker Truck</router-link>
               </div>
               <div class="product-column">
                 <div class="product-category-title">Existing Trucks and Trailers</div>
-                <div class="product-item">Trailer</div>
+                <router-link to="/products?category=Trailer" class="product-item">Trailer</router-link>
+              </div>
+                <div class="product-column">
+                <div class="product-category-title">Excavator</div>
+                <router-link to="/products?category=excavator" class="product-item">Excavator</router-link>
               </div>
             </div>
           </div>
@@ -300,6 +314,7 @@
 .product-item {
   font-size: 13px;
   color: #666;
+  text-decoration: none;
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;

@@ -6,6 +6,7 @@
     "image": "/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg",
     "tag": "Hot",
     "category": "tanker",
+    "subCategory": "CarbonSteelFuelTank Trailer",
     "detailedDescription": "The Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck is a high-quality vehicle designed for the transportation of various liquids. It features a robust carbon steel construction that ensures durability and longevity, even under harsh operating conditions. The 4-compartment design allows for the transportation of different types of liquids simultaneously, maximizing efficiency and flexibility.",
     "specs": [
       { "label": "Capacity", "value": "40,000L" },
@@ -33,6 +34,7 @@
     "image": "/public/products/45000LitersOilTankerTrailer.jpg",
     "tag": "New",
     "category": "tanker",
+    "subCategory": "AluminiumFuelTanker",
     "detailedDescription": "The 45000 Liters Oil Tanker Trailer is designed for efficient transportation of palm oil and other liquid cargo. The volume can be customized from 30,000 to 90,000 liters to meet different transportation needs.",
     "specs": [
       { "label": "Capacity", "value": "45,000L" },
@@ -53,6 +55,7 @@
     "image": "/public/products/fuel-tanker-35000l.jpg",
     "tag": "Hot",
     "category": "tanker",
+    "subCategory": "AluminiumFuelTanker",
     "detailedDescription": "The Fuel Tanker Truck 35000L is designed for safe and efficient fuel transportation. It features advanced safety systems and durable construction.",
     "specs": [
       { "label": "Capacity", "value": "35,000L" },
@@ -73,6 +76,7 @@
     "image": "/public/products/water-tanker-20000l.jpg",
     "tag": "New",
     "category": "tanker",
+    "subCategory": "AluminiumFuelTanker",
     "detailedDescription": "The Water Tanker Truck 20000L is ideal for construction site water supply, dust suppression, and agricultural irrigation.",
     "specs": [
       { "label": "Capacity", "value": "20,000L" },
@@ -93,6 +97,7 @@
     "image": "/public/products/chemical-tanker-30000l.jpg",
     "tag": "Hot",
     "category": "tanker",
+    "subCategory": "ChemicalTankTrailer",
     "detailedDescription": "The Chemical Tanker Truck 30000L is designed for safe transportation of various chemical liquids with advanced safety features.",
     "specs": [
       { "label": "Capacity", "value": "30,000L" },
@@ -107,12 +112,55 @@
     ]
   },
   {
+    "id": 6,
+    "name": "Bulk Cement Trailer 50 Ton",
+    "desc": "High capacity bulk cement transportation",
+    "image": "/public/products/bulk-cement-trailer.jpg",
+    "tag": "Hot",
+    "category": "tanker",
+    "subCategory": "BulkCementTrailer",
+    "detailedDescription": "The Bulk Cement Trailer 50 Ton is designed for efficient transportation of bulk cement and other powdered materials.",
+    "specs": [
+      { "label": "Capacity", "value": "50,000 kg" },
+      { "label": "Material", "value": "Carbon Steel" },
+      { "label": "Axles", "value": "3" }
+    ],
+    "features": [
+      "Air suspension system",
+      "Aerodynamic design",
+      "Easy discharge system",
+      "Dust suppression system"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Asphalt Tank Trailer 40m³",
+    "desc": "Specialized for hot asphalt transport",
+    "image": "/public/products/asphalt-tank.jpg",
+    "tag": "New",
+    "category": "tanker",
+    "subCategory": "AsphaltTankTrailers",
+    "detailedDescription": "The Asphalt Tank Trailer 40m³ is designed for transporting hot asphalt at temperatures up to 200°C.",
+    "specs": [
+      { "label": "Capacity", "value": "40,000L" },
+      { "label": "Material", "value": "Carbon Steel" },
+      { "label": "Insulation", "value": "Rock Wool" }
+    ],
+    "features": [
+      "Thermal insulation",
+      "Heating system",
+      "Safety valves",
+      "Easy cleaning"
+    ]
+  },
+  {
     "id": 101,
     "name": "Hydraulic Excavator XG808",
     "desc": "High performance excavator with advanced hydraulic system",
     "image": "/public/products/excavator-1.jpg",
     "tag": "Hot",
     "category": "excavator",
+    "subCategory": "excavator-hydraulic",
     "detailedDescription": "The Hydraulic Excavator XG808 is a powerful and efficient machine designed for heavy-duty excavation work. It features an advanced hydraulic system for smooth operation and excellent fuel efficiency.",
     "specs": [
       { "label": "Operating Weight", "value": "80,000 kg" },
@@ -133,6 +181,7 @@
     "image": "/public/products/excavator-2.jpg",
     "tag": "New",
     "category": "excavator",
+    "subCategory": "excavator-mini",
     "detailedDescription": "The Mini Excavator XG815 is perfect for urban construction projects and tight spaces. Its compact design allows for easy transportation and maneuverability.",
     "specs": [
       { "label": "Operating Weight", "value": "15,000 kg" },
@@ -148,82 +197,44 @@
   },
   {
     "id": 103,
-    "name": "Large Mining Excavator XG890",
-    "desc": "Heavy-duty excavator for mining operations",
+    "name": "Mining Excavator XG890",
+    "desc": "Heavy-duty mining excavator for large-scale operations",
     "image": "/public/products/excavator-3.jpg",
-    "tag": "New",
+    "tag": "Hot",
     "category": "excavator",
-    "detailedDescription": "The Large Mining Excavator XG890 is designed for the most demanding mining operations, offering exceptional power and reliability.",
+    "subCategory": "excavator-mining",
+    "detailedDescription": "The Mining Excavator XG890 is designed for the most demanding mining operations with high productivity and reliability.",
     "specs": [
-      { "label": "Operating Weight", "value": "900,000 kg" },
-      { "label": "Bucket Capacity", "value": "52 m³" },
-      { "label": "Engine Power", "value": "4,500 HP" }
+      { "label": "Operating Weight", "value": "90,000 kg" },
+      { "label": "Bucket Capacity", "value": "6.0 m³" },
+      { "label": "Engine Power", "value": "500 HP" }
     ],
     "features": [
-      "Ultra-class mining excavator",
-      "High efficiency bucket design",
-      "Advanced monitoring system",
-      "Extended service intervals"
+      "Reinforced bucket and arm",
+      "Heavy-duty undercarriage",
+      "Automatic lubrication system",
+      "Remote monitoring capability"
     ]
   },
   {
     "id": 104,
-    "name": "Wheel Excavator XG820",
-    "desc": "Mobile excavator with excellent maneuverability",
+    "name": "Wheel Excavator XG960",
+    "desc": "Mobile wheel excavator for versatile applications",
     "image": "/public/products/excavator-4.jpg",
     "tag": "New",
     "category": "excavator",
-    "detailedDescription": "The Wheel Excavator XG820 combines the power of an excavator with the mobility of a wheel loader, making it perfect for applications that require frequent relocation.",
+    "subCategory": "excavator-wheel",
+    "detailedDescription": "The Wheel Excavator XG960 offers excellent mobility and versatility for various construction applications.",
     "specs": [
-      { "label": "Operating Weight", "value": "22,000 kg" },
-      { "label": "Bucket Capacity", "value": "1.2 m³" },
-      { "label": "Engine Power", "value": "180 HP" }
-    ],
-    "features": [
-      "Wheel-mounted for easy movement",
-      "Four-wheel steering",
-      "High travel speed",
-      "Quick coupler compatibility"
-    ]
-  },
-  {
-    "id": 105,
-    "name": "Long Reach Excavator XG825",
-    "desc": "Extended reach for deep excavation and demolition",
-    "image": "/public/products/excavator-5.jpg",
-    "tag": "New",
-    "category": "excavator",
-    "detailedDescription": "The Long Reach Excavator XG825 is designed for deep excavation, river dredging, and demolition work that requires extended reach.",
-    "specs": [
-      { "label": "Max Reach", "value": "18 meters" },
-      { "label": "Dig Depth", "value": "14 meters" },
-      { "label": "Engine Power", "value": "250 HP" }
-    ],
-    "features": [
-      "Extended boom and arm",
-      "Heavy-duty structure",
-      "Hydraulic thumb included",
-      "Reinforced bucket"
-    ]
-  },
-  {
-    "id": 106,
-    "name": "Forestry Excavator XG830",
-    "desc": "Specialized excavator for forestry applications",
-    "image": "/public/products/excavator-6.jpg",
-    "tag": "New",
-    "category": "excavator",
-    "detailedDescription": "The Forestry Excavator XG830 is specifically designed for forestry applications, featuring protective structures and specialized attachments.",
-    "specs": [
-      { "label": "Operating Weight", "value": "35,000 kg" },
-      { "label": "Grapple Capacity", "value": "1.5 m³" },
+      { "label": "Operating Weight", "value": "62,000 kg" },
+      { "label": "Bucket Capacity", "value": "3.5 m³" },
       { "label": "Engine Power", "value": "280 HP" }
     ],
     "features": [
-      "FOPS/ROPS cab protection",
-      "Timber grapple included",
-      "High ground clearance",
-      "Slope operation capability"
+      "4-wheel drive",
+      "All-wheel steering",
+      "Quick coupler system",
+      "360-degree swing"
     ]
   }
 ]

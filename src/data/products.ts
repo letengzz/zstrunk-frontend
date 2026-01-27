@@ -8,6 +8,7 @@ export interface Product {
   images?: string[]
   tag: string
   category: 'tanker' | 'excavator'
+  subCategory?: string
   detailedDescription?: string
   specs?: { label: string; value: string }[]
   parameters?: { name: string; value: string }[]

@@ -32,10 +32,10 @@
                 :data="categoryTree"
                 :props="defaultProps"
                 :current-node-key="currentCategory"
+                :default-expanded-keys="expandedKeys"
                 node-key="id"
                 :highlight-current="true"
                 :expand-on-click-node="false"
-                :accordion="true"
                 @node-click="handleNodeClick"
                 class="category-tree"
               />
@@ -100,7 +100,7 @@ import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
 import { useRouter, useRoute } from 'vue-router'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { products, getProductById } from '@/data/products'
 
 const router = useRouter()
@@ -110,11 +110,24 @@ const searchQuery = ref('')
 const currentCategory = ref<string>('all')
 const currentPage = ref(1)
 const pageSize = ref(6)
+const expandedKeys = ref<string[]>([])
 
 onMounted(() => {
   const categoryParam = route.query.category as string
   if (categoryParam) {
     currentCategory.value = categoryParam
+    updateExpandedKeys(categoryParam)
+  }
+})
+
+watch(() => route.query.category, (newCategory) => {
+  if (newCategory) {
+    currentCategory.value = newCategory as string
+    updateExpandedKeys(newCategory as string)
+    currentPage.value = 1
+  } else {
+    currentCategory.value = 'all'
+    updateExpandedKeys('all')
   }
 })
 
@@ -144,19 +157,106 @@ const categoryTree: TreeNode[] = [
       { id: 'StorageTank', label: 'Storage Tank' },
     ]
   },
-    {
+  {
+    id: 'ContainerSemiTrailer',
+    label: 'Container Semi Trailer',
+    children: [
+      { id: 'SkeletalTrailer', label: 'Skeletal Trailer' },
+      { id: 'FlatbedTrailer', label: 'Flatbed Trailer' },
+    ]
+  },
+  {
+    id: 'SemiTrailer',
+    label: 'Semi Trailer',
+    children: [
+      { id: 'ContainerSemiTrailer', label: 'Container Semi Trailer' },
+      { id: 'SinotrukHowo', label: 'Sinotruk Howo' },
+      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck' },
+      { id: 'HOWODumpTruck', label: 'HOWO Dump Truck' },
+      { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck' },
+    ]
+  },
+  {
+    id: 'ShacmanTrucks',
+    label: 'Shacman Trucks',
+    children: [
+      { id: 'ShacmanDumpTruck', label: 'Shacman Dump Truck' },
+      { id: 'ShacmanTractorTruck', label: 'Shacman Tractor Truck' },
+      { id: 'ShacmanTankerTrucks', label: 'Shacman Tanker Trucks' },
+    ]
+  },
+  {
+    id: 'Accessories',
+    label: 'Accessories',
+    children: [
+      { id: 'TrailerAccessories', label: 'Trailer Accessories' },
+      { id: 'Engine', label: 'Engine' },
+    ]
+  },
+  {
+    id: 'ExistingTrucksAndTrailers',
+    label: 'Existing Trucks and Trailers',
+    children: [
+      { id: 'Trailer', label: 'Trailer' },
+    ]
+  },
+  {
     id: 'excavator',
-    label: 'Excavators',
+    label: 'Excavator',
     children: [
       { id: 'excavator-hydraulic', label: 'Hydraulic Excavator' },
       { id: 'excavator-mini', label: 'Mini Excavator' },
       { id: 'excavator-mining', label: 'Mining Excavator' },
       { id: 'excavator-wheel', label: 'Wheel Excavator' },
       { id: 'excavator-long', label: 'Long Reach Excavator' },
-      { id: 'excavator-forestry', label: 'Forestry Excavator' }
+      { id: 'excavator-forestry', label: 'Forestry Excavator' },
     ]
   }
 ]
+
+function updateExpandedKeys(categoryId: string) {
+  if (categoryId === 'all') {
+    expandedKeys.value = []
+    return
+  }
+
+  const findParentNode = (nodes: TreeNode[], targetId: string): string | null => {
+    for (const node of nodes) {
+      if (node.children && node.children.length > 0) {
+        const found = node.children.find(child => child.id === targetId)
+        if (found) {
+          return node.id
+        }
+        const parent = findParentNode(node.children, targetId)
+        if (parent) {
+          return parent
+        }
+      }
+    }
+    return null
+  }
+
+  const isParentNode = categoryTree.some(node => node.id === categoryId && node.children && node.children.length > 0)
+
+  if (isParentNode) {
+    // 点击的是父菜单，展开自己
+    if (expandedKeys.value.includes(categoryId)) {
+      // 如果已经展开，则收起
+      expandedKeys.value = []
+    } else {
+      // 否则只展开自己
+      expandedKeys.value = [categoryId]
+    }
+  } else {
+    // 点击的是子菜单，展开父菜单
+    const parentKey = findParentNode(categoryTree, categoryId)
+    if (parentKey) {
+      expandedKeys.value = [parentKey]
+    } else {
+      expandedKeys.value = []
+    }
+  }
+}
 
 const defaultProps = {
   children: 'children',
@@ -165,6 +265,11 @@ const defaultProps = {
 
 const mainCategoryMap: Record<string, 'tanker' | 'excavator'> = {
   'LiquidandPowerTransportTrailers': 'tanker',
+  'ContainerSemiTrailer': 'tanker',
+  'SemiTrailer': 'tanker',
+  'ShacmanTrucks': 'tanker',
+  'Accessories': 'tanker',
+  'ExistingTrucksAndTrailers': 'tanker',
   'excavator': 'excavator'
 }
 
@@ -178,7 +283,11 @@ const filteredProducts = computed(() => {
   if (currentCategory.value !== 'all') {
     if (isMainCategory(currentCategory.value)) {
       const categoryType = mainCategoryMap[currentCategory.value]
-      result = result.filter(product => product.category === categoryType)
+      if (categoryType === 'tanker') {
+        result = result.filter(product => product.category === 'tanker')
+      } else if (categoryType === 'excavator') {
+        result = result.filter(product => product.category === 'excavator')
+      }
     } else {
       result = result.filter(product => product.subCategory === currentCategory.value)
     }
@@ -204,6 +313,12 @@ const paginatedProducts = computed(() => {
 function handleNodeClick(data: TreeNode) {
   currentCategory.value = data.id
   currentPage.value = 1
+  updateExpandedKeys(data.id)
+  if (data.id === 'all') {
+    router.push({ path: '/products' })
+  } else {
+    router.push({ path: '/products', query: { category: data.id } })
+  }
 }
 
 function handleSearch() {

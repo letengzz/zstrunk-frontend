@@ -4,7 +4,7 @@ import path from 'node:path'
 // 预设rem转px
 import presetRemToPx from '@unocss/preset-rem-to-px'
 // transformerDirectives 可以使用@apply @screen theme函数
-import transformerDirective from '@unocss/transformer-directives'
+// import transformerDirective from '@unocss/transformer-directives'
 import { defineConfig, presetAttributify, presetIcons, presetUno, transformerVariantGroup } from 'unocss'
 
 // loader helpers -- pnpm i @iconify/utils -D 官网的不晓得为啥 jekins 打包总会出点问题
@@ -40,6 +40,7 @@ export default defineConfig({
         ...loadLocalSvgCollections(),
         // 按需加载的图标集合 非必须
         'ant-design': () => import('@iconify-json/ant-design/icons.json').then(i => i.default),
+        'ep': () => import('@iconify-json/ep/icons.json').then(i => i.default),
       },
     }),
   ],
