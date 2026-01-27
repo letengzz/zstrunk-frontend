@@ -67,10 +67,10 @@
           <!-- 操作按钮 -->
           <div class="action-buttons">
             <el-button type="primary" size="large" class="btn-primary">
-              <i class="i-ep-phone"></i> Contact Us
+              <i class="i-ep-phone" w25 h25></i> Contact Us
             </el-button>
             <el-button type="default" size="large" class="btn-secondary">
-              <i class="i-ep-message"></i> Send Inquiry
+              <i class="i-ep-message" w25 h25></i> Send Inquiry
             </el-button>
           </div>
         </div>

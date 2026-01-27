@@ -105,6 +105,7 @@
           </div>
         </div>
       </div>
+    <Brands />
           <div class="product-section">
         <div class="product-section-inner">
           <h2 class="section-title">Popular Products</h2>
@@ -245,13 +246,14 @@
       </div>
     </div>
 
-    <div class="cta-section">
+
+
+        <div class="cta-section">
       <div class="cta-content">
         <h2 class="cta-title">IF YOU HAVE ANY ENQUIRY ABOUT QUOTATION OR COOPERATION, PLEASE FEEL FREE TO EMAIL US</h2>
         <el-button type="primary" round class="cta-button" @click="openContactDialog">Contact Us</el-button>
       </div>
     </div>
-
     <Footer
       phone="138-0013-8800"
       email="service@example.com"
@@ -301,6 +303,8 @@ const loadCarouselImages = async () => {
 import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
+import Brands from '@/components/Brands.vue'
+
 import { useRouter } from 'vue-router'
 import { getProductsByCategory, getProductById } from '@/data/products'
 
@@ -527,6 +531,7 @@ onMounted(() => {
     whyChooseObserver.observe(whyChooseRef.value)
   }
 })
+
 </script>
 
 <style scoped>

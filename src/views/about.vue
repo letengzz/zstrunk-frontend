@@ -117,42 +117,7 @@
       </div>
     </div>
 
-    <div class="brands-section">
-      <div class="brands-container">
-        <h2 class="section-title">Involved Brands</h2>
-        <p class="section-subtitle">Proud to collaborate with industry-leading partners worldwide</p>
-        <div class="brands-slider">
-           <div class="brands-track track-1">
-             <div v-for="brand in firstRowBrands" :key="brand.name" class="brand-item">
-               <div class="brand-logo">
-                 <img :src="brand.logo" :alt="brand.name" />
-               </div>
-               <div class="brand-name">{{ brand.name }}</div>
-             </div>
-             <div v-for="brand in firstRowBrands" :key="brand.name + '-dup'" class="brand-item">
-               <div class="brand-logo">
-                 <img :src="brand.logo" :alt="brand.name" />
-               </div>
-               <div class="brand-name">{{ brand.name }}</div>
-             </div>
-           </div>
-           <div class="brands-track track-2">
-             <div v-for="brand in secondRowBrands" :key="brand.name" class="brand-item">
-               <div class="brand-logo">
-                 <img :src="brand.logo" :alt="brand.name" />
-               </div>
-               <div class="brand-name">{{ brand.name }}</div>
-             </div>
-             <div v-for="brand in secondRowBrands" :key="brand.name + '-dup'" class="brand-item">
-               <div class="brand-logo">
-                 <img :src="brand.logo" :alt="brand.name" />
-               </div>
-               <div class="brand-name">{{ brand.name }}</div>
-             </div>
-           </div>
-         </div>
-      </div>
-    </div>
+
 
     <Footer />
 
@@ -211,27 +176,7 @@ const historicalData = [
   }
 ]
 
-const brands = [
-  { name: 'SCHMITZ', logo: '/images/brands/schmitz.png' },
-  { name: 'KRONE', logo: '/images/brands/krone.png' },
-  { name: 'WABASH', logo: '/images/brands/wabash.png' },
-  { name: 'HYUNDAI', logo: '/images/brands/hyundai.png' },
-  { name: 'VOLVO', logo: '/images/brands/volvo.png' },
-  { name: 'DAF', logo: '/images/brands/daf.png' },
-  { name: 'SCANIA', logo: '/images/brands/scania.png' },
-  { name: 'MERCEDES', logo: '/images/brands/mercedes.png' },
-  { name: 'MAN', logo: '/images/brands/man.png' },
-  { name: 'IVECO', logo: '/images/brands/iveco.png' },
-  { name: 'RENAULT', logo: '/images/brands/renault.png' },
-  { name: 'ISUZU', logo: '/images/brands/isuzu.png' },
-  { name: 'HINO', logo: '/images/brands/hino.png' },
-  { name: 'MITSUBISHI', logo: '/images/brands/mitsubishi.png' },
-  { name: 'FREIGHTLINER', logo: '/images/brands/freightliner.png' },
-  { name: 'KENWORTH', logo: '/images/brands/kenworth.png' }
-]
 
-const firstRowBrands = computed(() => brands.slice(0, 8))
-const secondRowBrands = computed(() => brands.slice(8))
 </script>
 
 <style scoped>
@@ -701,105 +646,11 @@ const secondRowBrands = computed(() => brands.slice(8))
   transition: width 0.4s ease;
 }
 
-.brands-section {
-  padding: 100px 60px;
-  background: #fff;
-}
 
-.brands-container {
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  overflow: hidden;
-}
 
-.brands-slider {
-  margin-top: 60px;
-  position: relative;
-}
 
-.brands-track {
-  display: flex;
-  gap: 30px;
-  width: max-content;
-}
 
-.track-1 {
-  animation: scrollLeft 30s linear infinite;
-}
 
-.track-2 {
-  animation: scrollRight 30s linear infinite;
-  margin-top: 30px;
-}
-
-@keyframes scrollLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scrollRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.brands-slider:hover .brands-track {
-  animation-play-state: paused;
-}
-
-.brand-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 30px;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  background: #fff;
-  white-space: nowrap;
-}
-
-.brand-item:hover {
-  border-color: #FF0000;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.brand-logo {
-  width: 120px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.brand-logo img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.brand-item:hover .brand-logo img {
-  filter: grayscale(0%);
-}
-
-.brand-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-}
 
 @media (max-width: 768px) {
   .historical-section {
@@ -868,33 +719,6 @@ const secondRowBrands = computed(() => brands.slice(8))
     height: 400px;
   }
 
-  .brands-section {
-    padding: 60px 20px;
-  }
 
-  .brands-slider {
-    margin-top: 40px;
-  }
-
-  .brands-track {
-    gap: 20px;
-  }
-
-  .track-2 {
-    margin-top: 20px;
-  }
-
-  .brand-item {
-    padding: 15px 20px;
-  }
-
-  .brand-logo {
-    width: 80px;
-    height: 40px;
-  }
-
-  .brand-name {
-    font-size: 12px;
-  }
 }
 </style>
