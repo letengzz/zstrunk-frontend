@@ -38,10 +38,70 @@
                 @node-click="handleNodeClick"
                 class="category-tree"
               />
+              <div class="latest-products-sidebar">
+                <h4 class="latest-products-title">Latest Products</h4>
+                <div class="latest-products-list">
+                  <div
+                    class="latest-product-item"
+                    v-for="product in latestProducts"
+                    :key="product.id"
+                    @click="goToProduct(product.id)"
+                  >
+                    <img :src="product.image" :alt="product.name" class="latest-product-image" />
+                    <div class="latest-product-info">
+                      <p class="latest-product-name">{{ product.name }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="products-content">
+            <div class="category-header">
+              <h2 class="category-title">{{ currentCategoryLabel }}</h2>
+              <p class="category-slogan">Your Professional Aluminium Fuel Tanker Supplier</p>
+              <p class="category-subtitle">ZhiShun Semi-trailer Company is a leading enterprise specializing in the production and sales of various tank semi-trailers, dedicated to delivering high-quality and high-performance transportation solutions to global customers.</p>
+              <div class="feature-boxes">
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <div class="i-ep-money" w28 h28></div>
+                  </div>
+                  <div class="feature-content">
+                    <h4 class="feature-title">Advanced Equipment</h4>
+                    <p class="feature-desc">Equipped with state-of-the-art production facilities and modern production lines, complemented by advanced customized manufacturing technology, the company ensures both the efficiency and superior quality of its products.</p>
+                  </div>
+                </div>
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <div class="i-ep-tools" w28 h28></div>
+                  </div>
+                  <div class="feature-content">
+                    <h4 class="feature-title">Competitive Pricing</h4>
+                    <p class="feature-desc">With a professional procurement and costing team, we strive to optimize costs while ensuring profitability, thereby offering highly competitive pricing to our valued customers.</p>
+                  </div>
+                </div>
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <div class="i-ep-setting" w28 h28></div>
+                  </div>
+                  <div class="feature-content">
+                    <h4 class="feature-title">Customized Service</h4>
+                    <p class="feature-desc">Upon receiving your requirements, our experienced engineering team will promptly provide you with comprehensive and optimized customized solutions tailored to your specific needs.</p>
+                  </div>
+                </div>
+                <div class="feature-box">
+                  <div class="feature-icon">
+                    <div class="i-ep-box" w28 h28></div>
+                  </div>
+                  <div class="feature-content">
+                    <h4 class="feature-title">Quality Control</h4>
+                    <p class="feature-desc">In terms of quality assurance, the company adheres strictly to industry standards and norms, utilizing cutting-edge testing equipment to ensure consistent product quality and maintain an excellent reputation in the market.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="products-grid" v-if="paginatedProducts.length > 0">
               <div class="product-col" v-for="product in paginatedProducts" :key="product.id">
                 <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }" :style="{ cursor: 'pointer' }">
@@ -73,6 +133,20 @@
                 @current-change="handleCurrentChange"
                 class="pagination"
               />
+            </div>
+
+            <div class="category-specs" v-if="currentCategory !== 'all'">
+              <h3 class="specs-title">Product Specifications</h3>
+              <div class="specs-grid">
+                <div class="specs-feature" v-if="categorySpecs.feature">
+                  <span class="specs-label">Feature:</span>
+                  <span class="specs-value">{{ categorySpecs.feature }}</span>
+                </div>
+                <div class="specs-item" v-for="(value, key) in categorySpecs.params" :key="key">
+                  <span class="specs-label">{{ key }}:</span>
+                  <span class="specs-value">{{ value }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -216,7 +290,7 @@ const categoryTree: TreeNode[] = [
     id: 'excavator',
     label: 'Excavator',
     children: [
-     
+
     ]
   }
 ]
@@ -351,6 +425,108 @@ function goToProduct(id: number) {
     }
   }
 }
+
+function findCategoryLabel(nodes: TreeNode[], targetId: string): string {
+  if (!targetId || targetId === 'all') {
+    return 'All Products'
+  }
+
+  for (const node of nodes) {
+    if (node.id === targetId) {
+      return node.label
+    }
+    if (node.children && node.children.length > 0) {
+      const found = findCategoryLabel(node.children, targetId)
+      if (found && found !== 'All Products') {
+        return found
+      }
+    }
+  }
+  return 'All Products'
+}
+
+const currentCategoryLabel = computed(() => {
+  return findCategoryLabel(categoryTree, currentCategory.value)
+})
+
+const latestProducts = computed(() => {
+  return products.slice(0, 4)
+})
+
+interface CategorySpecsData {
+  feature: string
+  params: Record<string, string>
+}
+
+const categorySpecsMap: Record<string, CategorySpecsData> = {
+  'AluminiumFuelTanker': {
+    feature: 'Carry fuel,oil,petroleum',
+    params: {
+      'Dimension(L*W*H)': '11600*2500*3250mm(42,000L)',
+      'Material': 'Aluminum',
+      'Compartment': '8',
+      'Capacity': '42,000L',
+      'Tare Weight(Kg)': '7,000kg',
+      'Kingpin': 'Bolt-in 3.5"',
+      'Landing Gear': '19"',
+      'Tire Size': '11R22.5(13 sets)',
+      'Rim Size': '9.00*22.5(13 sets)',
+      'Axle': 'FUWA 13 tons 3 axles',
+      'Leafs Spring': 'Fuwa brand with 8pcs of leafs spring',
+      'Brake System': 'RE 4 relay valve',
+      'Manhole': 'Aluminum alloy Φ500mm (20") manhole with aluminum alloy cover',
+      'Discharge Valve': 'Aluminum alloy discharge valve with cover',
+      'Foot Valve': 'Pneumatic control DN80 aluminum alloy foot valves',
+      'Pneumatic Control System': '1 set pneumatic control combined switch / 1 unit emergency switch',
+      'Discharge Hose': '2 units 3"×6m factory PVC hose with quick coupling on both ends',
+      'Vapor Recovery & Overfill System': 'Optional',
+      'Fire Extinguisher Carrier': '2 units at the left of rear of tanker',
+      'Electric System': 'One unit of 24V 7-pin ISO standard socket',
+      'Paint': 'Two-component paint'
+    }
+  },
+  'CarbonSteelFuelTank Trailer': {
+    feature: 'Carry fuel,oil,petroleum',
+    params: {
+      'Dimension(L*W*H)': '11600*2500*3700mm',
+      'Material': 'Carbon Steel Q345B',
+      'Compartment': '5',
+      'Capacity': '45,000L',
+      'Tare Weight(Kg)': '9,500kg',
+      'Kingpin': 'Bolt-in 3.5"',
+      'Landing Gear': '19" two speed',
+      'Tire Size': '11R22.5(12 sets)',
+      'Axle': 'FUWA 13 tons 3 axles',
+      'Brake System': 'RE 4 relay valve',
+      'Manhole': 'Aluminum alloy Φ500mm',
+      'Discharge Valve': 'API valve',
+      'Paint': 'Sand blasting, epoxy primer, finish paint'
+    }
+  },
+  'BulkCementTrailer': {
+    feature: 'Transport bulk cement, powder',
+    params: {
+      'Dimension(L*W*H)': '12000*2500*3900mm',
+      'Material': 'Carbon Steel Q345B',
+      'Capacity': '45m³',
+      'Tare Weight(Kg)': '8,500kg',
+      'Kingpin': 'Bolt-in 3.5"',
+      'Landing Gear': '28 tons',
+      'Tire Size': '11R22.5',
+      'Axle': 'FUWA 13 tons 3 axles',
+      'Discharge System': 'Air compressor system',
+      'Pipe System': '110mm diameter',
+      'Paint': 'Two-component paint'
+    }
+  }
+}
+
+const categorySpecs = computed(() => {
+  if (currentCategory.value === 'all') {
+    return { feature: '', params: {} }
+  }
+  return categorySpecsMap[currentCategory.value] || { feature: '', params: {} }
+})
 </script>
 
 <style scoped>
@@ -414,14 +590,14 @@ function goToProduct(id: number) {
 }
 
 .products-main-inner {
-  max-width: 1600px;
+  max-width: 1700px;
   margin: 0 auto;
-  padding: 0 40px;
+  /* padding: 0 40px; */
 }
 
 .content-layout {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 370px 1fr;
   gap: 32px;
   align-items: start;
 }
@@ -445,7 +621,7 @@ function goToProduct(id: number) {
 
 .category-sidebar {
   background: #ffffff;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   padding: 18px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   border: 1px solid #e2e8f0;
@@ -460,7 +636,7 @@ function goToProduct(id: number) {
 }
 
 :deep(.search-input-sidebar .el-input__wrapper) {
-  border-radius: 8px;
+  /* border-radius: 8px; */
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
   border: 1px solid #e2e8f0;
   background: #f8fafc;
@@ -506,7 +682,7 @@ function goToProduct(id: number) {
 
 .category-tree {
   background: #ffffff;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   padding: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   border: 1px solid #e2e8f0;
@@ -514,7 +690,7 @@ function goToProduct(id: number) {
 
 :deep(.category-tree .el-tree-node__content) {
   padding: 8px 12px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   transition: all 0.3s ease;
 }
 
@@ -558,10 +734,261 @@ function goToProduct(id: number) {
 
 :deep(.category-tree .el-tree-node__label) {
   font-size: 15px;
+  white-space: normal;
+  word-break: break-word;
+  overflow: visible;
+  line-height: 1.4;
+}
+
+.latest-products-sidebar {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.latest-products-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 16px 0;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.latest-products-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF0000, transparent);
+  border-radius: 2px;
+}
+
+.latest-products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.latest-product-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.latest-product-item:hover {
+  background: #fff5f5;
+  transform: translateX(4px);
+}
+
+.latest-product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.latest-product-info {
+  margin-left: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.latest-product-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a2a4a;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.latest-product-tag {
+  font-size: 12px;
+  color: #FF0000;
+  margin: 0;
+  font-weight: 500;
 }
 
 .products-content {
   flex: 1;
+}
+
+.category-header {
+  margin-bottom: 24px;
+  /* padding: 0px 24px; */
+  font-size: 26px;
+  /* background: #ffffff; */
+  /* border-radius: 12px; */
+  /* border: 1px solid #e2e8f0; */
+  /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); */
+}
+
+.category-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 12px 0;
+  position: relative;
+  display: inline-block;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF0000, transparent);
+  border-radius: 2px;
+}
+
+.category-slogan {
+  font-size: 24px;
+  color: #1a2a4a;
+  margin: 16px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.category-subtitle {
+  font-size: 14px;
+  color: #555555;
+  margin: 0;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.category-specs {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 32px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.specs-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #FF0000;
+  display: inline-block;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 16px 32px;
+}
+
+.specs-feature {
+  grid-column: 1 / -1;
+  padding: 16px;
+  background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+  border-radius: 8px;
+  border-left: 4px solid #FF0000;
+}
+
+.specs-item {
+  display: flex;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.specs-item:hover {
+  background: #fff5f5;
+  transform: translateX(4px);
+}
+
+.specs-label {
+  font-weight: 600;
+  color: #1a2a4a;
+  flex-shrink: 0;
+  min-width: 140px;
+}
+
+.specs-value {
+  color: #555555;
+  line-height: 1.6;
+}
+
+.feature-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, 0.6fr);
+  gap: 24px;
+  margin-top: 32px;
+  box-sizing: border-box;
+  padding-bottom: 32px;
+  border-bottom: 2px dashed #FF0000;
+}
+
+.feature-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 32px 28px;
+  min-height: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+  border-bottom: 3px solid #FF0000;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%);
+  border-radius: 8px;
+  color: #ffffff;
+  flex-shrink: 0;
+  margin: 0 0 16px 0;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 10px 0;
+}
+
+.feature-desc {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+  line-height: 1.6;
 }
 
 .products-grid {
@@ -594,7 +1021,7 @@ function goToProduct(id: number) {
 }
 
 :deep(.pagination .el-pager li) {
-  border-radius: 8px;
+  /* border-radius: 8px; */
   margin: 0 4px;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -650,7 +1077,7 @@ function goToProduct(id: number) {
 .product-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   overflow: hidden;
   transition: all 0.3s ease;
   height: 100%;
@@ -677,7 +1104,7 @@ function goToProduct(id: number) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .product-tag {

@@ -1061,7 +1061,7 @@ img {
 .product-card {
   background: #ffffff;
   border: 1px solid #e0ddd5;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   overflow: hidden;
   transition: all 0.3s ease;
   height: 285px;
