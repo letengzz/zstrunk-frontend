@@ -20,33 +20,37 @@
           <template #title><span class="products-title">PRODUCTS</span></template>
           <div class="products-dropdown">
             <div class="product-row">
-              <div class="product-column">
+              <div class="product-column liquid-power-column">
                 <div class="product-category-title">Liquid and Power Transport Trailers</div>
-                <router-link to="/products?category=AluminiumFuelTanker" class="product-item">Aluminium Fuel Tanker</router-link>
-                <router-link to="/products?category=CarbonSteelFuelTank Trailer" class="product-item">Carbon Steel Fuel Tank Trailer</router-link>
-                <router-link to="/products?category=BulkCementTrailer" class="product-item">Bulk Cement Trailer</router-link>
-                <router-link to="/products?category=AsphaltTankTrailers" class="product-item">Asphalt Tank Trailers</router-link>
-                <router-link to="/products?category=GasTankerTrailer" class="product-item">Gas Tanker Trailer</router-link>
-                <router-link to="/products?category=StainlessSteelTanker Trailer" class="product-item">Stainless Steel Tanker Trailer</router-link>
-                <router-link to="/products?category=ChemicalTankTrailer" class="product-item">Chemical Tank Trailer</router-link>
-                <router-link to="/products?category=StorageTank" class="product-item">Storage Tank</router-link>
+                <div class="liquid-power-items">
+                  <router-link to="/products?category=AluminiumFuelTanker" class="product-item">Aluminium Fuel Tanker</router-link>
+                  <router-link to="/products?category=CarbonSteelFuelTank Trailer" class="product-item">Carbon Steel Fuel Tank Trailer</router-link>
+                  <router-link to="/products?category=BulkCementTrailer" class="product-item">Bulk Cement Trailer</router-link>
+                  <router-link to="/products?category=AsphaltTankTrailers" class="product-item">Asphalt Tank Trailers</router-link>
+                  <router-link to="/products?category=GasTankerTrailer" class="product-item">Gas Tanker Trailer</router-link>
+                  <router-link to="/products?category=StainlessSteelTanker Trailer" class="product-item">Stainless Steel Tanker Trailer</router-link>
+                  <router-link to="/products?category=ChemicalTankTrailer" class="product-item">Chemical Tank Trailer</router-link>
+                  <router-link to="/products?category=StorageTank" class="product-item">Storage Tank</router-link>
+                </div>
               </div>
               <div class="product-column">
                 <div class="product-category-title">Container Semi Trailer</div>
                 <router-link to="/products?category=SkeletalTrailer" class="product-item">Skeletal Trailer</router-link>
                 <router-link to="/products?category=FlatbedTrailer" class="product-item">Flatbed Trailer</router-link>
               </div>
-              <div class="product-column">
+              <div class="product-column semi-trailer-column">
                 <div class="product-category-title">Semi Trailer</div>
-                <router-link to="/products?category=LowbedSemiTrailer" class="product-item">Lowbed Semi Trailer</router-link>
-                <router-link to="/products?category=TipperSemiTrailer" class="product-item">Tipper Semi Trailer</router-link>
-                <router-link to="/products?category=FenceCargoTrailer" class="product-item">Fence Cargo Trailer</router-link>
-                <router-link to="/products?category=SideWallTipper" class="product-item">Side Wall Tipper</router-link>
-                <router-link to="/products?category=SideCurtainTrailer" class="product-item">Side Curtain Trailer</router-link>
-                <router-link to="/products?category=CarCarrierTailer" class="product-item">Car Carrier Tailer</router-link>
-                <router-link to="/products?category=BoxSemiTrailer" class="product-item">Box Semi Trailer</router-link>
-                <router-link to="/products?category=FullDrawbarTrailer" class="product-item">Full Drawbar Trailer</router-link>
-                <router-link to="/products?category=RemovableGooseneckTrailer" class="product-item">Removable Gooseneck Trailer</router-link>
+                <div class="semi-trailer-items">
+                  <router-link to="/products?category=LowbedSemiTrailer" class="product-item">Lowbed Semi Trailer</router-link>
+                  <router-link to="/products?category=TipperSemiTrailer" class="product-item">Tipper Semi Trailer</router-link>
+                  <router-link to="/products?category=FenceCargoTrailer" class="product-item">Fence Cargo Trailer</router-link>
+                  <router-link to="/products?category=SideWallTipper" class="product-item">Side Wall Tipper</router-link>
+                  <router-link to="/products?category=SideCurtainTrailer" class="product-item">Side Curtain Trailer</router-link>
+                  <router-link to="/products?category=CarCarrierTailer" class="product-item">Car Carrier Tailer</router-link>
+                  <router-link to="/products?category=BoxSemiTrailer" class="product-item">Box Semi Trailer</router-link>
+                  <router-link to="/products?category=FullDrawbarTrailer" class="product-item">Full Drawbar Trailer</router-link>
+                  <router-link to="/products?category=RemovableGooseneckTrailer" class="product-item">Removable Gooseneck Trailer</router-link>
+                </div>
               </div>
             </div>
             <div class="product-row">
@@ -286,7 +290,7 @@
   flex-direction: column;
   gap: 20px;
   padding: 10px;
-  min-width: 900px;
+  min-width: 700px;
 }
 
 .product-row {
@@ -324,6 +328,18 @@
 .product-item:hover {
   color: #FF4500;
   background: rgba(255, 69, 0, 0.1);
+}
+
+.semi-trailer-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 12px;
+}
+
+.liquid-power-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 12px;
 }
 
 :global(.products-popper) {
