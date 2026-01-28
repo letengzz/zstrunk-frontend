@@ -11,31 +11,30 @@
 
     <div class="products-main-section">
       <div class="products-main-inner">
-        <div class="search-section">
-          <el-input
-            v-model="searchQuery"
-            placeholder="Search products..."
-            class="search-input"
-            @input="handleSearch"
-          >
-            <template #prefix>
-              <div class="i-ep-search" w20 h20></div>
-            </template>
-          </el-input>
-        </div>
-
         <div class="content-layout">
           <div class="sidebar">
             <div class="category-sidebar">
               <h3 class="sidebar-title">Categories</h3>
+              <div class="sidebar-search">
+                <el-input
+                  v-model="searchQuery"
+                  placeholder="Search products..."
+                  class="search-input-sidebar"
+                  @input="handleSearch"
+                >
+                  <template #prefix>
+                    <div class="i-ep-search" w14 h14></div>
+                  </template>
+                </el-input>
+              </div>
               <el-tree
                 :data="categoryTree"
                 :props="defaultProps"
                 :current-node-key="currentCategory"
-                :default-expanded-keys="expandedKeys"
                 node-key="id"
                 :highlight-current="true"
                 :expand-on-click-node="false"
+                :accordion="true"
                 @node-click="handleNodeClick"
                 class="category-tree"
               />
@@ -363,9 +362,19 @@ function goToProduct(id: number) {
 }
 
 .page-header {
-  background: #ffffff;
-  padding: 60px 0 40px;
-  border-bottom: 1px solid #e2e8f0;
+  background: url('/images/product/image.png') center/cover no-repeat;
+  padding: 80px 0 60px;
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .page-header-inner {
@@ -373,19 +382,21 @@ function goToProduct(id: number) {
   margin: 0 auto;
   padding: 0 40px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .page-title {
   font-size: 48px;
   font-weight: 700;
-  color: #1a2a4a;
+  color: #ffffff;
   margin: 0 0 16px 0;
   line-height: 1.2;
 }
 
 .page-description {
   font-size: 18px;
-  color: #4a5568;
+  color: #ffffff;
   margin: 0;
   line-height: 1.6;
 }
@@ -400,57 +411,10 @@ function goToProduct(id: number) {
   padding: 0 40px;
 }
 
-.search-section {
-  margin-bottom: 40px;
-}
-
-.search-input {
-  width: 100%;
-}
-
-:deep(.search-input .el-input__wrapper) {
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  border: 2px solid #e2e8f0;
-  background: #ffffff;
-  transition: all 0.3s ease;
-}
-
-:deep(.search-input .el-input__wrapper:hover) {
-  border-color: #FF0000;
-}
-
-:deep(.search-input .el-input__wrapper.is-focus) {
-  border-color: #FF0000;
-  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
-}
-
-:deep(.search-input .el-input__inner) {
-  font-size: 16px;
-  padding: 16px 20px;
-  height: 56px;
-}
-
-.search-icon {
-  width: 20px;
-  height: 20px;
-  margin-left: 16px;
-  color: #999;
-  transition: color 0.3s ease;
-}
-
-:deep(.search-input .el-input__wrapper.is-focus) .search-icon {
-  color: #FF0000;
-}
-
-:deep(.search-input .el-input__wrapper:hover) .search-icon {
-  color: #FF0000;
-}
-
 .content-layout {
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 40px;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
   align-items: start;
 }
 
@@ -460,14 +424,14 @@ function goToProduct(id: number) {
   }
 }
 
-.sidebar {
-  /* 移除固定效果，让分类随页面正常滚动 */
-}
+/* .sidebar {
+  position: sticky;
+  top: 100px;
+} */
 
 @media (max-width: 992px) {
   .sidebar {
     position: static;
-    max-height: none;
   }
 }
 
@@ -479,11 +443,44 @@ function goToProduct(id: number) {
   border: 1px solid #e2e8f0;
 }
 
+.sidebar-search {
+  margin-bottom: 16px;
+}
+
+.search-input-sidebar {
+  width: 100%;
+}
+
+:deep(.search-input-sidebar .el-input__wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+:deep(.search-input-sidebar .el-input__wrapper:hover) {
+  border-color: #FF0000;
+  background: #ffffff;
+}
+
+:deep(.search-input-sidebar .el-input__wrapper.is-focus) {
+  border-color: #FF0000;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.1);
+}
+
+:deep(.search-input-sidebar .el-input__inner) {
+  font-size: 13px;
+  padding: 8px 12px;
+  height: 32px;
+}
+
 .sidebar-title {
   font-size: 20px;
   font-weight: 600;
   color: #1a2a4a;
-  margin: 0 0 20px 0;
+  margin: 0 0 16px 0;
   position: relative;
   padding-bottom: 12px;
 }
