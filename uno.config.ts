@@ -46,7 +46,9 @@ export default defineConfig({
   ],
   // 安全列表 动态图标需要 例如：<div i-menu-home /> 菜单图标是后端返回的需要动态处理
   safelist: generateSafeList(['menu']), // 传入数组参数
-  transformers: [transformerVariantGroup(), transformerDirective()],
+  transformers: [transformerVariantGroup()
+    //, transformerDirective()
+  ],
   //  自定义配置项
   rules: [
     /** 以下官网规则可自定义转换 */

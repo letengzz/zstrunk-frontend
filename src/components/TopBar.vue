@@ -76,7 +76,7 @@
                 <router-link to="/products?category=Trailer" class="product-item">Trailer</router-link>
               </div>
                 <div class="product-column">
-                <div class="product-category-title">Excavator</div>
+                <div class="product-category-title">Excavators</div>
                 <router-link to="/products?category=excavator" class="product-item">Excavator</router-link>
               </div>
             </div>

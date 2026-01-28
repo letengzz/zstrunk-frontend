@@ -137,7 +137,7 @@ interface TreeNode {
 }
 
 const categoryTree: TreeNode[] = [
-  {
+{
     id: 'all',
     label: 'All Products',
     children: []
@@ -168,11 +168,15 @@ const categoryTree: TreeNode[] = [
     id: 'SemiTrailer',
     label: 'Semi Trailer',
     children: [
-      { id: 'ContainerSemiTrailer', label: 'Container Semi Trailer' },
-      { id: 'SinotrukHowo', label: 'Sinotruk Howo' },
-      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck' },
-      { id: 'HOWODumpTruck', label: 'HOWO Dump Truck' },
-      { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck' },
+      { id: 'LowbedSemiTrailer', label: 'Lowbed Semi Trailer' },
+      { id: 'TipperSemiTrailer', label: 'Tipper Semi Trailer' },
+      { id: 'FenceCargoTrailer', label: 'Fence Cargo Trailer' },
+      { id: 'SideWallTipper', label: 'Side Wall Tipper' },
+      { id: 'SideCurtainTrailer', label: 'Side Curtain Trailer' },
+	  { id: 'CarCarrierTailer', label: 'Car Carrier Tailer' },
+	  { id: 'BoxSemiTrailer', label: 'Box Semi Trailer' },
+	  { id: 'FullDrawbarTrailer', label: 'Full Drawbar Trailer' },
+	  { id: 'RemovableGooseneckTrailer', label: 'Removable Gooseneck Trailer' },
     ]
   },
   {
@@ -193,6 +197,15 @@ const categoryTree: TreeNode[] = [
     ]
   },
   {
+    id: 'SinotruckHowo',
+    label: 'Sinotruck Howo',
+    children: [
+      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck' },
+	  { id: 'HOWODumpTruck', label: 'HOWO Dump Truck' },
+	  { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck' },
+    ]
+  },
+  {
     id: 'ExistingTrucksAndTrailers',
     label: 'Existing Trucks and Trailers',
     children: [
@@ -203,12 +216,7 @@ const categoryTree: TreeNode[] = [
     id: 'excavator',
     label: 'Excavator',
     children: [
-      { id: 'excavator-hydraulic', label: 'Hydraulic Excavator' },
-      { id: 'excavator-mini', label: 'Mini Excavator' },
-      { id: 'excavator-mining', label: 'Mining Excavator' },
-      { id: 'excavator-wheel', label: 'Wheel Excavator' },
-      { id: 'excavator-long', label: 'Long Reach Excavator' },
-      { id: 'excavator-forestry', label: 'Forestry Excavator' },
+     
     ]
   }
 ]
@@ -544,9 +552,9 @@ function goToProduct(id: number) {
   color: #ffffff !important;
 }
 
-:deep(.category-tree .el-tree-node__expand-icon) {
-  /* color: #ffffff; */
-}
+/* :deep(.category-tree .el-tree-node__expand-icon) {
+  color: #ffffff;
+} */
 
 :deep(.category-tree .el-tree-node__label) {
   font-size: 15px;
@@ -572,10 +580,10 @@ function goToProduct(id: number) {
   justify-content: center;
   align-items: center;
   padding: 40px 0;
-  background: #ffffff;
+  /* background: #ffffff;
   border-radius: 16px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); */
   margin-top: 40px;
 }
 
@@ -719,7 +727,7 @@ function goToProduct(id: number) {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   flex: 1;
 }
