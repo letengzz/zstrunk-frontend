@@ -13,6 +13,8 @@ export interface Product {
   specs?: { label: string; value: string }[]
   parameters?: { name: string; value: string }[]
   features?: string[]
+  specsText?: string[]
+  markdownPath?: string
 }
 
 export const products: Product[] = productsData as Product[]

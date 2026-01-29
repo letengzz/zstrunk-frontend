@@ -2,8 +2,13 @@
   {
     "id": 1,
     "name": "Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck",
-    "desc": "Efficient filtration for engine health",
+    "desc": "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity",
     "image": "/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe.jpg",
+    "images": [
+      "/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe-2.jpg",
+      "/public/products/three-axle-40-000l-4-compartment-carbon-steel20cbe-1.jpg",
+      "/public/products/45000LitersOilTankerTrailer.jpg"
+    ],
     "tag": "Hot",
     "category": "tanker",
     "subCategory": "CarbonSteelFuelTank Trailer",
@@ -25,7 +30,18 @@
       "Carbon steel construction for durability",
       "Advanced safety features including anti-rollover protection",
       "Easy maintenance with accessible components"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-1.md"
   },
   {
     "id": 2,
@@ -46,7 +62,18 @@
       "Corrosion resistant coating",
       "Easy to clean and maintain",
       "Compliant with international safety standards"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-2.md"
   },
   {
     "id": 3,
@@ -67,7 +94,18 @@
       "Emergency shut-off valve",
       "Spill containment system",
       "Level gauge indicator"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-3.md"
   },
   {
     "id": 4,
@@ -88,7 +126,18 @@
       "Corrosion resistant interior",
       "Easy operation",
       "Low maintenance cost"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-4.md"
   },
   {
     "id": 5,
@@ -106,10 +155,21 @@
     ],
     "features": [
       "Double wall construction",
-      "Pressure relief device",
+      "pressure relief device",
       "Leak detection system",
       "Chemical resistant lining"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-5.md"
   },
   {
     "id": 6,
@@ -130,7 +190,18 @@
       "Aerodynamic design",
       "Easy discharge system",
       "Dust suppression system"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-6.md"
   },
   {
     "id": 7,
@@ -151,7 +222,18 @@
       "Heating system",
       "Safety valves",
       "Easy cleaning"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-7.md"
   },
   {
     "id": 101,
@@ -172,7 +254,18 @@
       "Fuel efficient engine",
       "Comfortable cab with AC",
       "Easy maintenance access"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-101.md"
   },
   {
     "id": 102,
@@ -193,7 +286,18 @@
       "Adjustable undercarriage",
       "Rubber tracks for minimal ground damage",
       "Foldable boom for easy transport"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-102.md"
   },
   {
     "id": 103,
@@ -214,7 +318,18 @@
       "Heavy-duty undercarriage",
       "Automatic lubrication system",
       "Remote monitoring capability"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-103.md"
   },
   {
     "id": 104,
@@ -235,6 +350,17 @@
       "All-wheel steering",
       "Quick coupler system",
       "360-degree swing"
-    ]
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-104.md"
   }
 ]

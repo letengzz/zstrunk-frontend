@@ -4,58 +4,22 @@
 
     <div class="page-header">
       <div class="page-header-inner">
-        <h1 class="page-title">Products</h1>
-        <p class="page-description">Explore our wide range of high-quality products</p>
+        <!-- <h1 class="page-title">Products</h1> -->
+        <!-- <p class="page-description">Explore our wide range of high-quality products</p> -->
       </div>
     </div>
 
     <div class="products-main-section">
       <div class="products-main-inner">
         <div class="content-layout">
-          <div class="sidebar">
-            <div class="category-sidebar">
-              <h3 class="sidebar-title">Categories</h3>
-              <div class="sidebar-search">
-                <el-input
-                  v-model="searchQuery"
-                  placeholder="Search products..."
-                  class="search-input-sidebar"
-                  @input="handleSearch"
-                >
-                  <template #prefix>
-                    <div class="i-ep-search" w14 h14></div>
-                  </template>
-                </el-input>
-              </div>
-              <el-tree
-                :data="categoryTree"
-                :props="defaultProps"
-                :current-node-key="currentCategory"
-                node-key="id"
-                :highlight-current="true"
-                :expand-on-click-node="false"
-                :accordion="true"
-                @node-click="handleNodeClick"
-                class="category-tree"
-              />
-              <div class="latest-products-sidebar">
-                <h4 class="latest-products-title">Latest Products</h4>
-                <div class="latest-products-list">
-                  <div
-                    class="latest-product-item"
-                    v-for="product in latestProducts"
-                    :key="product.id"
-                    @click="goToProduct(product.id)"
-                  >
-                    <img :src="product.image" :alt="product.name" class="latest-product-image" />
-                    <div class="latest-product-info">
-                      <p class="latest-product-name">{{ product.name }}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Sidebar
+            :search-query="searchQuery"
+            :category-tree="categoryTree"
+            :current-category="currentCategory"
+            :latest-products="latestProducts"
+            @update:searchQuery="searchQuery = $event"
+            @category-change="handleCategoryChange"
+          />
 
           <div class="products-content">
             <div class="category-header">
@@ -172,6 +136,7 @@
 import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
+import Sidebar from '@/components/Sidebar.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
 import { products, getProductById } from '@/data/products'
@@ -339,11 +304,6 @@ function updateExpandedKeys(categoryId: string) {
   }
 }
 
-const defaultProps = {
-  children: 'children',
-  label: 'label'
-}
-
 const mainCategoryMap: Record<string, 'tanker' | 'excavator'> = {
   'LiquidandPowerTransportTrailers': 'tanker',
   'ContainerSemiTrailer': 'tanker',
@@ -391,19 +351,10 @@ const paginatedProducts = computed(() => {
   return filteredProducts.value.slice(start, end)
 })
 
-function handleNodeClick(data: TreeNode) {
-  currentCategory.value = data.id
+function handleCategoryChange(categoryId: string) {
+  currentCategory.value = categoryId
   currentPage.value = 1
-  updateExpandedKeys(data.id)
-  if (data.id === 'all') {
-    router.push({ path: '/products' })
-  } else {
-    router.push({ path: '/products', query: { category: data.id } })
-  }
-}
-
-function handleSearch() {
-  currentPage.value = 1
+  updateExpandedKeys(categoryId)
 }
 
 function handleSizeChange(size: number) {
