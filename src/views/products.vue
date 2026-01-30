@@ -99,19 +99,11 @@
               />
             </div>
 
-            <div class="category-specs" v-if="currentCategory !== 'all'">
-              <h3 class="specs-title">Product Specifications</h3>
-              <div class="specs-grid">
-                <div class="specs-feature" v-if="categorySpecs.feature">
-                  <span class="specs-label">Feature:</span>
-                  <span class="specs-value">{{ categorySpecs.feature }}</span>
-                </div>
-                <div class="specs-item" v-for="(value, key) in categorySpecs.params" :key="key">
-                  <span class="specs-label">{{ key }}:</span>
-                  <span class="specs-value">{{ value }}</span>
-                </div>
-              </div>
+            <div class="category-markdown" v-if="renderedMarkdown">
+              <div v-html="renderedMarkdown"></div>
             </div>
+
+
           </div>
         </div>
       </div>
@@ -140,6 +132,7 @@ import Sidebar from '@/components/Sidebar.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
 import { products, getProductById } from '@/data/products'
+import { marked } from 'marked'
 
 const router = useRouter()
 const route = useRoute()
@@ -173,10 +166,11 @@ interface TreeNode {
   id: string
   label: string
   children?: TreeNode[]
+  markdownPath?: string
 }
 
 const categoryTree: TreeNode[] = [
-{
+  {
     id: 'all',
     label: 'All Products',
     children: []
@@ -184,79 +178,85 @@ const categoryTree: TreeNode[] = [
   {
     id: 'LiquidandPowerTransportTrailers',
     label: 'Liquid and Power Transport Trailers',
+    markdownPath: '/md/liquid-power-transport-trailers.md',
     children: [
-      { id: 'AluminiumFuelTanker', label: 'Aluminium Fuel Tanker' },
-      { id: 'CarbonSteelFuelTank Trailer', label: 'Carbon Steel Fuel Tank Trailer' },
-      { id: 'BulkCementTrailer', label: 'Bulk Cement Trailer' },
-      { id: 'AsphaltTankTrailers', label: 'Asphalt Tank Trailers' },
-      { id: 'GasTankerTrailer', label: 'Gas Tanker Trailer' },
-      { id: 'StainlessSteelTanker Trailer', label: 'Stainless Steel Tanker Trailer' },
-      { id: 'ChemicalTankTrailer', label: 'Chemical Tank Trailer' },
-      { id: 'StorageTank', label: 'Storage Tank' },
+      { id: 'AluminiumFuelTanker', label: 'Aluminium Fuel Tanker', markdownPath: '/md/aluminium-fuel-tanker.md' },
+      { id: 'CarbonSteelFuelTank Trailer', label: 'Carbon Steel Fuel Tank Trailer', markdownPath: '/md/carbon-steel-fuel-tank-trailer.md' },
+      { id: 'BulkCementTrailer', label: 'Bulk Cement Trailer', markdownPath: '/md/bulk-cement-trailer.md' },
+      { id: 'AsphaltTankTrailers', label: 'Asphalt Tank Trailers', markdownPath: '/md/asphalt-tank-trailers.md' },
+      { id: 'GasTankerTrailer', label: 'Gas Tanker Trailer', markdownPath: '/md/gas-tanker-trailer.md' },
+      { id: 'StainlessSteelTanker Trailer', label: 'Stainless Steel Tanker Trailer', markdownPath: '/md/stainless-steel-tanker-trailer.md' },
+      { id: 'ChemicalTankTrailer', label: 'Chemical Tank Trailer', markdownPath: '/md/chemical-tank-trailer.md' },
+      { id: 'StorageTank', label: 'Storage Tank', markdownPath: '/md/storage-tank.md' },
     ]
   },
   {
     id: 'ContainerSemiTrailer',
     label: 'Container Semi Trailer',
+    markdownPath: '/md/container-semi-trailer.md',
     children: [
-      { id: 'SkeletalTrailer', label: 'Skeletal Trailer' },
-      { id: 'FlatbedTrailer', label: 'Flatbed Trailer' },
+      { id: 'SkeletalTrailer', label: 'Skeletal Trailer', markdownPath: '/md/skeletal-trailer.md' },
+      { id: 'FlatbedTrailer', label: 'Flatbed Trailer', markdownPath: '/md/flatbed-trailer.md' },
     ]
   },
   {
     id: 'SemiTrailer',
     label: 'Semi Trailer',
+    markdownPath: '/md/semi-trailer.md',
     children: [
-      { id: 'LowbedSemiTrailer', label: 'Lowbed Semi Trailer' },
-      { id: 'TipperSemiTrailer', label: 'Tipper Semi Trailer' },
-      { id: 'FenceCargoTrailer', label: 'Fence Cargo Trailer' },
-      { id: 'SideWallTipper', label: 'Side Wall Tipper' },
-      { id: 'SideCurtainTrailer', label: 'Side Curtain Trailer' },
-	  { id: 'CarCarrierTailer', label: 'Car Carrier Tailer' },
-	  { id: 'BoxSemiTrailer', label: 'Box Semi Trailer' },
-	  { id: 'FullDrawbarTrailer', label: 'Full Drawbar Trailer' },
-	  { id: 'RemovableGooseneckTrailer', label: 'Removable Gooseneck Trailer' },
+      { id: 'LowbedSemiTrailer', label: 'Lowbed Semi Trailer', markdownPath: '/md/lowbed-semi-trailer.md' },
+      { id: 'TipperSemiTrailer', label: 'Tipper Semi Trailer', markdownPath: '/md/tipper-semi-trailer.md' },
+      { id: 'FenceCargoTrailer', label: 'Fence Cargo Trailer', markdownPath: '/md/fence-cargo-trailer.md' },
+      { id: 'SideWallTipper', label: 'Side Wall Tipper', markdownPath: '/md/side-wall-tipper.md' },
+      { id: 'SideCurtainTrailer', label: 'Side Curtain Trailer', markdownPath: '/md/side-curtain-trailer.md' },
+      { id: 'CarCarrierTailer', label: 'Car Carrier Tailer', markdownPath: '/md/car-carrier-tailer.md' },
+      { id: 'BoxSemiTrailer', label: 'Box Semi Trailer', markdownPath: '/md/box-semi-trailer.md' },
+      { id: 'FullDrawbarTrailer', label: 'Full Drawbar Trailer', markdownPath: '/md/full-drawbar-trailer.md' },
+      { id: 'RemovableGooseneckTrailer', label: 'Removable Gooseneck Trailer', markdownPath: '/md/removable-gooseneck-trailer.md' },
     ]
   },
   {
     id: 'ShacmanTrucks',
     label: 'Shacman Trucks',
+    markdownPath: '/md/shacman-trucks.md',
     children: [
-      { id: 'ShacmanDumpTruck', label: 'Shacman Dump Truck' },
-      { id: 'ShacmanTractorTruck', label: 'Shacman Tractor Truck' },
-      { id: 'ShacmanTankerTrucks', label: 'Shacman Tanker Trucks' },
+      { id: 'ShacmanDumpTruck', label: 'Shacman Dump Truck', markdownPath: '/md/shacman-dump-truck.md' },
+      { id: 'ShacmanTractorTruck', label: 'Shacman Tractor Truck', markdownPath: '/md/shacman-tractor-truck.md' },
+      { id: 'ShacmanTankerTrucks', label: 'Shacman Tanker Trucks', markdownPath: '/md/shacman-tanker-trucks.md' },
     ]
   },
   {
     id: 'Accessories',
     label: 'Accessories',
+    markdownPath: '/md/accessories.md',
     children: [
-      { id: 'TrailerAccessories', label: 'Trailer Accessories' },
-      { id: 'Engine', label: 'Engine' },
+      { id: 'TrailerAccessories', label: 'Trailer Accessories', markdownPath: '/md/trailer-accessories.md' },
+      { id: 'Engine', label: 'Engine', markdownPath: '/md/engine.md' },
     ]
   },
   {
     id: 'SinotruckHowo',
     label: 'Sinotruck Howo',
+    markdownPath: '/md/sinotruck-howo.md',
     children: [
-      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck' },
-	  { id: 'HOWODumpTruck', label: 'HOWO Dump Truck' },
-	  { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck' },
+      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck', markdownPath: '/md/howo-tractor-truck.md' },
+      { id: 'HOWODumpTruck', label: 'HOWO Dump Truck', markdownPath: '/md/howo-dump-truck.md' },
+      { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck', markdownPath: '/md/howo-tanker-truck.md' },
     ]
   },
   {
     id: 'ExistingTrucksAndTrailers',
     label: 'Existing Trucks and Trailers',
+    markdownPath: '/md/existing-trucks-trailers.md',
     children: [
-      { id: 'Trailer', label: 'Trailer' },
+      { id: 'Trailer', label: 'Trailer', markdownPath: '/md/trailer.md' },
     ]
   },
   {
     id: 'excavator',
     label: 'Excavator',
-    children: [
-
-    ]
+    markdownPath: '/md/excavator.md',
+    children: []
   }
 ]
 
@@ -404,80 +404,51 @@ const latestProducts = computed(() => {
   return products.slice(0, 4)
 })
 
-interface CategorySpecsData {
-  feature: string
-  params: Record<string, string>
-}
-
-const categorySpecsMap: Record<string, CategorySpecsData> = {
-  'AluminiumFuelTanker': {
-    feature: 'Carry fuel,oil,petroleum',
-    params: {
-      'Dimension(L*W*H)': '11600*2500*3250mm(42,000L)',
-      'Material': 'Aluminum',
-      'Compartment': '8',
-      'Capacity': '42,000L',
-      'Tare Weight(Kg)': '7,000kg',
-      'Kingpin': 'Bolt-in 3.5"',
-      'Landing Gear': '19"',
-      'Tire Size': '11R22.5(13 sets)',
-      'Rim Size': '9.00*22.5(13 sets)',
-      'Axle': 'FUWA 13 tons 3 axles',
-      'Leafs Spring': 'Fuwa brand with 8pcs of leafs spring',
-      'Brake System': 'RE 4 relay valve',
-      'Manhole': 'Aluminum alloy Φ500mm (20") manhole with aluminum alloy cover',
-      'Discharge Valve': 'Aluminum alloy discharge valve with cover',
-      'Foot Valve': 'Pneumatic control DN80 aluminum alloy foot valves',
-      'Pneumatic Control System': '1 set pneumatic control combined switch / 1 unit emergency switch',
-      'Discharge Hose': '2 units 3"×6m factory PVC hose with quick coupling on both ends',
-      'Vapor Recovery & Overfill System': 'Optional',
-      'Fire Extinguisher Carrier': '2 units at the left of rear of tanker',
-      'Electric System': 'One unit of 24V 7-pin ISO standard socket',
-      'Paint': 'Two-component paint'
+const currentCategoryNode = computed(() => {
+  const findNode = (nodes: TreeNode[], id: string): TreeNode | null => {
+    for (const node of nodes) {
+      if (node.id === id) return node
+      if (node.children) {
+        const found = findNode(node.children, id)
+        if (found) return found
+      }
     }
-  },
-  'CarbonSteelFuelTank Trailer': {
-    feature: 'Carry fuel,oil,petroleum',
-    params: {
-      'Dimension(L*W*H)': '11600*2500*3700mm',
-      'Material': 'Carbon Steel Q345B',
-      'Compartment': '5',
-      'Capacity': '45,000L',
-      'Tare Weight(Kg)': '9,500kg',
-      'Kingpin': 'Bolt-in 3.5"',
-      'Landing Gear': '19" two speed',
-      'Tire Size': '11R22.5(12 sets)',
-      'Axle': 'FUWA 13 tons 3 axles',
-      'Brake System': 'RE 4 relay valve',
-      'Manhole': 'Aluminum alloy Φ500mm',
-      'Discharge Valve': 'API valve',
-      'Paint': 'Sand blasting, epoxy primer, finish paint'
-    }
-  },
-  'BulkCementTrailer': {
-    feature: 'Transport bulk cement, powder',
-    params: {
-      'Dimension(L*W*H)': '12000*2500*3900mm',
-      'Material': 'Carbon Steel Q345B',
-      'Capacity': '45m³',
-      'Tare Weight(Kg)': '8,500kg',
-      'Kingpin': 'Bolt-in 3.5"',
-      'Landing Gear': '28 tons',
-      'Tire Size': '11R22.5',
-      'Axle': 'FUWA 13 tons 3 axles',
-      'Discharge System': 'Air compressor system',
-      'Pipe System': '110mm diameter',
-      'Paint': 'Two-component paint'
-    }
+    return null
   }
-}
-
-const categorySpecs = computed(() => {
-  if (currentCategory.value === 'all') {
-    return { feature: '', params: {} }
-  }
-  return categorySpecsMap[currentCategory.value] || { feature: '', params: {} }
+  return findNode(categoryTree, currentCategory.value)
 })
+
+const markdownContent = ref('')
+const renderedMarkdown = computed(() => markdownContent.value)
+
+async function loadMarkdown() {
+  try {
+    const categoryNode = currentCategoryNode.value
+    if (!categoryNode?.markdownPath) {
+      markdownContent.value = ''
+      return
+    }
+
+    const response = await fetch(categoryNode.markdownPath)
+    if (response.ok) {
+      const text = await response.text()
+      let html = marked.parse(text) as string
+      html = html.replace(/<table([^>]*)style="[^"]*"/gi, '<table$1')
+      html = html.replace(/<th([^>]*)style="[^"]*"/gi, '<th$1')
+      html = html.replace(/<td([^>]*)style="[^"]*"/gi, '<td$1')
+      html = html.replace(/<tr([^>]*)style="[^"]*"/gi, '<tr$1')
+      markdownContent.value = html
+    }
+  } catch (error) {
+    console.error('Failed to load markdown:', error)
+    markdownContent.value = ''
+  }
+}
+
+watch(currentCategory, async () => {
+  await loadMarkdown()
+}, { immediate: true })
+
 </script>
 
 <style scoped>
@@ -821,64 +792,6 @@ const categorySpecs = computed(() => {
   text-align: center;
 }
 
-.category-specs {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  margin-top: 32px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
-.specs-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1a2a4a;
-  margin: 0 0 20px 0;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #FF0000;
-  display: inline-block;
-}
-
-.specs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 16px 32px;
-}
-
-.specs-feature {
-  grid-column: 1 / -1;
-  padding: 16px;
-  background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
-  border-radius: 8px;
-  border-left: 4px solid #FF0000;
-}
-
-.specs-item {
-  display: flex;
-  padding: 12px 16px;
-  background: #f8fafc;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.specs-item:hover {
-  background: #fff5f5;
-  transform: translateX(4px);
-}
-
-.specs-label {
-  font-weight: 600;
-  color: #1a2a4a;
-  flex-shrink: 0;
-  min-width: 140px;
-}
-
-.specs-value {
-  color: #555555;
-  line-height: 1.6;
-}
-
 .feature-boxes {
   display: grid;
   grid-template-columns: repeat(2, 0.6fr);
@@ -1170,5 +1083,220 @@ const categorySpecs = computed(() => {
 }
 :deep(.search-input .el-input__prefix-inner) {
   margin-left: 20px;
+}
+
+.category-markdown {
+  margin-top: 40px;
+  padding: 32px 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+:deep(.category-markdown h1) {
+  font-size: 28px;
+  font-weight: 700;
+  color: #FF0000;
+  margin: 0 0 32px 0;
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+:deep(.category-markdown h1::before),
+:deep(.category-markdown h1::after) {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FF0000, transparent);
+}
+
+:deep(.category-markdown h1::before) {
+  margin-right: 20px;
+}
+
+:deep(.category-markdown h1::after) {
+  margin-left: 20px;
+}
+
+:deep(.category-markdown h2) {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 32px 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #FF0000;
+  display: inline-block;
+}
+
+:deep(.category-markdown h2::before) {
+  display: none;
+}
+
+:deep(.category-markdown h2::after) {
+  display: none;
+}
+
+:deep(.category-markdown h3) {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 28px 0 16px 0;
+  padding-left: 16px;
+  border-left: 4px solid #FF0000;
+}
+
+:deep(.category-markdown h3::before) {
+  display: none;
+}
+
+:deep(.category-markdown h3::after) {
+  display: none;
+}
+
+:deep(.category-markdown p) {
+  font-size: 15px;
+  color: #4a5568;
+  line-height: 1.9;
+  margin: 0 0 18px 0;
+  text-align: justify;
+}
+
+:deep(.category-markdown ul),
+:deep(.category-markdown ol) {
+  margin: 0 0 20px 0;
+  padding-left: 40px;
+  list-style: none;
+}
+
+:deep(.category-markdown li) {
+  font-size: 15px;
+  color: #4a5568;
+  line-height: 1.9;
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 0;
+}
+
+:deep(.category-markdown ul li) {
+  padding-left: 28px;
+}
+
+:deep(.category-markdown ul li::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 12px;
+  height: 10px;
+  background: #FF0000;
+  border-radius: 50%;
+}
+
+:deep(.category-markdown ol) {
+  counter-reset: item;
+  padding: 0 !important;
+  margin: 0 0 20px 0 !important;
+  list-style: none !important;
+  list-style-type: none !important;
+  font-size: 0 !important;
+}
+
+:deep(.category-markdown ol > li) {
+  counter-increment: item !important;
+  list-style: none !important;
+  list-style-type: none !important;
+  position: relative !important;
+  padding: 0 0 0 50px !important;
+  margin: 0 0 16px 0 !important;
+  display: block !important;
+}
+
+:deep(.category-markdown ol > li::before) {
+  content: counter(item) !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: #FF0000 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 32px !important;
+  text-align: center !important;
+  border-radius: 50% !important;
+}
+
+:deep(.category-markdown ol > li p) {
+  display: inline !important;
+  margin: 0 !important;
+  font-size: 15px !important;
+  color: #4a5568 !important;
+  line-height: 1.9 !important;
+}
+
+:deep(.category-markdown table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+:deep(.category-markdown table tr) {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s ease;
+}
+
+:deep(.category-markdown table th),
+:deep(.category-markdown table td) {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+:deep(.category-markdown table th) {
+  background: #fff5f5;
+  font-weight: 600;
+  color: #1a2a4a;
+  font-size: 14px;
+}
+
+:deep(.category-markdown table tbody tr:nth-child(even)) {
+  background: #f8fafc;
+}
+
+:deep(.category-markdown table tbody tr:hover),
+:deep(.category-markdown table tbody tr:nth-child(even):hover) {
+  background: #fff5f5;
+}
+
+:deep(.category-markdown table td) {
+  font-size: 14px;
+  color: #4a5568;
+}
+
+:deep(.category-markdown img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+:deep(.category-markdown img:hover) {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+:deep(.category-markdown strong) {
+  color: #FF0000;
+  font-weight: 600;
 }
 </style>
