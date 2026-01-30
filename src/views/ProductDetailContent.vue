@@ -1250,33 +1250,67 @@ const latestProducts = computed(() => {
   opacity: 0.3;
 }
 
-.product-detail-markdown h2 {
+:deep(.product-detail-markdown h2) {
   font-size: 22px;
   font-weight: 600;
   color: #1a2a4a;
   margin: 36px 0 18px 0;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #f0f0f0;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 10px;
   position: relative;
+  border-left: 4px solid #FF0000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.product-detail-markdown h2::before {
+:deep(.product-detail-markdown h2::before) {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -2px;
-  width: 40px;
-  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 20px;
   background: #FF0000;
+  border-radius: 0 3px 3px 0;
 }
 
-.product-detail-markdown h3 {
+:deep(.product-detail-markdown h2::after) {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF0000'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat center;
+  opacity: 0.4;
+}
+
+:deep(.product-detail-markdown h3) {
   font-size: 18px;
   font-weight: 600;
   color: #1a2a4a;
   margin: 28px 0 14px 0;
-  padding-left: 12px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border-radius: 8px;
+  position: relative;
+  border: 1px solid #e2e8f0;
   border-left: 3px solid #FF0000;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+:deep(.product-detail-markdown h3::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background: #FF0000;
+  border-radius: 0 2px 2px 0;
 }
 
 .product-detail-markdown p {
