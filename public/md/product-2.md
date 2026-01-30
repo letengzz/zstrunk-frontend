@@ -94,4 +94,4 @@ The **45000 Liters Oil Tanker Trailer** is a high-performance bulk liquid transp
 - Operator training programs
 - Regular maintenance guidance˛˛
 
-![image-20260129214046541](assets/image-20260129214046541.png)
+![image-20260129214046541](/md/assets/image-20260129214046541.png)

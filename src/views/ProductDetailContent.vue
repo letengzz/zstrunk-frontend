@@ -94,7 +94,70 @@
               </div>
             </div>
 
-            <div class="product-detail-markdown" v-html="renderedMarkdown"></div>
+            <h3 class="product-intro-title" @click="toggleMarkdown">
+              Product Introduction
+              <span class="toggle-icon" :class="{ collapsed: !showMarkdown }">
+                <div class="i-ep-arrow-down w-5 h-5"></div>
+              </span>
+            </h3>
+            <el-collapse-transition>
+              <div v-show="showMarkdown" class="product-detail-markdown" v-html="renderedMarkdown"></div>
+            </el-collapse-transition>
+
+            <div class="related-products-section">
+              <h3 class="related-title">You Might Also Like</h3>
+              <div class="related-grid">
+                <div
+                  class="related-card"
+                  v-for="product in relatedProducts"
+                  :key="product.id"
+                  @click="goToProduct(product.id)"
+                >
+                  <div class="related-image">
+                    <img :src="product.image" :alt="product.name" />
+                  </div>
+                  <div class="related-info">
+                    <h4 class="related-name">{{ product.name }}</h4>
+                    <p class="related-category">{{ product.category }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="inquiry-form-section" class="inquiry-form-section">
+              <h3 class="inquiry-title">Send Inquiry</h3>
+              <p class="inquiry-subtitle">Interested in our products? Send us an inquiry and we'll get back to you soon.</p>
+              <el-form :model="inquiryForm" label-position="top" class="inquiry-form">
+                <div class="form-row">
+                  <el-form-item label="Name" required class="form-item-half">
+                    <el-input v-model="inquiryForm.name" placeholder="Your name" />
+                  </el-form-item>
+                  <el-form-item label="Email" required class="form-item-half">
+                    <el-input v-model="inquiryForm.email" placeholder="Your email" />
+                  </el-form-item>
+                </div>
+                <div class="form-row">
+                  <el-form-item label="Phone" class="form-item-half">
+                    <el-input v-model="inquiryForm.phone" placeholder="Your phone number" />
+                  </el-form-item>
+                  <el-form-item label="Company" class="form-item-half">
+                    <el-input v-model="inquiryForm.company" placeholder="Your company name" />
+                  </el-form-item>
+                </div>
+                <el-form-item label="Subject" required>
+                  <el-input v-model="inquiryForm.subject" placeholder="Inquiry subject" />
+                </el-form-item>
+                <el-form-item label="Please include details like size, weight, destination port and etc" required>
+                  <el-input v-model="inquiryForm.message" type="textarea" :rows="4" placeholder="Describe your requirements..." />
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" class="submit-btn" @click="submitInquiry">
+                    <div class="i-ep-send w-4 h-4 mr-2"></div>
+                    Send Inquiry
+                  </el-button>
+                </el-form-item>
+              </el-form>
+            </div>
           </div>
 
           <div class="product-not-found" v-else>
@@ -128,7 +191,7 @@ import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
 import Sidebar from '@/components/Sidebar.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
 import { marked } from 'marked'
 import { products, getProductById } from '@/data/products'
@@ -141,17 +204,20 @@ interface Props {
 const props = defineProps<Props>()
 
 const route = useRoute()
+const router = useRouter()
 
 const searchQuery = ref('')
 const currentCategory = ref<string>('all')
 const expandedKeys = ref<string[]>([])
 
 const currentProductId = computed(() => {
-  if (props.id) {
-    return props.id
+  const params = route.params as Record<string, string>
+  const query = route.query as Record<string, string>
+  const routeId = params.id || query.id
+  if (routeId) {
+    return parseInt(routeId)
   }
-  const id = route.query.id as string
-  return id ? parseInt(id) : null
+  return props.id || null
 })
 
 const currentProduct = computed(() => {
@@ -162,6 +228,7 @@ const currentProduct = computed(() => {
 })
 
 const selectedImage = ref('')
+const showMarkdown = ref(true)
 
 const isHovering = ref(false)
 const mouseX = ref(0)
@@ -248,7 +315,12 @@ async function loadMarkdown() {
     const response = await fetch(path)
     if (response.ok) {
       const text = await response.text()
-      markdownContent.value = marked.parse(text) as string
+      let html = marked.parse(text) as string
+      html = html.replace(/<table([^>]*)style="[^"]*"/gi, '<table$1')
+      html = html.replace(/<th([^>]*)style="[^"]*"/gi, '<th$1')
+      html = html.replace(/<td([^>]*)style="[^"]*"/gi, '<td$1')
+      html = html.replace(/<tr([^>]*)style="[^"]*"/gi, '<tr$1')
+      markdownContent.value = html
     }
   } catch (error) {
     console.error('Failed to load markdown:', error)
@@ -285,7 +357,57 @@ function nextImage() {
 }
 
 function handleContact() {
-  console.log('Contact clicked')
+  const element = document.getElementById('inquiry-form-section')
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+const inquiryForm = ref({
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  subject: '',
+  message: ''
+})
+
+function submitInquiry() {
+  if (!inquiryForm.value.name || !inquiryForm.value.email || !inquiryForm.value.subject || !inquiryForm.value.message) {
+    console.log('Please fill in required fields')
+    return
+  }
+  console.log('Inquiry submitted:', inquiryForm.value)
+  inquiryForm.value = {
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    subject: '',
+    message: ''
+  }
+}
+
+const relatedProducts = computed(() => {
+  if (!currentProduct.value) return []
+  return products
+    .filter(p =>
+      p.category === currentProduct.value?.category &&
+      p.id !== currentProduct.value?.id
+    )
+    .slice(0, 4)
+})
+
+function goToProduct(id: number) {
+  const product = getProductById(id)
+  const category = product?.category === 'tanker' ? 'truck' : product?.category
+  router.push({
+    path: `/${category}/${id}`
+  })
+}
+
+function toggleMarkdown() {
+  showMarkdown.value = !showMarkdown.value
 }
 
 onMounted(() => {
@@ -314,6 +436,12 @@ watch(currentProduct, (newProduct) => {
   if (newProduct && newProduct.subCategory) {
     currentCategory.value = newProduct.subCategory
     updateExpandedKeys(newProduct.subCategory)
+  }
+})
+
+watch(() => route.params, () => {
+  if (props.id) {
+    selectedImage.value = currentProduct.value?.image || ''
   }
 })
 
@@ -776,10 +904,6 @@ const latestProducts = computed(() => {
   font-weight: 500;
 }
 
-.sidebar {
-  position: sticky;
-  top: 100px;
-}
 
 .product-detail {
   flex: 1;
@@ -1036,100 +1160,274 @@ const latestProducts = computed(() => {
   margin-bottom: 8px;
 }
 
+.product-intro-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a2a4a;
+  margin: 32px 0 0 0;
+  position: relative;
+  padding: 0  16px;
+  display: inline-block;
+  width: 95%;
+  border-bottom: 3px solid #FF0000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-intro-title:hover {
+  background-color: transparent;
+}
+
+.product-intro-title span {
+  color: inherit;
+}
+
+.product-intro-title::before,
+.product-intro-title::after {
+  display: none;
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  color: #FF0000;
+}
+
+.toggle-icon:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.toggle-icon.collapsed {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
 .product-detail-markdown {
   margin-top: 40px;
   padding: 32px;
   background: #ffffff;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
-.product-detail-markdown h1 {
+:deep(.product-detail-markdown h1) {
   font-size: 28px;
   font-weight: 700;
   color: #1a2a4a;
   margin: 0 0 24px 0;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #FF0000;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
+  border-radius: 12px;
+  position: relative;
+  border-left: 5px solid #FF0000;
+  box-shadow: 0 4px 12px rgba(26, 42, 74, 0.15);
+}
+
+:deep(.product-detail-markdown h1::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 24px;
+  background: #FF0000;
+  border-radius: 0 4px 4px 0;
+}
+
+:deep(.product-detail-markdown h1::after) {
+  content: '';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF0000'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") no-repeat center;
+  opacity: 0.3;
 }
 
 .product-detail-markdown h2 {
   font-size: 22px;
   font-weight: 600;
   color: #1a2a4a;
-  margin: 32px 0 16px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e2e8f0;
+  margin: 36px 0 18px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+  position: relative;
+}
+
+.product-detail-markdown h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 40px;
+  height: 2px;
+  background: #FF0000;
 }
 
 .product-detail-markdown h3 {
   font-size: 18px;
   font-weight: 600;
   color: #1a2a4a;
-  margin: 24px 0 12px 0;
+  margin: 28px 0 14px 0;
+  padding-left: 12px;
+  border-left: 3px solid #FF0000;
 }
 
 .product-detail-markdown p {
   font-size: 15px;
   color: #4a5568;
-  line-height: 1.8;
-  margin: 0 0 16px 0;
+  line-height: 1.9;
+  margin: 0 0 18px 0;
+  text-align: justify;
 }
 
 .product-detail-markdown ul,
 .product-detail-markdown ol {
-  margin: 0 0 16px 0;
-  padding-left: 24px;
+  margin: 0 0 20px 0;
+  padding-left: 28px;
 }
 
 .product-detail-markdown li {
   font-size: 15px;
   color: #4a5568;
-  line-height: 1.8;
-  margin-bottom: 8px;
+  line-height: 1.9;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 8px;
 }
 
-.product-detail-markdown table {
+.product-detail-markdown ul li::marker {
+  color: #FF0000;
+}
+
+.product-detail-markdown ol li::marker {
+  color: #FF0000;
+  font-weight: 600;
+}
+
+:deep(.product-detail-markdown table) {
   width: 100%;
   border-collapse: collapse;
-  margin: 16px 0;
+  margin: 24px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0 !important;
 }
 
-.product-detail-markdown th,
-.product-detail-markdown td {
-  padding: 12px 16px;
-  text-align: left;
+:deep(.product-detail-markdown table tr) {
   border: 1px solid #e2e8f0;
+}
+
+:deep(.product-detail-markdown table th),
+:deep(.product-detail-markdown table td) {
+  padding: 14px 18px;
+  text-align: left;
+  border: 1px solid #e2e8f0 !important;
   font-size: 14px;
+  min-width: 100px;
+  background: inherit !important;
 }
 
-.product-detail-markdown th {
-  background: #f8fafc;
+:deep(.product-detail-markdown table th) {
+  background: #FF0000 !important;
   font-weight: 600;
-  color: #1a2a4a;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 13px;
 }
 
-.product-detail-markdown td {
+:deep(.product-detail-markdown table tbody tr:nth-child(even)) {
+  background: #fafafa;
+}
+
+:deep(.product-detail-markdown table tbody tr:hover),
+:deep(.product-detail-markdown table tbody tr:nth-child(even):hover) {
+  background: #f8fafc;
+}
+
+:deep(.product-detail-markdown table td) {
   color: #4a5568;
 }
 
 .product-detail-markdown img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 16px 0;
+  border-radius: 10px;
+  margin: 20px 0;
   display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-detail-markdown img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
 }
 
 .product-detail-markdown strong {
   font-weight: 600;
   color: #1a2a4a;
+  background: linear-gradient(180deg, transparent 60%, rgba(255, 0, 0, 0.1) 60%);
 }
 
 .product-detail-markdown hr {
   border: none;
-  border-top: 1px solid #e2e8f0;
-  margin: 24px 0;
+  border-top: 2px solid #f0f0f0;
+  margin: 32px 0;
+  position: relative;
+}
+
+.product-detail-markdown hr::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #FF0000;
+}
+
+.product-detail-markdown blockquote {
+  margin: 20px 0;
+  padding: 16px 20px;
+  background: #f8fafc;
+  border-left: 4px solid #FF0000;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #4a5568;
+}
+
+.product-detail-markdown code {
+  background: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+  color: #e53e3e;
+}
+
+.product-detail-markdown pre {
+  background: #1a2a4a;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.product-detail-markdown pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
 }
 
 .product-not-found {
@@ -1163,5 +1461,211 @@ const latestProducts = computed(() => {
   color: #4a5568;
   margin: 0;
   line-height: 1.6;
+}
+
+.related-products-section {
+  margin: 48px 0 0;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.related-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 24px 0;
+  text-align: center;
+  position: relative;
+  padding: 0 60px;
+  display: inline-block;
+  width: 100%;
+}
+
+.related-title::before,
+.related-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, #FF0000, transparent);
+}
+
+.related-title::before {
+  left: calc(50% - 200px);
+  background: linear-gradient(90deg, #FF0000, transparent);
+}
+
+.related-title::after {
+  right: calc(50% - 200px);
+  background: linear-gradient(90deg, transparent, #FF0000);
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.related-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.related-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  border-color: #FF0000;
+}
+
+.related-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.related-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.related-card:hover .related-image img {
+  transform: scale(1.05);
+}
+
+.related-info {
+  padding: 16px;
+  text-align: center;
+}
+
+.related-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.related-category {
+  font-size: 12px;
+  color: #718096;
+  margin: 0;
+}
+
+.inquiry-form-section {
+  margin: 48px 0 0;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.inquiry-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.inquiry-subtitle {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0 0 28px 0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.inquiry-form {
+  margin-top: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-item-half {
+  flex: 1;
+}
+
+:deep(.inquiry-form .el-form-item__label) {
+  font-weight: 500;
+  color: #1a2a4a;
+  padding-bottom: 6px;
+}
+
+:deep(.inquiry-form .el-input__wrapper),
+:deep(.inquiry-form .el-textarea__wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+:deep(.inquiry-form .el-input__wrapper) {
+  height: 52px;
+}
+
+:deep(.inquiry-form .el-textarea__inner) {
+  min-height: 120px !important;
+  padding: 12px 16px;
+}
+
+:deep(.inquiry-form .el-input__inner) {
+  height: 100%;
+  font-size: 15px;
+}
+
+:deep(.inquiry-form .el-input__wrapper:hover),
+:deep(.inquiry-form .el-textarea__wrapper:hover) {
+  border-color: #FF0000;
+}
+
+:deep(.inquiry-form .el-input__wrapper.is-focus),
+:deep(.inquiry-form .el-textarea__wrapper.is-focus) {
+  border-color: #FF0000;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.1);
+}
+
+.submit-btn {
+  height: 44px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-item-half {
+    flex: 1;
+  }
+
+  .inquiry-form-section {
+    padding: 20px;
+    margin: 32px 16px 0;
+  }
 }
 </style>
