@@ -184,11 +184,15 @@
       email="service@example.com"
       whatsapp="+1 234-567-8900"
     />
+
+    <CustomerService />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import ContactFixed from '@/components/ContactFixed.vue'
+import CustomerService from '@/components/CustomerService.vue'
 
 interface ProductSpec {
   label: string;

@@ -181,6 +181,8 @@
       email="service@example.com"
       whatsapp="+1 234-567-8900"
     />
+
+    <CustomerService />
   </div>
 </template>
 
@@ -188,6 +190,7 @@
 import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
+import CustomerService from '@/components/CustomerService.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'

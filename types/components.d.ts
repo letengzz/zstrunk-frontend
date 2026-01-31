@@ -14,6 +14,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Brands: typeof import('./../src/components/Brands.vue')['default']
     ContactFixed: typeof import('./../src/components/ContactFixed.vue')['default']
+    CustomerService: typeof import('./../src/components/CustomerService.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -45,6 +46,7 @@ declare module 'vue' {
 declare global {
   const Brands: typeof import('./../src/components/Brands.vue')['default']
   const ContactFixed: typeof import('./../src/components/ContactFixed.vue')['default']
+  const CustomerService: typeof import('./../src/components/CustomerService.vue')['default']
   const ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
   const ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
   const ElButton: typeof import('element-plus/es')['ElButton']

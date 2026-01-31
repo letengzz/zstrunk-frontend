@@ -122,6 +122,8 @@
     <Footer />
 
     <ContactFixed />
+
+    <CustomerService />
   </div>
 </template>
 

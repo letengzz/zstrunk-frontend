@@ -121,6 +121,8 @@
       email="service@example.com"
       whatsapp="+1 234-567-8900"
     />
+
+    <CustomerService />
   </div>
 </template>
 

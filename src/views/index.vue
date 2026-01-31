@@ -267,6 +267,8 @@
       whatsapp="+1 234-567-8900"
     />
 
+    <CustomerService />
+
     <el-dialog v-model="contactDialogVisible" title="Contact Us" width="600px" :close-on-click-modal="false" class="contact-dialog">
       <el-form :model="contactForm" label-position="top" class="contact-form">
         <div class="dialog-form-row">
@@ -324,6 +326,7 @@ const loadCarouselImages = async () => {
 import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
+import CustomerService from '@/components/CustomerService.vue'
 import Brands from '@/components/Brands.vue'
 import { ElMessage } from 'element-plus'
 import axios from 'axios'
