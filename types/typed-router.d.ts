@@ -107,13 +107,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/ProductDetailContent-bak': RouteRecordInfo<
-      '/ProductDetailContent-bak',
-      '/ProductDetailContent-bak',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/products': RouteRecordInfo<
       '/products',
       '/products',
@@ -238,12 +231,6 @@ declare module 'vue-router/auto-routes' {
     'src/views/ProductDetailContent.vue': {
       routes:
         | '/ProductDetailContent'
-      views:
-        | never
-    }
-    'src/views/ProductDetailContent-bak.vue': {
-      routes:
-        | '/ProductDetailContent-bak'
       views:
         | never
     }
