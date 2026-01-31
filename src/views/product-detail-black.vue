@@ -127,7 +127,7 @@
         <el-row :gutter="40">
           <el-col :xs="24" :sm="12" :md="6">
             <div class="footer-brand">
-              <img src="/public/images/logo.svg" alt="Logo" class="footer-logo">
+              <img src="/public/images/logo.png" alt="Logo" class="footer-logo">
               <span class="footer-company-name">ZHI SHUN</span>
               <p class="footer-desc">Professional Services</p>
             </div>
