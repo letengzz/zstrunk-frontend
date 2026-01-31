@@ -4,8 +4,8 @@
 
     <div class="page-header">
       <div class="page-header-inner">
-        <h1 class="page-title">Contact Us</h1>
-        <p class="page-description">Get In Touch With Us</p>
+        <!-- <h1 class="page-title">Contact Us</h1> -->
+        <!-- <p class="page-description">Get In Touch With Us</p> -->
       </div>
     </div>
 
@@ -21,7 +21,7 @@
             <div class="info-cards">
               <div class="info-card">
                 <div class="info-icon">
-                  <div class="i-ep-location w-8 h-8"></div>
+                  <div class="i-ep-location w-20 h-20"></div>
                 </div>
                 <div class="info-content">
                   <h3 class="info-title">Our Location</h3>
@@ -31,7 +31,7 @@
 
               <div class="info-card">
                 <div class="info-icon">
-                  <div class="i-ep-phone w-8 h-8"></div>
+                  <div class="i-ep-phone w-20 h-20"></div>
                 </div>
                 <div class="info-content">
                   <h3 class="info-title">Phone Number</h3>
@@ -42,7 +42,7 @@
 
               <div class="info-card">
                 <div class="info-icon">
-                  <div class="i-ep-message w-8 h-8"></div>
+                  <div class="i-ep-message w-20 h-20"></div>
                 </div>
                 <div class="info-content">
                   <h3 class="info-title">Email Address</h3>
@@ -53,7 +53,7 @@
 
               <div class="info-card">
                 <div class="info-icon">
-                  <div class="i-ep-clock w-8 h-8"></div>
+                  <div class="i-ep-clock w-20 h-20"></div>
                 </div>
                 <div class="info-content">
                   <h3 class="info-title">Working Hours</h3>
@@ -67,16 +67,16 @@
               <h3 class="social-title">Follow Us</h3>
               <div class="social-icons">
                 <div class="social-icon">
-                  <div class="i-ep-chat-line-round w-6 h-6"></div>
+                  <div class="i-ep-chat-line-round w-20 h-20"></div>
                 </div>
                 <div class="social-icon">
-                  <div class="i-ep-chat-dot-round w-6 h-6"></div>
+                  <div class="i-ep-chat-dot-round w-20 h-20"></div>
                 </div>
                 <div class="social-icon">
-                  <div class="i-ep-bubble-round w-6 h-6"></div>
+                  <div class="i-ep-bubble-round w-20 h-20"></div>
                 </div>
                 <div class="social-icon">
-                  <div class="i-ep-promotion w-6 h-6"></div>
+                  <div class="i-ep-promotion w-20 h-20"></div>
                 </div>
               </div>
             </div>
@@ -98,10 +98,16 @@
                 </div>
 
                 <div class="form-row">
-                  <el-form-item label="Phone Number" class="form-item-half">
-                    <el-input v-model="contactForm.phone" placeholder="Enter your phone" />
+                  <el-form-item label="Phone / WhatsApp" class="form-item-half">
+                    <el-input v-model="contactForm.phone" placeholder="Enter phone or WhatsApp" />
                   </el-form-item>
-                  <el-form-item label="Subject" class="form-item-half">
+                  <el-form-item label="Company" class="form-item-half">
+                    <el-input v-model="contactForm.company" placeholder="Enter company name" />
+                  </el-form-item>
+                </div>
+
+                <div class="form-row form-row-full">
+                  <el-form-item label="Subject" class="form-item-full">
                     <el-input v-model="contactForm.subject" placeholder="Enter subject" />
                   </el-form-item>
                 </div>
@@ -111,27 +117,13 @@
                     v-model="contactForm.message"
                     type="textarea"
                     :rows="5"
-                    placeholder="Write your message here..."
+                   placeholder="Please include details like size, weight, destination port and etc., so that we can quote the best price.*"
                   />
-                </el-form-item>
-
-                <el-form-item label="Product Interest" class="product-interest">
-                  <div class="product-tags">
-                    <el-check-tag
-                      v-for="product in productOptions"
-                      :key="product"
-                      :checked="contactForm.products.includes(product)"
-                      @change="toggleProduct(product)"
-                      class="product-tag"
-                    >
-                      {{ product }}
-                    </el-check-tag>
-                  </div>
                 </el-form-item>
 
                 <el-form-item class="submit-item">
                   <el-button type="primary" size="large" class="submit-btn" @click="submitForm">
-                    <div class="i-ep-position w-5 h-5"></div>
+                    <div class="i-ep-position w-20 h-20"></div>
                     Send Message
                   </el-button>
                 </el-form-item>
@@ -144,9 +136,17 @@
 
     <div class="map-section">
       <div class="map-container">
-        <div class="map-placeholder">
-          <div class="i-ep-location w-16 h-16"></div>
-          <p>Map Loading...</p>
+        <div class="map-wrapper">
+          <iframe
+            class="google-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </div>
@@ -160,6 +160,7 @@ import TopBar from '@/components/TopBar.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
 import { reactive } from 'vue'
 import { ElMessage } from 'element-plus'
+import axios from 'axios'
 
 definePage({
   name: 'contact',
@@ -170,48 +171,48 @@ const contactForm = reactive({
   name: '',
   email: '',
   phone: '',
+  company: '',
   subject: '',
   message: '',
-  products: [] as string[],
 })
 
-const productOptions = [
-  'Fuel Tanker Trailer',
-  'Bulk Cement Trailer',
-  'Flatbed Trailer',
-  'Lowbed Semi Trailer',
-  'Tipper Semi Trailer',
-  'Container Trailer',
-  'Excavator',
-  'Dump Truck',
-  'Tractor Truck',
-  'Other',
-]
-
-function toggleProduct(product: string) {
-  const index = contactForm.products.indexOf(product)
-  if (index > -1) {
-    contactForm.products.splice(index, 1)
-  } else {
-    contactForm.products.push(product)
-  }
-}
-
-function submitForm() {
+async function submitForm() {
   if (!contactForm.name || !contactForm.email || !contactForm.message) {
     ElMessage.warning('Please fill in all required fields')
     return
   }
 
-  console.log('Form submitted:', contactForm)
-  ElMessage.success('Message sent successfully! We will get back to you soon.')
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(contactForm.email)) {
+    ElMessage.warning('Please enter a valid email address')
+    return
+  }
 
-  contactForm.name = ''
-  contactForm.email = ''
-  contactForm.phone = ''
-  contactForm.subject = ''
-  contactForm.message = ''
-  contactForm.products = []
+  try {
+    const response = await axios.post('/api/contact', {
+      name: contactForm.name,
+      email: contactForm.email,
+      phone: contactForm.phone,
+      company: contactForm.company,
+      subject: contactForm.subject,
+      message: contactForm.message,
+    })
+
+    if (response.data.code === 0) {
+      ElMessage.success(response.data.data || 'Message sent successfully! We will get back to you soon.')
+      contactForm.name = ''
+      contactForm.email = ''
+      contactForm.phone = ''
+      contactForm.company = ''
+      contactForm.subject = ''
+      contactForm.message = ''
+    } else {
+      ElMessage.error(response.data.message || 'Failed to send message. Please try again.')
+    }
+  } catch (error) {
+    console.error('Failed to submit form:', error)
+    ElMessage.error('Failed to send message. Please try again.')
+  }
 }
 </script>
 
@@ -286,19 +287,19 @@ function submitForm() {
 }
 
 .contact-info-section {
-  background: #ffffff;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%);
+ /** border-radius: 16px; */
   padding: 36px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15);
 }
 
 .section-title {
   font-size: 28px;
   font-weight: 700;
-  color: #1a2a4a;
+  color: #ffffff;
   margin: 0 0 12px 0;
   padding-bottom: 16px;
-  border-bottom: 3px solid #FF0000;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
   position: relative;
 }
 
@@ -309,12 +310,12 @@ function submitForm() {
   bottom: -3px;
   width: 60px;
   height: 3px;
-  background: #FF0000;
+  background: #ffffff;
 }
 
 .section-desc {
   font-size: 15px;
-  color: #718096;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
   margin: 0 0 28px 0;
 }
@@ -330,13 +331,13 @@ function submitForm() {
   align-items: flex-start;
   gap: 16px;
   padding: 20px;
-  background: #f8fafc;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+ /** border-radius: 12px; */
   transition: all 0.3s ease;
 }
 
 .info-card:hover {
-  background: #f0f4f8;
+  background: rgba(255, 255, 255, 0.25);
   transform: translateX(4px);
 }
 
@@ -346,7 +347,7 @@ function submitForm() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   color: #ffffff;
   flex-shrink: 0;
@@ -359,13 +360,13 @@ function submitForm() {
 .info-title {
   font-size: 16px;
   font-weight: 600;
-  color: #1a2a4a;
+  color: #ffffff;
   margin: 0 0 6px 0;
 }
 
 .info-text {
   font-size: 14px;
-  color: #4a5568;
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   line-height: 1.6;
 }
@@ -373,13 +374,13 @@ function submitForm() {
 .social-section {
   margin-top: 32px;
   padding-top: 28px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .social-title {
   font-size: 18px;
   font-weight: 600;
-  color: #1a2a4a;
+  color: #ffffff;
   margin: 0 0 16px 0;
 }
 
@@ -394,22 +395,22 @@ function submitForm() {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0f0f0;
-  border-radius: 50%;
-  color: #1a2a4a;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-  background: #FF0000;
-  color: #ffffff;
+  background: #ffffff;
+  color: #FF0000;
   transform: translateY(-3px);
 }
 
 .contact-form-section {
   background: #ffffff;
-  border-radius: 16px;
+  /** border-radius: 16px; */
   padding: 36px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
@@ -454,6 +455,22 @@ function submitForm() {
   gap: 20px;
 }
 
+.form-row-full {
+  grid-template-columns: 1fr;
+}
+
+.form-item-full {
+  width: 100%;
+}
+
+.form-row-full {
+  grid-template-columns: 1fr;
+}
+
+.form-item-full {
+  width: 100%;
+}
+
 :deep(.el-form-item) {
   margin-bottom: 20px;
 }
@@ -469,49 +486,20 @@ function submitForm() {
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  background-color: #F6F6F6;
 }
 
 :deep(.el-input__wrapper:hover),
 :deep(.el-textarea__wrapper:hover) {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  background-color: #F0F0F0;
 }
 
 :deep(.el-input__wrapper:focus-within),
 :deep(.el-textarea__wrapper:focus-within) {
   box-shadow: 0 2px 12px rgba(255, 0, 0, 0.15);
   border-color: #FF0000;
-}
-
-.product-interest {
-  margin-bottom: 24px !important;
-}
-
-.product-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.product-tag {
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  color: #4a5568;
-}
-
-.product-tag:hover {
-  border-color: #FF0000;
-  color: #FF0000;
-}
-
-.product-tag:checked {
-  background: #FF0000;
-  border-color: #FF0000;
-  color: #ffffff;
+  background-color: #FFFFFF;
 }
 
 .submit-item {
@@ -549,21 +537,17 @@ function submitForm() {
   margin: 0 auto;
 }
 
-.map-placeholder {
+.map-wrapper {
   height: 400px;
-  background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 18px;
+  /* border-radius: 16px; */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.map-placeholder .i-ep-location {
-  margin-bottom: 16px;
-  opacity: 0.8;
+.google-map {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 @media (max-width: 1024px) {

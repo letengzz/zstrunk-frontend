@@ -194,7 +194,7 @@ import Sidebar from '@/components/Sidebar.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
 import { marked } from 'marked'
-import { products, getProductById } from '@/data/products'
+import { getProducts, getProductById } from '@/data/products'
 
 interface Props {
   id?: number
@@ -220,11 +220,16 @@ const currentProductId = computed(() => {
   return props.id || null
 })
 
-const currentProduct = computed(() => {
+const currentProduct = ref<any>(null)
+
+async function loadCurrentProduct() {
   if (currentProductId.value) {
-    return getProductById(currentProductId.value)
+    currentProduct.value = await getProductById(currentProductId.value)
   }
-  return null
+}
+
+watch(currentProductId, async () => {
+  await loadCurrentProduct()
 })
 
 const selectedImage = ref('')
@@ -390,7 +395,7 @@ function submitInquiry() {
 
 const relatedProducts = computed(() => {
   if (!currentProduct.value) return []
-  return products
+  return allProducts.value
     .filter(p =>
       p.category === currentProduct.value?.category &&
       p.id !== currentProduct.value?.id
@@ -398,8 +403,8 @@ const relatedProducts = computed(() => {
     .slice(0, 4)
 })
 
-function goToProduct(id: number) {
-  const product = getProductById(id)
+async function goToProduct(id: number) {
+  const product = await getProductById(id)
   const category = product?.category === 'tanker' ? 'truck' : product?.category
   router.push({
     path: `/${category}/${id}`
@@ -410,7 +415,17 @@ function toggleMarkdown() {
   showMarkdown.value = !showMarkdown.value
 }
 
-onMounted(() => {
+const latestProducts = ref<any[]>([])
+const allProducts = ref<any[]>([])
+
+async function loadProductsData() {
+  allProducts.value = await getProducts()
+  latestProducts.value = allProducts.value.slice(0, 4)
+}
+
+onMounted(async () => {
+  await loadProductsData()
+  await loadCurrentProduct()
   if (currentProduct.value && currentProduct.value.subCategory) {
     currentCategory.value = currentProduct.value.subCategory
     updateExpandedKeys(currentProduct.value.subCategory)
@@ -607,10 +622,6 @@ function handleCategoryChange(categoryId: string) {
   currentCategory.value = categoryId
   updateExpandedKeys(categoryId)
 }
-
-const latestProducts = computed(() => {
-  return products.slice(0, 4)
-})
 </script>
 
 <style scoped>

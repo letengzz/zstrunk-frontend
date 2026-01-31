@@ -97,8 +97,8 @@ function handleNodeClick(data: TreeNode) {
   }
 }
 
-function goToProduct(id: number) {
-  const product = getProductById(id)
+async function goToProduct(id: number) {
+  const product = await getProductById(id)
   if (product) {
     if (product.category === 'tanker') {
       router.push(`/truck/${id}`)

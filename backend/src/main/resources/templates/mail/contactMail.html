@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Contact Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .info-table th {
+            background: #f8fafc;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            width: 120px;
+            font-weight: 600;
+            color: #1a2a4a;
+        }
+        .info-table td {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            color: #4a5568;
+        }
+        .message-box {
+            background: #f8fafc;
+            border-left: 4px solid #FF0000;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 12px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📬 New Contact Message</h1>
+    </div>
+    <div class="content">
+        <p>You have received a new contact form submission:</p>
+        <table class="info-table">
+            <tr>
+                <th>Name</th>
+                <td th:text="${name}">-</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${email}">-</td>
+            </tr>
+            <tr>
+                <th>Phone / WhatsApp</th>
+                <td th:text="${phone}">-</td>
+            </tr>
+            <tr th:if="${company != null and company != ''}">
+                <th>Company</th>
+                <td th:text="${company}">-</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td th:text="${subject}">-</td>
+            </tr>
+        </table>
+        <div class="message-box">
+            <strong>Message:</strong>
+            <p th:text="${message}">-</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>This email was sent from your website contact form.</p>
+        <p>© 2024 ZhiShun. All rights reserved.</p>
+    </div>
+</body>
+</html>

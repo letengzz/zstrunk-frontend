@@ -267,24 +267,45 @@
       whatsapp="+1 234-567-8900"
     />
 
-    <el-dialog v-model="contactDialogVisible" title="Contact Us" width="500px" :close-on-click-modal="false" class="contact-dialog">
+    <el-dialog v-model="contactDialogVisible" title="Contact Us" width="600px" :close-on-click-modal="false" class="contact-dialog">
       <el-form :model="contactForm" label-position="top" class="contact-form">
-        <el-form-item label="Name" required>
-          <el-input v-model="contactForm.name" placeholder="Your name" />
-        </el-form-item>
-        <el-form-item label="Email" required>
-          <el-input v-model="contactForm.email" placeholder="Your email" />
-        </el-form-item>
-        <el-form-item label="Phone">
-          <el-input v-model="contactForm.phone" placeholder="Your phone number" />
-        </el-form-item>
+        <div class="dialog-form-row">
+          <el-form-item label="Your Name" required class="dialog-form-item">
+            <el-input v-model="contactForm.name" placeholder="Enter your name" />
+          </el-form-item>
+          <el-form-item label="Email Address" required class="dialog-form-item">
+            <el-input v-model="contactForm.email" placeholder="Enter your email" />
+          </el-form-item>
+        </div>
+        <div class="dialog-form-row">
+          <el-form-item label="Phone / WhatsApp" class="dialog-form-item">
+            <el-input v-model="contactForm.phone" placeholder="Enter phone or WhatsApp" />
+          </el-form-item>
+          <el-form-item label="Company" class="dialog-form-item">
+            <el-input v-model="contactForm.company" placeholder="Enter company name" />
+          </el-form-item>
+        </div>
+
+        <div class="dialog-form-row dialog-form-row-full">
+          <el-form-item label="Subject" class="dialog-form-item-full">
+            <el-input v-model="contactForm.subject" placeholder="Enter subject" />
+          </el-form-item>
+        </div>
         <el-form-item label="Message" required>
-          <el-input v-model="contactForm.message" type="textarea" :rows="4" placeholder="Your message" />
+          <el-input
+            v-model="contactForm.message"
+            type="textarea"
+            :rows="5"
+            placeholder="Please include details like size, weight, destination port and etc., so that we can quote the best price.*"
+          />
         </el-form-item>
       </el-form>
       <template #footer>
         <el-button @click="contactDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="submitContactForm">Submit</el-button>
+        <el-button type="primary" @click="submitContactForm">
+          <div class="i-ep-position w-20 h-20"></div>
+          Send Message
+        </el-button>
       </template>
     </el-dialog>
 
@@ -304,9 +325,12 @@ import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
 import Brands from '@/components/Brands.vue'
+import { ElMessage } from 'element-plus'
+import axios from 'axios'
 
 import { useRouter } from 'vue-router'
 import { getProductsByCategory, getProductById } from '@/data/products'
+import type { Product } from '@/data/products'
 
 const router = useRouter()
 
@@ -317,17 +341,24 @@ onMounted(async () => {
 });
 
 const currentCategory = ref<'tanker' | 'excavator'>('tanker')
+const currentProducts = ref<Product[]>([])
 
-const currentProducts = computed(() => {
-  return getProductsByCategory(currentCategory.value)
+async function loadProducts() {
+  currentProducts.value = await getProductsByCategory(currentCategory.value)
+}
+
+onMounted(async () => {
+  imageCount.value = await loadCarouselImages()
+  await loadProducts()
 })
 
 function setCategory(category: 'tanker' | 'excavator') {
   currentCategory.value = category
+  loadProducts()
 }
 
-function goToProduct(id: number) {
-  const product = getProductById(id)
+async function goToProduct(id: number) {
+  const product = await getProductById(id)
   if (product) {
     if (product.category === 'tanker') {
       router.push(`/truck/${id}`)
@@ -343,6 +374,8 @@ const contactForm = reactive({
   name: '',
   email: '',
   phone: '',
+  company: '',
+  subject: '',
   message: ''
 })
 
@@ -350,13 +383,39 @@ function openContactDialog() {
   contactDialogVisible.value = true
 }
 
-function submitContactForm() {
+async function submitContactForm() {
   if (!contactForm.name || !contactForm.email || !contactForm.message) {
+    ElMessage.warning('Please fill in all required fields')
     return
   }
-  console.log('Form submitted:', contactForm)
-  contactDialogVisible.value = false
-  Object.assign(contactForm, { name: '', email: '', phone: '', message: '' })
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(contactForm.email)) {
+    ElMessage.warning('Please enter a valid email address')
+    return
+  }
+
+  try {
+    const response = await axios.post('/api/contact', {
+      name: contactForm.name,
+      email: contactForm.email,
+      phone: contactForm.phone,
+      company: contactForm.company,
+      subject: contactForm.subject,
+      message: contactForm.message,
+    })
+
+    if (response.data.code === 0) {
+      ElMessage.success(response.data.data || 'Message sent successfully!')
+      contactDialogVisible.value = false
+      Object.assign(contactForm, { name: '', email: '', phone: '', company: '', subject: '', message: '' })
+    } else {
+      ElMessage.error(response.data.message || 'Failed to send message')
+    }
+  } catch (error) {
+    console.error('Failed to submit form:', error)
+    ElMessage.error('Failed to send message. Please try again.')
+  }
 }
 
 interface Solution {
@@ -1959,5 +2018,93 @@ img {
 
 .contact-dialog :deep(.el-dialog__footer .el-button:active) {
   transform: translateY(0);
+}
+
+.dialog-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.dialog-form-row-full {
+  grid-template-columns: 1fr;
+}
+
+.dialog-form-item,
+.dialog-form-item-full {
+  width: 100%;
+}
+
+.contact-dialog :deep(.el-dialog) {
+  border-radius: 16px;
+}
+
+.contact-dialog :deep(.el-dialog__header) {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.contact-dialog :deep(.el-dialog__title) {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2a4a;
+}
+
+.contact-dialog :deep(.el-dialog__body) {
+  padding: 24px;
+}
+
+.contact-dialog :deep(.el-form-item) {
+  margin-bottom: 16px;
+}
+
+.contact-dialog :deep(.el-form-item__label) {
+  font-weight: 500;
+  color: #1a2a4a;
+  font-size: 14px;
+}
+
+.contact-dialog :deep(.el-input__wrapper),
+.contact-dialog :deep(.el-textarea__wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  background-color: #F6F6F6;
+}
+
+.contact-dialog :deep(.el-input__wrapper:hover),
+.contact-dialog :deep(.el-textarea__wrapper:hover) {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  background-color: #F0F0F0;
+}
+
+.contact-dialog :deep(.el-input__wrapper:focus-within),
+.contact-dialog :deep(.el-textarea__wrapper:focus-within) {
+  box-shadow: 0 2px 12px rgba(255, 0, 0, 0.15);
+  border-color: #FF0000;
+  background-color: #FFFFFF;
+}
+
+.contact-dialog :deep(.el-dialog__footer) {
+  padding: 16px 24px 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button--primary) {
+  background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-dialog :deep(.el-dialog__footer .el-button--primary:hover) {
+  background: linear-gradient(135deg, #cc0000 0%, #aa0000 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
 }
 </style>

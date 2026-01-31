@@ -131,7 +131,7 @@ import ContactFixed from '@/components/ContactFixed.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
-import { products, getProductById } from '@/data/products'
+import { getProducts, getProductById } from '@/data/products'
 import { marked } from 'marked'
 
 const router = useRouter()
@@ -142,8 +142,14 @@ const currentCategory = ref<string>('all')
 const currentPage = ref(1)
 const pageSize = ref(6)
 const expandedKeys = ref<string[]>([])
+const productsList = ref<any[]>([])
 
-onMounted(() => {
+async function loadProducts() {
+  productsList.value = await getProducts()
+}
+
+onMounted(async () => {
+  await loadProducts()
   const categoryParam = route.query.category as string
   if (categoryParam) {
     currentCategory.value = categoryParam
@@ -319,7 +325,7 @@ const isMainCategory = (categoryId: string): boolean => {
 }
 
 const filteredProducts = computed(() => {
-  let result = [...products]
+  let result = [...productsList.value]
 
   if (currentCategory.value !== 'all') {
     if (isMainCategory(currentCategory.value)) {
@@ -366,8 +372,8 @@ function handleCurrentChange(page: number) {
   currentPage.value = page
 }
 
-function goToProduct(id: number) {
-  const product = getProductById(id)
+async function goToProduct(id: number) {
+  const product = await getProductById(id)
   if (product) {
     if (product.category === 'tanker') {
       router.push(`/truck/${id}`)
@@ -401,7 +407,7 @@ const currentCategoryLabel = computed(() => {
 })
 
 const latestProducts = computed(() => {
-  return products.slice(0, 4)
+  return productsList.value.slice(0, 4)
 })
 
 const currentCategoryNode = computed(() => {

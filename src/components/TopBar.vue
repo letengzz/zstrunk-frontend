@@ -83,7 +83,7 @@
           </div>
         </el-sub-menu>
           <el-menu-item index="3">
-          <router-link to="/" style="text-decoration: none; color: inherit;">Requct A Quote</router-link>
+          <router-link to="/contact" style="text-decoration: none; color: inherit;">Requct A Quote</router-link>
         </el-menu-item>
         <!-- <el-sub-menu index="3">
           <template #title>Excavator</template>
@@ -94,9 +94,9 @@
         <el-menu-item index="4">
           <router-link to="/about" style="text-decoration: none; color: inherit;">About Us</router-link>
         </el-menu-item>
-        <el-menu-item index="5">
+        <!-- <el-menu-item index="5">
           <router-link to="/contact" style="text-decoration: none; color: inherit;">Contact Us</router-link>
-        </el-menu-item>
+        </el-menu-item> -->
         <!-- <el-sub-menu index="3"> -->
           <!-- <template #title>About Us</template> -->
           <!-- <el-menu-item index="2-1">
@@ -282,10 +282,10 @@
 //   border-radius: 0 !important;
 // }
 
-.products-title {
+/*.products-title {
   font-weight: 700;
   font-size: 18px;
-}
+} */
 
 
 .products-dropdown {
