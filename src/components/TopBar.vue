@@ -94,6 +94,9 @@
         <el-menu-item index="4">
           <router-link to="/about" style="text-decoration: none; color: inherit;">About Us</router-link>
         </el-menu-item>
+        <el-menu-item index="5">
+          <router-link to="/contact" style="text-decoration: none; color: inherit;">Contact Us</router-link>
+        </el-menu-item>
         <!-- <el-sub-menu index="3"> -->
           <!-- <template #title>About Us</template> -->
           <!-- <el-menu-item index="2-1">

@@ -1219,7 +1219,7 @@ const latestProducts = computed(() => {
   color: #1a2a4a;
   margin: 0 0 24px 0;
   padding: 20px 24px;
-  background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
+  /* background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%); */
   border-radius: 12px;
   position: relative;
   border-left: 5px solid #FF0000;
