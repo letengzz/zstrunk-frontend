@@ -14,9 +14,7 @@
         <div class="content-layout">
           <Sidebar
             :search-query="searchQuery"
-            :category-tree="categoryTree"
             :current-category="currentCategory"
-            :latest-products="latestProducts"
             @update:searchQuery="searchQuery = $event"
             @category-change="handleCategoryChange"
           />
@@ -25,7 +23,7 @@
             <el-breadcrumb separator="/" class="detail-breadcrumb">
               <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
               <el-breadcrumb-item :to="{ path: '/products' }">Products</el-breadcrumb-item>
-              <el-breadcrumb-item v-if="currentCategoryLabel && currentCategoryLabel !== 'All Products'">
+              <el-breadcrumb-item v-if="currentCategoryLabel && currentCategoryLabel !== 'All Products'" >
                 {{ currentCategoryLabel }}
               </el-breadcrumb-item>
               <el-breadcrumb-item>{{ currentProduct.name }}</el-breadcrumb-item>
@@ -144,7 +142,7 @@
                     <el-input v-model="inquiryForm.company" placeholder="Your company name" />
                   </el-form-item>
                 </div>
-                <el-form-item label="Subject" required>
+                <el-form-item label="Subject">
                   <el-input v-model="inquiryForm.subject" placeholder="Inquiry subject" />
                 </el-form-item>
                 <el-form-item label="Please include details like size, weight, destination port and etc" required>
@@ -194,11 +192,22 @@ import Sidebar from '@/components/Sidebar.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
 import { marked } from 'marked'
-import { getProducts, getProductById } from '@/data/products'
+import { ElMessage } from 'element-plus'
+import axios from 'axios'
+import { getProducts, getProductById, getNewProducts, getCategoryTreeFromApi, type Product, type CategoryTreeNode } from '@/data/products'
 
 interface Props {
   id?: number
   category?: string
+}
+
+interface InquiryForm {
+  name: string
+  email: string
+  phone: string
+  company: string
+  subject: string
+  message: string
 }
 
 const props = defineProps<Props>()
@@ -220,11 +229,12 @@ const currentProductId = computed(() => {
   return props.id || null
 })
 
-const currentProduct = ref<any>(null)
+const currentProduct = ref<Product | null>(null)
 
 async function loadCurrentProduct() {
   if (currentProductId.value) {
-    currentProduct.value = await getProductById(currentProductId.value)
+    const product = await getProductById(currentProductId.value)
+    currentProduct.value = product || null
   }
 }
 
@@ -368,7 +378,7 @@ function handleContact() {
   }
 }
 
-const inquiryForm = ref({
+const inquiryForm = ref<InquiryForm>({
   name: '',
   email: '',
   phone: '',
@@ -377,19 +387,44 @@ const inquiryForm = ref({
   message: ''
 })
 
-function submitInquiry() {
-  if (!inquiryForm.value.name || !inquiryForm.value.email || !inquiryForm.value.subject || !inquiryForm.value.message) {
-    console.log('Please fill in required fields')
+async function submitInquiry() {
+  if (!inquiryForm.value.name || !inquiryForm.value.email || !inquiryForm.value.message) {
+    ElMessage.warning('Please fill in all required fields')
     return
   }
-  console.log('Inquiry submitted:', inquiryForm.value)
-  inquiryForm.value = {
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    subject: '',
-    message: ''
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(inquiryForm.value.email)) {
+    ElMessage.warning('Please enter a valid email address')
+    return
+  }
+
+  try {
+    const response = await axios.post('/api/contact', {
+      name: inquiryForm.value.name,
+      email: inquiryForm.value.email,
+      phone: inquiryForm.value.phone,
+      company: inquiryForm.value.company,
+      subject: inquiryForm.value.subject,
+      message: inquiryForm.value.message,
+    })
+
+    if (response.data.code === 0) {
+      ElMessage.success(response.data.data || 'Message sent successfully! We will get back to you soon.')
+      inquiryForm.value = {
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        subject: '',
+        message: ''
+      }
+    } else {
+      ElMessage.error(response.data.data || 'Failed to send message. Please try again.')
+    }
+  } catch (error) {
+    console.error('Error submitting inquiry:', error)
+    ElMessage.error('Failed to send message. Please try again later.')
   }
 }
 
@@ -415,17 +450,16 @@ function toggleMarkdown() {
   showMarkdown.value = !showMarkdown.value
 }
 
-const latestProducts = ref<any[]>([])
-const allProducts = ref<any[]>([])
+const newProducts = ref<Product[]>([])
+const allProducts = ref<Product[]>([])
 
 async function loadProductsData() {
   allProducts.value = await getProducts()
-  latestProducts.value = allProducts.value.slice(0, 4)
+  newProducts.value = await getNewProducts(5)
 }
 
 onMounted(async () => {
-  await loadProductsData()
-  await loadCurrentProduct()
+  await Promise.all([loadProductsData(), loadCurrentProduct(), loadCategoryTree()])
   if (currentProduct.value && currentProduct.value.subCategory) {
     currentCategory.value = currentProduct.value.subCategory
     updateExpandedKeys(currentProduct.value.subCategory)
@@ -480,8 +514,10 @@ function findCategoryLabel(nodes: TreeNode[], targetId: string): string {
 }
 
 const currentCategoryLabel = computed(() => {
-  return findCategoryLabel(categoryTree, currentCategory.value)
+  return findCategoryLabel(categoryTree.value, currentCategory.value)
 })
+
+const categoryTree = ref<CategoryTreeNode[]>([])
 
 interface TreeNode {
   id: string
@@ -489,92 +525,15 @@ interface TreeNode {
   children?: TreeNode[]
 }
 
-const categoryTree: TreeNode[] = [
-{
-    id: 'all',
-    label: 'All Products',
-    children: []
-  },
-  {
-    id: 'LiquidandPowerTransportTrailers',
-    label: 'Liquid and Power Transport Trailers',
-    children: [
-      { id: 'AluminiumFuelTanker', label: 'Aluminium Fuel Tanker' },
-      { id: 'CarbonSteelFuelTank Trailer', label: 'Carbon Steel Fuel Tank Trailer' },
-      { id: 'BulkCementTrailer', label: 'Bulk Cement Trailer' },
-      { id: 'AsphaltTankTrailers', label: 'Asphalt Tank Trailers' },
-      { id: 'GasTankerTrailer', label: 'Gas Tanker Trailer' },
-      { id: 'StainlessSteelTanker Trailer', label: 'Stainless Steel Tanker Trailer' },
-      { id: 'ChemicalTankTrailer', label: 'Chemical Tank Trailer' },
-      { id: 'StorageTank', label: 'Storage Tank' },
-    ]
-  },
-  {
-    id: 'ContainerSemiTrailer',
-    label: 'Container Semi Trailer',
-    children: [
-      { id: 'SkeletalTrailer', label: 'Skeletal Trailer' },
-      { id: 'FlatbedTrailer', label: 'Flatbed Trailer' },
-    ]
-  },
-  {
-    id: 'SemiTrailer',
-    label: 'Semi Trailer',
-    children: [
-      { id: 'LowbedSemiTrailer', label: 'Lowbed Semi Trailer' },
-      { id: 'TipperSemiTrailer', label: 'Tipper Semi Trailer' },
-      { id: 'FenceCargoTrailer', label: 'Fence Cargo Trailer' },
-      { id: 'SideWallTipper', label: 'Side Wall Tipper' },
-      { id: 'SideCurtainTrailer', label: 'Side Curtain Trailer' },
-	  { id: 'CarCarrierTailer', label: 'Car Carrier Tailer' },
-	  { id: 'BoxSemiTrailer', label: 'Box Semi Trailer' },
-	  { id: 'FullDrawbarTrailer', label: 'Full Drawbar Trailer' },
-	  { id: 'RemovableGooseneckTrailer', label: 'Removable Gooseneck Trailer' },
-    ]
-  },
-  {
-    id: 'ShacmanTrucks',
-    label: 'Shacman Trucks',
-    children: [
-      { id: 'ShacmanDumpTruck', label: 'Shacman Dump Truck' },
-      { id: 'ShacmanTractorTruck', label: 'Shacman Tractor Truck' },
-      { id: 'ShacmanTankerTrucks', label: 'Shacman Tanker Trucks' },
-    ]
-  },
-  {
-    id: 'Accessories',
-    label: 'Accessories',
-    children: [
-      { id: 'TrailerAccessories', label: 'Trailer Accessories' },
-      { id: 'Engine', label: 'Engine' },
-    ]
-  },
-  {
-    id: 'SinotruckHowo',
-    label: 'Sinotruck Howo',
-    children: [
-      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck' },
-	  { id: 'HOWODumpTruck', label: 'HOWO Dump Truck' },
-	  { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck' },
-    ]
-  },
-  {
-    id: 'ExistingTrucksAndTrailers',
-    label: 'Existing Trucks and Trailers',
-    children: [
-      { id: 'Trailer', label: 'Trailer' },
-    ]
-  },
-  {
-    id: 'excavator',
-    label: 'Excavator',
-    children: [
+async function loadCategoryTree() {
+  categoryTree.value = await getCategoryTreeFromApi()
+}
 
-    ]
-  }
-]
+const isParentNode = computed(() => {
+  return categoryTree.value.some(node => node.id === currentCategory.value && node.children && node.children.length > 0)
+})
 
-function updateExpandedKeys(categoryId: string) {
+const updateExpandedKeys = (categoryId: string) => {
   if (categoryId === 'all') {
     expandedKeys.value = []
     return
@@ -596,20 +555,14 @@ function updateExpandedKeys(categoryId: string) {
     return null
   }
 
-  const isParentNode = categoryTree.some(node => node.id === categoryId && node.children && node.children.length > 0)
-
-  if (isParentNode) {
-    // 点击的是父菜单，展开自己
+  if (isParentNode.value) {
     if (expandedKeys.value.includes(categoryId)) {
-      // 如果已经展开，则收起
       expandedKeys.value = []
     } else {
-      // 否则只展开自己
       expandedKeys.value = [categoryId]
     }
   } else {
-    // 点击的是子菜单，展开父菜单
-    const parentKey = findParentNode(categoryTree, categoryId)
+    const parentKey = findParentNode(categoryTree.value, categoryId)
     if (parentKey) {
       expandedKeys.value = [parentKey]
     } else {
@@ -1635,7 +1588,8 @@ function handleCategoryChange(categoryId: string) {
 }
 
 .form-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
@@ -1700,7 +1654,7 @@ function handleCategoryChange(categoryId: string) {
 
 @media (max-width: 768px) {
   .form-row {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 0;
   }
 

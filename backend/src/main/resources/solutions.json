@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Car Carrier Semi Trailer",
+    "desc": "Multi-layer car transport trailer designed for efficient and safe vehicle logistics",
+    "image": "/images/solutions/solution-car-carrier.jpg"
+  },
+  {
+    "title": "Oil Tanker Semi-Trailer",
+    "desc": "Aluminum alloy tank trailers for safe and efficient petroleum product transportation",
+    "image": "/images/solutions/solution-oil-tanker.jpg"
+  },
+  {
+    "title": "Flatbed Semi Trailer",
+    "desc": "Heavy-duty flatbed trailers for construction machinery and large cargo transport",
+    "image": "/images/solutions/solution-flatbed.jpg"
+  },
+  {
+    "title": "Dump Trailer",
+    "desc": "Hydraulic dump trailers for mining and construction material handling",
+    "image": "/images/solutions/solution-dump.jpg"
+  }
+]

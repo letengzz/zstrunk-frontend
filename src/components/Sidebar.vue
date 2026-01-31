@@ -18,6 +18,7 @@
         :data="categoryTree"
         :props="defaultProps"
         :current-node-key="currentCategory"
+        :expanded-keys="expandedKeys"
         node-key="id"
         :highlight-current="true"
         :expand-on-click-node="false"
@@ -27,10 +28,10 @@
       />
       <div class="latest-products-sidebar">
         <h4 class="latest-products-title">Latest Products</h4>
-        <div class="latest-products-list">
+        <div class="latest-products-list" v-if="newProducts.length > 0">
           <div
             class="latest-product-item"
-            v-for="product in latestProducts"
+            v-for="product in newProducts"
             :key="product.id"
             @click="goToProduct(product.id)"
           >
@@ -40,14 +41,18 @@
             </div>
           </div>
         </div>
+        <div v-else class="no-products-message">
+          <p>No new products available</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { getProductById } from '@/data/products'
+import { useRouter, useRoute } from 'vue-router'
+import { ref, onMounted, watch } from 'vue'
+import { getProductById, getNewProducts, getCategoryTreeFromApi, type Product, type CategoryTreeNode } from '@/data/products'
 
 interface TreeNode {
   id: string
@@ -55,29 +60,85 @@ interface TreeNode {
   children?: TreeNode[]
 }
 
-interface Product {
-  id: number
-  name: string
-  image: string
-  category: string
-  desc?: string
-  subCategory?: string
-  tag?: string
+const categoryTree = ref<CategoryTreeNode[]>([])
+const searchQuery = ref('')
+const currentCategory = ref('all')
+const expandedKeys = ref<string[]>([])
+const newProducts = ref<Product[]>([])
+
+async function loadCategoryTree() {
+  categoryTree.value = await getCategoryTreeFromApi()
 }
 
-defineProps<{
-  searchQuery: string
-  categoryTree: TreeNode[]
-  currentCategory: string
-  latestProducts: Product[]
-}>()
-
-const emit = defineEmits<{
-  (e: 'update:searchQuery', value: string): void
-  (e: 'category-change', value: string): void
-}>()
+async function loadNewProducts() {
+  newProducts.value = await getNewProducts(5)
+}
 
 const router = useRouter()
+const route = useRoute()
+
+function findParentNode(nodes: CategoryTreeNode[], targetId: string): string | null {
+  for (const node of nodes) {
+    if (node.children && node.children.length > 0) {
+      const found = node.children.find(child => child.id === targetId)
+      if (found) {
+        return node.id
+      }
+      const parent = findParentNode(node.children, targetId)
+      if (parent) {
+        return parent
+      }
+    }
+  }
+  return null
+}
+
+function isParentNode(nodeId: string): boolean {
+  const node = categoryTree.value.find(n => n.id === nodeId)
+  if (!node) return false
+  return Boolean(node.children && node.children.length > 0)
+}
+
+function updateExpandedKeysForCategory(categoryId: string) {
+  if (!categoryId) {
+    currentCategory.value = 'all'
+    expandedKeys.value = []
+    return
+  }
+
+  currentCategory.value = categoryId
+
+  if (!isParentNode(categoryId)) {
+    const parentKey = findParentNode(categoryTree.value, categoryId)
+    if (parentKey) {
+      expandedKeys.value = [parentKey]
+    } else {
+      expandedKeys.value = []
+    }
+  } else {
+    expandedKeys.value = [categoryId]
+  }
+}
+
+onMounted(async () => {
+  await Promise.all([loadCategoryTree(), loadNewProducts()])
+
+  const categoryParam = route.query.category as string
+  updateExpandedKeysForCategory(categoryParam)
+})
+
+watch(() => route.query.category, (newCategory) => {
+  updateExpandedKeysForCategory(newCategory as string)
+})
+
+watch(categoryTree, (newTree) => {
+  if (newTree.length > 0) {
+    const categoryParam = route.query.category as string
+    if (categoryParam) {
+      updateExpandedKeysForCategory(categoryParam)
+    }
+  }
+}, { immediate: false })
 
 const defaultProps = {
   children: 'children',
@@ -85,11 +146,11 @@ const defaultProps = {
 }
 
 function handleSearch(value: string) {
-  emit('update:searchQuery', value)
+  searchQuery.value = value
 }
 
 function handleNodeClick(data: TreeNode) {
-  emit('category-change', data.id)
+  currentCategory.value = data.id
   if (data.id === 'all') {
     router.push({ path: '/products' })
   } else {
@@ -298,5 +359,12 @@ async function goToProduct(id: number) {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.no-products-message {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
 }
 </style>

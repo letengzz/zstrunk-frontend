@@ -1,3 +1,5 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <template>
   <div class="products-page-container">
     <TopBar class="floating-topbar" />
@@ -14,9 +16,7 @@
         <div class="content-layout">
           <Sidebar
             :search-query="searchQuery"
-            :category-tree="categoryTree"
             :current-category="currentCategory"
-            :latest-products="latestProducts"
             @update:searchQuery="searchQuery = $event"
             @category-change="handleCategoryChange"
           />
@@ -131,7 +131,7 @@ import ContactFixed from '@/components/ContactFixed.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
-import { getProducts, getProductById } from '@/data/products'
+import { getProductById, getProducts, getProductsGroupedByCategoryFromApi, getNewProducts, type Product } from '@/data/products'
 import { marked } from 'marked'
 
 const router = useRouter()
@@ -142,14 +142,31 @@ const currentCategory = ref<string>('all')
 const currentPage = ref(1)
 const pageSize = ref(6)
 const expandedKeys = ref<string[]>([])
-const productsList = ref<any[]>([])
+const productsList = ref<Product[]>([])
+const categoryProductCounts = ref<Record<string, number>>({})
+const isLoadingCategories = ref(true)
 
 async function loadProducts() {
   productsList.value = await getProducts()
 }
 
+async function loadCategories() {
+  try {
+    isLoadingCategories.value = true
+    const groupedProducts = await getProductsGroupedByCategoryFromApi()
+    categoryProductCounts.value = {}
+    for (const [category, products] of Object.entries(groupedProducts)) {
+      categoryProductCounts.value[category] = products.length
+    }
+  } catch (error) {
+    console.error('Error loading categories:', error)
+  } finally {
+    isLoadingCategories.value = false
+  }
+}
+
 onMounted(async () => {
-  await loadProducts()
+  await Promise.all([loadProducts(), loadCategories(), loadNewProducts()])
   const categoryParam = route.query.category as string
   if (categoryParam) {
     currentCategory.value = categoryParam
@@ -406,9 +423,11 @@ const currentCategoryLabel = computed(() => {
   return findCategoryLabel(categoryTree, currentCategory.value)
 })
 
-const latestProducts = computed(() => {
-  return productsList.value.slice(0, 4)
-})
+const newProducts = ref<Product[]>([])
+
+async function loadNewProducts() {
+  newProducts.value = await getNewProducts(5)
+}
 
 const currentCategoryNode = computed(() => {
   const findNode = (nodes: TreeNode[], id: string): TreeNode | null => {

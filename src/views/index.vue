@@ -18,13 +18,13 @@
         <img :src="`/images/carousel/carousel${item}.png`" alt="">
         <div class="overlay"></div>
         <div class="title-container">
-          <template v-if="item === 1">
-            <h1 class="main-title hello-title">Powerful</h1>
-            <h1 class="main-title world-title">Excavators for Sale</h1>
+          <template v-if="carouselItems[item - 1]">
+            <h1 class="main-title hello-title">{{ carouselItems[item - 1]?.mainTitle }}</h1>
+            <h1 class="main-title world-title">{{ carouselItems[item - 1]?.subTitle }}</h1>
           </template>
           <template v-else>
-            <h1 class="main-title hello-title">Premium</h1>
-            <h1 class="main-title world-title">Tanker Trucks for Sale</h1>
+            <h1 class="main-title hello-title">Welcome</h1>
+            <h1 class="main-title world-title">To Our Products</h1>
           </template>
         </div>
       </el-carousel-item>
@@ -127,7 +127,7 @@
           </div>
         </div>
         <div class="product-grid">
-          <div class="product-col" v-for="product in currentProducts" :key="product.id">
+          <div class="product-col" v-for="product in hotProducts" :key="product.id">
             <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }"  :style="{ cursor: 'pointer' }">
               <div class="product-image">
                 <img :src="product.image" class="product-img" />
@@ -233,7 +233,7 @@
                     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
                   </svg>
                 </button>
-                <button class="solution-nav-btn next" @click="nextSolution" :disabled="currentSolutionIndex === solutions.length - 1">
+                <button class="solution-nav-btn next" @click="nextSolution" :disabled="currentSolutionIndex === solutions.length - 1 || solutions.length === 0">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                   </svg>
@@ -329,19 +329,36 @@ import { ElMessage } from 'element-plus'
 import axios from 'axios'
 
 import { useRouter } from 'vue-router'
-import { getProductsByCategory, getProductById } from '@/data/products'
-import type { Product } from '@/data/products'
+import { getProductsByCategory, getProductById, getCarouselConfig, getSolutionsConfig, type Product, type CarouselItem, type Solution } from '@/data/products'
 
 const router = useRouter()
 
 const imageCount = ref(0);
+const carouselItems = ref<CarouselItem[]>([]);
+const solutions = ref<Solution[]>([]);
+
+async function loadCarouselConfig() {
+  carouselItems.value = await getCarouselConfig()
+}
+
+async function loadSolutionsConfig() {
+  solutions.value = await getSolutionsConfig()
+}
 
 onMounted(async () => {
   imageCount.value = await loadCarouselImages();
+  await loadCarouselConfig()
+  await loadSolutionsConfig()
 });
 
 const currentCategory = ref<'tanker' | 'excavator'>('tanker')
 const currentProducts = ref<Product[]>([])
+
+const hotProducts = computed(() => {
+  return currentProducts.value
+    .filter(product => product.tag === 'Hot')
+    .slice(0, 6)
+})
 
 async function loadProducts() {
   currentProducts.value = await getProductsByCategory(currentCategory.value)
@@ -370,7 +387,16 @@ async function goToProduct(id: number) {
 
 const contactDialogVisible = ref(false)
 
-const contactForm = reactive({
+interface ContactForm {
+  name: string
+  email: string
+  phone: string
+  company: string
+  subject: string
+  message: string
+}
+
+const contactForm = reactive<ContactForm>({
   name: '',
   email: '',
   phone: '',
@@ -418,39 +444,13 @@ async function submitContactForm() {
   }
 }
 
-interface Solution {
-  title: string
-  desc: string
-  image: string
-}
-
-const solutions: Solution[] = [
-  {
-    title: 'Car Carrier Semi Trailer',
-    desc: 'Multi-layer car transport trailer designed for efficient and safe vehicle logistics',
-    image: '/images/solutions/solution-car-carrier.jpg'
-  },
-  {
-    title: 'Oil Tanker Semi-Trailer',
-    desc: 'Aluminum alloy tank trailers for safe and efficient petroleum product transportation',
-    image: '/images/solutions/solution-oil-tanker.jpg'
-  },
-  {
-    title: 'Flatbed Semi Trailer',
-    desc: 'Heavy-duty flatbed trailers for construction machinery and large cargo transport',
-    image: '/images/solutions/solution-flatbed.jpg'
-  },
-  {
-    title: 'Dump Trailer',
-    desc: 'Hydraulic dump trailers for mining and construction material handling',
-    image: '/images/solutions/solution-dump.jpg'
-  }
-]
-
 const currentSolutionIndex = ref(0)
 
 const currentSolution = computed<Solution>(() => {
-  return solutions[currentSolutionIndex.value]!
+  if (solutions.value.length === 0) {
+    return { title: '', desc: '', image: '' } as Solution
+  }
+  return solutions.value[currentSolutionIndex.value] ?? solutions.value[0]!
 })
 
 function prevSolution() {
@@ -460,7 +460,7 @@ function prevSolution() {
 }
 
 function nextSolution() {
-  if (currentSolutionIndex.value < solutions.length - 1) {
+  if (currentSolutionIndex.value < solutions.value.length - 1) {
     currentSolutionIndex.value++
   }
 }

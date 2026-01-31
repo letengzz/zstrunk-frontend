@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer-content">
       <el-row :gutter="20">
-        <el-col :xs="24" :sm="12" :md="5">
+        <el-col :xs="24" :sm="12" :md="4">
           <div class="footer-brand">
             <img src="/public/images/logo.png" alt="Logo" class="footer-logo">
             <span class="footer-company-name">ZHI SHUN</span>
@@ -19,28 +19,25 @@
             </ul>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="12" :md="5">
+        <el-col :xs="24" :sm="12" :md="8">
           <div class="footer-links">
             <h4 class="footer-title">{{ productsTitle }}</h4>
-            <ul class="link-list">
-              <li v-for="(link, index) in productLinks" :key="index">
-                <a :href="link.url">{{ link.text }}</a>
-              </li>
-            </ul>
+            <div class="products-grid">
+              <div class="product-column">
+                <div v-for="(link, index) in productLinksLeft" :key="'left-'+index">
+                  <a :href="link.url" class="product-category-link">{{ link.text }}</a>
+                </div>
+              </div>
+              <div class="product-column">
+                <div v-for="(link, index) in productLinksRight" :key="'right-'+index">
+                  <a :href="link.url" class="product-category-link">{{ link.text }}</a>
+                </div>
+              </div>
+            </div>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="12" :md="5">
-          <div class="footer-links">
-            <h4 class="footer-title">{{ excavatorsTitle }}</h4>
-            <ul class="link-list">
-              <li v-for="(link, index) in excavatorLinks" :key="index">
-                <a :href="link.url">{{ link.text }}</a>
-              </li>
-            </ul>
-          </div>
-        </el-col>
-        <el-col :xs="24" :sm="12" :md="4">
-          <div class="footer-contact">
+        <el-col :xs="24" :sm="12" :md="7">
+          <div class="footer-links footer-contact">
             <h4 class="footer-title">{{ contactTitle }}</h4>
             <div v-if="showContactIcons" class="contact-info">
               <div v-if="phone" class="contact-row">
@@ -84,9 +81,8 @@ withDefaults(defineProps<{
   quickLinksTitle?: string
   quickLinks?: LinkItem[]
   productsTitle?: string
-  productLinks?: LinkItem[]
-  excavatorsTitle?: string
-  excavatorLinks?: LinkItem[]
+  productLinksLeft?: LinkItem[]
+  productLinksRight?: LinkItem[]
   contactTitle?: string
   showContactIcons?: boolean
   phone?: string
@@ -99,23 +95,20 @@ withDefaults(defineProps<{
   quickLinksTitle: 'Quick Links',
   quickLinks: () => [
     { text: 'Home', url: '/' },
-    // { text: 'Products', url: '/products' },
-    // { text: 'Services', url: '/services' },
     { text: 'About Us', url: '/about' }
   ],
-  productsTitle: 'TRUCK',
-  productLinks: () => [
-    { text: 'Tractor Head Truck', url: '#' },
-    { text: 'Dump Truck', url: '#' },
-    { text: 'Concrete Mixer Truck', url: '#' },
-    { text: 'Other Type Truck', url: '#' }
+  productsTitle: 'Products',
+  productLinksLeft: () => [
+    { text: 'Liquid and Power Transport Trailers', url: '/products?category=LiquidandPowerTransportTrailers' },
+    { text: 'Container Semi Trailer', url: '/products?category=ContainerSemiTrailer' },
+    { text: 'Semi Trailer', url: '/products?category=SemiTrailer' },
+    { text: 'Shacman Trucks', url: '/products?category=ShacmanTrucks' }
   ],
-  excavatorsTitle: 'EXCAVATOR',
-  excavatorLinks: () => [
-    { text: 'Mini Excavator', url: '#' },
-    { text: 'Standard Excavator', url: '#' },
-    { text: 'Large Excavator', url: '#' },
-    { text: 'Mining Excavator', url: '#' }
+  productLinksRight: () => [
+    { text: 'Accessories', url: '/products?category=Accessories' },
+    { text: 'Sinotruck Howo', url: '/products?category=SinotruckHowo' },
+    { text: 'Existing Trucks and Trailers', url: '/products?category=ExistingTrucksAndTrailers' },
+    { text: 'Excavators', url: '/products?category=excavator' }
   ],
   contactTitle: 'Contact Us',
   showContactIcons: true,
@@ -188,6 +181,50 @@ const currentYear = new Date().getFullYear()
   margin-bottom: 30px;
 }
 
+.products-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.product-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-category-link {
+  color: #5a6a7a;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-category-link::before {
+  content: '›';
+  margin-right: 8px;
+  color: #FF0000;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.product-category-link:hover {
+  color: #FF0000;
+  transform: translateX(5px);
+}
+
+.product-category-link:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .link-list {
   list-style: none;
   padding: 0;
@@ -228,7 +265,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer-contact {
-  padding-left: 10px;
+  padding-left: 0;
 }
 
 .contact-info {

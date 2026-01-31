@@ -52,7 +52,7 @@ public class ContactController {
             content.put("subject", message.getSubject());
             content.put("message", message.getMessage());
 
-            sendHtmlMail("sales@zhishun.com", null, null, subject, content);
+            sendHtmlMail("2020885569@qq.com", null, null, subject, content);
 
             log.info("联系表单邮件发送成功");
             return ResponseEntity.success("Message sent successfully! We will get back to you soon.");

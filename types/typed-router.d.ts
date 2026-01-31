@@ -37,30 +37,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/about-black': RouteRecordInfo<
-      '/about-black',
-      '/about-black',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     'contact': RouteRecordInfo<
       'contact',
       '/contact',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/demo': RouteRecordInfo<
-      '/demo',
-      '/demo',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/demo3': RouteRecordInfo<
-      '/demo3',
-      '/demo3',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -72,30 +51,9 @@ declare module 'vue-router/auto-routes' {
       { id: ParamValue<false> },
       | never
     >,
-    '/index-black': RouteRecordInfo<
-      '/index-black',
-      '/index-black',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/product/[id]': RouteRecordInfo<
-      '/product/[id]',
-      '/product/:id',
-      { id: ParamValue<true> },
-      { id: ParamValue<false> },
-      | never
-    >,
     '/product-detail': RouteRecordInfo<
       '/product-detail',
       '/product-detail',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/product-detail-black': RouteRecordInfo<
-      '/product-detail-black',
-      '/product-detail-black',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -110,34 +68,6 @@ declare module 'vue-router/auto-routes' {
     '/products': RouteRecordInfo<
       '/products',
       '/products',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/products-1': RouteRecordInfo<
-      '/products-1',
-      '/products-1',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/products-black': RouteRecordInfo<
-      '/products-black',
-      '/products-black',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/products-list': RouteRecordInfo<
-      '/products-list',
-      '/products-list',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/productsback': RouteRecordInfo<
-      '/productsback',
-      '/productsback',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -174,27 +104,9 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/about-black.vue': {
-      routes:
-        | '/about-black'
-      views:
-        | never
-    }
     'src/views/contact.vue': {
       routes:
         | 'contact'
-      views:
-        | never
-    }
-    'src/views/demo.vue': {
-      routes:
-        | '/demo'
-      views:
-        | never
-    }
-    'src/views/demo3.vue': {
-      routes:
-        | '/demo3'
       views:
         | never
     }
@@ -204,27 +116,9 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/views/index-black.vue': {
-      routes:
-        | '/index-black'
-      views:
-        | never
-    }
-    'src/views/product/[id].vue': {
-      routes:
-        | '/product/[id]'
-      views:
-        | never
-    }
     'src/views/product-detail.vue': {
       routes:
         | '/product-detail'
-      views:
-        | never
-    }
-    'src/views/product-detail-black.vue': {
-      routes:
-        | '/product-detail-black'
       views:
         | never
     }
@@ -237,30 +131,6 @@ declare module 'vue-router/auto-routes' {
     'src/views/products.vue': {
       routes:
         | '/products'
-      views:
-        | never
-    }
-    'src/views/products-1.vue': {
-      routes:
-        | '/products-1'
-      views:
-        | never
-    }
-    'src/views/products-black.vue': {
-      routes:
-        | '/products-black'
-      views:
-        | never
-    }
-    'src/views/products-list.vue': {
-      routes:
-        | '/products-list'
-      views:
-        | never
-    }
-    'src/views/productsback.vue': {
-      routes:
-        | '/productsback'
       views:
         | never
     }

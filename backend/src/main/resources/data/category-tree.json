@@ -1,0 +1,82 @@
+[
+  {
+    "id": "all",
+    "label": "All Products",
+    "children": []
+  },
+  {
+    "id": "LiquidandPowerTransportTrailers",
+    "label": "Liquid and Power Transport Trailers",
+    "children": [
+      { "id": "AluminiumFuelTanker", "label": "Aluminium Fuel Tanker" },
+      { "id": "CarbonSteelFuelTank Trailer", "label": "Carbon Steel Fuel Tank Trailer" },
+      { "id": "BulkCementTrailer", "label": "Bulk Cement Trailer" },
+      { "id": "AsphaltTankTrailers", "label": "Asphalt Tank Trailers" },
+      { "id": "GasTankerTrailer", "label": "Gas Tanker Trailer" },
+      { "id": "StainlessSteelTanker Trailer", "label": "Stainless Steel Tanker Trailer" },
+      { "id": "ChemicalTankTrailer", "label": "Chemical Tank Trailer" },
+      { "id": "StorageTank", "label": "Storage Tank" }
+    ]
+  },
+  {
+    "id": "ContainerSemiTrailer",
+    "label": "Container Semi Trailer",
+    "children": [
+      { "id": "SkeletalTrailer", "label": "Skeletal Trailer" },
+      { "id": "FlatbedTrailer", "label": "Flatbed Trailer" }
+    ]
+  },
+  {
+    "id": "SemiTrailer",
+    "label": "Semi Trailer",
+    "children": [
+      { "id": "LowbedSemiTrailer", "label": "Lowbed Semi Trailer" },
+      { "id": "TipperSemiTrailer", "label": "Tipper Semi Trailer" },
+      { "id": "FenceCargoTrailer", "label": "Fence Cargo Trailer" },
+      { "id": "SideWallTipper", "label": "Side Wall Tipper" },
+      { "id": "SideCurtainTrailer", "label": "Side Curtain Trailer" },
+      { "id": "CarCarrierTailer", "label": "Car Carrier Tailer" },
+      { "id": "BoxSemiTrailer", "label": "Box Semi Trailer" },
+      { "id": "FullDrawbarTrailer", "label": "Full Drawbar Trailer" },
+      { "id": "RemovableGooseneckTrailer", "label": "Removable Gooseneck Trailer" }
+    ]
+  },
+  {
+    "id": "ShacmanTrucks",
+    "label": "Shacman Trucks",
+    "children": [
+      { "id": "ShacmanDumpTruck", "label": "Shacman Dump Truck" },
+      { "id": "ShacmanTractorTruck", "label": "Shacman Tractor Truck" },
+      { "id": "ShacmanTankerTrucks", "label": "Shacman Tanker Trucks" }
+    ]
+  },
+  {
+    "id": "Accessories",
+    "label": "Accessories",
+    "children": [
+      { "id": "TrailerAccessories", "label": "Trailer Accessories" },
+      { "id": "Engine", "label": "Engine" }
+    ]
+  },
+  {
+    "id": "SinotruckHowo",
+    "label": "Sinotruck Howo",
+    "children": [
+      { "id": "HOWOTractorTruck", "label": "HOWO Tractor Truck" },
+      { "id": "HOWODumpTruck", "label": "HOWO Dump Truck" },
+      { "id": "HOWOTankerTruck", "label": "HOWO Tanker Truck" }
+    ]
+  },
+  {
+    "id": "ExistingTrucksAndTrailers",
+    "label": "Existing Trucks and Trailers",
+    "children": [
+      { "id": "Trailer", "label": "Trailer" }
+    ]
+  },
+  {
+    "id": "excavator",
+    "label": "Excavator",
+    "children": []
+  }
+]

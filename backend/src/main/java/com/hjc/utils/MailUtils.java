@@ -54,7 +54,7 @@ public class MailUtils {
         message.setSentDate(new Date());
         //OK，万事俱备只欠发送
         sender.send(message);
-        log.info("邮件发送成功");
+         log.info("邮件发送成功");
         return "邮件发送成功";
     }
 
