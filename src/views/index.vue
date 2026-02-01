@@ -113,8 +113,8 @@
         <div class="category-tabs">
           <div
             class="category-tab"
-            :class="{ active: currentCategory === 'tanker' }"
-            @click="setCategory('tanker')"
+            :class="{ active: currentCategory === 'truck' }"
+            @click="setCategory('truck')"
           >
             <span class="category-name">Tanker Trucks</span>
           </div>
@@ -333,8 +333,10 @@ import axios from 'axios'
 
 import { useRouter } from 'vue-router'
 import { getProductsByCategory, getProductById, getCarouselConfig, getSolutionsConfig, type Product, type CarouselItem, type Solution } from '@/data/products'
+import { useProductsStore } from '@/stores/modules/products'
 
 const router = useRouter()
+const productsStore = useProductsStore()
 
 const imageCount = ref(0);
 const carouselItems = ref<CarouselItem[]>([]);
@@ -348,19 +350,16 @@ async function loadSolutionsConfig() {
   solutions.value = await getSolutionsConfig()
 }
 
-onMounted(async () => {
-  imageCount.value = await loadCarouselImages();
-  await loadCarouselConfig()
-  await loadSolutionsConfig()
-});
-
-const currentCategory = ref<'tanker' | 'excavator'>('tanker')
+const currentCategory = ref<'truck' | 'excavator'>('truck')
 const currentProducts = ref<Product[]>([])
 
 const hotProducts = computed(() => {
-  return currentProducts.value
-    .filter(product => product.tag === 'Hot')
-    .slice(0, 6)
+  const allHot = productsStore.getHotProducts()
+  if (currentCategory.value === 'truck') {
+    return allHot.filter(p => p.category === 'truck').slice(0, 6)
+  } else {
+    return allHot.filter(p => p.category === 'excavator').slice(0, 6)
+  }
 })
 
 async function loadProducts() {
@@ -369,10 +368,12 @@ async function loadProducts() {
 
 onMounted(async () => {
   imageCount.value = await loadCarouselImages()
-  await loadProducts()
+  await loadCarouselConfig()
+  await loadSolutionsConfig()
+  await productsStore.loadProducts()
 })
 
-function setCategory(category: 'tanker' | 'excavator') {
+function setCategory(category: 'truck' | 'excavator') {
   currentCategory.value = category
   loadProducts()
 }
@@ -380,7 +381,7 @@ function setCategory(category: 'tanker' | 'excavator') {
 async function goToProduct(id: number) {
   const product = await getProductById(id)
   if (product) {
-    if (product.category === 'tanker') {
+    if (product.category === 'truck') {
       router.push(`/truck/${id}`)
     } else if (product.category === 'excavator') {
       router.push(`/excavator/${id}`)
