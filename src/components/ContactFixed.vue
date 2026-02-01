@@ -67,7 +67,7 @@ const activeContact = ref('')
 .contact-fixed {
   position: fixed;
   right: 20px;
-  bottom: 280px;
+  bottom: 180px;
   width: 50px;
   height: 240px;
   z-index: 1000;
