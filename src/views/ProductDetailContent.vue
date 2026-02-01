@@ -15,6 +15,7 @@
           <Sidebar
             :search-query="searchQuery"
             :current-category="currentCategory"
+            :expanded-keys="expandedKeys"
             @update:searchQuery="searchQuery = $event"
             @category-change="handleCategoryChange"
           />

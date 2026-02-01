@@ -17,6 +17,7 @@
           <Sidebar
             :search-query="searchQuery"
             :current-category="currentCategory"
+            :expanded-keys="expandedKeys"
             @update:searchQuery="searchQuery = $event"
             @category-change="handleCategoryChange"
           />
@@ -133,23 +134,26 @@ import ContactFixed from '@/components/ContactFixed.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
-import { getProductById, getProducts, getProductsGroupedByCategoryFromApi, getNewProducts, type Product } from '@/data/products'
+import { getProductById, getProductsGroupedByCategoryFromApi, getNewProducts, type Product } from '@/data/products'
 import { marked } from 'marked'
+import { useProductsStore } from '@/stores/modules/products'
 
 const router = useRouter()
 const route = useRoute()
+const productsStore = useProductsStore()
 
 const searchQuery = ref('')
 const currentCategory = ref<string>('all')
 const currentPage = ref(1)
 const pageSize = ref(6)
 const expandedKeys = ref<string[]>([])
-const productsList = ref<Product[]>([])
 const categoryProductCounts = ref<Record<string, number>>({})
 const isLoadingCategories = ref(true)
 
+const productsList = computed(() => productsStore.products)
+
 async function loadProducts() {
-  productsList.value = await getProducts()
+  await productsStore.loadProducts()
 }
 
 async function loadCategories() {
@@ -329,13 +333,13 @@ function updateExpandedKeys(categoryId: string) {
   }
 }
 
-const mainCategoryMap: Record<string, 'tanker' | 'excavator'> = {
-  'LiquidandPowerTransportTrailers': 'tanker',
-  'ContainerSemiTrailer': 'tanker',
-  'SemiTrailer': 'tanker',
-  'ShacmanTrucks': 'tanker',
-  'Accessories': 'tanker',
-  'ExistingTrucksAndTrailers': 'tanker',
+const mainCategoryMap: Record<string, 'truck' | 'excavator'> = {
+  'LiquidandPowerTransportTrailers': 'truck',
+  'ContainerSemiTrailer': 'truck',
+  'SemiTrailer': 'truck',
+  'ShacmanTrucks': 'truck',
+  'Accessories': 'truck',
+  'ExistingTrucksAndTrailers': 'truck',
   'excavator': 'excavator'
 }
 
@@ -345,17 +349,25 @@ const isMainCategory = (categoryId: string): boolean => {
 
 const filteredProducts = computed(() => {
   let result = [...productsList.value]
+  console.log('=== DEBUG ===')
+  console.log('Total products:', result.length)
+  console.log('Current category:', currentCategory.value)
+  console.log('Products loaded:', productsStore.isLoaded)
 
   if (currentCategory.value !== 'all') {
     if (isMainCategory(currentCategory.value)) {
       const categoryType = mainCategoryMap[currentCategory.value]
-      if (categoryType === 'tanker') {
-        result = result.filter(product => product.category === 'tanker')
+      if (categoryType === 'truck') {
+        result = result.filter(product => product.category === 'truck')
       } else if (categoryType === 'excavator') {
         result = result.filter(product => product.category === 'excavator')
       }
     } else {
+      const beforeCount = result.length
       result = result.filter(product => product.subCategory === currentCategory.value)
+      console.log('SubCategory filter:', currentCategory.value)
+      console.log('Before filter:', beforeCount, 'After filter:', result.length)
+      console.log('Sample subCategories:', result.slice(0, 3).map(p => p.subCategory))
     }
   }
 
@@ -367,6 +379,7 @@ const filteredProducts = computed(() => {
     )
   }
 
+  console.log('Final result count:', result.length)
   return result
 })
 
@@ -394,7 +407,7 @@ function handleCurrentChange(page: number) {
 async function goToProduct(id: number) {
   const product = await getProductById(id)
   if (product) {
-    if (product.category === 'tanker') {
+    if (product.category === 'truck') {
       router.push(`/truck/${id}`)
     } else if (product.category === 'excavator') {
       router.push(`/excavator/${id}`)
@@ -1045,7 +1058,7 @@ watch(currentCategory, async () => {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  /* -webkit-line-clamp: 2; */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   flex: 1;
 }

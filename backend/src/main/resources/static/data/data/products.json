@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "name": "113 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank1111",
+    "name": "3 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank",
     "desc": "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity",
     "image": "/products/3Axles40000LitersFuelTankSemiTrailerOilTransportTank.png",
     "images": [
       "/products/3Axles40000LitersFuelTankSemiTrailerOilTransportTank-1.png"
     ],
     "tag": "Hot",
-    "category": "LiquidandPowerTransportTrailers",
-    "subCategory": "AluminiumFuelTanker",
+    "category": "tanker",
+    "subCategory": "CarbonSteelFuelTank Trailer",
     "specs": [
       {
         "label": "Capacity",
@@ -63,7 +63,7 @@
     "desc": "The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.",
     "image": "/products/45000LitersOilTankerTrailer.jpg",
     "tag": "New",
-    "category": "AluminiumFuelTanker",
+    "category": "tanker",
     "subCategory": "AluminiumFuelTanker",
     "specs": [
       {

@@ -14,7 +14,7 @@
       { "id": "BulkCementTrailer", "label": "Bulk Cement Trailer", "markdownPath": "/md/bulk-cement-trailer.md" },
       { "id": "AsphaltTankTrailers", "label": "Asphalt Tank Trailers", "markdownPath": "/md/asphalt-tank-trailers.md" },
       { "id": "GasTankerTrailer", "label": "Gas Tanker Trailer", "markdownPath": "/md/gas-tanker-trailer.md" },
-      { "id": "StainlessSteelTanker Trailer", "label": "Stainless Steel Tanker Trailer", "markdownPath": "/md/stainless-steel-tanker-trailer.md" },
+      { "id": "StainlessSteelTankerTrailer", "label": "Stainless Steel Tanker Trailer", "markdownPath": "/md/stainless-steel-tanker-trailer.md" },
       { "id": "ChemicalTankTrailer", "label": "Chemical Tank Trailer", "markdownPath": "/md/chemical-tank-trailer.md" },
       { "id": "StorageTank", "label": "Storage Tank", "markdownPath": "/md/storage-tank.md" }
     ]

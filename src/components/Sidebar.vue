@@ -17,8 +17,8 @@
       <el-tree
         :data="categoryTree"
         :props="defaultProps"
-        :current-node-key="currentCategory"
-        :expanded-keys="expandedKeys"
+        :current-node-key="computedCurrentCategory"
+        :expanded-keys="computedExpandedKeys"
         node-key="id"
         :highlight-current="true"
         :expand-on-click-node="false"
@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { getProductById, getNewProducts, getCategoryTreeFromApi, type Product, type CategoryTreeNode } from '@/data/products'
 
 interface TreeNode {
@@ -60,11 +60,30 @@ interface TreeNode {
   children?: TreeNode[]
 }
 
+interface Props {
+  searchQuery: string
+  currentCategory: string
+  expandedKeys: string[]
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits<{
+  (e: 'update:searchQuery', value: string): void
+  (e: 'category-change', value: string): void
+}>()
+
 const categoryTree = ref<CategoryTreeNode[]>([])
-const searchQuery = ref('')
-const currentCategory = ref('all')
-const expandedKeys = ref<string[]>([])
 const newProducts = ref<Product[]>([])
+
+const computedCurrentCategory = computed({
+  get: () => props.currentCategory,
+  set: (value: string) => emit('category-change', value)
+})
+
+const computedExpandedKeys = computed({
+  get: () => props.expandedKeys,
+  set: () => {}
+})
 
 async function loadCategoryTree() {
   categoryTree.value = await getCategoryTreeFromApi()
@@ -77,68 +96,22 @@ async function loadNewProducts() {
 const router = useRouter()
 const route = useRoute()
 
-function findParentNode(nodes: CategoryTreeNode[], targetId: string): string | null {
-  for (const node of nodes) {
-    if (node.children && node.children.length > 0) {
-      const found = node.children.find(child => child.id === targetId)
-      if (found) {
-        return node.id
-      }
-      const parent = findParentNode(node.children, targetId)
-      if (parent) {
-        return parent
-      }
-    }
-  }
-  return null
-}
-
-function isParentNode(nodeId: string): boolean {
-  const node = categoryTree.value.find(n => n.id === nodeId)
-  if (!node) return false
-  return Boolean(node.children && node.children.length > 0)
-}
-
-function updateExpandedKeysForCategory(categoryId: string) {
-  if (!categoryId) {
-    currentCategory.value = 'all'
-    expandedKeys.value = []
-    return
-  }
-
-  currentCategory.value = categoryId
-
-  if (!isParentNode(categoryId)) {
-    const parentKey = findParentNode(categoryTree.value, categoryId)
-    if (parentKey) {
-      expandedKeys.value = [parentKey]
-    } else {
-      expandedKeys.value = []
-    }
-  } else {
-    expandedKeys.value = [categoryId]
-  }
-}
-
 onMounted(async () => {
   await Promise.all([loadCategoryTree(), loadNewProducts()])
 
-  const categoryParam = route.query.category as string
-  updateExpandedKeysForCategory(categoryParam)
+  if (!props.currentCategory || props.currentCategory === 'all') {
+    const categoryParam = route.query.category as string
+    if (categoryParam) {
+      emit('category-change', categoryParam)
+    }
+  }
 })
 
 watch(() => route.query.category, (newCategory) => {
-  updateExpandedKeysForCategory(newCategory as string)
-})
-
-watch(categoryTree, (newTree) => {
-  if (newTree.length > 0) {
-    const categoryParam = route.query.category as string
-    if (categoryParam) {
-      updateExpandedKeysForCategory(categoryParam)
-    }
+  if (newCategory) {
+    emit('category-change', newCategory as string)
   }
-}, { immediate: false })
+})
 
 const defaultProps = {
   children: 'children',
@@ -146,11 +119,11 @@ const defaultProps = {
 }
 
 function handleSearch(value: string) {
-  searchQuery.value = value
+  emit('update:searchQuery', value)
 }
 
 function handleNodeClick(data: TreeNode) {
-  currentCategory.value = data.id
+  emit('category-change', data.id)
   if (data.id === 'all') {
     router.push({ path: '/products' })
   } else {
@@ -165,6 +138,8 @@ async function goToProduct(id: number) {
       router.push(`/truck/${id}`)
     } else if (product.category === 'excavator') {
       router.push(`/excavator/${id}`)
+    } else {
+      router.push(`/truck/${id}`)
     }
   }
 }

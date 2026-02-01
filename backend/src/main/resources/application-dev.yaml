@@ -10,3 +10,5 @@ spring:
     password: RAKTCQGORXBPIVPR
     ssl:
       enabled: true
+app:
+  data-path: D:/Develop/zstrunk-frontend/data

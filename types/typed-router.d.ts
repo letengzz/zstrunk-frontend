@@ -51,13 +51,6 @@ declare module 'vue-router/auto-routes' {
       { id: ParamValue<false> },
       | never
     >,
-    '/product-detail': RouteRecordInfo<
-      '/product-detail',
-      '/product-detail',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/ProductDetailContent': RouteRecordInfo<
       '/ProductDetailContent',
       '/ProductDetailContent',
@@ -113,12 +106,6 @@ declare module 'vue-router/auto-routes' {
     'src/views/excavator/[id].vue': {
       routes:
         | 'excavator-detail'
-      views:
-        | never
-    }
-    'src/views/product-detail.vue': {
-      routes:
-        | '/product-detail'
       views:
         | never
     }

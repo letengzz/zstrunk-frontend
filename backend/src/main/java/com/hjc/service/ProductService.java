@@ -219,4 +219,12 @@ public class ProductService {
         checkAndReloadCategoryTree();
         return categoryTree != null ? categoryTree : List.of();
     }
+
+    public List<Product> getHotProducts() {
+        checkAndReloadProducts();
+        if (products == null) return List.of();
+        return products.stream()
+                .filter(p -> "Hot".equals(p.getTag()))
+                .collect(Collectors.toList());
+    }
 }

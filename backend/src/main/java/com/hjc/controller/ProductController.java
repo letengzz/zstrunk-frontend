@@ -97,4 +97,10 @@ public class ProductController {
     public ResponseEntity<List<CategoryTreeNode>> getCategoryTree() {
         return ResponseEntity.success(productService.getCategoryTree());
     }
+
+    @Operation(summary = "获取热门产品")
+    @GetMapping("/hot")
+    public ResponseEntity<List<Product>> getHotProducts() {
+        return ResponseEntity.success(productService.getHotProducts());
+    }
 }

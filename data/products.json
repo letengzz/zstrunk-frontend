@@ -9,7 +9,7 @@
     ],
     "tag": "Hot",
     "category": "truck",
-    "subCategory": "AluminiumFueltruck",
+    "subCategory": "AluminiumFuelTanker",
     "specs": [
       {
         "label": "Capacity",
@@ -64,7 +64,7 @@
     "image": "/products/45000LitersOiltruckTrailer.jpg",
     "tag": "New",
     "category": "truck",
-    "subCategory": "AluminiumFueltruck",
+    "subCategory": "StainlessSteelTankerTrailer",
     "specs": [
       {
         "label": "Capacity",

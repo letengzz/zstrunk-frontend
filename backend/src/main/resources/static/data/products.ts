@@ -1,5 +1,3 @@
-import { useProductsStore } from '../stores/modules/products'
-
 export interface Product {
   id: number
   name: string
@@ -25,11 +23,6 @@ export async function getProducts(): Promise<Product[]> {
     return productsCache
   }
 
-  const store = useProductsStore()
-  if (store.isLoaded && store.products.length > 0) {
-    return store.products
-  }
-
   try {
     const response = await fetch(`${API_BASE}`)
     if (!response.ok) {
@@ -37,9 +30,6 @@ export async function getProducts(): Promise<Product[]> {
     }
     const result = await response.json()
     productsCache = result.data || []
-    if (productsCache) {
-      store.setProducts(productsCache)
-    }
     return productsCache || []
   } catch (error) {
     console.error('Error loading products:', error)
@@ -110,7 +100,7 @@ export async function getProductsGroupedByCategoryFromApi(): Promise<Record<stri
   }
 }
 
-export async function getProductsByCategory(category: 'truck' | 'excavator'): Promise<Product[]> {
+export async function getProductsByCategory(category: 'tanker' | 'excavator'): Promise<Product[]> {
   const products = await getProducts()
   return products.filter(product => product.category === category)
 }
@@ -129,7 +119,7 @@ export async function getProductById(id: number): Promise<Product | undefined> {
   }
 }
 
-export async function getProductByCategoryAndId(category: 'truck' | 'excavator', id: number): Promise<Product | undefined> {
+export async function getProductByCategoryAndId(category: 'tanker' | 'excavator', id: number): Promise<Product | undefined> {
   const products = await getProductsByCategory(category)
   return products.find(product => product.id === id)
 }
