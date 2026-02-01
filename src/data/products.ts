@@ -7,7 +7,6 @@ export interface Product {
   tag: string
   category: string
   subCategory: string
-  detailedDescription: string
   specs: { label: string; value: string }[]
   parameters: { name: string; value: string }[]
   features: string[]
@@ -107,8 +106,17 @@ export async function getProductsByCategory(category: 'tanker' | 'excavator'): P
 }
 
 export async function getProductById(id: number): Promise<Product | undefined> {
-  const products = await getProducts()
-  return products.find(product => product.id === id)
+  try {
+    const response = await fetch(`/api/products/${id}`)
+    if (!response.ok) {
+      throw new Error('Failed to load product')
+    }
+    const result = await response.json()
+    return result.data
+  } catch (error) {
+    console.error('Error loading product:', error)
+    return undefined
+  }
 }
 
 export async function getProductByCategoryAndId(category: 'tanker' | 'excavator', id: number): Promise<Product | undefined> {
