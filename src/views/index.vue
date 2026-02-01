@@ -194,7 +194,7 @@
       </div>
     </div>
     <div class="feature-boxes" ref="featureBoxesRef">
-      <div class="feature-section-header">
+      <div class="feature-section-header" ref="featureSectionHeaderRef">
         <h2 class="section-title">Our Advantages</h2>
         <p class="section-subtitle">Why Leading Companies Choose Our Solutions</p>
       </div>
@@ -214,7 +214,26 @@
       </div>
     </div>
 
-
+    <div class="customer-visits-section">
+      <div class="section-header">
+        <h2 class="section-title">Customer Visits</h2>
+        <p class="section-subtitle">Valued Partners from Around the World</p>
+      </div>
+      <div class="customer-visits-slider-wrapper">
+        <div class="customer-visits-track" ref="customerVisitsTrackRef">
+          <template v-if="visitImageCount > 0">
+            <div class="customer-visit-item" v-for="i in 8" :key="i">
+              <img :src="`/images/visit/visit${((i - 1) % visitImageCount) + 1}.jpg`" alt="Customer Visit" />
+            </div>
+          </template>
+          <template v-else>
+            <div class="customer-visit-item" v-for="i in 4" :key="i">
+              <div class="no-images-placeholder">No images available</div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
 
     <div class="solution-section">
       <div class="solution-container">
@@ -320,6 +339,12 @@ const loadCarouselImages = async () => {
   const files = await Promise.all(Object.keys(modules));
   return files.length;
 };
+
+const loadVisitImages = async () => {
+  const modules = import.meta.glob('/public/images/visit/*.{png,jpg,jpeg,gif,svg,webp}');
+  const files = await Promise.all(Object.keys(modules));
+  return files.length;
+};
 </script>
 
 <script setup lang="ts">
@@ -339,6 +364,7 @@ const router = useRouter()
 const productsStore = useProductsStore()
 
 const imageCount = ref(0);
+const visitImageCount = ref(0);
 const carouselItems = ref<CarouselItem[]>([]);
 const solutions = ref<Solution[]>([]);
 
@@ -368,6 +394,7 @@ async function loadProducts() {
 
 onMounted(async () => {
   imageCount.value = await loadCarouselImages()
+  visitImageCount.value = await loadVisitImages()
   await loadCarouselConfig()
   await loadSolutionsConfig()
   await productsStore.loadProducts()
@@ -505,7 +532,15 @@ const resumeAutoplay = () => {
 }
 
 const featureBoxesRef = ref()
+const featureSectionHeaderRef = ref()
 const isFeatureBoxesVisible = ref(false)
+
+const customerVisitsTrackRef = ref()
+const customerVisitsState = ref({
+  currentIndex: 0,
+  isAnimating: false
+})
+let customerVisitsTimer: ReturnType<typeof setInterval> | null = null
 
 const whyChooseRef = ref()
 const isWhyChooseVisible = ref(false)
@@ -562,20 +597,70 @@ function startNumberAnimation() {
   })
 }
 
+function slideCustomerVisits() {
+  if (customerVisitsState.value.isAnimating) return
+
+  customerVisitsState.value.isAnimating = true
+  customerVisitsState.value.currentIndex++
+
+  if (customerVisitsTrackRef.value) {
+    customerVisitsTrackRef.value.style.transform = `translateX(-${customerVisitsState.value.currentIndex * 380}px)`
+    customerVisitsTrackRef.value.style.transition = 'transform 0.5s ease-in-out'
+  }
+
+  setTimeout(() => {
+    customerVisitsState.value.isAnimating = false
+    if (customerVisitsState.value.currentIndex >= 4) {
+      customerVisitsState.value.currentIndex = 0
+      if (customerVisitsTrackRef.value) {
+        customerVisitsTrackRef.value.style.transition = 'none'
+        customerVisitsTrackRef.value.style.transform = 'translateX(0)'
+      }
+    }
+  }, 500)
+}
+
+function startCustomerVisitsSlider() {
+  if (!customerVisitsTimer) {
+    customerVisitsTimer = setInterval(slideCustomerVisits, 3000)
+  }
+}
+
 onMounted(() => {
-  const observer = new IntersectionObserver(
+  const featureBoxesObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           isFeatureBoxesVisible.value = true
+          featureBoxesObserver.disconnect()
         }
       })
     },
-    { threshold: 0.2 }
+    { threshold: 0.5 }
   )
 
-  if (featureBoxesRef.value) {
-    observer.observe(featureBoxesRef.value)
+  if (featureSectionHeaderRef.value) {
+    featureBoxesObserver.observe(featureSectionHeaderRef.value)
+  }
+
+  const customerVisitsObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startCustomerVisitsSlider()
+        } else {
+          if (customerVisitsTimer) {
+            clearInterval(customerVisitsTimer)
+            customerVisitsTimer = null
+          }
+        }
+      })
+    },
+    { threshold: 0.3 }
+  )
+
+  if (customerVisitsTrackRef.value) {
+    customerVisitsObserver.observe(customerVisitsTrackRef.value)
   }
 
   const whyChooseObserver = new IntersectionObserver(
@@ -844,7 +929,7 @@ img {
   justify-content: center;
   opacity: 0;
   transform: translateY(100px) scale(0.9);
-  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .feature-box.animate-in {
@@ -1642,6 +1727,78 @@ img {
 .video-container:hover .play-button {
   transform: scale(1.1);
   background: #ffffff;
+}
+
+.customer-visits-section {
+  padding: 80px 20px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.customer-visits-section .section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.customer-visits-section .section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.customer-visits-section .section-subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+.customer-visits-slider-wrapper {
+  width: 100%;
+  max-width: calc(360px * 4 + 20px * 3);
+  margin: 0 auto;
+  /* padding: 0 20px; */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.customer-visits-track {
+  display: flex;
+  gap: 20px;
+  transition: none;
+  width: max-content;
+}
+
+.customer-visit-item {
+  flex-shrink: 0;
+  width: 360px;
+  height: 270px;
+  /* border-radius: 12px; */
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customer-visit-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.customer-visit-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.no-images-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #999;
+  font-size: 14px;
 }
 
 .solution-section {

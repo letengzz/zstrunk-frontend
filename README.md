@@ -71,3 +71,5 @@ pnpm test:e2e --debug
 ```sh
 pnpm lint
 ```
+
+![img](./assets/1739264705747864138887872512.webp)
