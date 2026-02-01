@@ -1,27 +1,50 @@
 [
   {
     "id": 1,
-    "name": "3 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank",
+    "name": "113 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank1111",
     "desc": "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity",
     "image": "/products/3Axles40000LitersFuelTankSemiTrailerOilTransportTank.png",
     "images": [
       "/products/3Axles40000LitersFuelTankSemiTrailerOilTransportTank-1.png"
     ],
     "tag": "Hot",
-    "category": "tanker",
-    "subCategory": "CarbonSteelFuelTank Trailer",
-    "detailedDescription": "The Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck is a high-quality vehicle designed for the transportation of various liquids. It features a robust carbon steel construction that ensures durability and longevity, even under harsh operating conditions. The 4-compartment design allows for the transportation of different types of liquids simultaneously, maximizing efficiency and flexibility.",
+    "category": "LiquidandPowerTransportTrailers",
+    "subCategory": "AluminiumFuelTanker",
     "specs": [
-      { "label": "Capacity", "value": "40,000L" },
-      { "label": "Compartments", "value": "4" },
-      { "label": "Material", "value": "Carbon Steel" },
-      { "label": "Axles", "value": "3" }
+      {
+        "label": "Capacity",
+        "value": "40,000L"
+      },
+      {
+        "label": "Compartments",
+        "value": "4"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Axles",
+        "value": "3"
+      }
     ],
     "parameters": [
-      { "name": "Engine", "value": "Weichai WP10.375E53" },
-      { "name": "Horsepower", "value": "375HP" },
-      { "name": "Transmission", "value": "Fast 12-speed" },
-      { "name": "Drive Type", "value": "6×4" }
+      {
+        "name": "Engine",
+        "value": "Weichai WP10.375E53"
+      },
+      {
+        "name": "Horsepower",
+        "value": "375HP"
+      },
+      {
+        "name": "Transmission",
+        "value": "Fast 12-speed"
+      },
+      {
+        "name": "Drive Type",
+        "value": "6×4"
+      }
     ],
     "features": [
       "4-compartment design for transporting different liquids",
@@ -40,13 +63,21 @@
     "desc": "The volume of the palm oil tanker semi trailer can be customized to reach 30,000-90,000 liters.",
     "image": "/products/45000LitersOilTankerTrailer.jpg",
     "tag": "New",
-    "category": "tanker",
+    "category": "AluminiumFuelTanker",
     "subCategory": "AluminiumFuelTanker",
-    "detailedDescription": "The 45000 Liters Oil Tanker Trailer is designed for efficient transportation of palm oil and other liquid cargo. The volume can be customized from 30,000 to 90,000 liters to meet different transportation needs.",
     "specs": [
-      { "label": "Capacity", "value": "45,000L" },
-      { "label": "Material", "value": "Carbon Steel" },
-      { "label": "Type", "value": "Semi Trailer" }
+      {
+        "label": "Capacity",
+        "value": "45,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Type",
+        "value": "Semi Trailer"
+      }
     ],
     "features": [
       "Customizable volume",
@@ -74,11 +105,19 @@
     "tag": "Hot",
     "category": "tanker",
     "subCategory": "AluminiumFuelTanker",
-    "detailedDescription": "The Fuel Tanker Truck 35000L is designed for safe and efficient fuel transportation. It features advanced safety systems and durable construction.",
     "specs": [
-      { "label": "Capacity", "value": "35,000L" },
-      { "label": "Material", "value": "Aluminum Alloy" },
-      { "label": "Compartments", "value": "3" }
+      {
+        "label": "Capacity",
+        "value": "35,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Aluminum Alloy"
+      },
+      {
+        "label": "Compartments",
+        "value": "3"
+      }
     ],
     "features": [
       "Anti-static device",
@@ -106,11 +145,19 @@
     "tag": "New",
     "category": "tanker",
     "subCategory": "AluminiumFuelTanker",
-    "detailedDescription": "The Water Tanker Truck 20000L is ideal for construction site water supply, dust suppression, and agricultural irrigation.",
     "specs": [
-      { "label": "Capacity", "value": "20,000L" },
-      { "label": "Material", "value": "Carbon Steel" },
-      { "label": "Pump", "value": "Self-priming pump included" }
+      {
+        "label": "Capacity",
+        "value": "20,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Pump",
+        "value": "Self-priming pump included"
+      }
     ],
     "features": [
       "Quick discharge system",
@@ -138,11 +185,19 @@
     "tag": "Hot",
     "category": "tanker",
     "subCategory": "ChemicalTankTrailer",
-    "detailedDescription": "The Chemical Tanker Truck 30000L is designed for safe transportation of various chemical liquids with advanced safety features.",
     "specs": [
-      { "label": "Capacity", "value": "30,000L" },
-      { "label": "Material", "value": "Stainless Steel 316L" },
-      { "label": "Lining", "value": "PE/PP" }
+      {
+        "label": "Capacity",
+        "value": "30,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Stainless Steel 316L"
+      },
+      {
+        "label": "Lining",
+        "value": "PE/PP"
+      }
     ],
     "features": [
       "Double wall construction",
@@ -170,11 +225,19 @@
     "tag": "Hot",
     "category": "tanker",
     "subCategory": "BulkCementTrailer",
-    "detailedDescription": "The Bulk Cement Trailer 50 Ton is designed for efficient transportation of bulk cement and other powdered materials.",
     "specs": [
-      { "label": "Capacity", "value": "50,000 kg" },
-      { "label": "Material", "value": "Carbon Steel" },
-      { "label": "Axles", "value": "3" }
+      {
+        "label": "Capacity",
+        "value": "50,000 kg"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Axles",
+        "value": "3"
+      }
     ],
     "features": [
       "Air suspension system",
@@ -202,11 +265,19 @@
     "tag": "New",
     "category": "tanker",
     "subCategory": "AsphaltTankTrailers",
-    "detailedDescription": "The Asphalt Tank Trailer 40m³ is designed for transporting hot asphalt at temperatures up to 200°C.",
     "specs": [
-      { "label": "Capacity", "value": "40,000L" },
-      { "label": "Material", "value": "Carbon Steel" },
-      { "label": "Insulation", "value": "Rock Wool" }
+      {
+        "label": "Capacity",
+        "value": "40,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Insulation",
+        "value": "Rock Wool"
+      }
     ],
     "features": [
       "Thermal insulation",
@@ -234,11 +305,19 @@
     "tag": "Hot",
     "category": "excavator",
     "subCategory": "excavator-hydraulic",
-    "detailedDescription": "The Hydraulic Excavator XG808 is a powerful and efficient machine designed for heavy-duty excavation work. It features an advanced hydraulic system for smooth operation and excellent fuel efficiency.",
     "specs": [
-      { "label": "Operating Weight", "value": "80,000 kg" },
-      { "label": "Bucket Capacity", "value": "4.5 m³" },
-      { "label": "Engine Power", "value": "350 HP" }
+      {
+        "label": "Operating Weight",
+        "value": "80,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "4.5 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "350 HP"
+      }
     ],
     "features": [
       "Advanced hydraulic system",
@@ -266,11 +345,19 @@
     "tag": "New",
     "category": "excavator",
     "subCategory": "excavator-mini",
-    "detailedDescription": "The Mini Excavator XG815 is perfect for urban construction projects and tight spaces. Its compact design allows for easy transportation and maneuverability.",
     "specs": [
-      { "label": "Operating Weight", "value": "15,000 kg" },
-      { "label": "Bucket Capacity", "value": "0.6 m³" },
-      { "label": "Engine Power", "value": "115 HP" }
+      {
+        "label": "Operating Weight",
+        "value": "15,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "0.6 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "115 HP"
+      }
     ],
     "features": [
       "Zero tail swing",
@@ -298,11 +385,19 @@
     "tag": "Hot",
     "category": "excavator",
     "subCategory": "excavator-mining",
-    "detailedDescription": "The Mining Excavator XG890 is designed for the most demanding mining operations with high productivity and reliability.",
     "specs": [
-      { "label": "Operating Weight", "value": "90,000 kg" },
-      { "label": "Bucket Capacity", "value": "6.0 m³" },
-      { "label": "Engine Power", "value": "500 HP" }
+      {
+        "label": "Operating Weight",
+        "value": "90,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "6.0 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "500 HP"
+      }
     ],
     "features": [
       "Reinforced bucket and arm",
@@ -330,11 +425,19 @@
     "tag": "New",
     "category": "excavator",
     "subCategory": "excavator-wheel",
-    "detailedDescription": "The Wheel Excavator XG960 offers excellent mobility and versatility for various construction applications.",
     "specs": [
-      { "label": "Operating Weight", "value": "62,000 kg" },
-      { "label": "Bucket Capacity", "value": "3.5 m³" },
-      { "label": "Engine Power", "value": "280 HP" }
+      {
+        "label": "Operating Weight",
+        "value": "62,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "3.5 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "280 HP"
+      }
     ],
     "features": [
       "4-wheel drive",

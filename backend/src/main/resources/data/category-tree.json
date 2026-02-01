@@ -7,76 +7,84 @@
   {
     "id": "LiquidandPowerTransportTrailers",
     "label": "Liquid and Power Transport Trailers",
+    "markdownPath": "/md/liquid-power-transport-trailers.md",
     "children": [
-      { "id": "AluminiumFuelTanker", "label": "Aluminium Fuel Tanker" },
-      { "id": "CarbonSteelFuelTank Trailer", "label": "Carbon Steel Fuel Tank Trailer" },
-      { "id": "BulkCementTrailer", "label": "Bulk Cement Trailer" },
-      { "id": "AsphaltTankTrailers", "label": "Asphalt Tank Trailers" },
-      { "id": "GasTankerTrailer", "label": "Gas Tanker Trailer" },
-      { "id": "StainlessSteelTanker Trailer", "label": "Stainless Steel Tanker Trailer" },
-      { "id": "ChemicalTankTrailer", "label": "Chemical Tank Trailer" },
-      { "id": "StorageTank", "label": "Storage Tank" }
+      { "id": "AluminiumFuelTanker", "label": "Aluminium Fuel Tanker", "markdownPath": "/md/aluminium-fuel-tanker.md" },
+      { "id": "CarbonSteelFuelTank Trailer", "label": "Carbon Steel Fuel Tank Trailer", "markdownPath": "/md/carbon-steel-fuel-tank-trailer.md" },
+      { "id": "BulkCementTrailer", "label": "Bulk Cement Trailer", "markdownPath": "/md/bulk-cement-trailer.md" },
+      { "id": "AsphaltTankTrailers", "label": "Asphalt Tank Trailers", "markdownPath": "/md/asphalt-tank-trailers.md" },
+      { "id": "GasTankerTrailer", "label": "Gas Tanker Trailer", "markdownPath": "/md/gas-tanker-trailer.md" },
+      { "id": "StainlessSteelTanker Trailer", "label": "Stainless Steel Tanker Trailer", "markdownPath": "/md/stainless-steel-tanker-trailer.md" },
+      { "id": "ChemicalTankTrailer", "label": "Chemical Tank Trailer", "markdownPath": "/md/chemical-tank-trailer.md" },
+      { "id": "StorageTank", "label": "Storage Tank", "markdownPath": "/md/storage-tank.md" }
     ]
   },
   {
     "id": "ContainerSemiTrailer",
     "label": "Container Semi Trailer",
+    "markdownPath": "/md/container-semi-trailer.md",
     "children": [
-      { "id": "SkeletalTrailer", "label": "Skeletal Trailer" },
-      { "id": "FlatbedTrailer", "label": "Flatbed Trailer" }
+      { "id": "SkeletalTrailer", "label": "Skeletal Trailer", "markdownPath": "/md/skeletal-trailer.md" },
+      { "id": "FlatbedTrailer", "label": "Flatbed Trailer", "markdownPath": "/md/flatbed-trailer.md" }
     ]
   },
   {
     "id": "SemiTrailer",
     "label": "Semi Trailer",
+    "markdownPath": "/md/semi-trailer.md",
     "children": [
-      { "id": "LowbedSemiTrailer", "label": "Lowbed Semi Trailer" },
-      { "id": "TipperSemiTrailer", "label": "Tipper Semi Trailer" },
-      { "id": "FenceCargoTrailer", "label": "Fence Cargo Trailer" },
-      { "id": "SideWallTipper", "label": "Side Wall Tipper" },
-      { "id": "SideCurtainTrailer", "label": "Side Curtain Trailer" },
-      { "id": "CarCarrierTailer", "label": "Car Carrier Tailer" },
-      { "id": "BoxSemiTrailer", "label": "Box Semi Trailer" },
-      { "id": "FullDrawbarTrailer", "label": "Full Drawbar Trailer" },
-      { "id": "RemovableGooseneckTrailer", "label": "Removable Gooseneck Trailer" }
+      { "id": "LowbedSemiTrailer", "label": "Lowbed Semi Trailer", "markdownPath": "/md/lowbed-semi-trailer.md" },
+      { "id": "TipperSemiTrailer", "label": "Tipper Semi Trailer", "markdownPath": "/md/tipper-semi-trailer.md" },
+      { "id": "FenceCargoTrailer", "label": "Fence Cargo Trailer", "markdownPath": "/md/fence-cargo-trailer.md" },
+      { "id": "SideWallTipper", "label": "Side Wall Tipper", "markdownPath": "/md/side-wall-tipper.md" },
+      { "id": "SideCurtainTrailer", "label": "Side Curtain Trailer", "markdownPath": "/md/side-curtain-trailer.md" },
+      { "id": "CarCarrierTailer", "label": "Car Carrier Tailer", "markdownPath": "/md/car-carrier-tailer.md" },
+      { "id": "BoxSemiTrailer", "label": "Box Semi Trailer", "markdownPath": "/md/box-semi-trailer.md" },
+      { "id": "FullDrawbarTrailer", "label": "Full Drawbar Trailer", "markdownPath": "/md/full-drawbar-trailer.md" },
+      { "id": "RemovableGooseneckTrailer", "label": "Removable Gooseneck Trailer", "markdownPath": "/md/removable-gooseneck-trailer.md" }
     ]
   },
   {
     "id": "ShacmanTrucks",
     "label": "Shacman Trucks",
+    "markdownPath": "/md/shacman-trucks.md",
     "children": [
-      { "id": "ShacmanDumpTruck", "label": "Shacman Dump Truck" },
-      { "id": "ShacmanTractorTruck", "label": "Shacman Tractor Truck" },
-      { "id": "ShacmanTankerTrucks", "label": "Shacman Tanker Trucks" }
+      { "id": "ShacmanDumpTruck", "label": "Shacman Dump Truck", "markdownPath": "/md/shacman-dump-truck.md" },
+      { "id": "ShacmanTractorTruck", "label": "Shacman Tractor Truck", "markdownPath": "/md/shacman-tractor-truck.md" },
+      { "id": "ShacmanTankerTrucks", "label": "Shacman Tanker Trucks", "markdownPath": "/md/shacman-tanker-trucks.md" }
     ]
   },
   {
     "id": "Accessories",
     "label": "Accessories",
+    "markdownPath": "/md/accessories.md",
     "children": [
-      { "id": "TrailerAccessories", "label": "Trailer Accessories" },
-      { "id": "Engine", "label": "Engine" }
+      { "id": "TrailerAccessories", "label": "Trailer Accessories", "markdownPath": "/md/trailer-accessories.md" },
+      { "id": "Engine", "label": "Engine", "markdownPath": "/md/engine.md" }
     ]
   },
   {
     "id": "SinotruckHowo",
     "label": "Sinotruck Howo",
+    "markdownPath": "/md/sinotruck-howo.md",
     "children": [
-      { "id": "HOWOTractorTruck", "label": "HOWO Tractor Truck" },
-      { "id": "HOWODumpTruck", "label": "HOWO Dump Truck" },
-      { "id": "HOWOTankerTruck", "label": "HOWO Tanker Truck" }
+      { "id": "HOWOTractorTruck", "label": "HOWO Tractor Truck", "markdownPath": "/md/howo-tractor-truck.md" },
+      { "id": "HOWODumpTruck", "label": "HOWO Dump Truck", "markdownPath": "/md/howo-dump-truck.md" },
+      { "id": "HOWOTankerTruck", "label": "HOWO Tanker Truck", "markdownPath": "/md/howo-tanker-truck.md" }
     ]
   },
   {
     "id": "ExistingTrucksAndTrailers",
     "label": "Existing Trucks and Trailers",
+    "markdownPath": "/md/existing-trucks-trailers.md",
     "children": [
-      { "id": "Trailer", "label": "Trailer" }
+      { "id": "Trailer", "label": "Trailer", "markdownPath": "/md/trailer.md" }
     ]
   },
   {
     "id": "excavator",
     "label": "Excavator",
+    "markdownPath": "/md/excavator.md",
     "children": []
   }
 ]

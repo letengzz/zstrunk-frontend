@@ -3,3 +3,6 @@ spring:
     name: base-boot3-template
   profiles:
     active: dev
+
+app:
+  data-path: D:/Develop/zstrunk-frontend/data

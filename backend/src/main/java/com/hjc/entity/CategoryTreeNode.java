@@ -12,5 +12,6 @@ import java.util.List;
 public class CategoryTreeNode {
     private String id;
     private String label;
+    private String markdownPath;
     private List<CategoryTreeNode> children;
 }

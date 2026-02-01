@@ -14,7 +14,6 @@ public class Product {
     private String tag;
     private String category;
     private String subCategory;
-    private String detailedDescription;
     private List<Spec> specs;
     private List<Parameter> parameters;
     private List<String> features;
