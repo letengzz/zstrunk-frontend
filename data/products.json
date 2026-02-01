@@ -1,0 +1,460 @@
+[
+  {
+    "id": 1,
+    "name": "3 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank1111",
+    "desc": "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity",
+    "image": "/products/3Axles40000LitersFuelTankSemiTrailerOilTransportTank.png",
+    "images": [
+      "/products/3Axles40000LitersFuelTankSemiTrailerOilTransportTank-1.png"
+    ],
+    "tag": "Hot",
+    "category": "truck",
+    "subCategory": "AluminiumFueltruck",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "40,000L"
+      },
+      {
+        "label": "Compartments",
+        "value": "4"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Axles",
+        "value": "3"
+      }
+    ],
+    "parameters": [
+      {
+        "name": "Engine",
+        "value": "Weichai WP10.375E53"
+      },
+      {
+        "name": "Horsepower",
+        "value": "375HP"
+      },
+      {
+        "name": "Transmission",
+        "value": "Fast 12-speed"
+      },
+      {
+        "name": "Drive Type",
+        "value": "6×4"
+      }
+    ],
+    "features": [
+      "4-compartment design for transporting different liquids",
+      "Carbon steel construction for durability",
+      "Advanced safety features including anti-rollover protection",
+      "Easy maintenance with accessible components"
+    ],
+    "specsText": [
+      "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity"
+    ],
+    "markdownPath": "/md/product-1.md"
+  },
+  {
+    "id": 2,
+    "name": "45000 Liters Oil truck Trailer",
+    "desc": "The volume of the palm oil truck semi trailer can be customized to reach 30,000-90,000 liters.",
+    "image": "/products/45000LitersOiltruckTrailer.jpg",
+    "tag": "New",
+    "category": "truck",
+    "subCategory": "AluminiumFueltruck",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "45,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Type",
+        "value": "Semi Trailer"
+      }
+    ],
+    "features": [
+      "Customizable volume",
+      "Corrosion resistant coating",
+      "Easy to clean and maintain",
+      "Compliant with international safety standards"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-2.md"
+  },
+  {
+    "id": 3,
+    "name": "Fuel truck Truck 35000L",
+    "desc": "High capacity fuel transport solution",
+    "image": "/products/fuel-truck-35000l.jpg",
+    "tag": "Hot",
+    "category": "truck",
+    "subCategory": "AluminiumFueltruck",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "35,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Aluminum Alloy"
+      },
+      {
+        "label": "Compartments",
+        "value": "3"
+      }
+    ],
+    "features": [
+      "Anti-static device",
+      "Emergency shut-off valve",
+      "Spill containment system",
+      "Level gauge indicator"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-3.md"
+  },
+  {
+    "id": 4,
+    "name": "Water truck Truck 20000L",
+    "desc": "Perfect for construction and agricultural water transport",
+    "image": "/products/water-truck-20000l.jpg",
+    "tag": "New",
+    "category": "truck",
+    "subCategory": "AluminiumFueltruck",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "20,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Pump",
+        "value": "Self-priming pump included"
+      }
+    ],
+    "features": [
+      "Quick discharge system",
+      "Corrosion resistant interior",
+      "Easy operation",
+      "Low maintenance cost"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-4.md"
+  },
+  {
+    "id": 5,
+    "name": "Chemical truck Truck 30000L",
+    "desc": "Specialized transport for chemical liquids",
+    "image": "/products/chemical-truck-30000l.jpg",
+    "tag": "Hot",
+    "category": "truck",
+    "subCategory": "ChemicalTankTrailer",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "30,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Stainless Steel 316L"
+      },
+      {
+        "label": "Lining",
+        "value": "PE/PP"
+      }
+    ],
+    "features": [
+      "Double wall construction",
+      "pressure relief device",
+      "Leak detection system",
+      "Chemical resistant lining"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-5.md"
+  },
+  {
+    "id": 6,
+    "name": "Bulk Cement Trailer 50 Ton",
+    "desc": "High capacity bulk cement transportation",
+    "image": "/products/bulk-cement-trailer.jpg",
+    "tag": "Hot",
+    "category": "truck",
+    "subCategory": "BulkCementTrailer",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "50,000 kg"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Axles",
+        "value": "3"
+      }
+    ],
+    "features": [
+      "Air suspension system",
+      "Aerodynamic design",
+      "Easy discharge system",
+      "Dust suppression system"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-6.md"
+  },
+  {
+    "id": 7,
+    "name": "Asphalt Tank Trailer 40m³",
+    "desc": "Specialized for hot asphalt transport",
+    "image": "/products/asphalt-tank.jpg",
+    "tag": "New",
+    "category": "truck",
+    "subCategory": "AsphaltTankTrailers",
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "40,000L"
+      },
+      {
+        "label": "Material",
+        "value": "Carbon Steel"
+      },
+      {
+        "label": "Insulation",
+        "value": "Rock Wool"
+      }
+    ],
+    "features": [
+      "Thermal insulation",
+      "Heating system",
+      "Safety valves",
+      "Easy cleaning"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-7.md"
+  },
+  {
+    "id": 101,
+    "name": "Hydraulic Excavator XG808",
+    "desc": "High performance excavator with advanced hydraulic system",
+    "image": "/products/excavator-1.jpg",
+    "tag": "Hot",
+    "category": "excavator",
+    "subCategory": "excavator-hydraulic",
+    "specs": [
+      {
+        "label": "Operating Weight",
+        "value": "80,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "4.5 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "350 HP"
+      }
+    ],
+    "features": [
+      "Advanced hydraulic system",
+      "Fuel efficient engine",
+      "Comfortable cab with AC",
+      "Easy maintenance access"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-101.md"
+  },
+  {
+    "id": 102,
+    "name": "Mini Excavator XG815",
+    "desc": "Compact design for tight spaces and urban construction",
+    "image": "/products/excavator-2.jpg",
+    "tag": "New",
+    "category": "excavator",
+    "subCategory": "excavator-mini",
+    "specs": [
+      {
+        "label": "Operating Weight",
+        "value": "15,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "0.6 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "115 HP"
+      }
+    ],
+    "features": [
+      "Zero tail swing",
+      "Adjustable undercarriage",
+      "Rubber tracks for minimal ground damage",
+      "Foldable boom for easy transport"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-102.md"
+  },
+  {
+    "id": 103,
+    "name": "Mining Excavator XG890",
+    "desc": "Heavy-duty mining excavator for large-scale operations",
+    "image": "/products/excavator-3.jpg",
+    "tag": "Hot",
+    "category": "excavator",
+    "subCategory": "excavator-mining",
+    "specs": [
+      {
+        "label": "Operating Weight",
+        "value": "90,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "6.0 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "500 HP"
+      }
+    ],
+    "features": [
+      "Reinforced bucket and arm",
+      "Heavy-duty undercarriage",
+      "Automatic lubrication system",
+      "Remote monitoring capability"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-103.md"
+  },
+  {
+    "id": 104,
+    "name": "Wheel Excavator XG960",
+    "desc": "Mobile wheel excavator for versatile applications",
+    "image": "/products/excavator-4.jpg",
+    "tag": "New",
+    "category": "excavator",
+    "subCategory": "excavator-wheel",
+    "specs": [
+      {
+        "label": "Operating Weight",
+        "value": "62,000 kg"
+      },
+      {
+        "label": "Bucket Capacity",
+        "value": "3.5 m³"
+      },
+      {
+        "label": "Engine Power",
+        "value": "280 HP"
+      }
+    ],
+    "features": [
+      "4-wheel drive",
+      "All-wheel steering",
+      "Quick coupler system",
+      "360-degree swing"
+    ],
+    "specsText": [
+      "1. 材质：碳钢/不锈钢/铝合金",
+      "2. 车轴：3/4×45吨承载能力（OCT、FUWA、BPW或其他品牌）",
+      "3. 悬挂系统：机械悬挂（可选）空气/转向架悬挂",
+      "4. 板簧：10片（可选加装气囊）",
+      "5. 轮胎：12 R22.5、11 R22.5、R22 315/80.5、385/65 R22.5（尺寸和品牌可选）",
+      "6. 轮辋：9.00-22.5、8.25-22.5、11.75-22.5（尺寸可选）",
+      "7. 主销：2英寸/3.5英寸螺栓式，SAE标准（可选焊接式）",
+      "8. 起落架：28吨两速（JOST或同等品牌）"
+    ],
+    "markdownPath": "/md/product-104.md"
+  }
+]
