@@ -11,5 +11,5 @@ spring:
     ssl:
       enabled: true
 app:
-   data-path: D:/Develop/zstrunk-frontend/data
-#  data-path: /Users/cuifendemac/Projects/zstrunk-frontend/data
+#   data-path: D:/Develop/zstrunk-frontend/data
+  data-path: /Users/cuifendemac/Projects/zstrunk-frontend/data

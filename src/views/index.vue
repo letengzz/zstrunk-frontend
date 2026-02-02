@@ -15,7 +15,7 @@
       @click="resumeAutoplay"
        >
       <el-carousel-item v-for="item in imageCount" :key="item">
-        <img :src="`/images/carousel/carousel${item}.png`" alt="">
+        <img :data-src="`/images/carousel/carousel${item}.png`" alt="">
         <div class="overlay"></div>
         <div class="title-container">
           <template v-if="carouselItems[item - 1]">
@@ -91,12 +91,14 @@
             <p class="why-intro">We also provide customized services for customers. According to different transportation needs, we can customize the cargo size, carrying capacity, tank body materials, loading and unloading equipment, etc. of tank semi-trailers to ensure that customers can obtain the most suitable solutions for their businesses.</p>
             <router-link to="/about" class="why-intro-button">Learn More</router-link>
             <div class="video-container">
-              <video autoplay muted loop playsinline class="promo-video">
-                <source src="/videos/promo.mp4" type="video/mp4">
-              </video>
-              <!-- <div class="video-overlay">
-                <div class="play-button">▶</div>
-              </div> -->
+              <iframe
+                class="promo-video"
+                src="https://www.youtube.com/embed/xcpsEGZPnLM"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>
@@ -126,7 +128,7 @@
           <div class="product-col" v-for="product in hotProducts" :key="product.id">
             <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }"  :style="{ cursor: 'pointer' }">
               <div class="product-image">
-                <img :src="product.image" class="product-img" />
+                <img :data-src="product.image"  class="product-img" />
                 <div class="product-tag">{{ product.tag }}</div>
               </div>
               <div class="product-content">
@@ -219,7 +221,7 @@
         <div class="customer-visits-track" ref="customerVisitsTrackRef">
           <template v-if="visitImageCount > 0">
             <div class="customer-visit-item" v-for="i in 8" :key="i">
-              <img :src="`/images/visit/visit${((i - 1) % visitImageCount) + 1}.jpg`" alt="Customer Visit" />
+              <img :data-src="`/images/visit/visit${((i - 1) % visitImageCount) + 1}.jpg`" alt="Customer Visit" />
             </div>
           </template>
           <template v-else>
@@ -256,7 +258,7 @@
               </div>
             </div>
           </div>
-          <img :src="currentSolution.image" :alt="currentSolution.title" class="solution-image" />
+          <img :data-src="currentSolution.image" :alt="currentSolution.title" class="solution-image" />
         </div>
       </div>
     </div>
@@ -319,9 +321,9 @@
       </el-form>
       <template #footer>
         <el-button @click="contactDialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="submitContactForm">
-          <div class="i-ep-position w-20 h-20"></div>
-          Send Message
+        <el-button type="primary" :loading="isContactSubmitting" @click="submitContactForm">
+          <div class="i-ep-position w-20 h-20" v-if="!isContactSubmitting"></div>
+          {{ isContactSubmitting ? 'Sending...' : 'Send Message' }}
         </el-button>
       </template>
     </el-dialog>
@@ -413,6 +415,7 @@ async function goToProduct(id: number) {
 }
 
 const contactDialogVisible = ref(false)
+const isContactSubmitting = ref(false)
 
 interface ContactForm {
   name: string
@@ -437,6 +440,8 @@ function openContactDialog() {
 }
 
 async function submitContactForm() {
+  if (isContactSubmitting.value) return
+
   if (!contactForm.name || !contactForm.email || !contactForm.message) {
     ElMessage.warning('Please fill in all required fields')
     return
@@ -448,6 +453,8 @@ async function submitContactForm() {
     return
   }
 
+  isContactSubmitting.value = true
+
   try {
     const response = await axios.post('/api/contact', {
       name: contactForm.name,
@@ -456,18 +463,23 @@ async function submitContactForm() {
       company: contactForm.company,
       subject: contactForm.subject,
       message: contactForm.message,
+      timestamp: Date.now()
     })
 
     if (response.data.code === 0) {
       ElMessage.success(response.data.data || 'Message sent successfully!')
       contactDialogVisible.value = false
       Object.assign(contactForm, { name: '', email: '', phone: '', company: '', subject: '', message: '' })
+    } else if (response.data.code === 40002) {
+      ElMessage.warning(response.data.message || 'Duplicate request detected')
     } else {
       ElMessage.error(response.data.message || 'Failed to send message')
     }
   } catch (error) {
     console.error('Failed to submit form:', error)
     ElMessage.error('Failed to send message. Please try again.')
+  } finally {
+    isContactSubmitting.value = false
   }
 }
 

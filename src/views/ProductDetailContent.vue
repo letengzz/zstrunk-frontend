@@ -150,9 +150,8 @@
                   <el-input v-model="inquiryForm.message" type="textarea" :rows="4" placeholder="Describe your requirements..." />
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" class="submit-btn" @click="submitInquiry">
-                    <div class="i-ep-send w-4 h-4 mr-2"></div>
-                    Send Inquiry
+                  <el-button type="primary" class="submit-btn" :loading="isSubmitting" @click="submitInquiry">
+                    {{ isSubmitting ? 'Sending...' : 'Send Inquiry' }}
                   </el-button>
                 </el-form-item>
               </el-form>
@@ -391,7 +390,11 @@ const inquiryForm = ref<InquiryForm>({
   message: ''
 })
 
+const isSubmitting = ref(false)
+
 async function submitInquiry() {
+  if (isSubmitting.value) return
+
   if (!inquiryForm.value.name || !inquiryForm.value.email || !inquiryForm.value.message) {
     ElMessage.warning('Please fill in all required fields')
     return
@@ -403,6 +406,8 @@ async function submitInquiry() {
     return
   }
 
+  isSubmitting.value = true
+
   try {
     const response = await axios.post('/api/contact', {
       name: inquiryForm.value.name,
@@ -411,6 +416,7 @@ async function submitInquiry() {
       company: inquiryForm.value.company,
       subject: inquiryForm.value.subject,
       message: inquiryForm.value.message,
+      timestamp: Date.now()
     })
 
     if (response.data.code === 0) {
@@ -423,12 +429,16 @@ async function submitInquiry() {
         subject: '',
         message: ''
       }
+    } else if (response.data.code === 40002) {
+      ElMessage.warning(response.data.message || 'Duplicate request detected')
     } else {
       ElMessage.error(response.data.data || 'Failed to send message. Please try again.')
     }
   } catch (error) {
     console.error('Error submitting inquiry:', error)
     ElMessage.error('Failed to send message. Please try again later.')
+  } finally {
+    isSubmitting.value = false
   }
 }
 

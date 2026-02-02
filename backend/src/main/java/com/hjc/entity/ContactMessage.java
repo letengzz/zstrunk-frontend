@@ -13,4 +13,5 @@ public class ContactMessage {
     private String company;
     private String subject;
     private String message;
+    private Long timestamp;
 }

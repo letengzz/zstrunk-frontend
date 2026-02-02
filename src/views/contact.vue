@@ -122,9 +122,8 @@
                 </el-form-item>
 
                 <el-form-item class="submit-item">
-                  <el-button type="primary" size="large" class="submit-btn" @click="submitForm">
-                    <div class="i-ep-position w-20 h-20"></div>
-                    Send Message
+                  <el-button type="primary" size="large" class="submit-btn" :loading="isSubmitting" @click="submitForm">
+                    {{ isSubmitting ? 'Sending...' : 'Send Message' }}
                   </el-button>
                 </el-form-item>
               </el-form>
@@ -178,7 +177,11 @@ const contactForm = reactive({
   message: '',
 })
 
+const isSubmitting = ref(false)
+
 async function submitForm() {
+  if (isSubmitting.value) return
+
   if (!contactForm.name || !contactForm.email || !contactForm.message) {
     ElMessage.warning('Please fill in all required fields')
     return
@@ -190,6 +193,8 @@ async function submitForm() {
     return
   }
 
+  isSubmitting.value = true
+
   try {
     const response = await axios.post('/api/contact', {
       name: contactForm.name,
@@ -198,6 +203,7 @@ async function submitForm() {
       company: contactForm.company,
       subject: contactForm.subject,
       message: contactForm.message,
+      timestamp: Date.now()
     })
 
     if (response.data.code === 0) {
@@ -208,12 +214,16 @@ async function submitForm() {
       contactForm.company = ''
       contactForm.subject = ''
       contactForm.message = ''
+    } else if (response.data.code === 40002) {
+      ElMessage.warning(response.data.message || 'Duplicate request detected')
     } else {
       ElMessage.error(response.data.message || 'Failed to send message. Please try again.')
     }
   } catch (error) {
     console.error('Failed to submit form:', error)
     ElMessage.error('Failed to send message. Please try again.')
+  } finally {
+    isSubmitting.value = false
   }
 }
 </script>

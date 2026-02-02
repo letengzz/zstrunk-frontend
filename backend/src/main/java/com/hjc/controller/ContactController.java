@@ -3,7 +3,6 @@ package com.hjc.controller;
 import com.hjc.common.response.ResponseEntity;
 import com.hjc.entity.ContactMessage;
 import com.hjc.entity.ChatTranscriptMessage;
-import com.hjc.utils.MailUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -29,9 +30,11 @@ import org.thymeleaf.context.Context;
 @CrossOrigin(origins = "*")
 public class ContactController {
 
+    private static final ConcurrentMap<String, Long> IDEMPOTENCY_MAP = new ConcurrentHashMap<>();
+    private static final long IDEMPOTENCY_WINDOW_MS = 60000L;
+
     @Resource
     private JavaMailSender sender;
-
 
     @Value("${spring.mail.username}")
     private String username;
@@ -42,6 +45,21 @@ public class ContactController {
 
     @PostMapping
     public ResponseEntity<String> submitContact(@RequestBody ContactMessage message) {
+        if (message == null || message.getName() == null || message.getEmail() == null) {
+            return ResponseEntity.failure(40001, "Invalid request data");
+        }
+
+        String idempotencyKey = generateIdempotencyKey(message.getName(), message.getEmail(), message.getTimestamp());
+        long now = System.currentTimeMillis();
+
+        Long lastRequestTime = IDEMPOTENCY_MAP.get(idempotencyKey);
+        if (lastRequestTime != null && (now - lastRequestTime) < IDEMPOTENCY_WINDOW_MS) {
+            log.warn("Detected duplicate request: {}", idempotencyKey);
+            return ResponseEntity.failure(40002, "Duplicate request detected. Please wait before submitting again.");
+        }
+
+        IDEMPOTENCY_MAP.put(idempotencyKey, now);
+
         try {
             log.info("收到联系表单提交: {}", message.getName());
 
@@ -64,6 +82,12 @@ public class ContactController {
             return ResponseEntity.failure(50001, "Failed to send message: " + e.getMessage());
         }
     }
+
+    private String generateIdempotencyKey(String name, String email, Long timestamp) {
+        String timeWindow = timestamp != null ? String.valueOf(timestamp / IDEMPOTENCY_WINDOW_MS) : String.valueOf(System.currentTimeMillis() / IDEMPOTENCY_WINDOW_MS);
+        return name.toLowerCase().trim() + ":" + email.toLowerCase().trim() + ":" + timeWindow;
+    }
+
     public String sendHtmlMail(String targetEmail, String ccEmail, String bccEmail,
                                String subject, HashMap<String, String> content) throws MessagingException {
         MimeMessage mimeMessage = sender.createMimeMessage();
