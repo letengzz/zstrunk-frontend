@@ -22,10 +22,6 @@
             <h1 class="main-title hello-title">{{ carouselItems[item - 1]?.mainTitle }}</h1>
             <h1 class="main-title world-title">{{ carouselItems[item - 1]?.subTitle }}</h1>
           </template>
-          <template v-else>
-            <h1 class="main-title hello-title">Welcome</h1>
-            <h1 class="main-title world-title">To Our Products</h1>
-          </template>
         </div>
       </el-carousel-item>
     </el-carousel>
