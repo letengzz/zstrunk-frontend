@@ -11,7 +11,7 @@ spring:
     ssl:
       enabled: true
 app:
-  data-path: D:/Develop/zstrunk-frontend/data
+  data-path: /usr/data
 knife4j:
   # 开启增强配置
   enable: true
