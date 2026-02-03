@@ -15,7 +15,7 @@
       @click="resumeAutoplay"
        >
       <el-carousel-item v-for="item in imageCount" :key="item">
-        <img :data-src="`/images/carousel/carousel${item}.png`" alt="">
+        <img :data-src="`/images/carousel/carousel${item}.png`" class="lazy" alt="">
         <div class="overlay"></div>
         <div class="title-container">
           <template v-if="carouselItems[item - 1]">
@@ -128,7 +128,7 @@
           <div class="product-col" v-for="product in hotProducts" :key="product.id">
             <el-card class="product-card" :body-style="{ padding: '0px', height: '100%' }"  :style="{ cursor: 'pointer' }">
               <div class="product-image">
-                <img :data-src="product.image"  class="product-img" />
+                <img :data-src="product.image"  class="product-img lazy" />
                 <div class="product-tag">{{ product.tag }}</div>
               </div>
               <div class="product-content">
@@ -221,7 +221,7 @@
         <div class="customer-visits-track" ref="customerVisitsTrackRef">
           <template v-if="visitImageCount > 0">
             <div class="customer-visit-item" v-for="i in 8" :key="i">
-              <img :data-src="`/images/visit/visit${((i - 1) % visitImageCount) + 1}.jpg`" alt="Customer Visit" />
+              <img :data-src="`/images/visit/visit${((i - 1) % visitImageCount) + 1}.jpg`" class="lazy" alt="Customer Visit" />
             </div>
           </template>
           <template v-else>
@@ -258,7 +258,7 @@
               </div>
             </div>
           </div>
-          <img :data-src="currentSolution.image" :alt="currentSolution.title" class="solution-image" />
+          <img :data-src="currentSolution.image" :alt="currentSolution.title" class="solution-image lazy" />
         </div>
       </div>
     </div>
@@ -353,7 +353,7 @@ import CustomerService from '@/components/CustomerService.vue'
 import Brands from '@/components/Brands.vue'
 import { ElMessage } from 'element-plus'
 import axios from 'axios'
-
+import LazyLoad from 'vanilla-lazyload';
 import { useRouter } from 'vue-router'
 import { getProductsByCategory, getProductById, getCarouselConfig, getSolutionsConfig, type Product, type CarouselItem, type Solution } from '@/data/products'
 import { useProductsStore } from '@/stores/modules/products'
@@ -396,6 +396,10 @@ onMounted(async () => {
   await loadCarouselConfig()
   await loadSolutionsConfig()
   await productsStore.loadProducts()
+  await nextTick();
+  new LazyLoad({
+    elements_selector: '.lazy'
+  });
 })
 
 function setCategory(category: 'truck' | 'excavator') {
