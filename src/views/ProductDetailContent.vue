@@ -170,16 +170,16 @@
     </div>
 
     <Footer
-      phone="138-0013-8800"
+      phone="+86-15588751133"
       email="service@example.com"
-      whatsapp="+1 234-567-8900"
+      whatsapp="+86-15588751133"
       address="Beijing, China"
     />
 
     <ContactFixed
-      phone="138-0013-8800"
+      phone="+86-15588751133"
       email="service@example.com"
-      whatsapp="+1 234-567-8900"
+      whatsapp="+86-15588751133"
     />
 
     <CustomerService />

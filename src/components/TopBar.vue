@@ -3,7 +3,7 @@
     <div class="left-box">
       <div class="logo"><img w40 h40  src="/public/images/logo.png" alt="logo"></div>
       <span class="title">
-         <router-link to="/" style="text-decoration: none; color: inherit;">ZHI SHUN</router-link>
+         <router-link to="/" style="text-decoration: none; color: inherit;">zhishun truck</router-link>
       </span>
     </div>
     <div class="right-box">

@@ -112,7 +112,12 @@ withDefaults(defineProps<{
   ],
   contactTitle: 'Contact Us',
   showContactIcons: true,
-  contactInfo: () => []
+  contactInfo: () => [
+    'Beijing, China',
+    'Phone: +86-15588751133',
+    'Email: service@example.com',
+    'WhatsApp: +86-15588751133'
+  ]
 })
 
 const currentYear = new Date().getFullYear()

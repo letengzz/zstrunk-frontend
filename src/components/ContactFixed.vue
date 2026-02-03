@@ -13,7 +13,26 @@
       </div>
       <div class="contact-detail" :class="{ 'show': activeContact === contact.type }">
         <span class="contact-type">{{ contact.label }}</span>
-        <span class="contact-value">{{ contact.value }}</span>
+        <a 
+          v-if="contact.type === 'phone'" 
+          :href="`tel:${contact.value}`" 
+          class="contact-value"
+          @click.stop
+        >{{ contact.value }}</a>
+        <a 
+          v-else-if="contact.type === 'email'" 
+          :href="`mailto:${contact.value}`" 
+          class="contact-value"
+          @click.stop
+        >{{ contact.value }}</a>
+        <a 
+          v-else-if="contact.type === 'whatsapp'" 
+          :href="`https://wa.me/${contact.value.replace(/[^0-9]/g, '')}`" 
+          target="_blank"
+          class="contact-value"
+          @click.stop
+        >{{ contact.value }}</a>
+        <span v-else class="contact-value">{{ contact.value }}</span>
       </div>
     </div>
   </div>
@@ -34,9 +53,9 @@ const props = withDefaults(defineProps<{
   email?: string
   whatsapp?: string
 }>(), {
-  phone: '138-0000-8888',
+  phone: '+86-15588751133',
   email: 'contact@example.com',
-  whatsapp: '+1 234-567-8900'
+  whatsapp: '86-15588751133'
 })
 
 const contacts = computed<Contact[]>(() => [
@@ -139,6 +158,12 @@ const activeContact = ref('')
   font-size: 14px;
   color: #303133;
   font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-value:hover {
+  text-decoration: underline;
 }
 
 .contact-item:hover .contact-icon-wrapper {

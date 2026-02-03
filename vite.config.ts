@@ -12,10 +12,59 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import UnoCSS from 'unocss/vite'// 导入 UnoCSS 插件
+// gzip压缩
+import viteCompression from 'vite-plugin-compression'
+// 图片压缩
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // https://vite.dev/config/
 export default defineConfig({
+    build: {
+    // 10kb以下 转Base64
+    assetsInlineLimit: 1024 * 10,
+    // chunkSizeWarningLimit:1500, //配置文件大小提醒限制 默认为500
+    rollupOptions: {
+      output: {
+        // 每个node_modules下的文件单独打包
+        manualChunks(id: string) {
+          if (id.includes('node_modules')) {
+            // return 'vendor' //第三方依赖合并在一起
+            // 抽离第三方依赖
+            // return id.toString().split('node_modules/.pnpm/')[1].split('/')[0].toString()
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+          return undefined
+        },
+        // 用于从入口点创建的块的打包输出格式[name]表示文件名，[hash]表示该文件hash值
+        entryFileNames: 'assets/js/[name].[hash].js', // 用于命名代码拆分时创建的共享的输出命名
+        chunkFileNames: 'assets/js/[name].[hash].js', // 用于输出静态资源的命名，[ext]表示文件拓展名
+        assetFileNames: 'assets/[ext]/[name].[hash].[ext]',
+      },
+    },
+  },
   plugins: [
+    ViteImageOptimizer({
+      png: {
+        // https://sharp.pixelplumbing.com/api-output#png
+        quality: 60,
+      },
+      jpeg: {
+        // https://sharp.pixelplumbing.com/api-output#jpeg
+        quality: 60,
+      },
+      jpg: {
+        // https://sharp.pixelplumbing.com/api-output#jpeg
+        quality: 60,
+      },
+    }),
+    viteCompression({
+      verbose: true, // 默认即可
+      disable: false, // 开启压缩(不禁用)，默认即可
+      deleteOriginFile: false, // 删除源文件
+      threshold: 10240, // 压缩阈值，以字节为单位。如果一个资源比这个值小，它就不会被压缩。默认是 10240
+      algorithm: 'gzip', // 压缩算法，默认是 gzip
+      ext: '.gz', // 文件类型，默认是 .gz
+    }),
     VueRouter({
       routesFolder: [
         {
