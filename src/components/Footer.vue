@@ -121,7 +121,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer-content {
-  max-width: 1400px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -130,8 +130,8 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer-logo {
-  width: 50px;
-  height: 50px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
   margin-bottom: 15px;
 }
@@ -340,6 +340,145 @@ const currentYear = new Date().getFullYear()
 
   .footer-contact {
     padding-left: 0;
+  }
+
+  .products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .product-column {
+    flex: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .product-category-link {
+    font-size: 13px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    padding: 4px 0;
+  }
+
+  .footer-links {
+    margin-bottom: 25px;
+  }
+
+  .footer-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 35px 15px 20px;
+  }
+
+  .footer-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .footer-company-name {
+    font-size: 20px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+  }
+
+  .products-grid {
+    gap: 12px;
+  }
+
+  .product-column {
+    gap: 8px;
+  }
+
+  .product-category-link {
+    font-size: 12px;
+    padding: 3px 0;
+  }
+
+  .product-category-link::before {
+    margin-right: 5px;
+  }
+
+  .footer-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .footer-links {
+    margin-bottom: 20px;
+  }
+
+  .footer-whatsapp {
+    padding-top: 25px;
+  }
+
+  .whatsapp-image {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer {
+    padding: 30px 12px 18px;
+  }
+
+  .footer-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer-company-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .footer-desc {
+    font-size: 12px;
+  }
+
+  .footer-brand {
+    margin-bottom: 25px;
+  }
+
+  .products-grid {
+    gap: 10px;
+  }
+
+  .product-column {
+    gap: 6px;
+  }
+
+  .product-category-link {
+    font-size: 11px;
+  }
+
+  .footer-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    margin-bottom: 18px;
+  }
+
+  .footer-bottom {
+    margin-top: 25px;
+    padding-top: 15px;
+  }
+
+  .copyright {
+    font-size: 12px;
   }
 }
 </style>
