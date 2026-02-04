@@ -7,6 +7,7 @@
     indicator-position="none"
       arrow="never"
       :autoplay="true"
+      :interval="6000"
       :pause-on-hover="false"
       @mousedown="handleMouseDown"
       @mousemove="handleMouseMove"
