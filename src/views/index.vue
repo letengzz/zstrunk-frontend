@@ -262,7 +262,7 @@
               </div>
             </div>
           </div>
-          <LazyImage :src="currentSolution.image" :alt="currentSolution.title" class="solution-image" />
+          <img :src="currentSolution.image" :alt="currentSolution.title" class="solution-image" />
         </div>
       </div>
     </div>
