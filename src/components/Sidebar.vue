@@ -1,6 +1,69 @@
 <template>
   <div class="sidebar">
-    <div class="category-sidebar">
+    <div class="sidebar-toggle" @click="toggleSidebar">
+      <div class="i-ep-menu" w24 h24></div>
+    </div>
+
+    <div class="sidebar-overlay" :class="{ show: isSidebarOpen }" @click="closeSidebar"></div>
+
+    <div class="sidebar-drawer" :class="{ open: isSidebarOpen }">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">Categories</h3>
+        <div class="sidebar-close" @click="closeSidebar">
+          <div class="i-ep-close" w20 h20></div>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="sidebar-search">
+          <el-input
+            :model-value="searchQuery"
+            placeholder="Search products..."
+            class="search-input-sidebar"
+            @input="handleSearch"
+          >
+            <template #prefix>
+              <div class="i-ep-search" w14 h14></div>
+            </template>
+          </el-input>
+        </div>
+
+        <el-tree
+          :data="categoryTree"
+          :props="defaultProps"
+          :current-node-key="computedCurrentCategory"
+          :expanded-keys="computedExpandedKeys"
+          node-key="id"
+          :highlight-current="true"
+          :expand-on-click-node="false"
+          :accordion="true"
+          @node-click="handleNodeClick"
+          class="category-tree"
+        />
+
+        <div class="latest-products-sidebar">
+          <h4 class="latest-products-title">Latest Products</h4>
+          <div class="latest-products-list" v-if="newProducts.length > 0">
+            <div
+              class="latest-product-item"
+              v-for="product in newProducts"
+              :key="product.id"
+              @click="goToProduct(product.id)"
+            >
+              <img :src="product.image" :alt="product.name" class="latest-product-image" />
+              <div class="latest-product-info">
+                <p class="latest-product-name">{{ product.name }}</p>
+              </div>
+            </div>
+          </div>
+          <div v-else class="no-products-message">
+            <p>No new products available</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-sidebar desktop-only">
       <h3 class="sidebar-title">Categories</h3>
       <div class="sidebar-search">
         <el-input
@@ -74,6 +137,7 @@ const emit = defineEmits<{
 
 const categoryTree = ref<CategoryTreeNode[]>([])
 const newProducts = ref<Product[]>([])
+const isSidebarOpen = ref(false)
 
 const computedCurrentCategory = computed({
   get: () => props.currentCategory,
@@ -84,6 +148,14 @@ const computedExpandedKeys = computed({
   get: () => props.expandedKeys,
   set: () => {}
 })
+
+function toggleSidebar() {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
+
+function closeSidebar() {
+  isSidebarOpen.value = false
+}
 
 async function loadCategoryTree() {
   categoryTree.value = await getCategoryTreeFromApi()
@@ -146,10 +218,215 @@ async function goToProduct(id: number) {
 </script>
 
 <style scoped>
-/* .sidebar {
-  flex-shrink: 0;
-  width: 370px;
-} */
+.sidebar {
+  position: relative;
+}
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  z-index: 1002;
+  width: 44px;
+  height: 44px;
+  background: #FF0000;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.sidebar-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 85%;
+  max-width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1001;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-drawer.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: none;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  z-index: 10;
+}
+
+.sidebar-close {
+  display: none;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-close:hover {
+  background: #e54343;
+  color: #ffffff;
+}
+
+.sidebar-content {
+  padding: 16px;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .sidebar-overlay {
+    display: flex;
+  }
+
+  .sidebar-drawer {
+    display: block;
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar-close {
+    display: flex;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .category-sidebar {
+    padding: 15px;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+  }
+
+  :deep(.category-tree .el-tree-node__label) {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sidebar-content {
+    padding: 12px;
+  }
+
+  .sidebar-title {
+    font-size: 17px;
+  }
+
+  .sidebar-search {
+    margin-bottom: 12px;
+  }
+
+  :deep(.category-tree .el-tree-node__content) {
+    padding: 8px 0;
+  }
+
+  :deep(.category-tree .el-tree-node__label) {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-toggle {
+    width: 40px;
+    height: 40px;
+    top: 80px;
+    left: 8px;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+  }
+
+  .sidebar-content {
+    padding: 10px;
+  }
+
+  :deep(.category-tree) {
+    padding: 12px;
+  }
+
+  :deep(.category-tree .el-tree-node__label) {
+    font-size: 13px;
+  }
+
+  .latest-products-sidebar {
+    margin-top: 16px;
+    padding-top: 16px;
+  }
+
+  .latest-products-title {
+    font-size: 15px;
+  }
+
+  .latest-product-item {
+    padding: 10px;
+  }
+
+  .latest-product-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .latest-product-name {
+    font-size: 12px;
+  }
+}
 
 .category-sidebar {
   background: #ffffff;
