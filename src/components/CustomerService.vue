@@ -55,6 +55,7 @@ const newMessage = ref('')
 const messagesContainer = ref<HTMLElement | null>(null)
 const messages = ref<Message[]>([])
 const sessionStartTime = ref<string>('')
+const hasUserSentMessage = ref(false)
 let inactivityTimer: ReturnType<typeof setTimeout> | null = null
 const SESSION_STORAGE_KEY = 'customer_service_session'
 
@@ -92,6 +93,7 @@ function loadSessionFromStorage() {
       const sessionData: ChatSessionData = JSON.parse(saved)
       messages.value = sessionData.messages
       sessionStartTime.value = sessionData.startTime
+      hasUserSentMessage.value = true
       sessionStorage.removeItem(SESSION_STORAGE_KEY)
       return true
     } catch (e) {
@@ -135,6 +137,7 @@ async function sendChatTranscript() {
 
 function startChatSession() {
   if (sessionStartTime.value === '') {
+    hasUserSentMessage.value = false
     sessionStartTime.value = getFullDateTime()
     messages.value = [{
       type: 'service',
@@ -159,7 +162,7 @@ function toggleChat() {
 }
 
 function closeChat() {
-  if (messages.value.length > 0) {
+  if (hasUserSentMessage.value && messages.value.length > 0) {
     sendChatTranscript()
   }
   isOpen.value = false
@@ -173,6 +176,7 @@ function sendMessage() {
   const content = newMessage.value.trim()
   if (!content) return
 
+  hasUserSentMessage.value = true
   messages.value.push({
     type: 'customer',
     content,

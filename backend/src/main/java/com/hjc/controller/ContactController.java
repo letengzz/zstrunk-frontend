@@ -115,36 +115,74 @@ public class ContactController {
 
     @PostMapping("/chat-transcript")
     public ResponseEntity<String> submitChatTranscript(@RequestBody HashMap<String, Object> request) {
+        if (request == null) {
+            return ResponseEntity.failure(40001, "Invalid request data");
+        }
+
+        @SuppressWarnings("unchecked")
+        List<HashMap<String, String>> messagesData = (List<HashMap<String, String>>) request.get("messages");
+        String startTime = (String) request.get("startTime");
+        String endTime = (String) request.get("endTime");
+
+        if (messagesData == null || messagesData.isEmpty()) {
+            return ResponseEntity.failure(40002, "No messages to send");
+        }
+
+        if (startTime == null || startTime.trim().isEmpty()) {
+            return ResponseEntity.failure(40003, "Invalid start time");
+        }
+
+        List<ChatTranscriptMessage> messages = new ArrayList<>();
+        for (int i = 0; i < messagesData.size(); i++) {
+            HashMap<String, String> msgData = messagesData.get(i);
+            if (msgData == null) {
+                log.warn("Message at index {} is null", i);
+                continue;
+            }
+
+            String type = msgData.get("type");
+            String msgContent = msgData.get("content");
+            String time = msgData.get("time");
+
+            if (type == null || type.trim().isEmpty()) {
+                log.warn("Message at index {} has missing type field", i);
+                continue;
+            }
+
+            if (!"customer".equals(type) && !"service".equals(type)) {
+                log.warn("Message at index {} has invalid type: {}", i, type);
+                continue;
+            }
+
+            if (msgContent == null || msgContent.trim().isEmpty()) {
+                log.warn("Message at index {} has missing content", i);
+                continue;
+            }
+
+            if (time == null || time.trim().isEmpty()) {
+                log.warn("Message at index {} has missing time", i);
+                continue;
+            }
+
+            messages.add(new ChatTranscriptMessage(type, msgContent.trim(), time.trim()));
+        }
+
+        if (messages.isEmpty()) {
+            return ResponseEntity.failure(40004, "No valid messages to send");
+        }
+
+        log.info("收到聊天记录提交，共 {} 条有效消息", messages.size());
+
         try {
-            @SuppressWarnings("unchecked")
-            List<HashMap<String, String>> messagesData = (List<HashMap<String, String>>) request.get("messages");
-            String startTime = (String) request.get("startTime");
-            String endTime = (String) request.get("endTime");
-
-            log.info("收到聊天记录提交，共 {} 条消息", messagesData != null ? messagesData.size() : 0);
-
-            if (messagesData == null || messagesData.isEmpty()) {
-                return ResponseEntity.failure(40001, "No messages to send");
-            }
-
-            List<ChatTranscriptMessage> messages = new ArrayList<>();
-            for (HashMap<String, String> msgData : messagesData) {
-                messages.add(new ChatTranscriptMessage(
-                    msgData.get("type"),
-                    msgData.get("content"),
-                    msgData.get("time")
-                ));
-            }
-
             String subject = "New Chat Transcript - " + new Date().toLocaleString();
 
-            HashMap<String, Object> content = new HashMap<>();
-            content.put("messages", messages);
-            content.put("startTime", startTime);
-            content.put("endTime", endTime);
-            content.put("messageCount", messages.size());
+            HashMap<String, Object> transcriptContent = new HashMap<>();
+            transcriptContent.put("messages", messages);
+            transcriptContent.put("startTime", startTime);
+            transcriptContent.put("endTime", endTime);
+            transcriptContent.put("messageCount", messages.size());
 
-            sendChatTranscriptMail("2020885569@qq.com", null, null, subject, content);
+            sendChatTranscriptMail("2020885569@qq.com", null, null, subject, transcriptContent);
 
             log.info("聊天记录邮件发送成功");
             return ResponseEntity.success("Chat transcript sent successfully!");
