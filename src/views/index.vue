@@ -3,8 +3,8 @@
     <TopBar class="floating-topbar" />
     <el-carousel
     ref="carouselRef"
-       height="850px"
-       indicator-position="none"
+    height="calc(100vh - 80px)"
+    indicator-position="none"
       arrow="never"
       :autoplay="true"
       :pause-on-hover="false"
@@ -284,7 +284,7 @@
 
     <CustomerService />
 
-    <el-dialog v-model="contactDialogVisible" title="Contact Us" width="600px" :close-on-click-modal="false" class="contact-dialog">
+    <el-dialog v-model="contactDialogVisible" title="Contact Us" :width="dialogWidth" :close-on-click-modal="false" class="contact-dialog">
       <el-form :model="contactForm" label-position="top" class="contact-form">
         <div class="dialog-form-row">
           <el-form-item label="Your Name" required class="dialog-form-item">
@@ -415,6 +415,26 @@ async function goToProduct(id: number) {
 
 const contactDialogVisible = ref(false)
 const isContactSubmitting = ref(false)
+const dialogWidth = ref('600px')
+
+onMounted(() => {
+  updateDialogWidth()
+  window.addEventListener('resize', updateDialogWidth)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateDialogWidth)
+})
+
+function updateDialogWidth() {
+  if (window.innerWidth < 576) {
+    dialogWidth.value = '90%'
+  } else if (window.innerWidth < 768) {
+    dialogWidth.value = '95%'
+  } else {
+    dialogWidth.value = '600px'
+  }
+}
 
 interface ContactForm {
   name: string
@@ -694,6 +714,7 @@ onMounted(() => {
 .carousel-container {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1125,6 +1146,7 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .product-section-inner {
@@ -1372,6 +1394,7 @@ img {
 .features-section {
   padding: 100px 40px;
   background: #F6F5ED;
+  overflow-x: hidden;
 }
 
 .features-container {
@@ -2039,19 +2062,89 @@ img {
   }
 
   .solution-card {
-    padding: 24px 20px;
+    padding: 20px 16px;
   }
 
   .solution-title {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .solution-header {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .solution-buttons {
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .contact-dialog {
+    width: 100%;
+    max-width: calc(100% - 16px);
+  }
+
+  .contact-dialog .el-dialog {
+    width: 100% !important;
+    max-width: 100%;
+    margin: 8px auto !important;
+    border-radius: 10px;
+  }
+
+  .contact-dialog .el-dialog__header {
+    padding: 14px 16px 10px;
+  }
+
+  .contact-dialog .el-dialog__title {
+    font-size: 18px;
+  }
+
+  .contact-dialog .el-dialog__body {
+    padding: 16px;
+  }
+
+  .contact-dialog .el-dialog__headerbtn {
+    top: 10px;
+    right: 10px;
+  }
+
+  .contact-dialog .el-dialog__headerbtn .el-dialog__close {
+    font-size: 18px;
+  }
+
+  .contact-dialog .el-dialog__footer {
+    padding: 12px 16px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-dialog :deep(.el-dialog__footer .el-button) {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .contact-dialog :deep(.el-form-item) {
+    margin-bottom: 12px;
+  }
+
+  .contact-dialog :deep(.el-form-item__label) {
+    font-size: 13px;
+    padding-bottom: 4px;
+  }
+
+  .contact-dialog :deep(.el-input__inner) {
+    font-size: 14px;
+    height: 40px;
+  }
+
+  .contact-dialog :deep(.el-textarea__inner) {
+    font-size: 14px;
+    min-height: 80px !important;
+  }
+
+  .dialog-form-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
@@ -2091,6 +2184,55 @@ img {
   .cta-content {
     flex-direction: column;
     gap: 20px;
+  }
+
+  .contact-dialog {
+    width: 100%;
+    max-width: calc(100% - 20px);
+  }
+
+  .contact-dialog .el-dialog {
+    width: 100% !important;
+    max-width: 100%;
+    margin: 10px auto !important;
+    border-radius: 12px;
+  }
+
+  .contact-dialog .el-dialog__header {
+    padding: 16px 20px 12px;
+  }
+
+  .contact-dialog .el-dialog__title {
+    font-size: 20px;
+  }
+
+  .contact-dialog .el-dialog__body {
+    padding: 20px;
+  }
+
+  .contact-dialog .el-dialog__footer {
+    padding: 12px 20px 16px;
+  }
+
+  .contact-dialog :deep(.el-form-item) {
+    margin-bottom: 14px;
+  }
+
+  .contact-dialog :deep(.el-form-item__label) {
+    font-size: 13px;
+  }
+
+  .contact-dialog :deep(.el-input__inner) {
+    font-size: 14px;
+  }
+
+  .dialog-form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dialog-form-item-full {
+    grid-column: 1;
   }
 }
 
@@ -2315,5 +2457,794 @@ img {
   background: linear-gradient(135deg, #cc0000 0%, #aa0000 100%);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    min-height: auto;
+  }
+
+  .el-carousel {
+    height: 400px !important;
+  }
+
+  .el-carousel-item {
+    height: 400px !important;
+  }
+
+  .carousel-img {
+    object-position: center center;
+  }
+
+  .title-container {
+    padding: 0 15px;
+    bottom: 40px;
+  }
+
+  .main-title {
+    font-size: 22px !important;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .carousel-button {
+    padding: 10px 24px;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .why-choose-section {
+    padding: 50px 15px;
+  }
+
+  .why-choose-container {
+    gap: 30px;
+  }
+
+  .about-subtitle {
+    font-size: 16px;
+  }
+
+  .why-stats {
+    gap: 15px;
+    margin-top: 25px;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 55px;
+  }
+
+  .stat-number {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+
+  .extra-stats {
+    gap: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+
+  .stat-bar-card {
+    flex-direction: row;
+    padding: 12px 15px;
+  }
+
+  .stat-bar-fill-vertical {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .stat-bar-number {
+    font-size: 18px;
+  }
+
+  .stat-bar-label {
+    font-size: 12px;
+  }
+
+  .stat-simple-item {
+    gap: 10px;
+  }
+
+  .stat-simple-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .stat-simple-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .stat-simple-number {
+    font-size: 22px;
+  }
+
+  .stat-simple-label {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  .stat-simple-line-wrapper {
+    margin-top: 6px;
+    height: 2px;
+  }
+
+  .why-intro {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 20px 0;
+  }
+
+  .why-intro-button {
+    padding: 10px 26px;
+    font-size: 14px;
+    margin: 15px 0;
+  }
+
+  .video-container {
+    border-radius: 12px;
+  }
+
+  .brands-section {
+    padding: 40px 15px;
+  }
+
+  .product-section {
+    padding: 40px 0;
+  }
+
+  .product-section-inner {
+    padding: 0 15px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .category-tabs {
+    gap: 12px;
+  }
+
+  .category-tab {
+    padding: 12px 20px;
+  }
+
+  .category-name {
+    font-size: 14px;
+  }
+
+  .product-grid {
+    gap: 15px;
+  }
+
+  .product-col {
+    width: calc(50% - 8px) !important;
+  }
+
+  .product-card {
+    height: auto;
+    min-height: 240px;
+  }
+
+  .product-image {
+    height: 120px;
+    margin: 12px auto 0;
+  }
+
+  .product-name {
+    font-size: 14px;
+  }
+
+  .product-content {
+    padding: 10px 12px;
+  }
+
+  .product-footer .el-button {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .features-section {
+    padding: 50px 15px;
+  }
+
+  .features-grid {
+    gap: 15px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 15px;
+  }
+
+  .feature-title {
+    font-size: 18px;
+  }
+
+  .feature-desc {
+    font-size: 13px;
+  }
+
+  .feature-boxes {
+    padding: 50px 15px;
+    overflow: visible;
+  }
+
+  .feature-section-header {
+    margin-bottom: 25px;
+  }
+
+  .feature-boxes-inner {
+    flex-direction: column;
+    padding: 0 15px;
+    gap: 20px;
+  }
+
+  .feature-box {
+    width: 100% !important;
+    flex: none;
+    padding: 30px 25px;
+    border-radius: 16px;
+    min-height: auto;
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+  }
+
+  .feature-box::before {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+  }
+
+  .feature-box .feature-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .feature-box .feature-desc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .feature-section-header {
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+
+  .feature-section-header .section-title {
+    font-size: 24px;
+  }
+
+  .feature-section-header .section-subtitle {
+    font-size: 14px;
+    padding: 0 20px;
+  }
+
+  .customer-visits-section {
+    padding: 50px 15px;
+    overflow-x: visible;
+    overflow-y: hidden;
+  }
+
+  .customer-visits-slider-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .customer-visits-slider-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .customer-visits-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    transition: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .customer-visit-item {
+    flex-shrink: 0;
+    width: calc(100vw - 60px);
+    max-width: 320px;
+    height: 220px;
+    border-radius: 12px;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .customer-visit-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .customer-visits-section .section-header {
+    margin-bottom: 30px;
+  }
+
+  .customer-visits-section .section-title {
+    font-size: 24px;
+  }
+
+  .customer-visits-section .section-subtitle {
+    font-size: 14px;
+  }
+
+  .solution-section {
+    padding: 40px 15px;
+    background: linear-gradient(180deg, #F6F5ED 0%, #ffffff 50%, #F6F5ED 100%);
+  }
+
+  .solution-container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .solution-section .section-title {
+    padding: 0 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100% - 30px) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    color: #1a2a4a !important;
+    font-weight: 700 !important;
+  }
+
+  .solution-section .section-subtitle {
+    padding: 0 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100% - 30px) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    color: #666 !important;
+    font-size: 14px !important;
+  }
+
+  .solution-section h2.section-title {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .solution-section p.section-subtitle {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .solution-content {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    background: #1a2a4a;
+  }
+
+  .solution-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .solution-card-wrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .solution-card {
+    padding: 24px 20px;
+    background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .solution-header {
+    margin-bottom: 16px;
+  }
+
+  .solution-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+  }
+
+  .solution-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .solution-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .solution-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .solution-nav-btn:hover:not(:disabled) {
+    background: #ffffff;
+    color: #1a2a4a;
+    border-color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .solution-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .solution-nav-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  .solution-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .solution-indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(26, 42, 74, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .solution-indicator-dot.active {
+    background: #FF0000;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .cta-section {
+    padding: 30px 15px;
+  }
+
+  .cta-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cta-title {
+    font-size: 14px;
+    text-align: center;
+    min-width: 100%;
+  }
+
+  .cta-button {
+    padding: 10px 28px;
+    font-size: 14px;
+  }
+
+  .contact-dialog {
+    width: 100%;
+    max-width: calc(100% - 30px);
+  }
+
+  .contact-dialog .el-dialog {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .dialog-form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .floating-topbar {
+    padding: 10px 15px;
+  }
+
+  .contact-fixed {
+    bottom: 15px;
+    right: 15px;
+    gap: 10px;
+  }
+
+  .customer-service {
+    bottom: 15px;
+    left: 15px;
+  }
+
+  .lazy-image {
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 360px) {
+  .el-carousel {
+    height: 350px !important;
+  }
+
+  .el-carousel-item {
+    height: 350px !important;
+  }
+
+  .main-title {
+    font-size: 18px !important;
+  }
+
+  .carousel-button {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+
+  .product-col {
+    width: 100% !important;
+  }
+
+  .customer-visit-item {
+    width: calc(100vw - 50px);
+    max-width: 280px;
+    height: 200px;
+  }
+
+  .customer-visits-section {
+    padding: 40px 12px;
+    overflow-x: visible;
+    overflow-y: hidden;
+  }
+
+  .customer-visits-section .section-title {
+    font-size: 22px;
+  }
+
+  .customer-visits-section .section-subtitle {
+    font-size: 13px;
+  }
+
+  .stat-bar-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .solution-section {
+    padding: 40px 12px;
+    background: linear-gradient(180deg, #F6F5ED 0%, #ffffff 50%, #F6F5ED 100%);
+  }
+
+  .solution-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .solution-section .section-title {
+    font-size: 20px;
+    padding: 0 12px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100% - 24px) !important;
+    color: #1a2a4a !important;
+    font-weight: 700 !important;
+  }
+
+  .solution-section .section-subtitle {
+    font-size: 12px;
+    padding: 0 12px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100% - 24px) !important;
+    color: #666 !important;
+  }
+
+  .solution-section h2.section-title {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .solution-section p.section-subtitle {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .solution-content {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    background: #1a2a4a;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .solution-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .solution-card {
+    padding: 20px 15px;
+    background: linear-gradient(135deg, #1a2a4a 0%, #2d3a5c 100%);
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .solution-header {
+    margin-bottom: 12px;
+  }
+
+  .solution-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .solution-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .solution-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  .solution-nav-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .solution-nav-btn:hover:not(:disabled) {
+    background: #ffffff;
+    color: #1a2a4a;
+    border-color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .solution-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .solution-nav-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .solution-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 15px;
+  }
+
+  .solution-indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(26, 42, 74, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .solution-indicator-dot.active {
+    background: #FF0000;
+    width: 18px;
+    border-radius: 3px;
+  }
+
+  .cta-title {
+    font-size: 13px;
+  }
+
+  .feature-boxes {
+    padding: 40px 12px;
+    overflow: visible;
+  }
+
+  .feature-boxes-inner {
+    padding: 0 12px;
+    gap: 15px;
+  }
+
+  .feature-box {
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .feature-box .feature-title {
+    font-size: 16px;
+  }
+
+  .feature-box .feature-desc {
+    font-size: 13px;
+  }
+
+  .feature-section-header {
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+
+  .feature-section-header .section-title {
+    font-size: 22px;
+  }
+
+  .feature-section-header .section-subtitle {
+    font-size: 13px;
+  }
 }
 </style>
