@@ -3,7 +3,7 @@
     <TopBar class="floating-topbar" />
     <el-carousel
     ref="carouselRef"
-    height="calc(100vh - 80px)"
+    height="calc(100vh)"
     indicator-position="none"
       arrow="never"
       :autoplay="true"
@@ -722,12 +722,20 @@ onMounted(() => {
   -ms-user-select: none;
 }
 
+.carousel-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .carousel-img {
   width: 100%;
-  height: 850px;
-  /* object-fit: cover;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-  display: block; */
+  display: block;
 }
 
 .floating-topbar {
@@ -2473,7 +2481,14 @@ img {
     height: 400px !important;
   }
 
+  .carousel-image-wrapper {
+    height: 100% !important;
+  }
+
   .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center center;
   }
 
