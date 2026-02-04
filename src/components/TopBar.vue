@@ -325,12 +325,26 @@
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: color 0.05s ease, background 0.05s ease, outline 0.05s ease;
+  display: inline-block;
+  position: relative;
 }
 
-.product-item:hover {
+.product-item:hover,
+.product-item:focus,
+.product-item:active {
   color: #FF4500;
   background: rgba(255, 69, 0, 0.1);
+  outline: none;
+}
+
+.product-item.router-link-active {
+  color: #666;
+  background: transparent;
+}
+
+.product-item:any-link {
+  color: #666;
 }
 
 .semi-trailer-items {
@@ -345,9 +359,56 @@
   gap: 4px 12px;
 }
 
+// Ensure only one item maintains hover state at a time
+.products-dropdown:hover .product-item:hover:not(:hover) {
+  color: #666 !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
 :global(.products-popper) {
   // padding: 20px !important;
   left: auto !important;
   right: 0 !important;
+}
+
+:global(.products-popper .el-menu-item) {
+  outline: none !important;
+  background: transparent !important;
+  transition: none !important;
+}
+
+:global(.products-popper .el-menu-item:focus) {
+  outline: none !important;
+  background: transparent !important;
+  color: #666 !important;
+}
+
+:global(.products-popper .el-menu-item:hover) {
+  outline: none !important;
+  background: transparent !important;
+}
+
+:global(.products-popper .el-menu-item a) {
+  outline: none !important;
+  background: transparent !important;
+}
+
+:global(.products-popper:hover .el-menu-item:focus) {
+  color: #666 !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
+:global(.products-dropdown:hover .product-item) {
+  color: #666 !important;
+  background: transparent !important;
+  outline: none !important;
+}
+
+:global(.products-dropdown:hover .product-item:hover) {
+  color: #FF4500 !important;
+  background: rgba(255, 69, 0, 0.1) !important;
+  outline: none !important;
 }
 </style>

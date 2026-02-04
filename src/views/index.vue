@@ -23,6 +23,7 @@
           <template v-if="carouselItems[item - 1]">
             <h1 class="main-title hello-title">{{ carouselItems[item - 1]?.mainTitle }}</h1>
             <h1 class="main-title world-title">{{ carouselItems[item - 1]?.subTitle }}</h1>
+            <router-link to="/products" class="carousel-button">View More</router-link>
           </template>
         </div>
       </el-carousel-item>
@@ -273,12 +274,7 @@
         <el-button type="primary" round class="cta-button" @click="openContactDialog">Contact Us</el-button>
       </div>
     </div>
-    <Footer
-      phone="+86-15588751133"
-      email="service@example.com"
-      whatsapp="+86-15588751133"
-      address="Beijing, China"
-    />
+    <Footer />
 
     <ContactFixed
       phone="+86-15588751133"
@@ -877,6 +873,38 @@ img {
   margin: 0;
    font-size: 100px;
   animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+.carousel-button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #FF4500 0%, #FF0000 100%);
+  border: 2px solid #FF4500;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.4);
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+.carousel-button:hover {
+  background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+  border-color: #FF0000;
+  box-shadow: 0 6px 30px rgba(255, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+.carousel-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
 @keyframes slideUp {

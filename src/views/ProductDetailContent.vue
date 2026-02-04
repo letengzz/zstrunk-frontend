@@ -338,6 +338,7 @@ async function loadMarkdown() {
       html = html.replace(/<th([^>]*)style="[^"]*"/gi, '<th$1')
       html = html.replace(/<td([^>]*)style="[^"]*"/gi, '<td$1')
       html = html.replace(/<tr([^>]*)style="[^"]*"/gi, '<tr$1')
+      html = html.replace(/<img\s+/gi, '<img loading="lazy" ')
       markdownContent.value = html
     }
   } catch (error) {

@@ -13,21 +13,21 @@
       </div>
       <div class="contact-detail" :class="{ 'show': activeContact === contact.type }">
         <span class="contact-type">{{ contact.label }}</span>
-        <a 
-          v-if="contact.type === 'phone'" 
-          :href="`tel:${contact.value}`" 
+        <a
+          v-if="contact.type === 'phone'"
+          :href="`tel:${contact.value}`"
           class="contact-value"
           @click.stop
         >{{ contact.value }}</a>
-        <a 
-          v-else-if="contact.type === 'email'" 
-          :href="`mailto:${contact.value}`" 
+        <a
+          v-else-if="contact.type === 'email'"
+          :href="`mailto:${contact.value}`"
           class="contact-value"
           @click.stop
         >{{ contact.value }}</a>
-        <a 
-          v-else-if="contact.type === 'whatsapp'" 
-          :href="`https://wa.me/${contact.value.replace(/[^0-9]/g, '')}`" 
+        <a
+          v-else-if="contact.type === 'whatsapp'"
+          :href="`https://wa.me/${contact.value.replace(/[^0-9]/g, '')}`"
           target="_blank"
           class="contact-value"
           @click.stop
@@ -54,7 +54,7 @@ const props = withDefaults(defineProps<{
   whatsapp?: string
 }>(), {
   phone: '+86-15588751133',
-  email: 'contact@example.com',
+  email: 'info@zhishuntruck.com',
   whatsapp: '86-15588751133'
 })
 

@@ -67,6 +67,12 @@
               <h3 class="social-title">Follow Us</h3>
               <div class="social-icons">
                 <div class="social-icon">
+
+                    <a href="https://wa.me/message/3IWZ2Z2A3HLMH1" target="_blank">
+                    <div class="i-ant-design-whats-app-outlined w-20 h-20"></div>
+                    </a>
+                </div>
+                <!-- <div class="social-icon">
                   <div class="i-ep-chat-line-round w-20 h-20"></div>
                 </div>
                 <div class="social-icon">
@@ -77,7 +83,7 @@
                 </div>
                 <div class="social-icon">
                   <div class="i-ep-promotion w-20 h-20"></div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -149,7 +155,7 @@
         </div>
       </div>
     </div>
-
+    <Footer />
     <ContactFixed />
 
     <CustomerService />
@@ -418,6 +424,11 @@ async function submitForm() {
   background: #ffffff;
   color: #FF0000;
   transform: translateY(-3px);
+}
+
+.social-icon a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .contact-form-section {

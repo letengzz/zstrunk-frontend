@@ -5,11 +5,11 @@
         <el-col :xs="24" :sm="12" :md="4">
           <div class="footer-brand">
             <img src="/public/images/logo.png" alt="Logo" class="footer-logo">
-            <span class="footer-company-name">ZHI SHUN</span>
+            <span class="footer-company-name">zhishun truck</span>
             <p class="footer-desc">{{ description }}</p>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="12" :md="5">
+        <el-col :xs="24" :sm="12" :md="3">
           <div class="footer-links">
             <h4 class="footer-title">{{ quickLinksTitle }}</h4>
             <ul class="link-list">
@@ -36,30 +36,32 @@
             </div>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="12" :md="7">
+        <el-col :xs="24" :sm="12" :md="4">
           <div class="footer-links footer-contact">
             <h4 class="footer-title">{{ contactTitle }}</h4>
-            <div v-if="showContactIcons" class="contact-info">
-              <div v-if="phone" class="contact-row">
+            <div class="contact-info">
+              <div class="contact-row">
                 <div class="contact-icon i-ep-phone"></div>
-                <span>{{ phone }}</span>
+                <span>+86-15588751133</span>
               </div>
-              <div v-if="email" class="contact-row">
+              <div class="contact-row">
                 <div class="contact-icon i-ep-message"></div>
-                <span>{{ email }}</span>
+                <span>info@zhishuntruck.com</span>
               </div>
-              <div v-if="whatsapp" class="contact-row">
+              <div class="contact-row">
                 <div class="contact-icon i-ant-design-whats-app-outlined"></div>
-                <span>{{ whatsapp }}</span>
+                <span>+86-15588751133</span>
               </div>
-              <div v-if="address" class="contact-row">
+              <div class="contact-row">
                 <div class="contact-icon i-ep-location"></div>
-                <span>{{ address }}</span>
+                <span>Beijing, China</span>
               </div>
             </div>
-            <ul v-else class="contact-list">
-              <li v-for="(item, index) in contactInfo" :key="index">{{ item }}</li>
-            </ul>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="2">
+          <div class="footer-whatsapp">
+            <img src="/images/footer/whatsapp.png" alt="WhatsApp" class="whatsapp-image" />
           </div>
         </el-col>
       </el-row>
@@ -84,18 +86,13 @@ withDefaults(defineProps<{
   productLinksLeft?: LinkItem[]
   productLinksRight?: LinkItem[]
   contactTitle?: string
-  showContactIcons?: boolean
-  phone?: string
-  email?: string
-  whatsapp?: string
-  address?: string
-  contactInfo?: string[]
 }>(), {
   description: 'Professional Services',
   quickLinksTitle: 'Quick Links',
   quickLinks: () => [
     { text: 'Home', url: '/' },
-    { text: 'About Us', url: '/about' }
+    { text: 'Requct A Quote', url: '/contact' },
+    { text: 'About Us', url: '/about' },
   ],
   productsTitle: 'Products',
   productLinksLeft: () => [
@@ -110,14 +107,7 @@ withDefaults(defineProps<{
     { text: 'Existing Trucks and Trailers', url: '/products?category=ExistingTrucksAndTrailers' },
     { text: 'Excavators', url: '/products?category=excavator' }
   ],
-  contactTitle: 'Contact Us',
-  showContactIcons: true,
-  contactInfo: () => [
-    'Beijing, China',
-    'Phone: +86-15588751133',
-    'Email: service@example.com',
-    'WhatsApp: +86-15588751133'
-  ]
+  contactTitle: 'Contact Us'
 })
 
 const currentYear = new Date().getFullYear()
@@ -180,6 +170,19 @@ const currentYear = new Date().getFullYear()
   height: 3px;
   background: linear-gradient(90deg, #8B0000, #FF0000);
   border-radius: 2px;
+}
+
+.footer-whatsapp {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  height: 100%;
+  padding-top: 40px;
+}
+
+.whatsapp-image {
+  max-width: 100%;
+  height: auto;
 }
 
 .footer-links {

@@ -21,7 +21,7 @@
           </p>
         </div>
         <div class="about-image">
-          <img src="/public/images/about-factory.jpg" alt="Our Factory" />
+          <img src="/public/images/about/about-factory.png" alt="Our Factory" />
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
               <div class="display-desc">{{ currentHistorical?.desc }}</div>
             </div>
             <div class="display-right">
-              <img :src="currentHistorical?.image" alt="Historical moment" class="display-image" />
+              <LazyImage :src="currentHistorical?.image || ''" alt="Historical moment" class="display-image" />
             </div>
           </div>
           <div class="historical-timeline">
@@ -132,6 +132,7 @@ import { ref, computed } from 'vue'
 import TopBar from '@/components/TopBar.vue'
 import Footer from '@/components/Footer.vue'
 import ContactFixed from '@/components/ContactFixed.vue'
+import LazyImage from '@/components/LazyImage.vue'
 
 const currentHistoricalIndex = ref(0)
 
@@ -141,40 +142,34 @@ const currentHistorical = computed(() => {
 
 const historicalData = [
   {
-    year: '2005',
+    year: '2004',
     title: 'Company Founded',
-    desc: 'Started with a vision to revolutionize the trailer manufacturing industry',
-    image: '/images/about/2005.jpg'
+    desc: 'The first important point of QiaoYuan. We started to create our own standard on collecting used machines.',
+    image: '/images/about/2004.png'
   },
   {
     year: '2010',
     title: 'First Overseas Expansion',
-    desc: 'Opened our first international office and began exporting to Southeast Asia',
-    image: '/images/about/2010.jpg'
+    desc: 'The first year we began to deliver our first machine to a foreign country.',
+    image: '/images/about/2009.png'
   },
   {
     year: '2015',
     title: 'Production Capacity Milestone',
-    desc: 'Expanded to 25,000㎡ production facility, tripling our output capacity',
-    image: '/images/about/2015.jpg'
+    desc: 'Improve the standards for collecting machines, build our own warehouse, and ensure the quality of each machine',
+    image: '/images/about/2014.png'
   },
   {
     year: '2020',
     title: 'Global Recognition',
-    desc: 'Achieved ISO certification and expanded to 80+ countries worldwide',
-    image: '/images/about/2020.jpg'
-  },
-  {
-    year: '2025',
-    title: 'Industry Leader',
-    desc: 'Now serving 5,000+ annual customers with 1,000+ dedicated employees',
-    image: '/images/about/2025.jpg'
+    desc: 'Within only one year.We sold more then 2000 pcs of construction equipment.',
+    image: '/images/about/2024.png'
   },
   {
     year: 'Future',
     title: 'Building Tomorrow',
-    desc: 'Looking ahead, we remain committed to innovation, quality, and customer satisfaction. Our goal is to continue expanding our global presence while maintaining the highest standards of manufacturing excellence.',
-    image: '/images/about/future.jpg'
+    desc: 'From the first year we have been focusing on customer’s feeling about what they purchased from us. We won’t change that forever.',
+    image: '/images/about/future.png'
   }
 ]
 
@@ -288,7 +283,7 @@ const historicalData = [
 
 .about-image {
   position: relative;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
