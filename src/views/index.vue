@@ -2993,11 +2993,7 @@ img {
     padding: 10px 15px;
   }
 
-  .contact-fixed {
-    bottom: 15px;
-    right: 15px;
-    gap: 10px;
-  }
+
 
   .customer-service {
     bottom: 15px;

@@ -110,12 +110,7 @@
       </div>
     </div>
 
-    <Footer
-      phone="+86-15588751133"
-      email="service@example.com"
-      whatsapp="+86-15588751133"
-      address="Beijing, China"
-    />
+    <Footer />
 
     <ContactFixed
       phone="+86-15588751133"

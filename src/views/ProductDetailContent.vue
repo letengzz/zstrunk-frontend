@@ -1668,18 +1668,306 @@ function handleCategoryChange(categoryId: string) {
 }
 
 @media (max-width: 768px) {
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 0;
+  .products-page-container {
+    overflow-x: hidden !important;
   }
 
-  .form-item-half {
-    flex: 1;
+  .products-main-section {
+    padding: 20px 0 40px;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .products-main-inner {
+    padding: 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .content-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .sidebar {
+    position: static !important;
+  }
+
+  .product-detail {
+    padding: 16px !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .detail-breadcrumb {
+    margin-bottom: 16px !important;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  :deep(.detail-breadcrumb .el-breadcrumb__inner) {
+    font-size: 12px !important;
+  }
+
+  .product-detail-layout {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .product-image-section {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .product-main-image {
+    width: 100% !important;
+    height: 260px !important;
+    border-radius: 8px !important;
+  }
+
+  .zoom-preview {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  .product-thumbnails-wrapper {
+    padding: 0 !important;
+  }
+
+  .product-thumbnails {
+    gap: 8px !important;
+  }
+
+  .product-thumbnail {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 6px !important;
+  }
+
+  .product-detail-info {
+    flex: none !important;
+    width: 100% !important;
+  }
+
+  .product-detail-title {
+    font-size: 20px !important;
+    margin-bottom: 10px !important;
+    gap: 8px !important;
+  }
+
+  .product-detail-tag {
+    font-size: 11px !important;
+    padding: 4px 12px !important;
+  }
+
+  .product-specs-text {
+    padding: 14px 16px !important;
+    margin-bottom: 16px !important;
+    border-radius: 8px !important;
+  }
+
+  :deep(.product-specs-text p) {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .product-detail-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .product-detail-actions .el-button {
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .product-detail-description {
+    margin-top: 20px !important;
+  }
+
+  .product-detail-description h3 {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .product-detail-description p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+  .product-detail-features {
+    margin-top: 20px !important;
+  }
+
+  .product-detail-features h3 {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .feature-list {
+    gap: 10px !important;
+  }
+
+  .feature-item {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+  }
+
+  .product-detail-markdown {
+    margin-top: 20px !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+    overflow-x: hidden !important;
+  }
+
+  :deep(.product-detail-markdown h1) {
+    font-size: 20px !important;
+    margin-bottom: 16px !important;
+  }
+
+  :deep(.product-detail-markdown h2) {
+    font-size: 17px !important;
+    margin: 20px 0 12px 0 !important;
+  }
+
+  :deep(.product-detail-markdown h3) {
+    font-size: 15px !important;
+    margin: 16px 0 10px 0 !important;
+  }
+
+  :deep(.product-detail-markdown p) {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 12px !important;
+  }
+
+  :deep(.product-detail-markdown li) {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 8px !important;
+  }
+
+  :deep(.product-detail-markdown img) {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
   }
 
   .inquiry-form-section {
-    padding: 20px;
-    margin: 32px 16px 0;
+    padding: 20px !important;
+    margin: 32px 16px 0 !important;
+    border-radius: 8px !important;
+  }
+
+  .inquiry-title {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .inquiry-subtitle {
+    font-size: 13px !important;
+    margin-bottom: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  .inquiry-form-section h3 {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .inquiry-form-section p {
+    font-size: 13px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .form-item-half {
+    flex: 1 !important;
+  }
+
+  .form-item-full {
+    grid-column: 1 !important;
+  }
+
+  :deep(.el-form-item__label) {
+    font-size: 13px !important;
+    padding-bottom: 4px !important;
+  }
+
+  :deep(.el-input__inner) {
+    font-size: 14px !important;
+    height: 42px !important;
+    border-radius: 8px !important;
+  }
+
+  :deep(.el-textarea__inner) {
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    min-height: 100px !important;
+  }
+
+  .form-buttons {
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+  }
+
+  .form-buttons .el-button {
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .related-products-section {
+    margin: 32px 0 0 !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+  }
+
+  .related-title {
+    font-size: 18px !important;
+    margin-bottom: 16px !important;
+    padding: 0 !important;
+  }
+
+  .related-title::before,
+  .related-title::after {
+    display: none !important;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .related-image {
+    height: 120px !important;
+  }
+
+  .related-info {
+    padding: 12px !important;
+  }
+
+  .related-name {
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .related-desc {
+    font-size: 11px !important;
   }
 }
 </style>
