@@ -171,14 +171,14 @@
 
     <Footer
       phone="+86-15588751133"
-      email="service@example.com"
+      email="info@zhishuntruck.com"
       whatsapp="+86-15588751133"
       address="Beijing, China"
     />
 
     <ContactFixed
       phone="+86-15588751133"
-      email="service@example.com"
+      email="info@zhishuntruck.com"
       whatsapp="+86-15588751133"
     />
 
