@@ -1,16 +1,15 @@
 ## *Products Description*
 
-<p style="display: flex; align-items: center;">
-  <img src="/md/products/AluminiumFuelTanker/assets/p20250723161807fcfc6.jpeg" alt="Products Description" width="300" height="300" style="margin-right: 20px;">
-  01.
-The 3 Axle Aluminum Tanker Trailer is designed for safe and efficient transportation of fuels like diesel and gasoline. Its lightweight aluminum construction ensures higher payload capacity and better fuel efficiency, reducing operational costs. The corrosion-resistant material guarantees long-lasting performance, even in harsh environments, while the 2-axle design enhances stability and maneuverability on long-distance hauls.
-Built for reliability, this trailer combines durability, safety, and low maintenance, making it an ideal choice for fuel transport businesses. Upgrade your fleet with a high-performance aluminum tanker trailer designed for efficiency and longevity.
-</p>
+1. The 3 Axle Aluminum Tanker Trailer is designed for safe and efficient transportation of fuels like diesel and gasoline. Its lightweight aluminum construction ensures higher payload capacity and better fuel efficiency, reducing operational costs. The corrosion-resistant material guarantees long-lasting performance, even in harsh environments, while the 2-axle design enhances stability and maneuverability on long-distance hauls.
+   Built for reliability, this trailer combines durability, safety, and low maintenance, making it an ideal choice for fuel transport businesses. Upgrade your fleet with a high-performance aluminum tanker trailer designed for efficiency and longevity.
 
-<p style="display: flex; align-items: center;">  <img src="/md/products/AluminiumFuelTanker/assets/p202507231619508c813.jpg" alt="Products Description" width="300" height="300" style="margin-right: 20px;">
-02. Brand fuel tank trailer consists of an oil tank body and a skeleton or bracket supporting the tank body.
-  The tank body has built-in multi-channel reinforced anti-wave partition boards. There are through holes at the lower end of the partition boards to reduce the impact of the oil in the tank during driving and improve the strength of the tank body.
-</p>
+   <img src="/md/products/AluminiumFuelTanker/assets/p20250723161807fcfc6.jpeg" alt="product-800-600" style="zoom: 33%;" />
+
+2. **Brand fuel tank trailer** consists of an oil tank body and a skeleton or bracket supporting the tank body.
+
+   The tank body has built-in multi-channel reinforced anti-wave partition boards. There are through holes at the lower end of the partition boards to reduce the impact of the oil in the tank during driving and improve the strength of the tank body.
+
+   ![product-600-338](/md/products/AluminiumFuelTanker/assets/p202507231619508c813.jpg)
 
 ## *Specification*
 
@@ -54,80 +53,98 @@ Built for reliability, this trailer combines durability, safety, and low mainten
 
 ## *Products Display*
 
-![product-600-338](md/assets/p20250723163808e7602.jpg)
-
 **Flexibility:**
 
 ank capacity and configuration can be customized according to customer needs to adapt to different sizes and types of liquid cargo transportation needs.
 
-![product-600-338](md/assets/p2025072316392869692.webp)
+![product-600-338](/md/products/AluminiumFuelTanker/assets/p20250723163808e7602.jpg)
 
 **Efficient transportation:**
 
 Designed specifically for liquid cargo transportation, it is able to efficiently transport large quantities of liquid cargo to the destination at one time, improving transportation efficiency.
 
-![image-20260202083102545](md/assets/image-20260202083102545.png)
+![product-600-338](/md/products/AluminiumFuelTanker/assets/p2025072316392869692.jpg)
 
 **Security:**
 
 Strictly abide by safety standards and regulations, equipped with explosion-proof equipment, leakage detection system and other safety devices to ensure the safety of liquid cargo during transportation.
 
+ ![product-600-338](/md/products/AluminiumFuelTanker/assets/image-20260202083102545.png)
+
 ## *Detailed Images*
 
-#####  
-
-![product-1890-1417](md/assets/p2025072316500425337.jpg)
-
-European System
+**European System**
 
 Reliable European system provides explosion-proof
 manhole with anti-overflow capacity and high anti-overflow and oil and gas recovery functionality as well as bottom loading.
 
-![product-1200-675](md/assets/p202507231652576a7f9.jpg)
+<img src="/md/products/AluminiumFuelTanker/assets/p2025072316500425337-17702520599306.jpg" alt="product-1890-1417" style="zoom:33%;" />
 
-Advanced Axle Performance
+**Advanced Axle Performance**
 
 Integrated advanced low-alloy axle beam
 with no welding points; strong capacity and high
 strength; axles can be free of maintenance up to 3
 years or 400,000 kilometers.
 
-![product-1200-675](md/assets/p2025072316563597ff1.jpg)
+<img src="/md/products/AluminiumFuelTanker/assets/p202507231652576a7f9.jpg" alt="product-1200-675" style="zoom: 33%;" />
 
-Anti-Tire Abrasion Suspension
+**Anti-Tire Abrasion Suspension**
 
 Specially designed anti-Tire abrasion suspension
 system, prevent tire offset after loading, maximally avoid tire abrasion. Meanwhile, Easy to disassemble and maintain.
 
-![product-600-338](md/assets/p20250723170025ff012.jpg)
+<img src="/md/products/AluminiumFuelTanker/assets/p2025072316563597ff1.jpg" alt="product-1200-675" style="zoom: 33%;" />
 
-Landing Gear
+**Landing Gear**
 
 Vehicle Master or JOST landing gear can
 be optioned made in aluminum or steel; designed
 to work under both high and low temperature in
-the range of -30℃ to 120℃. 
+the range of -30℃ to 120℃.
 
-## FAQ
+<img src="/md/products/AluminiumFuelTanker/assets/p20250723170025ff012.jpg" alt="product-600-338" style="zoom: 67%;" />
+
+##### FAQ
 
 Q: What is Foreign Trade-Express?
+
+A: Foreign Trade Express is a one-stop intelligent foreign trade network marketing SaaS system platform.
 
 Q: 1. What are the common types of semi-trailers?
 
 Q: 2. What goods are suitable for transport by van semi-trailers?
 
+A: Suitable for electronics, clothing, food, and precision instruments.
+
 Q: 3. What are the features of low-bed semi-trailers?
 
-Q: 5. Dump trailers in construction?
+A: Low height, strong capacity, and high stability. Ideal for large equipment..
+
+Q: 4. Advantages of stake semi-trailers for agriculture?
+
+A: Good ventilation, easy loading and unloading, efficient for bulky produce.
 
 Q: 5. Dump trailers in construction?
+
+A: Efficient unloading of bulk materials like sand, gravel, and waste.
 
 Q: 6. Can trailers be customized?
 
+A: Yes. Length, frame strength, lifting systems, and more can be tailored.
+
 Q: 7. Long vs. short-distance trailer use?
+
+A: Long: comfort & efficiency; Short: flexibility & quick turnover.
 
 Q: 8. Oversize load transport procedures?
 
+A: Apply for permits, submit cargo/vehicle info, follow designated routes.
+
 Q: 9. Urban delivery with van trailers-pros & cons?
 
+A: Pros: secure, efficient; Cons: wide turning radius, traffic restrictions.
+
 Q: 10. Seasonal operation tips for trailers?
+
+A: Spring: rain safety; Summer: tire/engine checks; Autumn: wind; Winter: antifreeze, chains.

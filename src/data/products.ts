@@ -84,11 +84,12 @@ export interface CategoryTreeNode {
 
 export async function getCategoryTreeFromApi(): Promise<CategoryTreeNode[]> {
   try {
-    const response = await fetch(`${API_BASE}/category-tree`)
+    const response = await fetch(`${API_BASE}/category-tree`) 
     if (!response.ok) {
       throw new Error('Failed to load category tree')
     }
     const result = await response.json()
+    console.log('Category tree result:', result)
     return result.data || []
   } catch (error) {
     console.error('Error loading category tree:', error)
@@ -136,8 +137,8 @@ export async function getProductByCategoryAndId(category: 'truck' | 'excavator',
 
 export async function getNewProducts(limit: number = 5): Promise<Product[]> {
   const products = await getProducts()
-  console.log('All products:', products.length)
-  console.log('Products with tag "new":', products.filter(p => p.tag === 'new'))
+  //console.log('All products:', products.length)
+  //console.log('Products with tag "new":', products.filter(p => p.tag === 'new'))
   return products
     .filter(product => product.tag === 'New')
     .slice(0, limit)

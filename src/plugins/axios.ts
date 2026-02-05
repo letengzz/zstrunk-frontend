@@ -10,7 +10,7 @@
 
 // api.interceptors.request.use(
 //   (config) => {
-//     console.log('[Axios Request]', config.method?.toUpperCase(), config.url)
+//     //console.log('[Axios Request]', config.method?.toUpperCase(), config.url)
 //     return config
 //   },
 //   (error) => {
@@ -21,7 +21,7 @@
 
 // api.interceptors.response.use(
 //   (response) => {
-//     console.log('[Axios Response]', response.config.url, response.status)
+//     //console.log('[Axios Response]', response.config.url, response.status)
 //     return response
 //   },
 //   (error) => {

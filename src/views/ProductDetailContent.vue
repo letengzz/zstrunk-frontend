@@ -96,7 +96,7 @@
             <h3 class="product-intro-title" @click="toggleMarkdown">
               Product Introduction
               <span class="toggle-icon" :class="{ collapsed: !showMarkdown }">
-                <div class="i-ep-arrow-down w-5 h-5"></div>
+                <div class="i-ep-arrow-down w-25 h-25"></div>
               </span>
             </h3>
             <el-collapse-transition>
@@ -609,7 +609,7 @@ function handleCategoryChange(categoryId: string) {
 }
 
 .page-header {
-  background: url('/images/product/image.png') center/cover no-repeat;
+  background: url('/images/product/Top/image.png') center/cover no-repeat;
   padding: 80px 0 60px;
   position: relative;
 }
@@ -655,7 +655,7 @@ function handleCategoryChange(categoryId: string) {
 .products-main-inner {
   max-width: 1700px;
   margin: 0 auto;
-  /* padding: 0 40px; */
+  padding: 0 40px;
 }
 
 .content-layout {
@@ -1292,6 +1292,56 @@ function handleCategoryChange(categoryId: string) {
   border-radius: 0 2px 2px 0;
 }
 
+:deep(.product-detail-markdown h4) {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2a4a;
+  margin: 24px 0 12px 0;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 6px;
+  position: relative;
+  border-left: 3px solid #FF0000;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+:deep(.product-detail-markdown h4::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 14px;
+  background: #FF0000;
+  border-radius: 0 2px 2px 0;
+}
+
+:deep(.product-detail-markdown h5) {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 20px 0 10px 0;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 6px;
+  position: relative;
+  border-left: 2px solid #FF0000;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+:deep(.product-detail-markdown h5::before) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 12px;
+  background: #FF0000;
+  border-radius: 0 2px 2px 0;
+}
+
 .product-detail-markdown p {
   font-size: 15px;
   color: #4a5568;
@@ -1829,6 +1879,19 @@ function handleCategoryChange(categoryId: string) {
     overflow-x: hidden !important;
   }
 
+  :deep(.product-detail-markdown ul),
+  :deep(.product-detail-markdown ol) {
+    padding-left: 20px !important;
+  }
+
+  :deep(.product-detail-markdown li) {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 8px !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
   :deep(.product-detail-markdown h1) {
     font-size: 20px !important;
     margin-bottom: 16px !important;
@@ -1842,6 +1905,16 @@ function handleCategoryChange(categoryId: string) {
   :deep(.product-detail-markdown h3) {
     font-size: 15px !important;
     margin: 16px 0 10px 0 !important;
+  }
+
+  :deep(.product-detail-markdown h4) {
+    font-size: 14px !important;
+    margin: 14px 0 8px 0 !important;
+  }
+
+  :deep(.product-detail-markdown h5) {
+    font-size: 13px !important;
+    margin: 12px 0 6px 0 !important;
   }
 
   :deep(.product-detail-markdown p) {
@@ -1860,6 +1933,12 @@ function handleCategoryChange(categoryId: string) {
     max-width: 100% !important;
     height: auto !important;
     border-radius: 6px !important;
+  }
+
+  :deep(.product-detail-markdown table) {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
   }
 
   .inquiry-form-section {

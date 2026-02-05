@@ -4,7 +4,7 @@
       <el-row :gutter="20">
         <el-col :xs="24" :sm="12" :md="4">
           <div class="footer-brand">
-            <img src="/public/images/logo.png" alt="Logo" class="footer-logo">
+            <img src="/images/logo.svg" alt="Logo" class="footer-logo">
             <span class="footer-company-name">zhishun truck</span>
             <p class="footer-desc">{{ description }}</p>
           </div>

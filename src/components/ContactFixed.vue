@@ -169,4 +169,20 @@ const activeContact = ref('')
 .contact-item:hover .contact-icon-wrapper {
   transform: translateX(5px);
 }
+
+.contact-item {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.contact-detail {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 </style>

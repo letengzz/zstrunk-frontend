@@ -250,7 +250,7 @@ async function submitForm() {
 }
 
 .page-header {
-  background: url('/images/product/image.png') center/cover no-repeat;
+  background: url('/images/product/Top/image.png') center/cover no-repeat;
   padding: 80px 0 60px;
   position: relative;
 }

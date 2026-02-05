@@ -19,11 +19,11 @@ const isInView = ref(false)
 let timeoutId: ReturnType<typeof setTimeout> | null = null
 
 onMounted(() => {
-  // console.log('🟢 LazyImage mounted:', props.src)
+  // //console.log('🟢 LazyImage mounted:', props.src)
 
   timeoutId = setTimeout(() => {
     if (!isInView.value) {
-      // console.log('⏰ 超时触发，强制加载图片:', props.src)
+      // //console.log('⏰ 超时触发，强制加载图片:', props.src)
       isInView.value = true
     }
   }, 2000)
@@ -39,9 +39,9 @@ const { stop } = useIntersectionObserver(
   imageRef,
   (entries) => {
     const entry = entries[0]
-    // console.log('🔵 Observer triggered:', props.src, 'isIntersecting:', entry?.isIntersecting)
+    // //console.log('🔵 Observer triggered:', props.src, 'isIntersecting:', entry?.isIntersecting)
     if (entry?.isIntersecting && props.src) {
-      // console.log('✅ 进入视口，加载图片:', props.src)
+      // //console.log('✅ 进入视口，加载图片:', props.src)
       isInView.value = true
       stop()
     }
@@ -64,12 +64,12 @@ const displayedSrc = computed(() => {
 })
 
 const onLoad = () => {
-  // console.log('✅ 图片加载成功:', props.src)
+  // //console.log('✅ 图片加载成功:', props.src)
   isLoaded.value = true
 }
 
 const onError = (e: Event) => {
-  console.log('❌ 图片加载失败:', props.src, e)
+  //console.log('❌ 图片加载失败:', props.src, e)
   hasError.value = true
   isLoaded.value = true
 }

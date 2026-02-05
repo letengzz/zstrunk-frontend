@@ -509,7 +509,6 @@ const currentSolution = computed<Solution>(() => {
   if (solutions.value.length === 0) {
     return { title: '', desc: '', image: '' } as Solution
   }
-  console.log(solutions)
   return solutions.value[currentSolutionIndex.value] ?? solutions.value[0]!
 })
 
@@ -1057,15 +1056,15 @@ img {
 }
 
 .feature-bg-1 {
-  background-image: url('/feature/feature1.png');
+  background-image: url('/images/feature/feature1.png');
 }
 
 .feature-bg-2 {
-  background-image: url('/feature/feature2.png');
+  background-image: url('/images/feature/feature2.png');
 }
 
 .feature-bg-3 {
-  background-image: url('/feature/feature3.png');
+  background-image: url('/images/feature/feature3.png');
 }
 
 .feature-box:hover {

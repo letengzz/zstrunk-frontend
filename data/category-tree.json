@@ -7,9 +7,8 @@
   {
     "id": "LiquidandPowerTransportTrailers",
     "label": "Liquid and Power Transport Trailers",
-    "markdownPath": "/md/liquid-power-transport-trailers.md",
     "children": [
-      { "id": "AluminiumFuelTanker", "label": "Aluminium Fuel Tanker", "markdownPath": "/md/aluminium-fuel-tanker.md" },
+      { "id": "AluminiumFuelTanker", "label": "Aluminium Fuel Tanker", "markdownPath": "/md/type/aluminium-fuel-tanker.md" },
       { "id": "CarbonSteelFuelTank Trailer", "label": "Carbon Steel Fuel Tank Trailer", "markdownPath": "/md/carbon-steel-fuel-tank-trailer.md" },
       { "id": "BulkCementTrailer", "label": "Bulk Cement Trailer", "markdownPath": "/md/bulk-cement-trailer.md" },
       { "id": "AsphaltTankTrailers", "label": "Asphalt Tank Trailers", "markdownPath": "/md/asphalt-tank-trailers.md" },

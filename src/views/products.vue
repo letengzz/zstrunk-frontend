@@ -129,7 +129,7 @@ import ContactFixed from '@/components/ContactFixed.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ref, computed, onMounted, watch } from 'vue'
-import { getProductById, getProductsGroupedByCategoryFromApi, getNewProducts, type Product } from '@/data/products'
+import { getProductById, getProductsGroupedByCategoryFromApi, getNewProducts, getCategoryTreeFromApi, type Product, type CategoryTreeNode } from '@/data/products'
 import { marked } from 'marked'
 import { useProductsStore } from '@/stores/modules/products'
 
@@ -145,6 +145,7 @@ const expandedKeys = ref<string[]>([])
 const categoryProductCounts = ref<Record<string, number>>({})
 const isLoadingCategories = ref(true)
 const paginationLayout = ref('total, sizes, prev, pager, next')
+const categoryTree = ref<CategoryTreeNode[]>([])
 
 onMounted(() => {
   updatePaginationLayout()
@@ -177,6 +178,7 @@ async function loadCategories() {
     for (const [category, products] of Object.entries(groupedProducts)) {
       categoryProductCounts.value[category] = products.length
     }
+    categoryTree.value = await getCategoryTreeFromApi()
   } catch (error) {
     console.error('Error loading categories:', error)
   } finally {
@@ -211,97 +213,6 @@ interface TreeNode {
   markdownPath?: string
 }
 
-const categoryTree: TreeNode[] = [
-  {
-    id: 'all',
-    label: 'All Products',
-    children: []
-  },
-  {
-    id: 'LiquidandPowerTransportTrailers',
-    label: 'Liquid and Power Transport Trailers',
-    markdownPath: '/md/liquid-power-transport-trailers.md',
-    children: [
-      { id: 'AluminiumFuelTanker', label: 'Aluminium Fuel Tanker', markdownPath: '/md/aluminium-fuel-tanker.md' },
-      { id: 'CarbonSteelFuelTank Trailer', label: 'Carbon Steel Fuel Tank Trailer', markdownPath: '/md/carbon-steel-fuel-tank-trailer.md' },
-      { id: 'BulkCementTrailer', label: 'Bulk Cement Trailer', markdownPath: '/md/bulk-cement-trailer.md' },
-      { id: 'AsphaltTankTrailers', label: 'Asphalt Tank Trailers', markdownPath: '/md/asphalt-tank-trailers.md' },
-      { id: 'GasTankerTrailer', label: 'Gas Tanker Trailer', markdownPath: '/md/gas-tanker-trailer.md' },
-      { id: 'StainlessSteelTanker Trailer', label: 'Stainless Steel Tanker Trailer', markdownPath: '/md/stainless-steel-tanker-trailer.md' },
-      { id: 'ChemicalTankTrailer', label: 'Chemical Tank Trailer', markdownPath: '/md/chemical-tank-trailer.md' },
-      { id: 'StorageTank', label: 'Storage Tank', markdownPath: '/md/storage-tank.md' },
-    ]
-  },
-  {
-    id: 'ContainerSemiTrailer',
-    label: 'Container Semi Trailer',
-    markdownPath: '/md/container-semi-trailer.md',
-    children: [
-      { id: 'SkeletalTrailer', label: 'Skeletal Trailer', markdownPath: '/md/skeletal-trailer.md' },
-      { id: 'FlatbedTrailer', label: 'Flatbed Trailer', markdownPath: '/md/flatbed-trailer.md' },
-    ]
-  },
-  {
-    id: 'SemiTrailer',
-    label: 'Semi Trailer',
-    markdownPath: '/md/semi-trailer.md',
-    children: [
-      { id: 'LowbedSemiTrailer', label: 'Lowbed Semi Trailer', markdownPath: '/md/lowbed-semi-trailer.md' },
-      { id: 'TipperSemiTrailer', label: 'Tipper Semi Trailer', markdownPath: '/md/tipper-semi-trailer.md' },
-      { id: 'FenceCargoTrailer', label: 'Fence Cargo Trailer', markdownPath: '/md/fence-cargo-trailer.md' },
-      { id: 'SideWallTipper', label: 'Side Wall Tipper', markdownPath: '/md/side-wall-tipper.md' },
-      { id: 'SideCurtainTrailer', label: 'Side Curtain Trailer', markdownPath: '/md/side-curtain-trailer.md' },
-      { id: 'CarCarrierTailer', label: 'Car Carrier Tailer', markdownPath: '/md/car-carrier-tailer.md' },
-      { id: 'BoxSemiTrailer', label: 'Box Semi Trailer', markdownPath: '/md/box-semi-trailer.md' },
-      { id: 'FullDrawbarTrailer', label: 'Full Drawbar Trailer', markdownPath: '/md/full-drawbar-trailer.md' },
-      { id: 'RemovableGooseneckTrailer', label: 'Removable Gooseneck Trailer', markdownPath: '/md/removable-gooseneck-trailer.md' },
-    ]
-  },
-  {
-    id: 'ShacmanTrucks',
-    label: 'Shacman Trucks',
-    markdownPath: '/md/shacman-trucks.md',
-    children: [
-      { id: 'ShacmanDumpTruck', label: 'Shacman Dump Truck', markdownPath: '/md/shacman-dump-truck.md' },
-      { id: 'ShacmanTractorTruck', label: 'Shacman Tractor Truck', markdownPath: '/md/shacman-tractor-truck.md' },
-      { id: 'ShacmanTankerTrucks', label: 'Shacman Tanker Trucks', markdownPath: '/md/shacman-tanker-trucks.md' },
-    ]
-  },
-  {
-    id: 'Accessories',
-    label: 'Accessories',
-    markdownPath: '/md/accessories.md',
-    children: [
-      { id: 'TrailerAccessories', label: 'Trailer Accessories', markdownPath: '/md/trailer-accessories.md' },
-      { id: 'Engine', label: 'Engine', markdownPath: '/md/engine.md' },
-    ]
-  },
-  {
-    id: 'SinotruckHowo',
-    label: 'Sinotruck Howo',
-    markdownPath: '/md/sinotruck-howo.md',
-    children: [
-      { id: 'HOWOTractorTruck', label: 'HOWO Tractor Truck', markdownPath: '/md/howo-tractor-truck.md' },
-      { id: 'HOWODumpTruck', label: 'HOWO Dump Truck', markdownPath: '/md/howo-dump-truck.md' },
-      { id: 'HOWOTankerTruck', label: 'HOWO Tanker Truck', markdownPath: '/md/howo-tanker-truck.md' },
-    ]
-  },
-  {
-    id: 'ExistingTrucksAndTrailers',
-    label: 'Existing Trucks and Trailers',
-    markdownPath: '/md/existing-trucks-trailers.md',
-    children: [
-      { id: 'Trailer', label: 'Trailer', markdownPath: '/md/trailer.md' },
-    ]
-  },
-  {
-    id: 'excavator',
-    label: 'Excavator',
-    markdownPath: '/md/excavator.md',
-    children: []
-  }
-]
-
 function updateExpandedKeys(categoryId: string) {
   if (categoryId === 'all') {
     expandedKeys.value = []
@@ -324,7 +235,7 @@ function updateExpandedKeys(categoryId: string) {
     return null
   }
 
-  const isParentNode = categoryTree.some(node => node.id === categoryId && node.children && node.children.length > 0)
+  const isParentNode = categoryTree.value.some(node => node.id === categoryId && node.children && node.children.length > 0)
 
   if (isParentNode) {
     // 点击的是父菜单，展开自己
@@ -337,7 +248,7 @@ function updateExpandedKeys(categoryId: string) {
     }
   } else {
     // 点击的是子菜单，展开父菜单
-    const parentKey = findParentNode(categoryTree, categoryId)
+    const parentKey = findParentNode(categoryTree.value, categoryId)
     if (parentKey) {
       expandedKeys.value = [parentKey]
     } else {
@@ -362,10 +273,10 @@ const isMainCategory = (categoryId: string): boolean => {
 
 const filteredProducts = computed(() => {
   let result = [...productsList.value]
-  console.log('=== DEBUG ===')
-  console.log('Total products:', result.length)
-  console.log('Current category:', currentCategory.value)
-  console.log('Products loaded:', productsStore.isLoaded)
+  //console.log('=== DEBUG ===')
+  //console.log('Total products:', result.length)
+  //console.log('Current category:', currentCategory.value)
+  //console.log('Products loaded:', productsStore.isLoaded)
 
   if (currentCategory.value !== 'all') {
     if (isMainCategory(currentCategory.value)) {
@@ -376,11 +287,11 @@ const filteredProducts = computed(() => {
         result = result.filter(product => product.category === 'excavator')
       }
     } else {
-      const beforeCount = result.length
+      // const beforeCount = result.length
       result = result.filter(product => product.subCategory === currentCategory.value)
-      console.log('SubCategory filter:', currentCategory.value)
-      console.log('Before filter:', beforeCount, 'After filter:', result.length)
-      console.log('Sample subCategories:', result.slice(0, 3).map(p => p.subCategory))
+      //console.log('SubCategory filter:', currentCategory.value)
+      //console.log('Before filter:', beforeCount, 'After filter:', result.length)
+      //console.log('Sample subCategories:', result.slice(0, 3).map(p => p.subCategory))
     }
   }
 
@@ -392,7 +303,7 @@ const filteredProducts = computed(() => {
     )
   }
 
-  console.log('Final result count:', result.length)
+  //console.log('Final result count:', result.length)
   return result
 })
 
@@ -448,7 +359,7 @@ function findCategoryLabel(nodes: TreeNode[], targetId: string): string {
 }
 
 const currentCategoryLabel = computed(() => {
-  return findCategoryLabel(categoryTree, currentCategory.value)
+  return findCategoryLabel(categoryTree.value, currentCategory.value)
 })
 
 const newProducts = ref<Product[]>([])
@@ -468,7 +379,7 @@ const currentCategoryNode = computed(() => {
     }
     return null
   }
-  return findNode(categoryTree, currentCategory.value)
+  return findNode(categoryTree.value, currentCategory.value)
 })
 
 const markdownContent = ref('')
@@ -522,7 +433,7 @@ watch(currentCategory, async () => {
 }
 
 .page-header {
-  background: url('/images/product/image.png') center/cover no-repeat;
+  background: url('/images/product/Top/image.png') center/cover no-repeat;
   padding: 80px 0 60px;
   position: relative;
 }
