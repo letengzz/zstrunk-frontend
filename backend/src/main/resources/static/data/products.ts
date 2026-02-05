@@ -126,8 +126,8 @@ export async function getProductByCategoryAndId(category: 'tanker' | 'excavator'
 
 export async function getNewProducts(limit: number = 5): Promise<Product[]> {
   const products = await getProducts()
-  console.log('All products:', products.length)
-  console.log('Products with tag "new":', products.filter(p => p.tag === 'new'))
+  //console.log('All products:', products.length)
+  //console.log('Products with tag "new":', products.filter(p => p.tag === 'new'))
   return products
     .filter(product => product.tag === 'New')
     .slice(0, limit)
