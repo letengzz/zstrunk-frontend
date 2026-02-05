@@ -39,6 +39,11 @@
                   @mouseleave="handleMouseLeave"
                 >
                   <img :src="selectedImage" :alt="currentProduct.name" />
+                  <div
+                    class="zoom-lens"
+                    v-if="isHovering"
+                    :style="lensStyle"
+                  ></div>
                 </div>
                 <div
                   class="zoom-preview"
@@ -96,7 +101,7 @@
             <h3 class="product-intro-title" @click="toggleMarkdown">
               Product Introduction
               <span class="toggle-icon" :class="{ collapsed: !showMarkdown }">
-                <div class="i-ep-arrow-down w-25 h-25"></div>
+                <div class="i-ep-arrow-down w-5 h-5"></div>
               </span>
             </h3>
             <el-collapse-transition>
@@ -171,14 +176,14 @@
 
     <Footer
       phone="+86-15588751133"
-      email="info@zhishuntruck.com"
+      email="service@example.com"
       whatsapp="+86-15588751133"
       address="Beijing, China"
     />
 
     <ContactFixed
       phone="+86-15588751133"
-      email="info@zhishuntruck.com"
+      email="service@example.com"
       whatsapp="+86-15588751133"
     />
 
@@ -253,54 +258,106 @@ const mouseX = ref(0)
 const mouseY = ref(0)
 const zoomLevel = 2.5
 
-const zoomStyle = computed(() => {
+let imgSectionRect: DOMRect | null = null
+let imgSectionElement: HTMLElement | null = null
+let animationFrameId: number | null = null
+
+const zoomStyle = ref<Record<string, string>>({})
+const previewPosition = ref<Record<string, string>>({})
+
+const lensStyle = computed(() => {
   if (!isHovering.value) return {}
+
+  const previewWidth = 400
+  const previewHeight = 400
+  const lensWidth = previewWidth / zoomLevel
+  const lensHeight = previewHeight / zoomLevel
+
+  let lensX = mouseX.value - lensWidth / 2
+  let lensY = mouseY.value - lensHeight / 2
+
+  const maxLensX = 480 - lensWidth
+  const maxLensY = 360 - lensHeight
+
+  if (lensX < 0) lensX = 0
+  if (lensY < 0) lensY = 0
+  if (lensX > maxLensX) lensX = maxLensX
+  if (lensY > maxLensY) lensY = maxLensY
+
+  return {
+    left: `${lensX}px`,
+    top: `${lensY}px`,
+    width: `${lensWidth}px`,
+    height: `${lensHeight}px`
+  }
+})
+
+function updateZoomStyles() {
+  if (!isHovering.value || !imgSectionRect) return
+
+  const previewWidth = 400
+  const previewHeight = 400
+  const lensWidth = previewWidth / zoomLevel
+  const lensHeight = previewHeight / zoomLevel
+
+  let lensX = mouseX.value - lensWidth / 2
+  let lensY = mouseY.value - lensHeight / 2
+
+  const maxLensX = 480 - lensWidth
+  const maxLensY = 360 - lensHeight
+
+  if (lensX < 0) lensX = 0
+  if (lensY < 0) lensY = 0
+  if (lensX > maxLensX) lensX = maxLensX
+  if (lensY > maxLensY) lensY = maxLensY
 
   const bgSizeX = 480 * zoomLevel
   const bgSizeY = 360 * zoomLevel
-  const bgPosX = mouseX.value * zoomLevel - 200
-  const bgPosY = mouseY.value * zoomLevel - 180
+  const bgPosX = lensX * zoomLevel
+  const bgPosY = lensY * zoomLevel
 
-  return {
+  let left = imgSectionRect.right + 20
+  let top = imgSectionRect.top
+
+  if (left + previewWidth > window.innerWidth) {
+    left = imgSectionRect.left - previewWidth - 20
+  }
+
+  if (top + previewHeight > window.innerHeight - 20) {
+    top = window.innerHeight - previewHeight - 20
+  }
+
+  zoomStyle.value = {
     backgroundImage: `url(${selectedImage.value})`,
     backgroundSize: `${bgSizeX}px ${bgSizeY}px`,
     backgroundPosition: `-${bgPosX}px -${bgPosY}px`
   }
-})
 
-const previewPosition = computed(() => {
-   if (!isHovering.value) return {}
-
-   const previewWidth = 400
-   const previewHeight = 400
-   const offset = 20
-
-   const imgSection = document.querySelector('.product-image-section')
-   if (!imgSection) return {}
-
-   const rect = imgSection.getBoundingClientRect()
-   let left = rect.right + offset
-   let top = rect.top
-
-   if (left + previewWidth > window.innerWidth) {
-     left = rect.left - previewWidth - offset
-   }
-
-   if (top + previewHeight > window.innerHeight - 20) {
-     top = window.innerHeight - previewHeight - 20
-   }
-
-   return {
-     left: `${left}px`,
-     top: `${top}px`
-   }
- })
+  previewPosition.value = {
+    left: `${left}px`,
+    top: `${top}px`
+  }
+}
 
 function handleMouseMove(e: MouseEvent) {
-  const target = e.currentTarget as HTMLElement
-  const rect = target.getBoundingClientRect()
-  mouseX.value = e.clientX - rect.left
-  mouseY.value = e.clientY - rect.top
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId)
+  }
+
+  animationFrameId = requestAnimationFrame(() => {
+    if (!imgSectionElement) {
+      imgSectionElement = document.querySelector('.product-image-section')
+      if (imgSectionElement) {
+        imgSectionRect = imgSectionElement.getBoundingClientRect()
+      }
+    }
+
+    if (imgSectionRect) {
+      mouseX.value = e.clientX - imgSectionRect.left
+      mouseY.value = e.clientY - imgSectionRect.top
+      updateZoomStyles()
+    }
+  })
 }
 
 function handleMouseEnter() {
@@ -609,7 +666,7 @@ function handleCategoryChange(categoryId: string) {
 }
 
 .page-header {
-  background: url('/images/product/Top/image.png') center/cover no-repeat;
+  background: url('/images/product/image.png') center/cover no-repeat;
   padding: 80px 0 60px;
   position: relative;
 }
@@ -655,7 +712,7 @@ function handleCategoryChange(categoryId: string) {
 .products-main-inner {
   max-width: 1700px;
   margin: 0 auto;
-  padding: 0 40px;
+  /* padding: 0 40px; */
 }
 
 .content-layout {
@@ -954,9 +1011,19 @@ function handleCategoryChange(categoryId: string) {
   background: #f8fafc;
   background-repeat: no-repeat;
   z-index: 9999;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.15);
   overflow: hidden;
   pointer-events: none;
+}
+
+.zoom-lens {
+  position: absolute;
+  border: 2px solid #FF0000;
+  background: rgba(255, 0, 0, 0.08);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
 }
 
 .product-thumbnails-wrapper {
@@ -1288,56 +1355,6 @@ function handleCategoryChange(categoryId: string) {
   transform: translateY(-50%);
   width: 4px;
   height: 16px;
-  background: #FF0000;
-  border-radius: 0 2px 2px 0;
-}
-
-:deep(.product-detail-markdown h4) {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1a2a4a;
-  margin: 24px 0 12px 0;
-  padding: 10px 14px;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-  border-radius: 6px;
-  position: relative;
-  border-left: 3px solid #FF0000;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
-}
-
-:deep(.product-detail-markdown h4::before) {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 14px;
-  background: #FF0000;
-  border-radius: 0 2px 2px 0;
-}
-
-:deep(.product-detail-markdown h5) {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2d3748;
-  margin: 20px 0 10px 0;
-  padding: 8px 12px;
-  background: #ffffff;
-  border-radius: 6px;
-  position: relative;
-  border-left: 2px solid #FF0000;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-}
-
-:deep(.product-detail-markdown h5::before) {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 12px;
   background: #FF0000;
   border-radius: 0 2px 2px 0;
 }
@@ -1724,16 +1741,10 @@ function handleCategoryChange(categoryId: string) {
 
   .products-main-section {
     padding: 20px 0 40px;
-    width: 100% !important;
-    overflow-x: hidden !important;
   }
 
   .products-main-inner {
     padding: 0 16px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
   }
 
   .content-layout {
@@ -1748,11 +1759,6 @@ function handleCategoryChange(categoryId: string) {
   .product-detail {
     padding: 16px !important;
     border-radius: 8px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
   }
 
   .detail-breadcrumb {
@@ -1879,19 +1885,6 @@ function handleCategoryChange(categoryId: string) {
     overflow-x: hidden !important;
   }
 
-  :deep(.product-detail-markdown ul),
-  :deep(.product-detail-markdown ol) {
-    padding-left: 20px !important;
-  }
-
-  :deep(.product-detail-markdown li) {
-    font-size: 14px !important;
-    line-height: 1.7 !important;
-    margin-bottom: 8px !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-  }
-
   :deep(.product-detail-markdown h1) {
     font-size: 20px !important;
     margin-bottom: 16px !important;
@@ -1905,16 +1898,6 @@ function handleCategoryChange(categoryId: string) {
   :deep(.product-detail-markdown h3) {
     font-size: 15px !important;
     margin: 16px 0 10px 0 !important;
-  }
-
-  :deep(.product-detail-markdown h4) {
-    font-size: 14px !important;
-    margin: 14px 0 8px 0 !important;
-  }
-
-  :deep(.product-detail-markdown h5) {
-    font-size: 13px !important;
-    margin: 12px 0 6px 0 !important;
   }
 
   :deep(.product-detail-markdown p) {
@@ -1933,12 +1916,6 @@ function handleCategoryChange(categoryId: string) {
     max-width: 100% !important;
     height: auto !important;
     border-radius: 6px !important;
-  }
-
-  :deep(.product-detail-markdown table) {
-    display: block !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
   }
 
   .inquiry-form-section {
@@ -2008,45 +1985,6 @@ function handleCategoryChange(categoryId: string) {
     width: 100% !important;
     padding: 12px 20px !important;
     font-size: 14px !important;
-  }
-
-  .related-products-section {
-    margin: 32px 0 0 !important;
-    padding: 20px !important;
-    border-radius: 8px !important;
-  }
-
-  .related-title {
-    font-size: 18px !important;
-    margin-bottom: 16px !important;
-    padding: 0 !important;
-  }
-
-  .related-title::before,
-  .related-title::after {
-    display: none !important;
-  }
-
-  .related-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-  }
-
-  .related-image {
-    height: 120px !important;
-  }
-
-  .related-info {
-    padding: 12px !important;
-  }
-
-  .related-name {
-    font-size: 13px !important;
-    margin-bottom: 6px !important;
-  }
-
-  .related-desc {
-    font-size: 11px !important;
   }
 }
 </style>

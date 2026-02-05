@@ -69,7 +69,7 @@ const onLoad = () => {
 }
 
 const onError = (e: Event) => {
-  //console.log('❌ 图片加载失败:', props.src, e)
+  console.log('❌ 图片加载失败:', props.src, e)
   hasError.value = true
   isLoaded.value = true
 }

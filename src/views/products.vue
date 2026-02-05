@@ -147,11 +147,6 @@ const isLoadingCategories = ref(true)
 const paginationLayout = ref('total, sizes, prev, pager, next')
 const categoryTree = ref<CategoryTreeNode[]>([])
 
-onMounted(() => {
-  updatePaginationLayout()
-  window.addEventListener('resize', updatePaginationLayout)
-})
-
 onUnmounted(() => {
   window.removeEventListener('resize', updatePaginationLayout)
 })
@@ -187,12 +182,17 @@ async function loadCategories() {
 }
 
 onMounted(async () => {
+  updatePaginationLayout()
+  window.addEventListener('resize', updatePaginationLayout)
+
   await Promise.all([loadProducts(), loadCategories(), loadNewProducts()])
   const categoryParam = route.query.category as string
   if (categoryParam) {
     currentCategory.value = categoryParam
     updateExpandedKeys(categoryParam)
   }
+
+  await loadMarkdown()
 })
 
 watch(() => route.query.category, (newCategory) => {
@@ -388,8 +388,14 @@ const renderedMarkdown = computed(() => markdownContent.value)
 async function loadMarkdown() {
   try {
     const categoryNode = currentCategoryNode.value
+    console.log('loadMarkdown called:', {
+      currentCategory: currentCategory.value,
+      categoryTreeLength: categoryTree.value.length,
+      categoryNode: categoryNode
+    })
     if (!categoryNode?.markdownPath) {
       markdownContent.value = ''
+      console.log('No markdownPath found, skipping')
       return
     }
 
@@ -403,6 +409,7 @@ async function loadMarkdown() {
       html = html.replace(/<tr([^>]*)style="[^"]*"/gi, '<tr$1')
       html = html.replace(/<img\s+/gi, '<img loading="lazy" ')
       markdownContent.value = html
+      console.log('Markdown loaded successfully')
     }
   } catch (error) {
     console.error('Failed to load markdown:', error)
@@ -413,6 +420,11 @@ async function loadMarkdown() {
 watch(currentCategory, async () => {
   await loadMarkdown()
 }, { immediate: true })
+
+watch(categoryTree, async () => {
+  console.log('categoryTree changed:', JSON.stringify(categoryTree.value, null, 2))
+  await loadMarkdown()
+}, { deep: true })
 
 </script>
 

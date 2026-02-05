@@ -40,7 +40,7 @@ The aluminium fuel tankers produced by our company mainly include the following 
 
    With a spacious 45,000 - liter capacity, it is capable of transporting a substantial volume of liquid in a single trip. This large - scale capacity is particularly advantageous for industries that require the efficient transportation of large quantities of liquids, such as the petroleum, chemical, and food - processing industries.
 
-![Aluminum Tanker 42000L](assets/aluminum-tanker-42000l4e50a.jpg)
+![Aluminum Tanker 42000L](/md/type/assets/aluminum-tanker-42000l4e50a.jpg)
 
 ##  Advantages of Aluminium Fuel Tanker
 
@@ -120,7 +120,7 @@ From cabinets to walkways and customized paint jobs that reflect your company’
 
 The production base of ZhiShun Semi-trailers is located in an industrial park with convenient transportation. The factory area is spacious, and the production equipment is advanced.
 
-![productcate-1-1](assets/p202503071502543a3f5.jpg)
+![productcate-1-1](/md/type/assets/p202503071502543a3f5.jpg)
 
 ## Our Service
 

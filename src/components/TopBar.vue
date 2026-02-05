@@ -1,7 +1,7 @@
 <template>
   <div class="top-bar">
     <div class="left-box">
-      <div class="logo"><img w40 h40 src="/images/logo.svg" alt="logo"></div>
+      <div class="logo"><img w40 h40 style="width: 40px; height: 40px;" src="/images/logo.svg" alt="logo"></div>
       <span class="title">
         <router-link to="/" style="text-decoration: none; color: inherit;">zhishun truck</router-link>
       </span>

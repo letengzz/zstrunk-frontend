@@ -29,7 +29,7 @@
 
   The design of the oil tank adopts a low center of gravity structure, reducing the center of gravity of the tank body, which effectively improves the stability and safety of the vehicle during driving. Especially when driving at high speeds, turning, or encountering emergency situations, the low center of gravity design can reduce the risk of the vehicle rolling over and ensure transportation safety.
 
-<img src="assets/three-axle-42000l-6-compartment-carbon-steelfedf6.jpg" alt="Three Axle 42000L 6-compartment Carbon Steel Fuel Semi-trailer" style="zoom:50%;" />
+![](/md/type/assets/three-axle-42000l-6-compartment-carbon-steelfedf6.jpg)
 
 ## Advantages of Carbon Steel Fuel Tank Trailer
 
@@ -55,19 +55,19 @@
 
 One of the most common applications of carbon steel tank trucks is in the transport of petroleum products, such as gasoline, diesel, and crude oil. Carbon steel's strength and resistance to high pressures make it ideal for safely transporting these products over long distances. Moreover, the cost-effectiveness of carbon steel allows oil and gas companies to minimize transportation costs while maintaining high safety standards.
 
-<img src="assets/three-axle-carbon-steel-semi-trailerce86e.jpg" alt="Three Axle Carbon Steel Semi-trailer" style="zoom:50%;" />
+![](/md/type/assets/three-axle-carbon-steel-semi-trailerce86e.jpg)
 
 ### Water and Liquid Food Transport
 
 Another major application of carbon steel tank trucks is in the transport of water, particularly for industrial and agricultural purposes. These trucks are used to deliver water to construction sites, farms, and remote locations where access to water may be limited. Although stainless steel is commonly used for food-grade liquid transport, carbon steel tanks are sometimes used for transporting non-potable water or water used for industrial processes.
 
-<img src="assets/three-axle-42000l-6-compartment-carbon-steeldbc18.jpg" alt="Three Axle 42000L 6-compartment Carbon Steel Fuel Semi-trailer" style="zoom:50%;" />
+![](/md/type/assets/three-axle-42000l-6-compartment-carbon-steeldbc18.jpg)
 
 ### Waste Disposal and Sewage Transport
 
 Carbon steel tank trucks are frequently employed in the transport of sewage, sludge, and other waste materials. These trucks are essential for the safe removal and disposal of liquid waste from industrial plants, municipal sewage systems, and construction sites. The durability and strength of carbon steel make it well-suited to handle the rough and often hazardous nature of these materials, ensuring that waste can be transported without leaks or spills.
 
-<img src="assets/three-axle-45000l-carbon-steel-tank-semi4ad48.jpg" alt="Three Axle 45000L Carbon Steel Tank Semi-trailer" style="zoom:50%;" />
+![](/md/type/assets/three-axle-45000l-carbon-steel-tank-semi4ad48.jpg)
 
 ## Common Types of Carbon Steel Fuel Tank Trailer Lining
 
@@ -119,7 +119,7 @@ Polyurethanes are, like epoxies, a very versatile coating, and they have the ben
 
 The production base of ZhiShun Semi-trailers is located in an industrial park with convenient transportation. The factory area is spacious, and the production equipment is advanced.
 
-<img src="assets/p202503071502543a3f5-17702795059265.jpg" alt="productcate-1-1" style="zoom:50%;" />
+![](/md/type/assets/p202503071502543a3f5-17702795059265.jpg)
 
 ## Our Service
 
