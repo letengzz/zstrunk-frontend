@@ -2155,4 +2155,250 @@ watch(categoryTree, async () => {
   color: #FF0000;
   font-weight: 600;
 }
+
+@media (min-width: 1921px) {
+  .category-markdown {
+    padding: 43px;
+    margin-top: 54px;
+    border-radius: 16px;
+  }
+
+  :deep(.category-markdown h1) {
+    font-size: 38px;
+    margin: 0 0 32px 0;
+    padding: 27px 32px;
+  }
+
+  :deep(.category-markdown h1::before) {
+    width: 8px;
+    height: 38px;
+    margin-right: 16px;
+  }
+
+  :deep(.category-markdown h1::after) {
+    height: 4px;
+    margin-top: 20px;
+  }
+
+  :deep(.category-markdown h2) {
+    font-size: 30px;
+    margin: 38px 0 22px 0;
+    padding-bottom: 16px;
+  }
+
+  :deep(.category-markdown h2::before) {
+    width: 5px;
+    height: 27px;
+    margin-right: 14px;
+  }
+
+  :deep(.category-markdown h3) {
+    font-size: 25px;
+    margin: 32px 0 18px 0;
+    padding-left: 22px;
+  }
+
+  :deep(.category-markdown h3::before) {
+    width: 4px;
+    height: 22px;
+    margin-right: 11px;
+  }
+
+  :deep(.category-markdown p) {
+    font-size: 20px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  :deep(.category-markdown li) {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  :deep(.category-markdown ul),
+  :deep(.category-markdown ol) {
+    padding-left: 43px;
+    margin-bottom: 22px;
+  }
+
+  :deep(.category-markdown ul li::before) {
+    width: 8px;
+    height: 8px;
+    margin-right: 14px;
+  }
+
+  :deep(.category-markdown ol > li) {
+    padding: 0 0 0 68px;
+    margin: 0 0 22px 0;
+  }
+
+  :deep(.category-markdown ol > li::before) {
+    width: 43px;
+    height: 43px;
+    font-size: 19px;
+    line-height: 43px;
+  }
+
+  :deep(.category-markdown ol > li p) {
+    font-size: 20px;
+    line-height: 1.9;
+  }
+
+  :deep(.category-markdown table) {
+    margin: 32px 0;
+    border-radius: 14px;
+  }
+
+  :deep(.category-markdown table tr) {
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  :deep(.category-markdown table th) {
+    font-size: 20px;
+    padding: 20px 27px;
+  }
+
+  :deep(.category-markdown table td) {
+    font-size: 20px;
+    padding: 20px 27px;
+  }
+
+  :deep(.category-markdown img) {
+    margin: 32px 0;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  }
+
+  :deep(.category-markdown img:hover) {
+    box-shadow: 0 9px 27px rgba(0, 0, 0, 0.15);
+  }
+
+  :deep(.category-markdown strong) {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2561px) {
+  .category-markdown {
+    padding: 58px;
+    margin-top: 72px;
+    border-radius: 22px;
+  }
+
+  :deep(.category-markdown h1) {
+    font-size: 50px;
+    margin: 0 0 43px 0;
+    padding: 36px 43px;
+  }
+
+  :deep(.category-markdown h1::before) {
+    width: 11px;
+    height: 50px;
+    margin-right: 22px;
+  }
+
+  :deep(.category-markdown h1::after) {
+    height: 5px;
+    margin-top: 27px;
+  }
+
+  :deep(.category-markdown h2) {
+    font-size: 40px;
+    margin: 50px 0 29px 0;
+    padding-bottom: 22px;
+  }
+
+  :deep(.category-markdown h2::before) {
+    width: 6px;
+    height: 36px;
+    margin-right: 18px;
+  }
+
+  :deep(.category-markdown h3) {
+    font-size: 33px;
+    margin: 43px 0 24px 0;
+    padding-left: 29px;
+  }
+
+  :deep(.category-markdown h3::before) {
+    width: 5px;
+    height: 29px;
+    margin-right: 14px;
+  }
+
+  :deep(.category-markdown p) {
+    font-size: 27px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+  }
+
+  :deep(.category-markdown li) {
+    font-size: 27px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  :deep(.category-markdown ul),
+  :deep(.category-markdown ol) {
+    padding-left: 58px;
+    margin-bottom: 29px;
+  }
+
+  :deep(.category-markdown ul li::before) {
+    width: 11px;
+    height: 11px;
+    margin-right: 18px;
+  }
+
+  :deep(.category-markdown ol > li) {
+    padding: 0 0 0 90px;
+    margin: 0 0 29px 0;
+  }
+
+  :deep(.category-markdown ol > li::before) {
+    width: 57px;
+    height: 57px;
+    font-size: 25px;
+    line-height: 57px;
+  }
+
+  :deep(.category-markdown ol > li p) {
+    font-size: 27px;
+    line-height: 1.9;
+  }
+
+  :deep(.category-markdown table) {
+    margin: 43px 0;
+    border-radius: 18px;
+  }
+
+  :deep(.category-markdown table tr) {
+    border-bottom: 3px solid #e2e8f0;
+  }
+
+  :deep(.category-markdown table th) {
+    font-size: 27px;
+    padding: 27px 36px;
+  }
+
+  :deep(.category-markdown table td) {
+    font-size: 27px;
+    padding: 27px 36px;
+  }
+
+  :deep(.category-markdown img) {
+    margin: 43px 0;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  :deep(.category-markdown img:hover) {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  }
+
+  :deep(.category-markdown strong) {
+    font-size: 27px;
+  }
+}
 </style>
