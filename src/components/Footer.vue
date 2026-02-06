@@ -4,7 +4,7 @@
       <el-row :gutter="20">
         <el-col :xs="24" :sm="12" :md="4">
           <div class="footer-brand">
-            <img src="/images/logo.svg" alt="Logo" class="footer-logo">
+            <img src="/images/logo.png" alt="Logo" class="footer-logo">
             <span class="footer-company-name">zhishun truck</span>
             <p class="footer-desc">{{ description }}</p>
           </div>
@@ -143,6 +143,8 @@ const currentYear = new Date().getFullYear()
   display: block;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
 }
 
 .footer-desc {
@@ -479,6 +481,214 @@ const currentYear = new Date().getFullYear()
 
   .copyright {
     font-size: 12px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .footer {
+    padding: 81px 54px 41px;
+  }
+
+  .footer-content {
+    max-width: 2430px;
+  }
+
+  .footer-brand {
+    padding-right: 27px;
+  }
+
+  .footer-logo {
+    width: 176px;
+    height: 176px;
+    margin-bottom: 20px;
+  }
+
+  .footer-company-name {
+    font-size: 32px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+  }
+
+  .footer-desc {
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  .footer-title {
+    font-size: 24px;
+    margin: 0 0 27px 0;
+    padding-bottom: 16px;
+  }
+
+  .footer-title::after {
+    width: 54px;
+    height: 4px;
+    border-radius: 3px;
+  }
+
+  .footer-whatsapp {
+    padding-top: 54px;
+  }
+
+  .footer-links {
+    margin-bottom: 41px;
+  }
+
+  .products-grid {
+    gap: 27px;
+  }
+
+  .product-column {
+    gap: 16px;
+  }
+
+  .product-category-link {
+    font-size: 19px;
+  }
+
+  .product-category-link::before {
+    margin-right: 11px;
+  }
+
+  .link-list li {
+    margin-bottom: 16px;
+  }
+
+  .link-list a {
+    font-size: 19px;
+  }
+
+  .link-list a::before {
+    margin-right: 11px;
+  }
+
+  .contact-info {
+    gap: 16px;
+  }
+
+  .contact-row {
+    gap: 16px;
+    font-size: 19px;
+  }
+
+  .contact-icon {
+    font-size: 24px;
+    width: 38px;
+  }
+
+  .footer-bottom {
+    margin-top: 68px;
+    padding-top: 34px;
+  }
+
+  .copyright {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .footer {
+    padding: 108px 72px 54px;
+  }
+
+  .footer-content {
+    max-width: 3240px;
+  }
+
+  .footer-brand {
+    padding-right: 36px;
+  }
+
+  .footer-logo {
+    width: 234px;
+    height: 234px;
+    margin-bottom: 27px;
+  }
+
+  .footer-company-name {
+    font-size: 43px;
+    margin-bottom: 27px;
+    letter-spacing: 2px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+  }
+
+  .footer-desc {
+    font-size: 25px;
+    line-height: 1.7;
+  }
+
+  .footer-title {
+    font-size: 32px;
+    margin: 0 0 36px 0;
+    padding-bottom: 22px;
+  }
+
+  .footer-title::after {
+    width: 72px;
+    height: 5px;
+    border-radius: 4px;
+  }
+
+  .footer-whatsapp {
+    padding-top: 72px;
+  }
+
+  .footer-links {
+    margin-bottom: 54px;
+  }
+
+  .products-grid {
+    gap: 36px;
+  }
+
+  .product-column {
+    gap: 22px;
+  }
+
+  .product-category-link {
+    font-size: 25px;
+  }
+
+  .product-category-link::before {
+    margin-right: 14px;
+  }
+
+  .link-list li {
+    margin-bottom: 22px;
+  }
+
+  .link-list a {
+    font-size: 25px;
+  }
+
+  .link-list a::before {
+    margin-right: 14px;
+  }
+
+  .contact-info {
+    gap: 22px;
+  }
+
+  .contact-row {
+    gap: 22px;
+    font-size: 25px;
+  }
+
+  .contact-icon {
+    font-size: 32px;
+    width: 50px;
+  }
+
+  .footer-bottom {
+    margin-top: 90px;
+    padding-top: 45px;
+  }
+
+  .copyright {
+    font-size: 25px;
   }
 }
 </style>

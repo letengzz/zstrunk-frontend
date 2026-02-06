@@ -56,12 +56,21 @@ const brands = [
   { name: 'SDLG', logo: '/images/brands/sdlg.png' },
   { name: 'SUNWARD', logo: '/images/brands/sunward.png' },
   { name: 'XCMG', logo: '/images/brands/xcmg.png' },
-  { name: 'KOBERCO', logo: '/images/brands/koberco.png' },
   { name: 'KOMATSU', logo: '/images/brands/komatsu.png' },
+  { name: 'FAW TRUCKS', logo: '/images/brands/FAWTRUCKS.png' },
+  { name: 'SHACMAN', logo: '/images/brands/SHACMAN.jpg' },
+  { name: 'SINOTRUK', logo: '/images/brands/SINOTRUK.jpg' },
 ]
 
-const firstRowBrands = computed(() => brands.slice(0, 8))
-const secondRowBrands = computed(() => brands.slice(8, 16))
+const firstRowBrands = computed(() => {
+  const midpoint = Math.ceil(brands.length / 2)
+  return brands.slice(0, midpoint)
+})
+
+const secondRowBrands = computed(() => {
+  const midpoint = Math.ceil(brands.length / 2)
+  return brands.slice(midpoint)
+})
 </script>
 
 <style scoped>
@@ -149,12 +158,6 @@ const secondRowBrands = computed(() => brands.slice(8, 16))
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.brand-item:hover .brand-logo img {
-  filter: grayscale(0%);
 }
 
 .brand-name {
@@ -196,6 +199,92 @@ const secondRowBrands = computed(() => brands.slice(8, 16))
 
   .brand-name {
     font-size: 12px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .brands-section {
+    padding: 140px 80px;
+  }
+
+  .brands-slider {
+    margin-top: 80px;
+  }
+
+  .brands-track {
+    gap: 40px;
+  }
+
+  .track-2 {
+    margin-top: 40px;
+  }
+
+  .brand-item {
+    padding: 28px 42px;
+  }
+
+  .brand-logo {
+    width: 160px;
+    height: 70px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .brands-divider {
+    margin-top: 80px;
+  }
+
+  .section-title {
+    font-size: 48px;
+  }
+
+  .section-subtitle {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .brands-section {
+    padding: 180px 100px;
+  }
+
+  .brands-slider {
+    margin-top: 100px;
+  }
+
+  .brands-track {
+    gap: 50px;
+  }
+
+  .track-2 {
+    margin-top: 50px;
+  }
+
+  .brand-item {
+    padding: 36px 54px;
+  }
+
+  .brand-logo {
+    width: 200px;
+    height: 90px;
+  }
+
+  .brand-name {
+    font-size: 22px;
+  }
+
+  .brands-divider {
+    margin-top: 100px;
+  }
+
+  .section-title {
+    font-size: 64px;
+  }
+
+  .section-subtitle {
+    font-size: 32px;
   }
 }
 </style>

@@ -1116,6 +1116,288 @@ watch(categoryTree, async () => {
   }
 }
 
+@media (min-width: 1920px) {
+  .page-header {
+    padding: 108px 0 81px;
+  }
+
+  .page-header-inner {
+    max-width: 1890px;
+    padding: 0 54px;
+  }
+
+  .products-main-section {
+    padding: 54px 0 108px;
+  }
+
+  .products-main-inner {
+    max-width: 2295px;
+    padding: 0 54px;
+  }
+
+  .content-layout {
+    grid-template-columns: 500px 1fr;
+    gap: 43px;
+  }
+
+  .category-sidebar {
+    padding: 24px;
+  }
+
+  .sidebar-title {
+    font-size: 27px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+  }
+
+  .sidebar-title::after {
+    width: 54px;
+    height: 4px;
+  }
+
+  .latest-products-title {
+    font-size: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+  }
+
+  .latest-products-title::after {
+    width: 54px;
+    height: 4px;
+  }
+
+  .latest-product-item {
+    padding: 16px;
+  }
+
+  .latest-product-image {
+    width: 81px;
+    height: 81px;
+  }
+
+  .category-header {
+    margin-bottom: 32px;
+  }
+
+  .category-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .category-title::after {
+    width: 81px;
+    height: 4px;
+    bottom: -5px;
+  }
+
+  .category-slogan {
+    font-size: 32px;
+    margin: 22px 0;
+  }
+
+  .category-subtitle {
+    font-size: 19px;
+    line-height: 1.6;
+  }
+
+  .feature-boxes {
+    grid-template-columns: repeat(2, 0.6fr);
+    gap: 32px;
+    margin-top: 43px;
+    padding-bottom: 43px;
+  }
+
+  .feature-box {
+    padding: 43px 38px;
+    min-height: 270px;
+    border-radius: 14px;
+    border-bottom: 4px solid #FF0000;
+  }
+
+  .feature-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 11px;
+    margin-bottom: 22px;
+  }
+
+  .feature-title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .feature-desc {
+    font-size: 19px;
+    line-height: 1.6;
+  }
+
+  .products-grid {
+    gap: 32px;
+  }
+
+  .product-col {
+    width: calc(33.333% - 21px);
+  }
+
+  .pagination-section {
+    padding: 54px 0;
+    margin-top: 54px;
+  }
+
+  :deep(.pagination .el-pager li) {
+    font-size: 18px;
+    padding: 8px 14px;
+    margin: 0 5px;
+  }
+
+  :deep(.pagination .btn-prev),
+  :deep(.pagination .btn-next) {
+    font-size: 18px;
+    padding: 8px 14px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .page-header {
+    padding: 144px 0 108px;
+  }
+
+  .page-header-inner {
+    max-width: 2520px;
+    padding: 0 72px;
+  }
+
+  .products-main-section {
+    padding: 72px 0 144px;
+  }
+
+  .products-main-inner {
+    max-width: 3060px;
+    padding: 0 72px;
+  }
+
+  .content-layout {
+    grid-template-columns: 666px 1fr;
+    gap: 58px;
+  }
+
+  .category-sidebar {
+    padding: 32px;
+  }
+
+  .sidebar-title {
+    font-size: 36px;
+    margin-bottom: 29px;
+    padding-bottom: 22px;
+  }
+
+  .sidebar-title::after {
+    width: 72px;
+    height: 5px;
+  }
+
+  .latest-products-title {
+    font-size: 32px;
+    margin-bottom: 29px;
+    padding-bottom: 22px;
+  }
+
+  .latest-products-title::after {
+    width: 72px;
+    height: 5px;
+  }
+
+  .latest-product-item {
+    padding: 21px;
+  }
+
+  .latest-product-image {
+    width: 108px;
+    height: 108px;
+  }
+
+  .category-header {
+    margin-bottom: 43px;
+  }
+
+  .category-title {
+    font-size: 43px;
+    margin-bottom: 22px;
+  }
+
+  .category-title::after {
+    width: 108px;
+    height: 5px;
+    bottom: -7px;
+  }
+
+  .category-slogan {
+    font-size: 43px;
+    margin: 29px 0;
+  }
+
+  .category-subtitle {
+    font-size: 25px;
+    line-height: 1.6;
+  }
+
+  .feature-boxes {
+    grid-template-columns: repeat(2, 0.6fr);
+    gap: 43px;
+    margin-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .feature-box {
+    padding: 58px 50px;
+    min-height: 360px;
+    border-radius: 18px;
+    border-bottom: 5px solid #FF0000;
+  }
+
+  .feature-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    margin-bottom: 29px;
+  }
+
+  .feature-title {
+    font-size: 32px;
+    margin-bottom: 18px;
+  }
+
+  .feature-desc {
+    font-size: 25px;
+    line-height: 1.6;
+  }
+
+  .products-grid {
+    gap: 43px;
+  }
+
+  .product-col {
+    width: calc(33.333% - 29px);
+  }
+
+  .pagination-section {
+    padding: 72px 0;
+    margin-top: 72px;
+  }
+
+  :deep(.pagination .el-pager li) {
+    font-size: 24px;
+    padding: 10px 18px;
+    margin: 0 7px;
+  }
+
+  :deep(.pagination .btn-prev),
+  :deep(.pagination .btn-next) {
+    font-size: 24px;
+    padding: 10px 18px;
+  }
+}
+
 @media (max-width: 576px) {
   .products-main-section {
     padding: 30px 0 50px !important;

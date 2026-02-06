@@ -1,7 +1,7 @@
 <template>
   <div class="top-bar">
     <div class="left-box">
-      <div class="logo"><img w40 h40 style="width: 40px; height: 40px;" src="/images/logo.svg" alt="logo"></div>
+      <div class="logo"><img class="topbar-logo-img" src="/images/logo.png" alt="logo"></div>
       <span class="title">
         <router-link to="/" style="text-decoration: none; color: inherit;">zhishun truck</router-link>
       </span>
@@ -242,12 +242,20 @@ const toggleProductsMenu = () => {
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
+    .topbar-logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
     .title {
       font-size: 28px;
       font-weight: 700;
       color: #ffffff;
       letter-spacing: 2px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-style: italic;
     }
 
     &:hover {
@@ -639,6 +647,154 @@ const toggleProductsMenu = () => {
   outline: none !important;
 }
 
+@media (min-width: 1920px) {
+  .top-bar {
+    padding: 0 54px;
+    height: 135px;
+
+    .left-box {
+      padding: 0 40px;
+      height: 81px;
+      gap: 20px;
+      border-radius: 20px;
+
+      .logo {
+        font-size: 32px;
+      }
+
+      .topbar-logo-img {
+        width: 81px;
+        height: 81px;
+      }
+
+      .title {
+        font-size: 38px;
+      }
+    }
+
+    .right-box {
+      padding: 0 40px;
+      height: 81px;
+      border-radius: 20px;
+
+      :deep(.topbar-menu .el-menu-item),
+      :deep(.topbar-menu .el-sub-menu__title) {
+        font-size: 24px;
+        height: 81px;
+        line-height: 81px;
+      }
+    }
+  }
+
+  .products-dropdown {
+    min-width: 1100px;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .product-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .product-category-title {
+    font-size: 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #FF4500;
+    margin-bottom: 8px;
+  }
+
+  .product-item {
+    font-size: 19px;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  .semi-trailer-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 18px;
+  }
+
+  .liquid-power-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 18px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .top-bar {
+    padding: 0 72px;
+    height: 180px;
+
+    .left-box {
+      padding: 0 54px;
+      height: 108px;
+      gap: 27px;
+      border-radius: 27px;
+
+      .logo {
+        font-size: 43px;
+      }
+
+      .topbar-logo-img {
+        width: 108px;
+        height: 108px;
+      }
+
+      .title {
+        font-size: 50px;
+      }
+    }
+
+    .right-box {
+      padding: 0 54px;
+      height: 108px;
+      border-radius: 27px;
+
+      :deep(.topbar-menu .el-menu-item),
+      :deep(.topbar-menu .el-sub-menu__title) {
+        font-size: 32px;
+        height: 108px;
+        line-height: 108px;
+      }
+    }
+  }
+
+  .products-dropdown {
+    min-width: 1260px;
+    padding: 18px;
+    gap: 36px;
+  }
+
+  .product-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+
+  .product-category-title {
+    font-size: 25px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid #FF4500;
+    margin-bottom: 9px;
+  }
+
+  .product-item {
+    font-size: 23px;
+    padding: 7px 14px;
+    border-radius: 7px;
+  }
+
+  .semi-trailer-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px 22px;
+  }
+
+  .liquid-power-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px 22px;
+  }
+}
+
 @media (max-width: 768px) {
   .top-bar {
     padding: 0 15px;
@@ -651,6 +807,11 @@ const toggleProductsMenu = () => {
 
       .logo {
         font-size: 20px;
+      }
+
+      .topbar-logo-img {
+        width: 36px;
+        height: 36px;
       }
 
       .title {
