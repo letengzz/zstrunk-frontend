@@ -1128,6 +1128,7 @@ function handleCategoryChange(categoryId: string) {
   color: #4a5568;
   margin: 0 0 10px 0;
   line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 .product-specs-text p:last-child {
@@ -1187,6 +1188,7 @@ function handleCategoryChange(categoryId: string) {
   font-size: 15px;
   color: #4a5568;
   line-height: 1.8;
+  white-space: pre-wrap;
   margin: 0;
 }
 

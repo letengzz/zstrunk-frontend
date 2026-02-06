@@ -15,7 +15,22 @@
     ],
     "markdownPath": "/md/products/AluminiumFuelTanker/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation.md"
   },
-  
+    {
+    "id": 2,
+    "name": "Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck",
+    "desc": "1. Material: Carbon steel/stainless steel/Aluminum\n2. Axle: 3/4*45 tons capacity (OCT, FUWA, BPW or other brands)\n3 .Suspension: mechanical suspension (optional) air/bogie suspension\n4. plate spring: 10 (airbag increasing optional)\n5. tires: 12 r22. 5, 11 R22.5, r22 315/80. 5385/65 r22. 5 (size and brand optional)\n6. rim: 9.00-22.5, 8.25-22.5, 11.75 22.5 (its) His size is optional)\n7. kingpin :2\"/3.5\" bolt type, SAE standard (optional type welded on)\n8. landing gear: 28 tons two-speed (JOST or equivalent brand)",
+    "image": "/images/product/Three-axle40000L4-compartmentCarbonSteelTankerTruck/main.png",
+    "images": [
+      "/images/product/Three-axle40000L4-compartmentCarbonSteelTankerTruck/1.png"
+    ],
+    "tag": "Hot",
+    "category": "truck",
+    "subCategory": "CarbonSteelFuelTankTrailer",
+    "specsText": [
+      "1. Material: Carbon steel/stainless steel/Aluminum\n2. Axle: 3/4*45 tons capacity (OCT, FUWA, BPW or other brands)\n3 .Suspension: mechanical suspension (optional) air/bogie suspension\n4. plate spring: 10 (airbag increasing optional)\n5. tires: 12 r22. 5, 11 R22.5, r22 315/80. 5385/65 r22. 5 (size and brand optional)\n6. rim: 9.00-22.5, 8.25-22.5, 11.75 22.5 (its) His size is optional)\n7. kingpin :2\"/3.5\" bolt type, SAE standard (optional type welded on)\n8. landing gear: 28 tons two-speed (JOST or equivalent brand)"
+    ],
+    "markdownPath": "/md/products/CarbonSteelFuelTankTrailer/Three-axle40000L4-compartmentCarbonSteelTankerTruck.md"
+  },
   {
     "id": 30,
     "name": "3 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank",

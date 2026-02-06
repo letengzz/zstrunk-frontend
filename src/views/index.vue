@@ -3127,8 +3127,7 @@ img {
   .carousel-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    object-fit: fill;
   }
 
   .title-container {
