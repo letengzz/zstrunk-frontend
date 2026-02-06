@@ -936,7 +936,7 @@ img {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .main-title {
     font-size: 220px;
   }
@@ -1082,7 +1082,7 @@ img {
   }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .feature-boxes {
     padding: 90px 0;
   }
@@ -1272,7 +1272,7 @@ img {
   box-sizing: border-box;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .product-section-inner {
     max-width: 1900px;
     padding: 0 54px;
@@ -1331,7 +1331,7 @@ img {
   color: #000;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .category-tabs {
     gap: 20px;
     margin-bottom: 40px;
@@ -1386,7 +1386,7 @@ img {
 }
 
 .section-title {
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 700;
   color: #1a2a4a;
   text-align: center;
@@ -1394,14 +1394,14 @@ img {
 }
 
 .section-subtitle {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 400;
   color: #4a5568;
   text-align: center;
   margin: 0 0 40px 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .section-title {
     font-size: 42px;
     margin-bottom: 16px;
@@ -1463,42 +1463,109 @@ img {
   }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .product-grid {
-    max-width: 1400px;
-    gap: 24px;
+    max-width: 2400px;
+    gap: 40px;
+    padding: 0 40px;
   }
 
   .product-col {
-    width: calc(33.333% - 16px);
+    width: calc(33.333% - 27px);
   }
 
   .product-card {
-    height: 360px !important;
-    width: 528px !important;
+    height: 400px !important;
+    width: 100% !important;
   }
 
   .product-image {
-    height: 210px !important;
+    height: 240px !important;
+  }
+
+  .product-name {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .product-tag {
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .product-content {
+    padding: 16px 20px;
+  }
+
+  .product-specs {
+    gap: 6px;
+  }
+
+  .product-spec {
+    font-size: 13px;
+  }
+
+  .product-spec-value {
+    font-size: 13px;
+  }
+
+  .product-view-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-top: 12px;
   }
 }
 
 @media (min-width: 2560px) {
   .product-grid {
-    max-width: 1400px;
-    gap: 24px;
+    max-width: 3200px;
+    gap: 54px;
+    padding: 0 54px;
   }
 
   .product-col {
-    width: calc(33.333% - 16px);
+    width: calc(33.333% - 36px);
   }
 
   .product-card {
-    height: 285px;
+    height: 500px !important;
+    width: 100% !important;
   }
 
   .product-image {
-    height: 170px;
+    height: 300px !important;
+  }
+
+  .product-name {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .product-tag {
+    padding: 8px 22px;
+    font-size: 18px;
+  }
+
+  .product-content {
+    padding: 22px 27px;
+  }
+
+  .product-specs {
+    gap: 8px;
+  }
+
+  .product-spec {
+    font-size: 16px;
+  }
+
+  .product-spec-value {
+    font-size: 16px;
+  }
+
+  .product-view-btn {
+    padding: 14px 27px;
+    font-size: 18px;
+    margin-top: 16px;
   }
 }
 
@@ -1613,7 +1680,7 @@ img {
   box-shadow: 0 4px 12px rgba(52, 152, 219, 0.35);
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .product-tag {
     top: 16px;
     left: 16px;
@@ -1749,7 +1816,7 @@ img {
   margin: 0;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .features-section {
     padding: 140px 60px;
   }
@@ -1814,6 +1881,154 @@ img {
   .feature-desc {
     font-size: 22px;
     line-height: 1.9;
+  }
+}
+
+@media (min-width: 1921px) {
+  .why-choose-section {
+    padding: 135px 80px;
+  }
+
+  .why-choose-container {
+    max-width: 1890px;
+    gap: 81px;
+  }
+
+  .why-choose-left {
+    padding-right: 27px;
+  }
+
+  .about-subtitle {
+    font-size: 24px;
+    margin: 14px 0 34px 0;
+  }
+
+  .why-intro {
+    font-size: 24px;
+    line-height: 1.8;
+    margin: 41px 0;
+  }
+
+  .why-intro-button {
+    padding: 16px 43px;
+    font-size: 20px;
+    margin: 27px 0;
+    border-radius: 34px;
+  }
+
+  .why-stats {
+    gap: 27px;
+    margin-top: 54px;
+  }
+
+  .stat-item {
+    min-width: 90px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+  }
+
+  .stat-label {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  .extra-stats {
+    gap: 27px;
+    margin-top: 41px;
+    padding-top: 41px;
+  }
+
+  .stat-simple-icon {
+    width: 49px;
+    height: 49px;
+  }
+
+  .stat-simple-number {
+    font-size: 43px;
+  }
+
+  .stat-simple-label {
+    font-size: 24px;
+  }
+
+  .stat-simple-line {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 2561px) {
+  .why-choose-section {
+    padding: 180px 108px;
+  }
+
+  .why-choose-container {
+    max-width: 2520px;
+    gap: 108px;
+  }
+
+  .why-choose-left {
+    padding-right: 36px;
+  }
+
+  .about-subtitle {
+    font-size: 32px;
+    margin: 18px 0 45px 0;
+  }
+
+  .why-intro {
+    font-size: 29px;
+    line-height: 1.8;
+    margin: 54px 0;
+  }
+
+  .why-intro-button {
+    padding: 22px 57px;
+    font-size: 27px;
+    margin: 36px 0;
+    border-radius: 45px;
+  }
+
+  .why-stats {
+    gap: 36px;
+    margin-top: 72px;
+  }
+
+  .stat-item {
+    min-width: 120px;
+  }
+
+  .stat-number {
+    font-size: 48px;
+  }
+
+  .stat-label {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .extra-stats {
+    gap: 36px;
+    margin-top: 54px;
+    padding-top: 54px;
+  }
+
+  .stat-simple-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .stat-simple-number {
+    font-size: 57px;
+  }
+
+  .stat-simple-label {
+    font-size: 22px;
+  }
+
+  .stat-simple-line {
+    margin-top: 11px;
   }
 }
 
@@ -1924,8 +2139,8 @@ img {
 }
 
 .stat-simple-icon {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
   color: #1a2a4a;
 }
@@ -1943,7 +2158,7 @@ img {
 }
 
 .stat-simple-number {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 700;
   color: #FF0000;
   line-height: 1.2;
@@ -2119,7 +2334,7 @@ img {
   background: #1a2a4a;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .why-choose-section {
     padding: 140px 40px;
   }
@@ -2311,7 +2526,7 @@ img {
   display: block;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .customer-visits-section {
     padding: 120px 40px;
   }
@@ -2508,7 +2723,7 @@ img {
   height: 28px;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .solution-section {
     padding: 120px 40px;
   }
@@ -2857,7 +3072,7 @@ img {
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.35);
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1921px) {
   .cta-section {
     padding: 0px 60px;
   }
