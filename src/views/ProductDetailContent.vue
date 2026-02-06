@@ -2003,7 +2003,7 @@ function handleCategoryChange(categoryId: string) {
   }
 }
 
-@media (min-width: 1921px) {
+@media (min-width: 1901px) {
   .page-header {
     padding: 108px 0 81px;
   }

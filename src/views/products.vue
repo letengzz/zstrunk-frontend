@@ -2156,7 +2156,7 @@ watch(categoryTree, async () => {
   font-weight: 600;
 }
 
-@media (min-width: 1921px) {
+@media (min-width: 1901px) {
   .category-markdown {
     padding: 43px;
     margin-top: 54px;
