@@ -3,7 +3,7 @@
 | **Type:**                           | Semi Trailer                                                 |
 | **Product name:**                   | Car Carrier Semi Trailer                                     |
 | **Maximum load :**                  | 40T                                                          |
-| **Brand:**                          | shandongruiyuan                                              |
+| **Brand:**                          | shandongZhiShun                                              |
 | **Country of Origin:**              | Shandong,China                                               |
 | **Suitable vehicle type:**          | Truck towing                                                 |
 | **Material:**                       | Steel                                                        |

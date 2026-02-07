@@ -20,6 +20,7 @@
             :expanded-keys="expandedKeys"
             @update:searchQuery="searchQuery = $event"
             @category-change="handleCategoryChange"
+            @subcategories-change="handleSubcategoriesChange"
           />
 
           <div class="products-content">
@@ -346,6 +347,11 @@ function handleCategoryChange(categoryId: string) {
   currentCategory.value = categoryId
   currentPage.value = 1
   updateExpandedKeys(categoryId)
+}
+
+function handleSubcategoriesChange(subcategoryIds: string[]) {
+  currentCategories.value = subcategoryIds
+  currentPage.value = 1
 }
 
 function handleSizeChange(size: number) {

@@ -241,7 +241,7 @@
     },
     {
         "category": "truck",
-        "desc": "1. Type: Semi Trailer \n2. Product name: Car Carrier Semi Trailer \n3. Maximum load :40T \n4. Brand: shandongruiyuan \n5. Country of Origin: Shandong,China \n6. Suitable vehicle type: Truck towing \n7. Material: Steel \n8. Size: (18000-32000)*2500*4000(mm) ",
+        "desc": "1. Type: Semi Trailer \n2. Product name: Car Carrier Semi Trailer \n3. Maximum load :40T \n4. Brand: shandongZhiShun \n5. Country of Origin: Shandong,China \n6. Suitable vehicle type: Truck towing \n7. Material: Steel \n8. Size: (18000-32000)*2500*4000(mm) ",
         "id": 16,
         "image": "/images/product/DoubleDeckCarTransportTrailer/main.png",
         "images": [
@@ -250,12 +250,12 @@
         "markdownPath": "/md/products/CarCarrierTailer/DoubleDeckCarTransportTrailer.md",
         "name": "Double Deck Car Transport Trailer",
         "specsText": [
-            "1. Type: Semi Trailer \n2. Product name: Car Carrier Semi Trailer \n3. Maximum load :40T \n4. Brand: shandongruiyuan \n5. Country of Origin: Shandong,China \n6. Suitable vehicle type: Truck towing \n7. Material: Steel \n8. Size: (18000-32000)*2500*4000(mm) "
+            "1. Type: Semi Trailer \n2. Product name: Car Carrier Semi Trailer \n3. Maximum load :40T \n4. Brand: shandongZhiShun \n5. Country of Origin: Shandong,China \n6. Suitable vehicle type: Truck towing \n7. Material: Steel \n8. Size: (18000-32000)*2500*4000(mm) "
         ],
         "subCategory": "CarCarrierTailer",
         "tag": "New"
     },
-	    {
+    {
         "category": "truck",
         "desc": "1.Type: Semi-Trailer \n2. Size: 7000*2500*1500(mm) (customizable) \n3. Payload: 30000KG \n4. Main beam: Heavy I-beam \n5. Shaft :2*13 tons capacity (brand optional) \n6. Suspension: Mechanical suspension (air is optional) \n7. Leaf spring :10 pieces \n8. Tire :12R22.58pcs(other sizes optional) ",
         "id": 17,
@@ -271,9 +271,9 @@
         "subCategory": "FullDrawbarTrailer",
         "tag": "New"
     },
-		    {
+    {
         "category": "truck",
-        "desc": "1.Type: Semi-trailer \n2. Brand: Shandong Ruiyuan \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) ",
+        "desc": "1.Type: Semi-trailer \n2. Brand: Shandong ZhiShun \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) ",
         "id": 18,
         "image": "/images/product/40TonBoxSemiTrailer/main.png",
         "images": [
@@ -282,9 +282,73 @@
         "markdownPath": "/md/products/BoxSemiTrailer/40TonBoxSemiTrailer.md",
         "name": "40 Ton Box Semi Trailer",
         "specsText": [
-            "1.Type: Semi-trailer \n2. Brand: Shandong Ruiyuan \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) "
+            "1.Type: Semi-trailer \n2. Brand: Shandong ZhiShun \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) "
         ],
         "subCategory": "BoxSemiTrailer",
+        "tag": "New"
+    },
+        {
+        "category": "truck",
+        "desc": "1.Product name :Low bed trailer \n2. Type: Semi-trailer \n3. Maximum load :60000 kg \n4. Brand: Shandong ZhiShun \n5. Origin :China \n6. Suitable vehicle type: truck towing \n7. Material: steel \n8. Size :13000*2500*1650mm (can be customized) ",
+        "id": 19,
+        "image": "/images/product/60TonsGooseneck/main.png",
+        "images": [
+            "/images/product/60TonsGooseneck/1.png"
+        ],
+        "markdownPath": "/md/products/RemovableGooseneckTrailer/60TonsGooseneck.md",
+        "name": "60 Tons Gooseneck",
+        "specsText": [
+            "1.Product name :Low bed trailer \n2. Type: Semi-trailer \n3. Maximum load :60000 kg \n4. Brand: Shandong ZhiShun \n5. Origin :China \n6. Suitable vehicle type: truck towing \n7. Material: steel \n8. Size :13000*2500*1650mm (can be customized) "
+        ],
+        "subCategory": "RemovableGooseneckTrailer",
+        "tag": "New"
+    },
+      {
+        "category": "truck",
+        "desc": "1.Product name: ShacmanTractor truck \n2. Old and new degree: new and old are \n3. Horsepower: 351-560hp \n4. Emission standard: Euro 2 \n5. Brand: Sinotruck \n6. Market segment: Logistics Transportation \n7. Displacement: >8 L \n8. Drive form: 6×4",
+        "id": 20,
+        "image": "/images/product/SHACMANX5000TractorTruck/main.png",
+        "images": [
+            "/images/product/SHACMANX5000TractorTruck/1.png"
+        ],
+        "markdownPath": "/md/products/ShacmanDumpTruck/SHACMANX5000TractorTruck.md",
+        "name": "SHACMAN X5000 Tractor Truck",
+        "specsText": [
+            "1.Product name: ShacmanTractor truck \n2. Old and new degree: new and old are \n3. Horsepower: 351-560hp \n4. Emission standard: Euro 2 \n5. Brand: Sinotruck \n6. Market segment: Logistics Transportation \n7. Displacement: >8 L \n8. Drive form: 6×4 "
+        ],
+        "subCategory": "ShacmanDumpTruck",
+        "tag": "New"
+    },
+          {
+        "category": "truck",
+        "desc": "Condition： Brand New \nTyre Quantity： 10 tyre \nEngine Power： 430HP \nDriving Type： 6X4 LHD/RHD \nLoading Capacity： 70-80 tons \nCategory:X3000 ",
+        "id": 21,
+        "image": "/images/product/GoodConditionShacmanX3000TractorTruck6x4/main.png",
+        "images": [
+            "/images/product/GoodConditionShacmanX3000TractorTruck6x4/1.png"
+        ],
+        "markdownPath": "/md/products/ShacmanTractorTruck/GoodConditionShacmanX3000TractorTruck6x4.md",
+        "name": "Good Condition Shacman X3000 Tractor Truck 6x4",
+        "specsText": [
+            "Condition： Brand New \nTyre Quantity： 10 tyre \nEngine Power： 430HP \nDriving Type： 6X4 LHD/RHD \nLoading Capacity： 70-80 tons \nCategory:X3000"
+        ],
+        "subCategory": "ShacmanTractorTruck",
+        "tag": "New"
+    },
+              {
+        "category": "truck",
+        "desc": "Dump trucks are highly efficient engineering transport vehicles widely used in scenarios such as mining and construction. Equipped with a unique hydraulic lifting system, they can tilt the cargo box via controlled cylinders to automatically unload bulk materials like sand, gravel, and earth quickly. This significantly improves loading and unloading efficiency while reducing labor costs.",
+        "id": 22,
+        "image": "/images/product/ZhiShunBlueSteelMaterialDumpTruck/main.png",
+        "images": [
+            "/images/product/ZhiShunBlueSteelMaterialDumpTruck/1.png"
+        ],
+        "markdownPath": "/md/products/Trailer/ZhiShunBlueSteelMaterialDumpTruck.md",
+        "name": "ZHISHUN Blue Steel Material Dump Truck",
+        "specsText": [
+            "Dump trucks are highly efficient engineering transport vehicles widely used in scenarios such as mining and construction. Equipped with a unique hydraulic lifting system, they can tilt the cargo box via controlled cylinders to automatically unload bulk materials like sand, gravel, and earth quickly. This significantly improves loading and unloading efficiency while reducing labor costs."
+        ],
+        "subCategory": "Trailer",
         "tag": "New"
     },
     {

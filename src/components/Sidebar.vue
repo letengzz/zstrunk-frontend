@@ -133,12 +133,17 @@ const props = defineProps<Props>()
 const emit = defineEmits<{
   (e: 'update:searchQuery', value: string): void
   (e: 'category-change', value: string): void
+  (e: 'subcategories-change', value: string[]): void
 }>()
 
 const categoryTree = ref<CategoryTreeNode[]>([])
 const newProducts = ref<Product[]>([])
 const isSidebarOpen = ref(false)
-const treeExpandedKeys = ref<string[]>([])
+const treeExpandedKeys = ref<string[]>(props.expandedKeys)
+
+watch(() => props.expandedKeys, (newKeys) => {
+  treeExpandedKeys.value = newKeys
+})
 
 const computedCurrentCategory = computed({
   get: () => props.currentCategory,
@@ -190,8 +195,46 @@ function handleSearch(value: string) {
   emit('update:searchQuery', value)
 }
 
+function getAllChildCategoryIds(nodes: CategoryTreeNode[], parentId: string): string[] {
+  const result: string[] = []
+
+  function findChildren(nodeList: CategoryTreeNode[]) {
+    for (const node of nodeList) {
+      if (node.id === parentId && node.children && node.children.length > 0) {
+        for (const child of node.children) {
+          result.push(child.id)
+          if (child.children && child.children.length > 0) {
+            findChildren(child.children)
+          }
+        }
+        return true
+      }
+      if (node.children && node.children.length > 0) {
+        if (findChildren(node.children)) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+
+  findChildren(nodes)
+  return result
+}
+
 function handleNodeClick(data: TreeNode) {
+  if (data.children && data.children.length > 0) {
+    const childIds = getAllChildCategoryIds(categoryTree.value, data.id)
+    if (childIds.length > 0) {
+      emit('category-change', data.id)
+      emit('subcategories-change', childIds)
+      router.push({ path: '/products', query: { category: data.id, categories: childIds.join(',') } })
+      return
+    }
+  }
+
   emit('category-change', data.id)
+  emit('subcategories-change', [])
 
   if (data.id === 'all') {
     router.push({ path: '/products' })
