@@ -32,10 +32,10 @@
           :data="categoryTree"
           :props="defaultProps"
           :current-node-key="computedCurrentCategory"
-          :expanded-keys="computedExpandedKeys"
+          :expanded-keys="treeExpandedKeys"
           node-key="id"
           :highlight-current="true"
-          :expand-on-click-node="false"
+          :expand-on-click-node="true"
           :accordion="true"
           @node-click="handleNodeClick"
           class="category-tree"
@@ -81,10 +81,10 @@
         :data="categoryTree"
         :props="defaultProps"
         :current-node-key="computedCurrentCategory"
-        :expanded-keys="computedExpandedKeys"
+        :expanded-keys="treeExpandedKeys"
         node-key="id"
         :highlight-current="true"
-        :expand-on-click-node="false"
+        :expand-on-click-node="true"
         :accordion="true"
         @node-click="handleNodeClick"
         class="category-tree"
@@ -138,15 +138,11 @@ const emit = defineEmits<{
 const categoryTree = ref<CategoryTreeNode[]>([])
 const newProducts = ref<Product[]>([])
 const isSidebarOpen = ref(false)
+const treeExpandedKeys = ref<string[]>([])
 
 const computedCurrentCategory = computed({
   get: () => props.currentCategory,
   set: (value: string) => emit('category-change', value)
-})
-
-const computedExpandedKeys = computed({
-  get: () => props.expandedKeys,
-  set: () => {}
 })
 
 function toggleSidebar() {
@@ -196,6 +192,7 @@ function handleSearch(value: string) {
 
 function handleNodeClick(data: TreeNode) {
   emit('category-change', data.id)
+
   if (data.id === 'all') {
     router.push({ path: '/products' })
   } else {

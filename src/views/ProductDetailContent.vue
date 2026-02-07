@@ -1643,7 +1643,7 @@ function handleCategoryChange(categoryId: string) {
 }
 
 .related-name {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: #1a2a4a;
   margin: 0 0 6px 0;
@@ -2003,10 +2003,11 @@ function handleCategoryChange(categoryId: string) {
   }
 }
 
-@media (min-width: 1901px) {
+@media (min-width: 1900px) {
   .page-header {
     padding: 108px 0 81px;
   }
+
 
   .page-header-inner {
     max-width: 1890px;

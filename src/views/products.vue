@@ -16,7 +16,7 @@
         <div class="content-layout">
           <Sidebar
             :search-query="searchQuery"
-            :current-category="currentCategory"
+            :current-category="highlightedCategory"
             :expanded-keys="expandedKeys"
             @update:searchQuery="searchQuery = $event"
             @category-change="handleCategoryChange"
@@ -139,6 +139,8 @@ const productsStore = useProductsStore()
 
 const searchQuery = ref('')
 const currentCategory = ref<string>('all')
+const currentCategories = ref<string[]>([])
+const highlightedCategory = ref<string>('all')
 const currentPage = ref(1)
 const pageSize = ref(6)
 const expandedKeys = ref<string[]>([])
@@ -186,22 +188,56 @@ onMounted(async () => {
   window.addEventListener('resize', updatePaginationLayout)
 
   await Promise.all([loadProducts(), loadCategories(), loadNewProducts()])
+
   const categoryParam = route.query.category as string
-  if (categoryParam) {
+  const categoriesParam = route.query.categories as string
+
+  if (categoriesParam && categoryParam) {
+    const ids = categoriesParam.split(',')
+    currentCategories.value = ids
+    currentCategory.value = ids[0] || 'all'
+    highlightedCategory.value = categoryParam || 'all'
+    expandedKeys.value = [categoryParam]
+  } else if (categoriesParam) {
+    const ids = categoriesParam.split(',')
+    currentCategories.value = ids
+    currentCategory.value = ids[0] || 'all'
+    highlightedCategory.value = ids[0] || 'all'
+    expandedKeys.value = ids
+  } else if (categoryParam) {
     currentCategory.value = categoryParam
+    highlightedCategory.value = categoryParam
     updateExpandedKeys(categoryParam)
   }
 
   await loadMarkdown()
 })
 
-watch(() => route.query.category, (newCategory) => {
-  if (newCategory) {
+watch(() => [route.query.category, route.query.categories], ([newCategory, newCategories]) => {
+  if (newCategories && newCategory) {
+    const ids = (newCategories as string).split(',')
+    currentCategories.value = ids
+    currentCategory.value = ids[0] || 'all'
+    highlightedCategory.value = newCategory as string
+    expandedKeys.value = [newCategory as string]
+    currentPage.value = 1
+  } else if (newCategories) {
+    const ids = (newCategories as string).split(',')
+    currentCategories.value = ids
+    currentCategory.value = ids[0] || 'all'
+    highlightedCategory.value = ids[0] || 'all'
+    expandedKeys.value = ids
+    currentPage.value = 1
+  } else if (newCategory) {
+    currentCategories.value = []
     currentCategory.value = newCategory as string
+    highlightedCategory.value = newCategory as string
     updateExpandedKeys(newCategory as string)
     currentPage.value = 1
   } else {
+    currentCategories.value = []
     currentCategory.value = 'all'
+    highlightedCategory.value = 'all'
     updateExpandedKeys('all')
   }
 })
@@ -273,12 +309,10 @@ const isMainCategory = (categoryId: string): boolean => {
 
 const filteredProducts = computed(() => {
   let result = [...productsList.value]
-  //console.log('=== DEBUG ===')
-  //console.log('Total products:', result.length)
-  //console.log('Current category:', currentCategory.value)
-  //console.log('Products loaded:', productsStore.isLoaded)
 
-  if (currentCategory.value !== 'all') {
+  if (currentCategories.value.length > 0) {
+    result = result.filter(product => currentCategories.value.includes(product.subCategory))
+  } else if (currentCategory.value !== 'all') {
     if (isMainCategory(currentCategory.value)) {
       const categoryType = mainCategoryMap[currentCategory.value]
       if (categoryType === 'truck') {
@@ -287,11 +321,7 @@ const filteredProducts = computed(() => {
         result = result.filter(product => product.category === 'excavator')
       }
     } else {
-      // const beforeCount = result.length
       result = result.filter(product => product.subCategory === currentCategory.value)
-      //console.log('SubCategory filter:', currentCategory.value)
-      //console.log('Before filter:', beforeCount, 'After filter:', result.length)
-      //console.log('Sample subCategories:', result.slice(0, 3).map(p => p.subCategory))
     }
   }
 
@@ -303,7 +333,6 @@ const filteredProducts = computed(() => {
     )
   }
 
-  //console.log('Final result count:', result.length)
   return result
 })
 
@@ -339,28 +368,62 @@ async function goToProduct(id: number) {
   }
 }
 
-function findCategoryLabel(nodes: TreeNode[], targetId: string): string {
-  if (!targetId || targetId === 'all') {
-    return 'All Products'
-  }
+// function findCategoryLabel(nodes: TreeNode[], targetId: string): string {
+//   if (!targetId || targetId === 'all') {
+//     return 'All Products'
+//   }
 
-  for (const node of nodes) {
-    if (node.id === targetId) {
-      return node.label
-    }
-    if (node.children && node.children.length > 0) {
-      const found = findCategoryLabel(node.children, targetId)
-      if (found && found !== 'All Products') {
-        return found
+//   for (const node of nodes) {
+//     if (node.id === targetId) {
+//       return node.label
+//     }
+//     if (node.children && node.children.length > 0) {
+//       const found = findCategoryLabel(node.children, targetId)
+//       if (found && found !== 'All Products') {
+//         return found
+//       }
+//     }
+//   }
+//   return 'All Products'
+// }
+
+const currentCategoryLabel = computed(() => {
+  if (highlightedCategory.value !== 'all') {
+    const node = findCategoryNode(categoryTree.value, highlightedCategory.value)
+    if (node) {
+      if (node.children && node.children.length > 0) {
+        return node.label
       }
     }
   }
-  return 'All Products'
-}
 
-const currentCategoryLabel = computed(() => {
-  return findCategoryLabel(categoryTree.value, currentCategory.value)
+  if (currentCategories.value.length > 0) {
+    const firstCategory = currentCategories.value[0]
+    if (firstCategory) {
+      const node = findCategoryNode(categoryTree.value, firstCategory)
+      return node ? node.label : 'Products'
+    }
+    return 'Products'
+  }
+
+  if (currentCategory.value !== 'all') {
+    const node = findCategoryNode(categoryTree.value, currentCategory.value)
+    return node ? node.label : 'Products'
+  }
+
+  return 'All Products'
 })
+
+function findCategoryNode(nodes: TreeNode[], id: string): TreeNode | null {
+  for (const node of nodes) {
+    if (node.id === id) return node
+    if (node.children) {
+      const found = findCategoryNode(node.children, id)
+      if (found) return found
+    }
+  }
+  return null
+}
 
 const newProducts = ref<Product[]>([])
 
@@ -369,17 +432,27 @@ async function loadNewProducts() {
 }
 
 const currentCategoryNode = computed(() => {
-  const findNode = (nodes: TreeNode[], id: string): TreeNode | null => {
-    for (const node of nodes) {
-      if (node.id === id) return node
-      if (node.children) {
-        const found = findNode(node.children, id)
-        if (found) return found
+  // 如果有 categories 参数
+  if (currentCategories.value.length > 0) {
+    // 检查 highlightedCategory 是不是父分类
+    if (highlightedCategory.value !== 'all') {
+      const node = findCategoryNode(categoryTree.value, highlightedCategory.value)
+      if (node && node.children && node.children.length > 0) {
+        // highlightedCategory 是父分类，检查子分类是否有 markdown
+        const firstSubCategory = currentCategories.value[0]
+        if (firstSubCategory) {
+          const subNode = findCategoryNode(categoryTree.value, firstSubCategory)
+          if (subNode && subNode.markdownPath) {
+            return subNode
+          }
+        }
+        return null
       }
     }
-    return null
   }
-  return findNode(categoryTree.value, currentCategory.value)
+
+  // 其他情况查找当前分类的节点
+  return findCategoryNode(categoryTree.value, currentCategory.value)
 })
 
 const markdownContent = ref('')
@@ -1230,9 +1303,17 @@ watch(categoryTree, async () => {
     font-size: 19px;
     line-height: 1.6;
   }
-
+  .product-tag {
+    font-size: 14px !important;
+  }
+  .product-footer .el-button {
+        font-size: 16px !important;
+        padding: 11px 24px;
+        border-radius: 27px;
+        height: 40px;
+    }
   .products-grid {
-    gap: 32px;
+    gap: 30px;
   }
 
   .product-col {
@@ -2156,7 +2237,7 @@ watch(categoryTree, async () => {
   font-weight: 600;
 }
 
-@media (min-width: 1901px) {
+@media (min-width: 1900px) {
   .category-markdown {
     padding: 43px;
     margin-top: 54px;

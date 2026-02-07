@@ -1,50 +1,306 @@
 [
     {
-    "id": 1,
-    "name": "Stable Lightweight Three-axis Diesel Semi-trailers For Bulk Export To The Nigerian National Petroleum Corporation",
-    "desc": "Category Aluminum Tanker Trailers \n The three-axle diesel semi-trailer transporter will be exported in batches to the Nigerian National Petroleum \n Corporation in Africa. The vehicle's overall dimensions (mm): 12200*2500*3850. The walking part of the semi-trailer is equipped with: 90# traction pin, 3-axle 13-ton Fuhua axle, 12R22.5 tire, 500L tool box, with ABS, two spare tire racks, reinforced mechanical suspension, single-acting outrigger, 8*16*100mm spring. Tank part: The tank volume is about 45m3 cubic meters, divided into three compartments, straight tank, the tank body is made of Q355B material, three European standard tank ports, three seabed valves, three bottom oil loading, with oil product display, independent ladder welded on the front of the tank body, movable European ladder with anti-skid plate, with aluminum alloy folding guardrail, anti-skid walkway installed in the middle of the top of the tank body, the front end of the barrel is fully welded with a drip hole connected to a small ball valve, and two 8 kg carbon steel fire extinguisher cylinders \n Delivery time: 15-25 days \n Tank volume: 40000L-45000L \n Application: Trailers can be used to transport various fuels such as gasoline, diesel, kerosene, etc.",
-    "image": "/images/product/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation/main.png",
-    "images": [
-      "/images/product/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation/1.png"
-    ],
-    "tag": "New",
-    "category": "truck",
-    "subCategory": "AluminiumFuelTanker",
-    "specsText": [
-      "Category Aluminum Tanker Trailers \n The three-axle diesel semi-trailer transporter will be exported in batches to the Nigerian National Petroleum \n Corporation in Africa. The vehicle's overall dimensions (mm): 12200*2500*3850. The walking part of the semi-trailer is equipped with: 90# traction pin, 3-axle 13-ton Fuhua axle, 12R22.5 tire, 500L tool box, with ABS, two spare tire racks, reinforced mechanical suspension, single-acting outrigger, 8*16*100mm spring. Tank part: The tank volume is about 45m3 cubic meters, divided into three compartments, straight tank, the tank body is made of Q355B material, three European standard tank ports, three seabed valves, three bottom oil loading, with oil product display, independent ladder welded on the front of the tank body, movable European ladder with anti-skid plate, with aluminum alloy folding guardrail, anti-skid walkway installed in the middle of the top of the tank body, the front end of the barrel is fully welded with a drip hole connected to a small ball valve, and two 8 kg carbon steel fire extinguisher cylinders \n Delivery time: 15-25 days \n Tank volume: 40000L-45000L \n Application: Trailers can be used to transport various fuels such as gasoline, diesel, kerosene, etc."
-    ],
-    "markdownPath": "/md/products/AluminiumFuelTanker/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation.md"
-  },
+        "category": "truck",
+        "desc": "Category Aluminum Tanker Trailers \n The three-axle diesel semi-trailer transporter will be exported in batches to the Nigerian National Petroleum \n Corporation in Africa. The vehicle's overall dimensions (mm): 12200*2500*3850. The walking part of the semi-trailer is equipped with: 90# traction pin, 3-axle 13-ton Fuhua axle, 12R22.5 tire, 500L tool box, with ABS, two spare tire racks, reinforced mechanical suspension, single-acting outrigger, 8*16*100mm spring. Tank part: The tank volume is about 45m3 cubic meters, divided into three compartments, straight tank, the tank body is made of Q355B material, three European standard tank ports, three seabed valves, three bottom oil loading, with oil product display, independent ladder welded on the front of the tank body, movable European ladder with anti-skid plate, with aluminum alloy folding guardrail, anti-skid walkway installed in the middle of the top of the tank body, the front end of the barrel is fully welded with a drip hole connected to a small ball valve, and two 8 kg carbon steel fire extinguisher cylinders \n Delivery time: 15-25 days \n Tank volume: 40000L-45000L \n Application: Trailers can be used to transport various fuels such as gasoline, diesel, kerosene, etc.",
+        "id": 1,
+        "image": "/images/product/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation/main.png",
+        "images": [
+            "/images/product/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation/1.png"
+        ],
+        "markdownPath": "/md/products/AluminiumFuelTanker/StableLightweightThree-axisDieselSemi-trailersForBulkExportToTheNigerianNationalPetroleumCorporation.md",
+        "name": "Stable Lightweight Three-axis Diesel Semi-trailers For Bulk Export To The Nigerian National Petroleum Corporation",
+        "specsText": [
+            "Category Aluminum Tanker Trailers \n The three-axle diesel semi-trailer transporter will be exported in batches to the Nigerian National Petroleum \n Corporation in Africa. The vehicle's overall dimensions (mm): 12200*2500*3850. The walking part of the semi-trailer is equipped with: 90# traction pin, 3-axle 13-ton Fuhua axle, 12R22.5 tire, 500L tool box, with ABS, two spare tire racks, reinforced mechanical suspension, single-acting outrigger, 8*16*100mm spring. Tank part: The tank volume is about 45m3 cubic meters, divided into three compartments, straight tank, the tank body is made of Q355B material, three European standard tank ports, three seabed valves, three bottom oil loading, with oil product display, independent ladder welded on the front of the tank body, movable European ladder with anti-skid plate, with aluminum alloy folding guardrail, anti-skid walkway installed in the middle of the top of the tank body, the front end of the barrel is fully welded with a drip hole connected to a small ball valve, and two 8 kg carbon steel fire extinguisher cylinders \n Delivery time: 15-25 days \n Tank volume: 40000L-45000L \n Application: Trailers can be used to transport various fuels such as gasoline, diesel, kerosene, etc."
+        ],
+        "subCategory": "AluminiumFuelTanker",
+        "tag": "New"
+    },
     {
-    "id": 2,
-    "name": "Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck",
-    "desc": "1. Material: Carbon steel/stainless steel/Aluminum\n2. Axle: 3/4*45 tons capacity (OCT, FUWA, BPW or other brands)\n3 .Suspension: mechanical suspension (optional) air/bogie suspension\n4. plate spring: 10 (airbag increasing optional)\n5. tires: 12 r22. 5, 11 R22.5, r22 315/80. 5385/65 r22. 5 (size and brand optional)\n6. rim: 9.00-22.5, 8.25-22.5, 11.75 22.5 (its) His size is optional)\n7. kingpin :2\"/3.5\" bolt type, SAE standard (optional type welded on)\n8. landing gear: 28 tons two-speed (JOST or equivalent brand)",
-    "image": "/images/product/Three-axle40000L4-compartmentCarbonSteelTankerTruck/main.png",
-    "images": [
-      "/images/product/Three-axle40000L4-compartmentCarbonSteelTankerTruck/1.png"
-    ],
-    "tag": "Hot",
-    "category": "truck",
-    "subCategory": "CarbonSteelFuelTankTrailer",
-    "specsText": [
-      "1. Material: Carbon steel/stainless steel/Aluminum\n2. Axle: 3/4*45 tons capacity (OCT, FUWA, BPW or other brands)\n3 .Suspension: mechanical suspension (optional) air/bogie suspension\n4. plate spring: 10 (airbag increasing optional)\n5. tires: 12 r22. 5, 11 R22.5, r22 315/80. 5385/65 r22. 5 (size and brand optional)\n6. rim: 9.00-22.5, 8.25-22.5, 11.75 22.5 (its) His size is optional)\n7. kingpin :2\"/3.5\" bolt type, SAE standard (optional type welded on)\n8. landing gear: 28 tons two-speed (JOST or equivalent brand)"
-    ],
-    "markdownPath": "/md/products/CarbonSteelFuelTankTrailer/Three-axle40000L4-compartmentCarbonSteelTankerTruck.md"
-  },
-  {
-    "id": 30,
-    "name": "3 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank",
-    "desc": "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity",
-    "image": "/images/product/3Axles40000LitersFuelTankSemiTrailerOilTransportTank/main.png",
-    "images": [
-      "/images/product/3Axles40000LitersFuelTankSemiTrailerOilTransportTank/1.png"
-    ],
-    "tag": "Hot",
-    "category": "truck",
-    "subCategory": "AluminiumFuelTanker",
-    "specsText": [
-      "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity"
-    ],
-    "markdownPath": "/md/products/AluminiumFuelTanker/3Axles40000LitersFuelTankSemiTrailerOilTransportTank.md"
-  }
+        "category": "truck",
+        "desc": "1. Material: Carbon steel/stainless steel/Aluminum\n2. Axle: 3/4*45 tons capacity (OCT, FUWA, BPW or other brands)\n3 .Suspension: mechanical suspension (optional) air/bogie suspension\n4. plate spring: 10 (airbag increasing optional)\n5. tires: 12 r22. 5, 11 R22.5, r22 315/80. 5385/65 r22. 5 (size and brand optional)\n6. rim: 9.00-22.5, 8.25-22.5, 11.75 22.5 (its) His size is optional)\n7. kingpin :2\"/3.5\" bolt type, SAE standard (optional type welded on)\n8. landing gear: 28 tons two-speed (JOST or equivalent brand)",
+        "id": 2,
+        "image": "/images/product/Three-axle40000L4-compartmentCarbonSteelTankerTruck/main.png",
+        "images": [
+            "/images/product/Three-axle40000L4-compartmentCarbonSteelTankerTruck/1.png"
+        ],
+        "markdownPath": "/md/products/CarbonSteelFuelTankTrailer/Three-axle40000L4-compartmentCarbonSteelTankerTruck.md",
+        "name": "Three-axle 40,000L 4-compartment Carbon Steel Tanker Truck",
+        "specsText": [
+            "1. Material: Carbon steel/stainless steel/Aluminum\n2. Axle: 3/4*45 tons capacity (OCT, FUWA, BPW or other brands)\n3 .Suspension: mechanical suspension (optional) air/bogie suspension\n4. plate spring: 10 (airbag increasing optional)\n5. tires: 12 r22. 5, 11 R22.5, r22 315/80. 5385/65 r22. 5 (size and brand optional)\n6. rim: 9.00-22.5, 8.25-22.5, 11.75 22.5 (its) His size is optional)\n7. kingpin :2\"/3.5\" bolt type, SAE standard (optional type welded on)\n8. landing gear: 28 tons two-speed (JOST or equivalent brand)"
+        ],
+        "subCategory": "CarbonSteelFuelTankTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Type: Semi-trailer \n 2. Maximum load: 60tons \n 3. Brand: Shandong ZhiShun \n 4. Country of Origin: Shandong,China \n 5. Suitable vehicle type: Truck towing \n 6. Material: Steel \n 7. Size: customizable \n 8.Product name: Bulk Cement Trailer",
+        "id": 3,
+        "image": "/images/product/CementTankerTruckTrailer/main.png",
+        "images": [
+            "/images/product/CementTankerTruckTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/BulkCementTrailer/CementTankerTruckTrailer.md",
+        "name": "Cement Tanker Truck Trailer",
+        "specsText": [
+            "1.Type: Semi-trailer \n 2. Maximum load: 60tons \n 3. Brand: Shandong ZhiShun \n 4. Country of Origin: Shandong,China \n 5. Suitable vehicle type: Truck towing \n 6. Material: Steel \n 7. Size: customizable \n 8.Product name: Bulk Cement Trailer"
+        ],
+        "subCategory": "BulkCementTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Origin : iangshan,China \n 2.Suitable vehicle type: Truck towed \n 3.Material: Steel \n 4.Product Name: ZhiShun Heavy carbon steel asphalt tank semi-trailer \n 5. axle: 2/3/4*13/16T FUWA/BPW \n 6.Function: Liquid asphalt transport \n 7. suspension: Mechanical suspension Air suspension \n 8. lift drop: 28t Heavy landing gear",
+        "id": 4,
+        "image": "/images/product/LiquidAsphaltTankerTrailer/main.png",
+        "images": [
+            "/images/product/LiquidAsphaltTankerTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/AsphaltTankTrailers/LiquidAsphaltTankerTrailer.md",
+        "name": "Liquid Asphalt Tanker Trailer",
+        "specsText": [
+            "1.Origin : iangshan,China \n 2.Suitable vehicle type: Truck towed \n 3.Material: Steel \n 4.Product Name: ZhiShun Heavy carbon steel asphalt tank semi-trailer \n 5. axle: 2/3/4*13/16T FUWA/BPW \n 6.Function: Liquid asphalt transport \n 7. suspension: Mechanical suspension Air suspension \n 8. lift drop: 28t Heavy landing gear"
+        ],
+        "subCategory": "AsphaltTankTrailers",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "12500 x 2500 x 3990(MM) \n Tanker shell \n Product \n LBG, butane, propane \n Fluid characteristics Flammable \n Design temperature \n to 50 ° C 5 Design pressure \n 1.61MPa \n Corrosion allowance \n 1.0 mm",
+        "id": 5,
+        "image": "/images/product/3AxlesLPGTankGasTankerSemiTrailer/main.png",
+        "images": [
+            "/images/product/3AxlesLPGTankGasTankerSemiTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/GasTankerTrailer/3AxlesLPGTankGasTankerSemiTrailer.md",
+        "name": "3 Axles LPG Tank Gas Tanker Semi Trailer",
+        "specsText": [
+            "12500 x 2500 x 3990(MM) \n Tanker shell \n Product \n LBG, butane, propane \n Fluid characteristics Flammable \n Design temperature \n to 50 ° C 5 Design pressure \n 1.61MPa \n Corrosion allowance \n 1.0 mm"
+        ],
+        "subCategory": "GasTankerTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "Single-layer stainless steel tanker \n Made of stainless steel, it is significantly lighter than traditional carbon steel tank trailers.It can effectively reduce vehicle fuel consumption and improve transportation efficiency.  \n Delivery time: 15-25 days \n Tank volume: 40000L-45000L \n Application: Trailers can be used to transport various fuels such as gasoline, diesel, kerosene, etc. \n ",
+        "id": 6,
+        "image": "/images/product/35CubicMetersSingle-layerStainlessSteelTankerHotandsellingwell/main.png",
+        "images": [
+            "/images/product/35CubicMetersSingle-layerStainlessSteelTankerHotandsellingwell/1.png"
+        ],
+        "markdownPath": "/md/products/StainlessSteelTankerTrailer/35CubicMetersSingle-layerStainlessSteelTankerHotandsellingwell.md",
+        "name": "35 Cubic Meters Single-layer Stainless Steel Tanker Hot and selling well",
+        "specsText": [
+            "Single-layer stainless steel tanker \n Made of stainless steel, it is significantly lighter than traditional carbon steel tank trailers.It can effectively reduce vehicle fuel consumption and improve transportation efficiency.  \n Delivery time: 15-25 days \n Tank volume: 40000L-45000L \n Application: Trailers can be used to transport various fuels such as gasoline, diesel, kerosene, etc."
+        ],
+        "subCategory": "StainlessSteelTankerTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Manufacture: Other Size / Single Super Tire Contact with Supplier \n 2. leaf-spring Pcs: 10 \n 3. Axle: 13/16/18 T \n 4.Tire Size: 12R22.5, 12.00R20(Other Size / Single Super Tire Contact with Supplier) \n 5. Main Beam MateriaI: Q345B manganese plates, automatic submerged arc welded \n 6 .Brake System: Dual line braking system with automatic braking system/chambers \n 7. Brake Air Chamber :Double Model \n 8. Kingpin: 2' or 3.5' Interchangeable",
+        "id": 7,
+        "image": "/images/product/SulphuricAcidTankerTrailer/main.png",
+        "images": [
+            "/images/product/SulphuricAcidTankerTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/ChemicalTankTrailer/SulphuricAcidTankerTrailer.md",
+        "name": "Sulphuric Acid Tanker Trailer",
+        "specsText": [
+            "1.Manufacture: Other Size / Single Super Tire Contact with Supplier \n 2. leaf-spring Pcs: 10 \n 3. Axle: 13/16/18 T \n 4.Tire Size: 12R22.5, 12.00R20(Other Size / Single Super Tire Contact with Supplier) \n 5. Main Beam MateriaI: Q345B manganese plates, automatic submerged arc welded \n 6 .Brake System: Dual line braking system with automatic braking system/chambers \n 7. Brake Air Chamber :Double Model \n 8. Kingpin: 2' or 3.5' Interchangeable"
+        ],
+        "subCategory": "ChemicalTankTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "12500 x 2500 x 3990(MM) \n Tanker shell \n 1 Product \n LBG, butane, propane \n Fluid characteristics Flammable \n Design temperature \n to 50 ° C 5 Design pressure \n 1.61MPa \n Corrosion allowance \n 1.0 mm ",
+        "id": 8,
+        "image": "/images/product/LPGStorageTank/main.png",
+        "images": [
+            "/images/product/LPGStorageTank/1.png"
+        ],
+        "markdownPath": "/md/products/StorageTank/LPGStorageTank.md",
+        "name": "LPG Storage Tank",
+        "specsText": [
+            "12500 x 2500 x 3990(MM) \n Tanker shell \n 1 Product \n LBG, butane, propane \n Fluid characteristics Flammable \n Design temperature \n to 50 ° C 5 Design pressure \n 1.61MPa \n Corrosion allowance \n 1.0 mm"
+        ],
+        "subCategory": "StorageTank",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Place of Origin: Shandong, China \n 2. Use: Truck Trailer \n 3. Material: Steel \n 4. Size: 12500x2500x1550mm \n 5. Product name: Container skeleton trailer \n 6. Function: Transport 20ft 40ft Container \n 7. Loading capacity: 30T-60T \n 8. Landing Gear: 28t Heavy Duty Landing Gear",
+        "id": 9,
+        "image": "/images/product/TriAxleContainerChassis/main.png",
+        "images": [
+            "/images/product/TriAxleContainerChassis/1.png"
+        ],
+        "markdownPath": "/md/products/SkeletalTrailer/TriAxleContainerChassis.md",
+        "name": "Tri Axle Container Chassis",
+        "specsText": [
+            "1.Place of Origin: Shandong, China \n 2. Use: Truck Trailer \n 3. Material: Steel \n 4. Size: 12500x2500x1550mm \n 5. Product name: Container skeleton trailer \n 6. Function: Transport 20ft 40ft Container \n 7. Loading capacity: 30T-60T \n 8. Landing Gear: 28t Heavy Duty Landing Gear"
+        ],
+        "subCategory": "SkeletalTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Type: Semi-trailer \n 2. Maximum load: 60 tons \n 3. Brand: Shandong ZhiShun \n 4. Origin: Shandong,China \n 5. Suitable vehicle type: truck towing \n 6. Material: steel \n 7. Size: 12400X2500X1550mm \n 8. Product name: Flatbed Semi Trailer",
+        "id": 10,
+        "image": "/images/product/3AxleFlatbedSemiTrailers/main.png",
+        "images": [
+            "/images/product/3AxleFlatbedSemiTrailers/1.png"
+        ],
+        "markdownPath": "/md/products/FlatbedTrailer/3AxleFlatbedSemiTrailers.md",
+        "name": "3 Axle Flatbed Semi Trailers",
+        "specsText": [
+            "1.Type: Semi-trailer \n 2. Maximum load: 60 tons \n 3. Brand: Shandong ZhiShun \n 4. Origin: Shandong,China \n 5. Suitable vehicle type: truck towing \n 6. Material: steel \n 7. Size: 12400X2500X1550mm \n 8. Product name: Flatbed Semi Trailer"
+        ],
+        "subCategory": "FlatbedTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Product name :Low bed trailer \n 2. Type: Semi-trailer \n 3. Maximum load :20001-25000 kg \n 4. Brand: Shandong ZhiShun \n 5. Origin :China \n 6. Suitable vehicle type: truck towing \n 7. Material: steel \n 8. Size :13000*2500*1650mm (can be customized)",
+        "id": 11,
+        "image": "/images/product/3AxleSemiLowBedTrailer/main.png",
+        "images": [
+            "/images/product/3AxleSemiLowBedTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/LowbedSemiTrailer/3AxleSemiLowBedTrailer.md",
+        "name": "3 Axle Semi Low Bed Trailer",
+        "specsText": [
+            "1.Product name :Low bed trailer \n 2. Type: Semi-trailer \n 3. Maximum load :20001-25000 kg \n 4. Brand: Shandong ZhiShun \n 5. Origin :China \n 6. Suitable vehicle type: truck towing \n 7. Material: steel \n 8. Size :13000*2500*1650mm (can be customized)"
+        ],
+        "subCategory": "LowbedSemiTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Type: Semi-trailer \n2. Maximum load :40-50T \n3. Brand :shandongruiyaun \n4. Country of Origin: Shandong,China \n5. Suitable vehicle type: Truck towing \n6. Material: Steel0 \n7. Size: 13000*2500*3900(can be customized according to requirements) \n8. Product Name: Dump truck trailer",
+        "id": 12,
+        "image": "/images/product/3Axle30CBMTipperTrailer/main.png",
+        "images": [
+            "/images/product/3Axle30CBMTipperTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/TipperSemiTrailer/3Axle30CBMTipperTrailer.md",
+        "name": "3 Axle 30CBM Tipper Trailer",
+        "specsText": [
+            "1.Type: Semi-trailer \n2. Maximum load :40-50T \n3. Brand :shandongruiyaun \n4. Country of Origin: Shandong,China \n5. Suitable vehicle type: Truck towing \n6. Material: Steel0 \n7. Size: 13000*2500*3900(can be customized according to requirements) \n8. Product Name: Dump truck trailer"
+        ],
+        "subCategory": "TipperSemiTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Type: Semi-trailer \n2. Maximum load: 50000kg \n3. Brand: Shandong ZhiShun \n4. Country of Origin: Shandong,China \n5. Suitable vehicle type: Truck towing \n6. Material: Steel \n7. Size: 13000*2500*3500mm (can be customized according to demand) \n8. Product name: Fence semi trailer",
+        "id": 13,
+        "image": "/images/product/3Axle60TonFenceCargoSemiTrailer/main.png",
+        "images": [
+            "/images/product/3Axle60TonFenceCargoSemiTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/FenceCargoTrailer/3Axle60TonFenceCargoSemiTrailer.md",
+        "name": "3 Axle 60 Ton Fence Cargo Semi Trailer",
+        "specsText": [
+            "1.Type: Semi-trailer \n2. Maximum load: 50000kg \n3. Brand: Shandong ZhiShun \n4. Country of Origin: Shandong,China \n5. Suitable vehicle type: Truck towing \n6. Material: Steel \n7. Size: 13000*2500*3500mm (can be customized according to demand) \n8. Product name: Fence semi trailer"
+        ],
+        "subCategory": "FenceCargoTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Application: Coal/Mine/Sand/Stone Transportation \n2. Dump Style: Side Dump \n3. Loading Capacity: 30-100 Tons \n4. Axles: 3/4 Axles 13/16 TonsVEHICLE MASTER FUWA/BPW \n5. Length*Width*Height: 11000mm*2500mm*2800mm \n6. Cylinder: HYVA ( Model Choice According to Length of Cargo Box) \n7. Bottom Plate Thickness: 5mm \n8. Sidewall Plate Thickness: 4mm",
+        "id": 14,
+        "image": "/images/product/40FTDropsideTrailer/main.png",
+        "images": [
+            "/images/product/40FTDropsideTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/SideWallTipper/40FTDropsideTrailer.md",
+        "name": "40FT Dropside Trailer",
+        "specsText": [
+            "1.Application: Coal/Mine/Sand/Stone Transportation \n2. Dump Style: Side Dump \n3. Loading Capacity: 30-100 Tons \n4. Axles: 3/4 Axles 13/16 TonsVEHICLE MASTER FUWA/BPW \n5. Length*Width*Height: 11000mm*2500mm*2800mm \n6. Cylinder: HYVA ( Model Choice According to Length of Cargo Box) \n7. Bottom Plate Thickness: 5mm \n8. Sidewall Plate Thickness: 4mm"
+        ],
+        "subCategory": "SideWallTipper",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1.Type: Semi-trailer \n2. Brand: Shandong ZhiShun \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional)",
+        "id": 15,
+        "image": "/images/product/40TonsCurtainSider/main.png",
+        "images": [
+            "/images/product/40TonsCurtainSider/1.png"
+        ],
+        "markdownPath": "/md/products/SideCurtainTrailer/40TonsCurtainSider.md",
+        "name": "40 Tons Curtain Sider",
+        "specsText": [
+            "1.Type: Semi-trailer \n2. Brand: Shandong ZhiShun \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) \n"
+        ],
+        "subCategory": "SideCurtainTrailer",
+        "tag": "Hot"
+    },
+    {
+        "category": "truck",
+        "desc": "1. Type: Semi Trailer \n2. Product name: Car Carrier Semi Trailer \n3. Maximum load :40T \n4. Brand: shandongruiyuan \n5. Country of Origin: Shandong,China \n6. Suitable vehicle type: Truck towing \n7. Material: Steel \n8. Size: (18000-32000)*2500*4000(mm) ",
+        "id": 16,
+        "image": "/images/product/DoubleDeckCarTransportTrailer/main.png",
+        "images": [
+            "/images/product/DoubleDeckCarTransportTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/CarCarrierTailer/DoubleDeckCarTransportTrailer.md",
+        "name": "Double Deck Car Transport Trailer",
+        "specsText": [
+            "1. Type: Semi Trailer \n2. Product name: Car Carrier Semi Trailer \n3. Maximum load :40T \n4. Brand: shandongruiyuan \n5. Country of Origin: Shandong,China \n6. Suitable vehicle type: Truck towing \n7. Material: Steel \n8. Size: (18000-32000)*2500*4000(mm) "
+        ],
+        "subCategory": "CarCarrierTailer",
+        "tag": "New"
+    },
+	    {
+        "category": "truck",
+        "desc": "1.Type: Semi-Trailer \n2. Size: 7000*2500*1500(mm) (customizable) \n3. Payload: 30000KG \n4. Main beam: Heavy I-beam \n5. Shaft :2*13 tons capacity (brand optional) \n6. Suspension: Mechanical suspension (air is optional) \n7. Leaf spring :10 pieces \n8. Tire :12R22.58pcs(other sizes optional) ",
+        "id": 17,
+        "image": "/images/product/Two-axleDumpDrawbarTrailer/main.png",
+        "images": [
+            "/images/product/Two-axleDumpDrawbarTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/FullDrawbarTrailer/Two-axleDumpDrawbarTrailer.md",
+        "name": "Two-axle Dump Drawbar Trailer",
+        "specsText": [
+            "1.Type: Semi-Trailer \n2. Size: 7000*2500*1500(mm) (customizable) \n3. Payload: 30000KG \n4. Main beam: Heavy I-beam \n5. Shaft :2*13 tons capacity (brand optional) \n6. Suspension: Mechanical suspension (air is optional) \n7. Leaf spring :10 pieces \n8. Tire :12R22.58pcs(other sizes optional) "
+        ],
+        "subCategory": "FullDrawbarTrailer",
+        "tag": "New"
+    },
+		    {
+        "category": "truck",
+        "desc": "1.Type: Semi-trailer \n2. Brand: Shandong Ruiyuan \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) ",
+        "id": 18,
+        "image": "/images/product/40TonBoxSemiTrailer/main.png",
+        "images": [
+            "/images/product/40TonBoxSemiTrailer/1.png"
+        ],
+        "markdownPath": "/md/products/BoxSemiTrailer/40TonBoxSemiTrailer.md",
+        "name": "40 Ton Box Semi Trailer",
+        "specsText": [
+            "1.Type: Semi-trailer \n2. Brand: Shandong Ruiyuan \n3. Origin: Shandong,China \n4. Suitable vehicle type: truck towing \n5. Material: steel \n6. Size: 12400X2500X1550mm (customizable) \n7. Product name: Van and Curtain Trailer \n8. Axle brand: 13 tons axle BPW/ Foix CIMC (optional) "
+        ],
+        "subCategory": "BoxSemiTrailer",
+        "tag": "New"
+    },
+    {
+        "category": "truck",
+        "desc": "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity",
+        "id": 30,
+        "image": "/images/product/3Axles40000LitersFuelTankSemiTrailerOilTransportTank/main.png",
+        "images": [
+            "/images/product/3Axles40000LitersFuelTankSemiTrailerOilTransportTank/1.png"
+        ],
+        "markdownPath": "/md/products/AluminiumFuelTanker/3Axles40000LitersFuelTankSemiTrailerOilTransportTank.md",
+        "name": "3 Axles 40000 Liters Fuel Tank Semi Trailer Oil Transport Tank",
+        "specsText": [
+            "3 Axle Aluminum Alloy Liquid Chemical Fuel Transport Trailer Multi Tank Design 40000 45000 Liters Capacity"
+        ],
+        "subCategory": "AluminiumFuelTanker",
+        "tag": "Hot"
+    }
 ]
