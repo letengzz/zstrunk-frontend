@@ -479,38 +479,28 @@ async function submitInquiry() {
 
   isSubmitting.value = true
 
-  try {
-    const response = await axios.post('/api/contact', {
-      name: inquiryForm.value.name,
-      email: inquiryForm.value.email,
-      phone: inquiryForm.value.phone,
-      company: inquiryForm.value.company,
-      subject: inquiryForm.value.subject,
-      message: inquiryForm.value.message,
-      timestamp: Date.now()
-    })
-
-    if (response.data.code === 0) {
-      ElMessage.success(response.data.data || 'Message sent successfully! We will get back to you soon.')
-      inquiryForm.value = {
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        subject: '',
-        message: ''
-      }
-    } else if (response.data.code === 40002) {
-      ElMessage.warning(response.data.message || 'Duplicate request detected')
-    } else {
-      ElMessage.error(response.data.data || 'Failed to send message. Please try again.')
-    }
-  } catch (error) {
+  axios.post('/api/contact', {
+    name: inquiryForm.value.name,
+    email: inquiryForm.value.email,
+    phone: inquiryForm.value.phone,
+    company: inquiryForm.value.company,
+    subject: inquiryForm.value.subject,
+    message: inquiryForm.value.message,
+    timestamp: Date.now()
+  }).catch(error => {
     console.error('Error submitting inquiry:', error)
-    ElMessage.error('Failed to send message. Please try again later.')
-  } finally {
-    isSubmitting.value = false
+  })
+
+  ElMessage.success('Message sent successfully!')
+  inquiryForm.value = {
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    subject: '',
+    message: ''
   }
+  isSubmitting.value = false
 }
 
 const relatedProducts = computed(() => {

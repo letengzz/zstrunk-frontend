@@ -335,6 +335,22 @@
         "subCategory": "ShacmanTractorTruck",
         "tag": "New"
     },
+	          {
+        "category": "excavator",
+        "desc": "The National IV CAT ® 320 GX is faster than the National III 320 GX and has significantly increased production. It does not require the use of urea solution, has a reliable exhaust gas after-treatment device, requires no maintenance during its life cycle, and does not require special parking for regeneration, thereby increasing operating time. The overall machine configuration is simple and reliable.",
+        "id": 22,
+        "image": "/images/product/Catexcavator320GX/main.png",
+        "images": [
+            "/images/product/Catexcavator320GX/1.png"
+        ],
+        "markdownPath": "/md/products/Excavator/Catexcavator320GX.md",
+        "name": "Cat excavator 320GX",
+        "specsText": [
+            "The National IV CAT ® 320 GX is faster than the National III 320 GX and has significantly increased production. It does not require the use of urea solution, has a reliable exhaust gas after-treatment device, requires no maintenance during its life cycle, and does not require special parking for regeneration, thereby increasing operating time. The overall machine configuration is simple and reliable."
+        ],
+        "subCategory": "Excavator",
+        "tag": "Hot"
+    },
               {
         "category": "truck",
         "desc": "Dump trucks are highly efficient engineering transport vehicles widely used in scenarios such as mining and construction. Equipped with a unique hydraulic lifting system, they can tilt the cargo box via controlled cylinders to automatically unload bulk materials like sand, gravel, and earth quickly. This significantly improves loading and unloading efficiency while reducing labor costs.",

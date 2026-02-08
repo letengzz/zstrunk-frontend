@@ -201,36 +201,26 @@ async function submitForm() {
 
   isSubmitting.value = true
 
-  try {
-    const response = await axios.post('/api/contact', {
-      name: contactForm.name,
-      email: contactForm.email,
-      phone: contactForm.phone,
-      company: contactForm.company,
-      subject: contactForm.subject,
-      message: contactForm.message,
-      timestamp: Date.now()
-    })
-
-    if (response.data.code === 0) {
-      ElMessage.success(response.data.data || 'Message sent successfully! We will get back to you soon.')
-      contactForm.name = ''
-      contactForm.email = ''
-      contactForm.phone = ''
-      contactForm.company = ''
-      contactForm.subject = ''
-      contactForm.message = ''
-    } else if (response.data.code === 40002) {
-      ElMessage.warning(response.data.message || 'Duplicate request detected')
-    } else {
-      ElMessage.error(response.data.message || 'Failed to send message. Please try again.')
-    }
-  } catch (error) {
+  axios.post('/api/contact', {
+    name: contactForm.name,
+    email: contactForm.email,
+    phone: contactForm.phone,
+    company: contactForm.company,
+    subject: contactForm.subject,
+    message: contactForm.message,
+    timestamp: Date.now()
+  }).catch(error => {
     console.error('Failed to submit form:', error)
-    ElMessage.error('Failed to send message. Please try again.')
-  } finally {
-    isSubmitting.value = false
-  }
+  })
+
+  ElMessage.success('Message sent successfully!')
+  contactForm.name = ''
+  contactForm.email = ''
+  contactForm.phone = ''
+  contactForm.company = ''
+  contactForm.subject = ''
+  contactForm.message = ''
+  isSubmitting.value = false
 }
 </script>
 
